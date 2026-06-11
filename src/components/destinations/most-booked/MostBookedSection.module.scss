@@ -1,0 +1,49 @@
+.section {
+  padding-block: 48px;
+  background: var(--color-bg);
+}
+
+.sectionLabel {
+  color: var(--color-gold) !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+}
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 4px;
+  margin-bottom: 24px;
+}
+
+.sectionTitle {
+  font-weight: 700 !important;
+  color: var(--color-fg) !important;
+}
+
+.viewAllLink {
+  text-decoration: none !important;
+}
+
+.viewAllBtn {
+  text-transform: none !important;
+  color: var(--color-neutral) !important;
+  font-size: 0.85rem !important;
+
+  &:hover {
+    color: var(--color-fg) !important;
+    background: transparent !important;
+  }
+}
+
+.cardList {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+
+  @media (min-width: 900px) {
+    flex-wrap: nowrap;
+  }
+}

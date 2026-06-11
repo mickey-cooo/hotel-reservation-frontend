@@ -1,0 +1,23 @@
+.title {
+  font-weight: 700 !important;
+  color: var(--color-fg) !important;
+  margin-bottom: 8px !important;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+}
+
+.checkbox {
+  color: var(--color-border-light) !important;
+
+  &:global(.Mui-checked) {
+    color: var(--color-gold) !important;
+  }
+}
+
+.checkboxLabel {
+  font-size: 0.875rem !important;
+  color: var(--color-text-body) !important;
+}

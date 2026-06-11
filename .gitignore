@@ -21,7 +21,6 @@
 /build
 
 # misc
-.DS_Store
 *.pem
 
 # debug
@@ -36,6 +35,7 @@ yarn-error.log*
 # vercel
 .vercel
 
+# claude
 CLAUDE.md
 
 # typescript

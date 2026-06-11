@@ -1,0 +1,49 @@
+.imageWrapper {
+  position: relative;
+  height: 200px;
+}
+
+.cardImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.badge {
+  position: absolute !important;
+  top: 12px !important;
+  left: 12px !important;
+  color: #fff !important;
+  font-weight: 700 !important;
+  font-size: 0.6rem !important;
+  letter-spacing: 0.08em !important;
+  height: 22px !important;
+}
+
+.badgeTrending {
+  background-color: #92400E !important;
+}
+
+.badgeFeatured {
+  background-color: #78350F !important;
+}
+
+.badgeExclusive {
+  background-color: #451A03 !important;
+}
+
+.favoriteBtn {
+  position: absolute !important;
+  top: 8px !important;
+  right: 8px !important;
+  background-color: rgba(255, 255, 255, 0.9) !important;
+
+  &:hover {
+    background-color: #fff !important;
+    color: #E11D48 !important;
+  }
+}
+
+.favoriteIcon {
+  font-size: 16px !important;
+}

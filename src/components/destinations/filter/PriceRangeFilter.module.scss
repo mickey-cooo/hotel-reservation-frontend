@@ -1,0 +1,29 @@
+.title {
+  font-weight: 700 !important;
+  color: var(--color-fg) !important;
+  margin-bottom: 16px !important;
+}
+
+.sliderWrapper {
+  padding-inline: 8px;
+  margin-bottom: 24px;
+}
+
+.slider {
+  color: var(--color-gold) !important;
+
+  :global(.MuiSlider-thumb) {
+    width: 14px !important;
+    height: 14px !important;
+  }
+}
+
+.priceLabels {
+  display: flex;
+  justify-content: space-between;
+}
+
+.priceLabel {
+  font-size: 0.8rem !important;
+  color: var(--color-neutral) !important;
+}

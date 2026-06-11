@@ -1,0 +1,69 @@
+.cardBody {
+  padding: 16px;
+}
+
+.titleRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.cardTitle {
+  font-weight: 600 !important;
+  font-size: 0.95rem !important;
+  line-height: 1.3 !important;
+  flex: 1 !important;
+  margin-right: 8px !important;
+}
+
+.ratingBox {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  flex-shrink: 0;
+}
+
+.starIcon {
+  font-size: 14px !important;
+  color: var(--color-gold) !important;
+}
+
+.ratingText {
+  font-size: 0.8rem !important;
+  font-weight: 600 !important;
+}
+
+.locationRow {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  margin-top: 4px;
+  margin-bottom: 12px;
+}
+
+.locationIcon {
+  font-size: 13px !important;
+  color: var(--color-neutral) !important;
+}
+
+.locationText {
+  font-size: 0.78rem !important;
+  color: var(--color-neutral) !important;
+}
+
+.priceRow {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.price {
+  font-weight: 700 !important;
+  font-size: 1.1rem !important;
+  color: var(--color-fg) !important;
+}
+
+.perNight {
+  font-size: 0.75rem !important;
+  color: var(--color-neutral) !important;
+}

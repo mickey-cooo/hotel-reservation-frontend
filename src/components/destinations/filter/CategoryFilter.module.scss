@@ -1,0 +1,49 @@
+.title {
+  font-weight: 700 !important;
+  color: var(--color-fg) !important;
+  margin-bottom: 12px !important;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 24px;
+}
+
+.categoryItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  background: transparent;
+  color: var(--color-neutral);
+  transition: background-color 0.15s;
+
+  &:hover {
+    background: var(--color-bg);
+  }
+}
+
+.categoryItemActive {
+  background: #FEF3C7;
+  color: #92400E;
+
+  &:hover {
+    background: #FEF3C7;
+  }
+}
+
+.categoryIcon {
+  font-size: 18px !important;
+}
+
+.categoryLabel {
+  font-size: 0.875rem !important;
+}
+
+.categoryLabelActive {
+  font-weight: 600 !important;
+}
