@@ -1,0 +1,64 @@
+.searchPaper {
+  display: flex !important;
+  align-items: center !important;
+  border-radius: 12px !important;
+  overflow: hidden !important;
+  padding-inline: 8px !important;
+}
+
+.fieldSection {
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+}
+
+.fieldWide {
+  flex: 1.5;
+}
+
+.fieldNarrow {
+  flex: 1;
+}
+
+.fieldIcon {
+  color: var(--color-neutral) !important;
+  margin-right: 8px !important;
+  font-size: 20px !important;
+}
+
+.fieldLabelBox {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.fieldCaption {
+  color: var(--color-neutral) !important;
+  display: block !important;
+}
+
+.fieldInput {
+  font-size: 0.875rem !important;
+  width: 100%;
+}
+
+.fieldText {
+  font-size: 0.875rem !important;
+  color: var(--color-neutral) !important;
+}
+
+.fieldDivider {
+  margin-block: 12px !important;
+}
+
+.searchBtn {
+  background: var(--color-fg) !important;
+  color: #fff !important;
+  border-radius: 8px !important;
+  margin: 4px !important;
+
+  &:hover {
+    background: var(--color-dark-surface) !important;
+  }
+}

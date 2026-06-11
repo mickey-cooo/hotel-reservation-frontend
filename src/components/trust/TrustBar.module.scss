@@ -1,0 +1,69 @@
+.trustBar {
+  padding-block: 24px;
+  background: #fff;
+}
+
+.innerRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+.avatarGroup {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.avatarPrimary {
+  display: flex;
+  align-items: center;
+  background: #1a1a2e;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  justify-content: center;
+}
+
+.avatarSecondary {
+  display: flex;
+  align-items: center;
+  background: #00b67a;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  justify-content: center;
+  margin-left: -12px;
+}
+
+.avatarLabel {
+  color: #fff !important;
+  font-size: 0.6rem !important;
+  font-weight: 700 !important;
+}
+
+.trustText {
+  color: var(--color-neutral) !important;
+  font-size: 0.8rem !important;
+}
+
+.divider {
+  height: 24px;
+  align-self: center;
+}
+
+.pressRow {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.pressName {
+  color: var(--color-neutral-light) !important;
+  font-style: italic !important;
+  font-size: 0.95rem !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.05em !important;
+}

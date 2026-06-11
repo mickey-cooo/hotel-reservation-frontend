@@ -1,0 +1,29 @@
+.featureItem {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.iconWrapper {
+  background: rgba(197, 160, 89, 0.15);
+  border-radius: 8px;
+  padding: 8px;
+  flex-shrink: 0;
+}
+
+.icon {
+  color: var(--color-gold) !important;
+  font-size: 22px !important;
+}
+
+.title {
+  font-weight: 600 !important;
+  color: var(--color-bg) !important;
+  font-size: 0.95rem !important;
+}
+
+.description {
+  color: var(--color-neutral-light) !important;
+  font-size: 0.85rem !important;
+  margin-top: 2px !important;
+}
