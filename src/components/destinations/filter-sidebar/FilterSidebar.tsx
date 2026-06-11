@@ -2,9 +2,9 @@
 
 import { useState } from 'react';
 import { Box } from '@mui/material';
-import CategoryFilter, { type CategoryId } from './CategoryFilter';
-import PriceRangeFilter from './PriceRangeFilter';
-import AmenitiesFilter from './AmenitiesFilter';
+import CategoryFilter, { type CategoryId } from '@/components/destinations/category-filter/CategoryFilter';
+import PriceRangeFilter from '@/components/destinations/price-range-filter/PriceRangeFilter';
+import AmenitiesFilter from '@/components/destinations/amenities-filter/AmenitiesFilter';
 
 export default function FilterSidebar() {
   const [activeCategory, setActiveCategory] = useState<CategoryId>('luxury');

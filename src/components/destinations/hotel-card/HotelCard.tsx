@@ -1,7 +1,7 @@
 import { Box } from '@mui/material';
 import NextLink from 'next/link';
-import HotelCardImage from './HotelCardImage';
-import HotelCardInfo from './HotelCardInfo';
+import HotelCardImage from '@/components/destinations/hotel-card-image/HotelCardImage';
+import HotelCardInfo from '@/components/destinations/hotel-card-info/HotelCardInfo';
 import styles from './HotelCard.module.scss';
 
 export interface Hotel {

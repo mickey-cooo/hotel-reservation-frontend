@@ -1,5 +1,5 @@
 import { Box, Container, Typography } from '@mui/material';
-import DestinationsSearchBar from './DestinationsSearchBar';
+import DestinationsSearchBar from '@/components/destinations/destinations-search-bar/DestinationsSearchBar';
 import styles from './DestinationsHero.module.scss';
 
 export default function DestinationsHero() {

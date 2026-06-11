@@ -12,7 +12,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
 import CalendarTodayOutlinedIcon from '@mui/icons-material/CalendarTodayOutlined';
 import PeopleOutlinedIcon from '@mui/icons-material/PeopleOutlined';
-import styles from './DestinationsHero.module.scss';
+import styles from '@/components/destinations/destinations-hero/DestinationsHero.module.scss';
 
 export default function DestinationsSearchBar() {
   return (

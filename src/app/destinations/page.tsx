@@ -1,6 +1,6 @@
 import { Box, Container, Grid } from '@mui/material';
 import DestinationsHero from '@/components/destinations/destinations-hero/DestinationsHero';
-import FilterSidebar from '@/components/destinations/filter/FilterSidebar';
+import FilterSidebar from '@/components/destinations/filter-sidebar/FilterSidebar';
 import HotelGrid from '@/components/destinations/hotel-grid/HotelGrid';
 import Navbar from '@/components/navbar/Navbar';
 import Footer from '@/components/footer/Footer';
