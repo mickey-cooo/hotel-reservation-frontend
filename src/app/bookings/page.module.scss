@@ -1,0 +1,22 @@
+.pageWrapper {
+  background: #fff;
+  min-height: 100vh;
+  padding-block: 40px 72px;
+}
+
+.pageHeader {
+  margin-bottom: 32px;
+}
+
+.pageTitle {
+  font-weight: 700 !important;
+  color: var(--color-fg) !important;
+  margin-bottom: 8px !important;
+}
+
+.pageSubtitle {
+  color: var(--color-neutral) !important;
+  max-width: 420px !important;
+  line-height: 1.6 !important;
+  font-size: 0.875rem !important;
+}
