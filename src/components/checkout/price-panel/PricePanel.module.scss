@@ -1,0 +1,110 @@
+.panel {
+  background: var(--color-fg);
+  border-radius: 16px;
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: sticky;
+  top: 100px;
+}
+
+.panelTitle {
+  font-size: 1.05rem !important;
+  font-weight: 700 !important;
+  color: #fff !important;
+}
+
+.breakdown {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.label {
+  font-size: 0.85rem !important;
+  color: var(--color-neutral-light) !important;
+}
+
+.value {
+  font-size: 0.85rem !important;
+  font-weight: 500 !important;
+  color: #fff !important;
+}
+
+.discount {
+  font-size: 0.85rem !important;
+  font-weight: 600 !important;
+  color: #4ade80 !important;
+}
+
+.divider {
+  border-color: rgba(255, 255, 255, 0.12) !important;
+}
+
+.totalRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.totalLabel {
+  font-size: 0.78rem !important;
+  font-weight: 700 !important;
+  color: var(--color-neutral-light) !important;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.currency {
+  font-size: 0.7rem !important;
+  color: var(--color-neutral-light) !important;
+  letter-spacing: 0.04em;
+}
+
+.totalValue {
+  font-size: 1.7rem !important;
+  font-weight: 800 !important;
+  color: var(--color-gold) !important;
+  line-height: 1 !important;
+}
+
+.payBtn {
+  background: var(--color-gold) !important;
+  color: #fff !important;
+  font-weight: 700 !important;
+  font-size: 0.95rem !important;
+  text-transform: none !important;
+  border-radius: 10px !important;
+  padding: 13px !important;
+  letter-spacing: 0.01em;
+
+  &:hover {
+    background: #b08c3f !important;
+  }
+}
+
+.secureRow {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.shieldIcon {
+  font-size: 1.1rem !important;
+  color: var(--color-neutral-light) !important;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.secureText {
+  font-size: 0.75rem !important;
+  color: var(--color-neutral-light) !important;
+  line-height: 1.55 !important;
+}

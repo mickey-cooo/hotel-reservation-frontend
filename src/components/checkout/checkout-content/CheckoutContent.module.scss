@@ -1,0 +1,54 @@
+.wrapper {
+  padding-block: 40px 80px;
+}
+
+.pageHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 32px;
+}
+
+.pageTitle {
+  font-size: 1.6rem !important;
+  font-weight: 800 !important;
+  color: var(--color-fg) !important;
+}
+
+.secureTag {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.lockIcon {
+  font-size: 0.95rem !important;
+  color: var(--color-neutral) !important;
+}
+
+.secureLabel {
+  font-size: 0.82rem !important;
+  color: var(--color-neutral) !important;
+  font-weight: 500 !important;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 28px;
+  align-items: start;
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.leftCol {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.rightCol {
+  /* sticky handled inside PricePanel */
+}
