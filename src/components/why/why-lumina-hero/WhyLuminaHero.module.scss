@@ -1,0 +1,92 @@
+.hero {
+  position: relative;
+  min-height: 640px;
+  display: flex;
+  align-items: center;
+  background-image: url('https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1600&q=80');
+  background-size: cover;
+  background-position: center;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(15, 23, 42, 0.82) 0%,
+    rgba(15, 23, 42, 0.45) 60%,
+    rgba(15, 23, 42, 0.1) 100%
+  );
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  padding-top: 80px;
+  padding-bottom: 80px;
+  max-width: 640px !important;
+}
+
+.label {
+  color: var(--color-gold) !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+  display: block;
+  margin-bottom: 20px !important;
+}
+
+.title {
+  color: #fff !important;
+  font-weight: 700 !important;
+  font-size: clamp(2rem, 4vw, 3rem) !important;
+  line-height: 1.2 !important;
+  margin-bottom: 20px !important;
+}
+
+.titleGold {
+  color: var(--color-gold);
+}
+
+.desc {
+  color: rgba(255, 255, 255, 0.78) !important;
+  font-size: 1rem !important;
+  line-height: 1.8 !important;
+  margin-bottom: 36px !important;
+  max-width: 520px;
+}
+
+.actions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.btnPrimary {
+  background: var(--color-gold) !important;
+  color: #fff !important;
+  font-weight: 600 !important;
+  padding: 12px 28px !important;
+  border-radius: 8px !important;
+  text-transform: none !important;
+  font-size: 0.95rem !important;
+
+  &:hover {
+    background: #b08a44 !important;
+  }
+}
+
+.btnSecondary {
+  border-color: rgba(255, 255, 255, 0.6) !important;
+  color: #fff !important;
+  font-weight: 600 !important;
+  padding: 12px 28px !important;
+  border-radius: 8px !important;
+  text-transform: none !important;
+  font-size: 0.95rem !important;
+
+  &:hover {
+    border-color: #fff !important;
+    background: rgba(255, 255, 255, 0.08) !important;
+  }
+}

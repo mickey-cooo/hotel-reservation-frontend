@@ -1,0 +1,188 @@
+.section {
+  padding-block: 80px;
+  background: var(--color-bg);
+}
+
+.heading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+  margin-bottom: 48px;
+}
+
+.label {
+  color: var(--color-gold) !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.12em !important;
+  text-transform: uppercase !important;
+}
+
+.title {
+  color: var(--color-fg) !important;
+  font-weight: 700 !important;
+  line-height: 1.2 !important;
+}
+
+/* 3-col × 2-row bento grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 260px 260px;
+  gap: 16px;
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+  }
+
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.cell {
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+/* ── Image cells ── */
+.imgCell {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+  @media (max-width: 900px) {
+    display: none;
+  }
+}
+
+/* ── Service card (light) ── */
+.serviceCard {
+  background: #fff;
+  border: 1px solid var(--color-border);
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.serviceIcon {
+  color: var(--color-gold) !important;
+  font-size: 32px !important;
+}
+
+/* ── Support card (dark) ── */
+.supportCard {
+  background: var(--color-fg);
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.supportIcon {
+  color: var(--color-gold) !important;
+  font-size: 32px !important;
+}
+
+.supportTitle {
+  color: var(--color-bg) !important;
+  font-weight: 700 !important;
+  font-size: 1.05rem !important;
+}
+
+.supportDesc {
+  color: var(--color-neutral-light) !important;
+  font-size: 0.875rem !important;
+  line-height: 1.7 !important;
+  flex: 1;
+}
+
+.ratingRow {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  margin-top: auto;
+}
+
+.star {
+  color: var(--color-gold) !important;
+  font-size: 16px !important;
+}
+
+.ratingText {
+  color: var(--color-bg) !important;
+  font-size: 0.875rem !important;
+  font-weight: 600 !important;
+  margin-left: 6px !important;
+}
+
+/* ── Member card (gold tint) ── */
+.memberCard {
+  background: rgba(197, 160, 89, 0.08);
+  border: 1px solid rgba(197, 160, 89, 0.25);
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.memberIcon {
+  color: var(--color-gold) !important;
+  font-size: 32px !important;
+}
+
+.perkList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.perkRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.perkDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-gold);
+  flex-shrink: 0;
+}
+
+.perkText {
+  color: var(--color-text-body) !important;
+  font-size: 0.875rem !important;
+}
+
+/* ── No fees card (light) ── */
+.noFeesCard {
+  background: #fff;
+  border: 1px solid var(--color-border);
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.noFeesIcon {
+  color: #e53e3e !important;
+  font-size: 32px !important;
+}
+
+/* ── Shared card text ── */
+.cardTitle {
+  color: var(--color-fg) !important;
+  font-weight: 700 !important;
+  font-size: 1rem !important;
+}
+
+.cardDesc {
+  color: var(--color-neutral) !important;
+  font-size: 0.875rem !important;
+  line-height: 1.7 !important;
+}

@@ -1,5 +1,5 @@
 import { Box, Container, Typography } from '@mui/material';
-import HeroSearchBar from './HeroSearchBar';
+import HeroSearchBar from '@/components/hero/hero-search-bar/HeroSearchBar';
 import styles from './HeroSection.module.scss';
 
 export default function HeroSection() {

@@ -1,0 +1,101 @@
+.section {
+  padding-block: 80px;
+  background: var(--color-bg);
+}
+
+.grid {
+  align-items: center;
+}
+
+.title {
+  color: var(--color-fg) !important;
+  font-weight: 700 !important;
+  line-height: 1.2 !important;
+  margin-bottom: 40px !important;
+}
+
+.featureList {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.featureItem {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.iconWrapper {
+  background: rgba(197, 160, 89, 0.12);
+  border-radius: 10px;
+  padding: 10px;
+  flex-shrink: 0;
+}
+
+.icon {
+  color: var(--color-gold) !important;
+  font-size: 22px !important;
+}
+
+.featureTitle {
+  font-weight: 600 !important;
+  color: var(--color-fg) !important;
+  font-size: 0.95rem !important;
+  margin-bottom: 4px !important;
+}
+
+.featureDesc {
+  color: var(--color-neutral) !important;
+  font-size: 0.875rem !important;
+  line-height: 1.7 !important;
+}
+
+/* ── Trust card ── */
+.trustCard {
+  background: #fff;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.07);
+}
+
+.trustImg {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  display: block;
+}
+
+.trustBadge {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 20px 24px 12px;
+}
+
+.badgeIcon {
+  color: var(--color-gold) !important;
+  font-size: 28px !important;
+}
+
+.badgeTitle {
+  font-weight: 700 !important;
+  font-size: 0.75rem !important;
+  letter-spacing: 0.1em !important;
+  color: var(--color-gold) !important;
+  text-transform: uppercase !important;
+}
+
+.badgeSub {
+  font-size: 0.8rem !important;
+  color: var(--color-neutral) !important;
+}
+
+.trustQuote {
+  padding: 0 24px 24px !important;
+  font-size: 0.875rem !important;
+  color: var(--color-neutral) !important;
+  font-style: italic !important;
+  line-height: 1.7 !important;
+}

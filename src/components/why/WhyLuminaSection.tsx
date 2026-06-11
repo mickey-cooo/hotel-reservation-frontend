@@ -1,7 +1,7 @@
 import { Box, Container, Grid, Typography } from '@mui/material';
 import VerifiedOutlinedIcon from '@mui/icons-material/VerifiedOutlined';
 import SupportAgentIcon from '@mui/icons-material/SupportAgent';
-import FeatureItem from './FeatureItem';
+import FeatureItem from '@/components/why/feature-item/FeatureItem';
 import styles from './WhyLuminaSection.module.scss';
 
 const GALLERY_IMAGES = [
