@@ -1,5 +1,17 @@
 import type { Hotel } from '@/components/destinations/hotel-card/HotelCard';
 
+export type PhotoCategory =
+  | 'Guest Rooms'
+  | 'Suites'
+  | 'Dining'
+  | 'Spa & Wellness'
+  | 'Poolside';
+
+export interface GalleryPhoto {
+  url: string;
+  category: PhotoCategory;
+}
+
 export interface Room {
   id: string;
   name: string;
@@ -17,6 +29,8 @@ export interface Review {
   date: string;
   rating: number;
   comment: string;
+  helpfulCount?: number;
+  photos?: string[];
 }
 
 export interface HotelDetail extends Hotel {
@@ -26,6 +40,7 @@ export interface HotelDetail extends Hotel {
   amenities: string[];
   rooms: Room[];
   reviews: Review[];
+  photos: GalleryPhoto[];
 }
 
 export const HOTEL_DETAILS: HotelDetail[] = [
@@ -77,7 +92,13 @@ export const HOTEL_DETAILS: HotelDetail[] = [
         date: 'March 2024',
         rating: 5,
         comment:
-          'Absolutely magical. Woke up every morning to the most spectacular view. The staff made us feel like royalty — we never wanted to leave.',
+          'Absolutely magical. Woke up every morning to the most spectacular view. The level of personalised service at Lumina Stay is unparalleled — the staff made us feel like royalty. The architectural detail of our suite blended modern minimalism with traditional elegance perfectly.',
+        helpfulCount: 42,
+        photos: [
+          'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=200&q=80',
+          'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=200&q=80',
+          'https://images.unsplash.com/photo-1602002418082-a4443e081dd1?w=200&q=80',
+        ],
       },
       {
         id: 'rev2',
@@ -86,6 +107,7 @@ export const HOTEL_DETAILS: HotelDetail[] = [
         rating: 5,
         comment:
           'The best hotel experience of my life. Perfect blend of luxury and authentic Italian character. The food at the restaurant is outstanding.',
+        helpfulCount: 28,
       },
       {
         id: 'rev3',
@@ -94,6 +116,7 @@ export const HOTEL_DETAILS: HotelDetail[] = [
         rating: 4,
         comment:
           'Stunning views and impeccable service. The infinity pool is a dream. Would highly recommend the Sea View Suite.',
+        helpfulCount: 15,
       },
       {
         id: 'rev4',
@@ -102,7 +125,22 @@ export const HOTEL_DETAILS: HotelDetail[] = [
         rating: 5,
         comment:
           'We celebrated our anniversary here and it was beyond perfect. Romantic atmosphere, incredible food, and the most attentive staff.',
+        helpfulCount: 31,
       },
+    ],
+    photos: [
+      { url: 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&q=80', category: 'Poolside' },
+      { url: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800&q=80', category: 'Guest Rooms' },
+      { url: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80', category: 'Dining' },
+      { url: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&q=80', category: 'Guest Rooms' },
+      { url: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=800&q=80', category: 'Spa & Wellness' },
+      { url: 'https://images.unsplash.com/photo-1602002418082-a4443e081dd1?w=800&q=80', category: 'Suites' },
+      { url: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&q=80', category: 'Dining' },
+      { url: 'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=800&q=80', category: 'Spa & Wellness' },
+      { url: 'https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=800&q=80', category: 'Suites' },
+      { url: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80', category: 'Poolside' },
+      { url: 'https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=800&q=80', category: 'Poolside' },
+      { url: 'https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?w=800&q=80', category: 'Suites' },
     ],
   },
   {
@@ -154,6 +192,7 @@ export const HOTEL_DETAILS: HotelDetail[] = [
         rating: 5,
         comment:
           'The grandeur of this hotel is unmatched. Victorian architecture perfectly paired with modern luxury. The butler service is exceptional.',
+        helpfulCount: 38,
       },
       {
         id: 'rev2',
@@ -161,6 +200,7 @@ export const HOTEL_DETAILS: HotelDetail[] = [
         date: 'March 2024',
         rating: 5,
         comment: 'London does not get better than this. Central location, phenomenal staff, and the cocktail bar is a destination in itself.',
+        helpfulCount: 51,
       },
       {
         id: 'rev3',
@@ -168,6 +208,7 @@ export const HOTEL_DETAILS: HotelDetail[] = [
         date: 'February 2024',
         rating: 4,
         comment: 'Elegant in every detail. The restaurant deserves every star. The room was beautifully appointed and incredibly comfortable.',
+        helpfulCount: 19,
       },
       {
         id: 'rev4',
@@ -175,7 +216,22 @@ export const HOTEL_DETAILS: HotelDetail[] = [
         date: 'January 2024',
         rating: 5,
         comment: 'A true London institution. The Mayfair Suite is worth every penny — we will be back for our next anniversary without question.',
+        helpfulCount: 44,
       },
+    ],
+    photos: [
+      { url: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80', category: 'Guest Rooms' },
+      { url: 'https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=800&q=80', category: 'Suites' },
+      { url: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80', category: 'Dining' },
+      { url: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&q=80', category: 'Guest Rooms' },
+      { url: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=800&q=80', category: 'Spa & Wellness' },
+      { url: 'https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?w=800&q=80', category: 'Suites' },
+      { url: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&q=80', category: 'Dining' },
+      { url: 'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=800&q=80', category: 'Spa & Wellness' },
+      { url: 'https://images.unsplash.com/photo-1602002418082-a4443e081dd1?w=800&q=80', category: 'Suites' },
+      { url: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80', category: 'Poolside' },
+      { url: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800&q=80', category: 'Guest Rooms' },
+      { url: 'https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=800&q=80', category: 'Poolside' },
     ],
   },
   {
@@ -224,6 +280,11 @@ export const HOTEL_DETAILS: HotelDetail[] = [
         date: 'April 2024',
         rating: 5,
         comment: 'Pure paradise. Waking up to the sound of the jungle with a private pool — there is simply nothing like it in the world.',
+        helpfulCount: 67,
+        photos: [
+          'https://images.unsplash.com/photo-1559827291-72ee739d0d9a?w=200&q=80',
+          'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=200&q=80',
+        ],
       },
       {
         id: 'rev2',
@@ -232,6 +293,7 @@ export const HOTEL_DETAILS: HotelDetail[] = [
         rating: 5,
         comment:
           'The spa treatments were truly transformative. The team draws on ancient Balinese traditions that you will not find anywhere else.',
+        helpfulCount: 73,
       },
       {
         id: 'rev3',
@@ -239,6 +301,7 @@ export const HOTEL_DETAILS: HotelDetail[] = [
         date: 'February 2024',
         rating: 5,
         comment: 'Best honeymoon decision ever. The attention to detail is extraordinary — rose petals on arrival, private dinner by the pool.',
+        helpfulCount: 89,
       },
       {
         id: 'rev4',
@@ -246,7 +309,22 @@ export const HOTEL_DETAILS: HotelDetail[] = [
         date: 'January 2024',
         rating: 5,
         comment: 'An absolute 10 out of 10. The breakfast, the views, the people — everything was flawless. We are already planning our return.',
+        helpfulCount: 82,
       },
+    ],
+    photos: [
+      { url: 'https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=800&q=80', category: 'Poolside' },
+      { url: 'https://images.unsplash.com/photo-1559827291-72ee739d0d9a?w=800&q=80', category: 'Poolside' },
+      { url: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80', category: 'Dining' },
+      { url: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&q=80', category: 'Guest Rooms' },
+      { url: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=800&q=80', category: 'Spa & Wellness' },
+      { url: 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800&q=80', category: 'Suites' },
+      { url: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&q=80', category: 'Dining' },
+      { url: 'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=800&q=80', category: 'Spa & Wellness' },
+      { url: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800&q=80', category: 'Guest Rooms' },
+      { url: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80', category: 'Poolside' },
+      { url: 'https://images.unsplash.com/photo-1602002418082-a4443e081dd1?w=800&q=80', category: 'Suites' },
+      { url: 'https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=800&q=80', category: 'Suites' },
     ],
   },
   {
@@ -296,6 +374,7 @@ export const HOTEL_DETAILS: HotelDetail[] = [
         date: 'April 2024',
         rating: 5,
         comment: 'Waking up to Central Park from a penthouse terrace is a bucket-list experience. Worth every cent for a special occasion.',
+        helpfulCount: 23,
       },
       {
         id: 'rev2',
@@ -304,6 +383,7 @@ export const HOTEL_DETAILS: HotelDetail[] = [
         rating: 4,
         comment:
           'Exceptional location and stunning design. The sommelier curated a wine pairing dinner for us that was one of the best meals of our lives.',
+        helpfulCount: 31,
       },
       {
         id: 'rev3',
@@ -311,6 +391,7 @@ export const HOTEL_DETAILS: HotelDetail[] = [
         date: 'February 2024',
         rating: 5,
         comment: 'The best way to experience New York. Everything is steps from Central Park and the views at sunset are simply breathtaking.',
+        helpfulCount: 27,
       },
       {
         id: 'rev4',
@@ -319,7 +400,22 @@ export const HOTEL_DETAILS: HotelDetail[] = [
         rating: 4,
         comment:
           'Impeccably designed and supremely comfortable. The concierge secured impossible dinner reservations — that is the real luxury here.',
+        helpfulCount: 18,
       },
+    ],
+    photos: [
+      { url: 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800&q=80', category: 'Guest Rooms' },
+      { url: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800&q=80', category: 'Guest Rooms' },
+      { url: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80', category: 'Dining' },
+      { url: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&q=80', category: 'Guest Rooms' },
+      { url: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=800&q=80', category: 'Spa & Wellness' },
+      { url: 'https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?w=800&q=80', category: 'Suites' },
+      { url: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&q=80', category: 'Dining' },
+      { url: 'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=800&q=80', category: 'Spa & Wellness' },
+      { url: 'https://images.unsplash.com/photo-1602002418082-a4443e081dd1?w=800&q=80', category: 'Suites' },
+      { url: 'https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=800&q=80', category: 'Poolside' },
+      { url: 'https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=800&q=80', category: 'Suites' },
+      { url: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80', category: 'Poolside' },
     ],
   },
   {
@@ -371,6 +467,11 @@ export const HOTEL_DETAILS: HotelDetail[] = [
         rating: 5,
         comment:
           'Provence at its finest. Lavender in every direction, Michelin-quality meals, and a stone bathtub I could have lived in. Unforgettable.',
+        helpfulCount: 45,
+        photos: [
+          'https://images.unsplash.com/photo-1559827291-72ee739d0d9a?w=200&q=80',
+          'https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=200&q=80',
+        ],
       },
       {
         id: 'rev2',
@@ -378,6 +479,7 @@ export const HOTEL_DETAILS: HotelDetail[] = [
         date: 'April 2024',
         rating: 5,
         comment: 'This is France as it was meant to be experienced — intimate, artisanal, and completely removed from the noise of the world.',
+        helpfulCount: 56,
       },
       {
         id: 'rev3',
@@ -385,6 +487,7 @@ export const HOTEL_DETAILS: HotelDetail[] = [
         date: 'March 2024',
         rating: 5,
         comment: 'The wine cellar tour alone was worth the trip. Extraordinary service and a cuisine that rivals any Michelin restaurant in Paris.',
+        helpfulCount: 38,
       },
       {
         id: 'rev4',
@@ -392,7 +495,22 @@ export const HOTEL_DETAILS: HotelDetail[] = [
         date: 'February 2024',
         rating: 4,
         comment: 'Romantic, authentic, and magical. The cycling tours through the lavender fields in the early morning are simply extraordinary.',
+        helpfulCount: 29,
       },
+    ],
+    photos: [
+      { url: 'https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=800&q=80', category: 'Guest Rooms' },
+      { url: 'https://images.unsplash.com/photo-1559827291-72ee739d0d9a?w=800&q=80', category: 'Poolside' },
+      { url: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80', category: 'Dining' },
+      { url: 'https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=800&q=80', category: 'Suites' },
+      { url: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=800&q=80', category: 'Spa & Wellness' },
+      { url: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&q=80', category: 'Guest Rooms' },
+      { url: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&q=80', category: 'Dining' },
+      { url: 'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=800&q=80', category: 'Spa & Wellness' },
+      { url: 'https://images.unsplash.com/photo-1602002418082-a4443e081dd1?w=800&q=80', category: 'Suites' },
+      { url: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80', category: 'Poolside' },
+      { url: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800&q=80', category: 'Guest Rooms' },
+      { url: 'https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?w=800&q=80', category: 'Suites' },
     ],
   },
   {
@@ -441,7 +559,9 @@ export const HOTEL_DETAILS: HotelDetail[] = [
         author: 'Fatima A.',
         date: 'April 2024',
         rating: 5,
-        comment: 'Dubai luxury at its peak. The sky bar at sunset with the desert and ocean visible simultaneously is a moment I will never forget.',
+        comment:
+          'Dubai luxury at its peak. The sky bar at sunset with the desert and ocean visible simultaneously is a moment I will never forget.',
+        helpfulCount: 34,
       },
       {
         id: 'rev2',
@@ -449,6 +569,7 @@ export const HOTEL_DETAILS: HotelDetail[] = [
         date: 'March 2024',
         rating: 4,
         comment: 'Impeccable facilities and genuinely thoughtful service. The beach cabanas are perfect and the water sports selection is brilliant.',
+        helpfulCount: 22,
       },
       {
         id: 'rev3',
@@ -457,6 +578,7 @@ export const HOTEL_DETAILS: HotelDetail[] = [
         rating: 5,
         comment:
           'A design masterpiece. You cannot believe the architecture until you are inside it. The spa is one of the best I have visited anywhere.',
+        helpfulCount: 41,
       },
       {
         id: 'rev4',
@@ -464,7 +586,22 @@ export const HOTEL_DETAILS: HotelDetail[] = [
         date: 'January 2024',
         rating: 4,
         comment: "Outstanding resort for families. The kids' water sports programme kept our children delighted while we enjoyed the spa. Perfect.",
+        helpfulCount: 16,
       },
+    ],
+    photos: [
+      { url: 'https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=800&q=80', category: 'Poolside' },
+      { url: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800&q=80', category: 'Guest Rooms' },
+      { url: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80', category: 'Dining' },
+      { url: 'https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?w=800&q=80', category: 'Suites' },
+      { url: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=800&q=80', category: 'Spa & Wellness' },
+      { url: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&q=80', category: 'Guest Rooms' },
+      { url: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&q=80', category: 'Dining' },
+      { url: 'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=800&q=80', category: 'Spa & Wellness' },
+      { url: 'https://images.unsplash.com/photo-1559827291-72ee739d0d9a?w=800&q=80', category: 'Poolside' },
+      { url: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80', category: 'Poolside' },
+      { url: 'https://images.unsplash.com/photo-1602002418082-a4443e081dd1?w=800&q=80', category: 'Suites' },
+      { url: 'https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=800&q=80', category: 'Suites' },
     ],
   },
   {
@@ -516,6 +653,12 @@ export const HOTEL_DETAILS: HotelDetail[] = [
         rating: 5,
         comment:
           'The most breathtaking view I have ever seen. The caldera at sunset from our private terrace had us speechless. The staff anticipated our every need — truly world-class.',
+        helpfulCount: 78,
+        photos: [
+          'https://images.unsplash.com/photo-1601000938259-5ee9a447e91d?w=200&q=80',
+          'https://images.unsplash.com/photo-1613395877344-13d4a8e0d49e?w=200&q=80',
+          'https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=200&q=80',
+        ],
       },
       {
         id: 'rev2',
@@ -524,6 +667,7 @@ export const HOTEL_DETAILS: HotelDetail[] = [
         rating: 5,
         comment:
           'We booked the Deluxe Villa for our honeymoon and it exceeded every expectation. The infinity pool overlooking the caldera is beyond description. We will return every year.',
+        helpfulCount: 92,
       },
       {
         id: 'rev3',
@@ -532,6 +676,7 @@ export const HOTEL_DETAILS: HotelDetail[] = [
         rating: 5,
         comment:
           'Five stars is not enough. From the cave spa treatments to the sunrise breakfast, every moment here is crafted to absolute perfection.',
+        helpfulCount: 63,
       },
       {
         id: 'rev4',
@@ -540,7 +685,22 @@ export const HOTEL_DETAILS: HotelDetail[] = [
         rating: 5,
         comment:
           'The Azure Heights defines luxury travel. Santorini is beautiful everywhere, but here you feel completely immersed in the magic of the island.',
+        helpfulCount: 55,
       },
+    ],
+    photos: [
+      { url: 'https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=800&q=80', category: 'Poolside' },
+      { url: 'https://images.unsplash.com/photo-1601000938259-5ee9a447e91d?w=800&q=80', category: 'Suites' },
+      { url: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80', category: 'Dining' },
+      { url: 'https://images.unsplash.com/photo-1613395877344-13d4a8e0d49e?w=800&q=80', category: 'Poolside' },
+      { url: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=800&q=80', category: 'Spa & Wellness' },
+      { url: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800&q=80', category: 'Guest Rooms' },
+      { url: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&q=80', category: 'Dining' },
+      { url: 'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=800&q=80', category: 'Spa & Wellness' },
+      { url: 'https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=800&q=80', category: 'Guest Rooms' },
+      { url: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80', category: 'Poolside' },
+      { url: 'https://images.unsplash.com/photo-1602002418082-a4443e081dd1?w=800&q=80', category: 'Suites' },
+      { url: 'https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=800&q=80', category: 'Suites' },
     ],
   },
 ];
