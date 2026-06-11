@@ -1,0 +1,100 @@
+.card {
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+}
+
+.imageWrapper {
+  position: relative;
+  width: 220px;
+  min-height: 200px;
+  flex-shrink: 0;
+}
+
+.image {
+  object-fit: cover;
+}
+
+.imageBadge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff !important;
+  font-size: 0.6rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.1em;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.info {
+  padding: 24px;
+  flex: 1;
+}
+
+.hotelName {
+  font-size: 1.25rem !important;
+  font-weight: 700 !important;
+  color: var(--color-fg) !important;
+  margin-bottom: 8px !important;
+}
+
+.starsRow {
+  display: flex;
+  gap: 2px;
+  margin-bottom: 10px;
+}
+
+.starIcon {
+  color: var(--color-gold) !important;
+  font-size: 1rem !important;
+}
+
+.locationRow {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.locationIcon {
+  color: var(--color-neutral) !important;
+  font-size: 1rem !important;
+  flex-shrink: 0;
+}
+
+.locationText {
+  font-size: 0.8rem !important;
+  color: var(--color-neutral) !important;
+}
+
+.divider {
+  margin-block: 16px !important;
+}
+
+.roomTypeLabel {
+  font-size: 0.65rem !important;
+  font-weight: 700 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-neutral) !important;
+  margin-bottom: 6px !important;
+}
+
+.roomNameRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.roomName {
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  color: var(--color-fg) !important;
+}
+
+.amenityIcon {
+  color: var(--color-neutral) !important;
+  font-size: 1.1rem !important;
+}

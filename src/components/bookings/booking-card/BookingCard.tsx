@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { Box, Button, Typography } from '@mui/material';
 import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
@@ -21,6 +22,7 @@ export interface Booking {
   imageUrl: string;
   actionNotice?: string;
   secondaryAction: SecondaryAction;
+  detailHref?: string;
 }
 
 const SECONDARY_ACTION_CONFIG: Record<
@@ -48,6 +50,7 @@ export default function BookingCard({ booking }: BookingCardProps) {
     imageUrl,
     actionNotice,
     secondaryAction,
+    detailHref,
   } = booking;
 
   const { label: secondaryLabel, Icon: SecondaryIcon } =
@@ -112,6 +115,7 @@ export default function BookingCard({ booking }: BookingCardProps) {
           <Button
             variant="contained"
             className={`${styles.primaryBtn}${isActionRequired ? ` ${styles.primaryBtnGold}` : ''}`}
+            {...(detailHref ? { component: Link, href: detailHref } : {})}
           >
             {isActionRequired ? 'Provide Details' : 'View Details'}
           </Button>

@@ -1,0 +1,74 @@
+.wrapper {
+  padding-block: 36px 80px;
+}
+
+.pageHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 28px;
+}
+
+.titleBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.pageTitle {
+  font-size: 2rem !important;
+  font-weight: 700 !important;
+  color: var(--color-fg) !important;
+  line-height: 1.2 !important;
+}
+
+.bookingRef {
+  font-size: 0.875rem !important;
+  color: var(--color-neutral) !important;
+}
+
+.confirmedBadge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #f0fdf4;
+  border: 1px solid #86efac;
+  border-radius: 8px;
+  padding: 10px 16px;
+  flex-shrink: 0;
+}
+
+.confirmedIcon {
+  color: #16a34a !important;
+  font-size: 1.1rem !important;
+}
+
+.confirmedText {
+  color: #16a34a !important;
+  font-size: 0.8rem !important;
+  font-weight: 600 !important;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 24px;
+  align-items: start;
+}
+
+.leftCol {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.twoCol {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.rightCol {
+  position: sticky;
+  top: 24px;
+}

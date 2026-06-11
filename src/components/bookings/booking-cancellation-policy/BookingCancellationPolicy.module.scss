@@ -1,0 +1,57 @@
+.card {
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.headerIcon {
+  color: #16a34a !important;
+  font-size: 1.1rem !important;
+}
+
+.headerTitle {
+  font-size: 0.8rem !important;
+  font-weight: 700 !important;
+  color: var(--color-fg) !important;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.freeLabel {
+  font-size: 0.875rem !important;
+  font-weight: 700 !important;
+  color: #16a34a !important;
+  margin-bottom: 8px !important;
+}
+
+.policyText {
+  font-size: 0.78rem !important;
+  color: var(--color-text-body) !important;
+  line-height: 1.55 !important;
+  margin-bottom: 14px !important;
+}
+
+.readMoreLink {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  cursor: pointer;
+}
+
+.readMoreText {
+  font-size: 0.78rem !important;
+  font-weight: 600 !important;
+  color: var(--color-gold) !important;
+}
+
+.readMoreIcon {
+  color: var(--color-gold) !important;
+  font-size: 1rem !important;
+}

@@ -14,9 +14,14 @@ const TABS: { id: TabId; label: string }[] = [
   { id: 'cancelled', label: 'Cancelled' },
 ];
 
+function buildDetailHref(bookingId: string, hotelId: string, checkIn: string, checkOut: string, adults: number): string {
+  const params = new URLSearchParams({ hotelId, checkIn, checkOut, adults: String(adults) });
+  return `/bookings/${bookingId}?${params.toString()}`;
+}
+
 const UPCOMING_BOOKINGS: Booking[] = [
   {
-    id: '1',
+    id: 'LS-1001',
     status: 'CONFIRMED',
     hotelName: 'The Azure Heights',
     location: 'Santorini, Greece',
@@ -26,9 +31,10 @@ const UPCOMING_BOOKINGS: Booking[] = [
     totalPrice: 2450,
     imageUrl: 'https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=400&q=80',
     secondaryAction: 'DOWNLOAD_INVOICE',
+    detailHref: buildDetailHref('LS-1001', '7', '2024-10-14', '2024-10-19', 2),
   },
   {
-    id: '2',
+    id: 'LS-1002',
     status: 'CONFIRMED',
     hotelName: 'Lumina Grand Villa',
     location: 'Maldives, South Atoll',
@@ -38,9 +44,10 @@ const UPCOMING_BOOKINGS: Booking[] = [
     totalPrice: 5120,
     imageUrl: 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=400&q=80',
     secondaryAction: 'GET_SUPPORT',
+    detailHref: buildDetailHref('LS-1002', '3', '2024-12-22', '2024-12-29', 2),
   },
   {
-    id: '3',
+    id: 'LS-1003',
     status: 'ACTION_REQUIRED',
     hotelName: 'The Urban Sanctuary',
     location: 'Tokyo, Minato',
@@ -51,6 +58,7 @@ const UPCOMING_BOOKINGS: Booking[] = [
     imageUrl: 'https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=400&q=80',
     actionNotice: 'Please confirm your flight details for airport transfer.',
     secondaryAction: 'CHAT_WITH_CONCIERGE',
+    detailHref: buildDetailHref('LS-1003', '4', '2025-01-12', '2025-01-15', 1),
   },
 ];
 

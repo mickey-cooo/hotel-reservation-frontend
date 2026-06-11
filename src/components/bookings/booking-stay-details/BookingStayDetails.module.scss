@@ -1,0 +1,87 @@
+.card {
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.headerIcon {
+  color: var(--color-gold) !important;
+  font-size: 1rem !important;
+}
+
+.headerTitle {
+  font-size: 0.8rem !important;
+  font-weight: 700 !important;
+  color: var(--color-fg) !important;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.datesGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.dateField {
+  display: flex;
+  flex-direction: column;
+}
+
+.dateLabel {
+  font-size: 0.65rem !important;
+  font-weight: 700 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-neutral) !important;
+  margin-bottom: 4px !important;
+}
+
+.dateValue {
+  font-size: 0.95rem !important;
+  font-weight: 700 !important;
+  color: var(--color-fg) !important;
+}
+
+.dateNote {
+  font-size: 0.72rem !important;
+  color: var(--color-neutral) !important;
+  margin-top: 2px !important;
+}
+
+.divider {
+  margin-block: 14px !important;
+}
+
+.guestsRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.guestsIcon {
+  color: var(--color-neutral) !important;
+  font-size: 1.1rem !important;
+}
+
+.guestsLabel {
+  font-size: 0.65rem !important;
+  font-weight: 700 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-neutral) !important;
+  margin-bottom: 2px !important;
+}
+
+.guestsValue {
+  font-size: 0.875rem !important;
+  font-weight: 600 !important;
+  color: var(--color-fg) !important;
+}
