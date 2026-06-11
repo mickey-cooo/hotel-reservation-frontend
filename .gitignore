@@ -36,11 +36,7 @@ yarn-error.log*
 # vercel
 .vercel
 
-# AI related files
-.CLAUDE.md 
-.Gemini.md
-.gpt-agent.yml
-.AGENTS.md
+CLAUDE.md
 
 # typescript
 *.tsbuildinfo
