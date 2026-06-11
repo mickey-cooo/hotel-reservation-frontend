@@ -1,0 +1,122 @@
+.page {
+  background: var(--color-bg);
+  padding-block: 40px 80px;
+  min-height: 100vh;
+}
+
+.header {
+  margin-bottom: 28px;
+}
+
+.title {
+  font-size: 2.5rem !important;
+  font-weight: 700 !important;
+  color: var(--color-fg) !important;
+  letter-spacing: -0.02em !important;
+  margin-bottom: 10px !important;
+
+  @media (max-width: 600px) {
+    font-size: 1.875rem !important;
+  }
+}
+
+.subtitle {
+  color: var(--color-text-body) !important;
+  font-size: 1rem !important;
+  max-width: 520px;
+  line-height: 1.6 !important;
+}
+
+.filters {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 36px;
+}
+
+.chip {
+  cursor: pointer !important;
+  border: 1px solid var(--color-border) !important;
+  color: var(--color-fg) !important;
+  font-weight: 500 !important;
+  font-size: 0.875rem !important;
+  height: 36px !important;
+  border-radius: 8px !important;
+  background: #fff !important;
+
+  &:hover {
+    border-color: var(--color-fg) !important;
+    background: var(--color-slate-100) !important;
+  }
+}
+
+.chipActive {
+  background: var(--color-fg) !important;
+  color: #fff !important;
+  border-color: var(--color-fg) !important;
+
+  &:hover {
+    background: var(--color-fg) !important;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+
+  @media (max-width: 900px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.photoCell {
+  aspect-ratio: 4 / 3;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.photo {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  display: block !important;
+  transition: transform 0.35s ease;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin-top: 48px;
+}
+
+.discoverBtn {
+  width: 48px !important;
+  height: 48px !important;
+  border: 1px solid var(--color-border-light) !important;
+  color: var(--color-fg) !important;
+  border-radius: 50% !important;
+
+  &:hover {
+    border-color: var(--color-fg) !important;
+    background: var(--color-slate-100) !important;
+  }
+}
+
+.discoverLabel {
+  font-size: 0.7rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.12em !important;
+  color: var(--color-neutral) !important;
+  text-transform: uppercase !important;
+}

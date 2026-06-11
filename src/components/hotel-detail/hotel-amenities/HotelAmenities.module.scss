@@ -1,0 +1,40 @@
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.sectionTitle {
+  font-size: 1.1rem !important;
+  font-weight: 700 !important;
+  color: var(--color-fg) !important;
+}
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.amenityItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--color-slate-100);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  padding: 8px 16px;
+}
+
+.amenityIcon {
+  color: var(--color-gold) !important;
+  font-size: 1.1rem !important;
+  flex-shrink: 0;
+}
+
+.amenityLabel {
+  font-size: 0.85rem !important;
+  font-weight: 500 !important;
+  color: var(--color-fg) !important;
+  white-space: nowrap;
+}

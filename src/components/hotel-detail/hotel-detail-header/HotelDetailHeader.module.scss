@@ -1,0 +1,72 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.metaRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.ratingMeta {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.starIcon {
+  color: var(--color-gold) !important;
+  font-size: 1rem !important;
+}
+
+.ratingValue {
+  font-size: 0.9rem !important;
+  font-weight: 700 !important;
+  color: var(--color-fg) !important;
+}
+
+.reviewCount {
+  font-size: 0.85rem !important;
+  color: var(--color-neutral) !important;
+}
+
+.separator {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--color-neutral-light);
+}
+
+.locationMeta {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.locationIcon {
+  color: var(--color-neutral) !important;
+  font-size: 1rem !important;
+}
+
+.locationText {
+  font-size: 0.85rem !important;
+  color: var(--color-neutral) !important;
+}
+
+.hotelName {
+  font-size: 2rem !important;
+  font-weight: 800 !important;
+  color: var(--color-fg) !important;
+  line-height: 1.2 !important;
+  letter-spacing: -0.02em !important;
+}
+
+.description {
+  font-size: 0.95rem !important;
+  color: var(--color-text-body) !important;
+  line-height: 1.75 !important;
+  max-width: 640px;
+}

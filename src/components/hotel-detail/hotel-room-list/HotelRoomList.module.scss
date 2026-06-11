@@ -1,0 +1,21 @@
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.sectionTitle {
+  font-size: 1.1rem !important;
+  font-weight: 700 !important;
+  color: var(--color-fg) !important;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+  }
+}

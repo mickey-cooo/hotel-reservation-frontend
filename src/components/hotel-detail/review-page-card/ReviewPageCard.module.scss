@@ -1,0 +1,149 @@
+.card {
+  background: #fff;
+  padding: 28px 0;
+  border-bottom: 1px solid var(--color-border);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  &:first-child {
+    padding-top: 0;
+  }
+
+  &:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+}
+
+/* ── Header row ── */
+.header {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.avatarInitial {
+  font-size: 1.2rem !important;
+  font-weight: 700 !important;
+  color: #fff !important;
+  line-height: 1 !important;
+}
+
+.meta {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  flex: 1;
+}
+
+.authorName {
+  font-size: 0.95rem !important;
+  font-weight: 700 !important;
+  color: var(--color-fg) !important;
+  line-height: 1.2 !important;
+}
+
+.metaRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.stayDate {
+  font-size: 0.78rem !important;
+  color: var(--color-neutral) !important;
+}
+
+.verifiedBadge {
+  background: #dcfce7;
+  border-radius: 4px;
+  padding: 2px 7px;
+}
+
+.verifiedText {
+  font-size: 0.65rem !important;
+  font-weight: 700 !important;
+  color: #16a34a !important;
+  letter-spacing: 0.06em !important;
+}
+
+.stars {
+  display: flex;
+  gap: 1px;
+  flex-shrink: 0;
+  padding-top: 2px;
+}
+
+.starFilled {
+  color: var(--color-gold) !important;
+  font-size: 0.95rem !important;
+}
+
+.starEmpty {
+  color: var(--color-border) !important;
+  font-size: 0.95rem !important;
+}
+
+/* ── Body ── */
+.comment {
+  font-size: 0.9rem !important;
+  color: var(--color-text-body) !important;
+  line-height: 1.75 !important;
+}
+
+/* ── Photos ── */
+.photos {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.photo {
+  width: 100px !important;
+  height: 72px !important;
+  border-radius: 8px !important;
+  object-fit: cover !important;
+  display: block !important;
+}
+
+/* ── Actions ── */
+.actions {
+  display: flex;
+  gap: 20px;
+}
+
+.actionBtn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  opacity: 0.65;
+  transition: opacity 0.15s ease;
+  user-select: none;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.actionIcon {
+  font-size: 0.9rem !important;
+  color: var(--color-neutral) !important;
+}
+
+.actionLabel {
+  font-size: 0.8rem !important;
+  color: var(--color-neutral) !important;
+}
