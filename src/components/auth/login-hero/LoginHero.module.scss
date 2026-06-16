@@ -1,0 +1,98 @@
+.hero {
+  position: relative;
+  width: 400px;
+  min-width: 400px;
+  min-height: 580px;
+
+  @media (max-width: 599px) {
+    width: 100%;
+    min-width: unset;
+    min-height: 280px;
+  }
+}
+
+.image {
+  object-fit: cover;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(9, 14, 26, 0.25) 0%,
+    rgba(9, 14, 26, 0.5) 40%,
+    rgba(9, 14, 26, 0.9) 100%
+  );
+}
+
+.content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 36px 32px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.brandArea {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.eyebrow {
+  font-size: 0.62rem !important;
+  letter-spacing: 0.22em !important;
+  color: var(--color-gold) !important;
+  font-weight: 600 !important;
+}
+
+.brand {
+  color: #fff !important;
+  font-weight: 700 !important;
+  font-size: 1.9rem !important;
+  line-height: 1.15 !important;
+}
+
+.goldDivider {
+  width: 36px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-gold), rgba(197, 160, 89, 0.25));
+  margin-top: 2px;
+}
+
+.perks {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  @media (max-width: 599px) {
+    display: none;
+  }
+}
+
+.perkItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.perkDot {
+  width: 5px;
+  height: 5px;
+  min-width: 5px;
+  border-radius: 50%;
+  background: var(--color-gold);
+  margin-top: 6px;
+  flex-shrink: 0;
+}
+
+.perkText {
+  font-size: 0.82rem !important;
+  color: rgba(255, 255, 255, 0.78) !important;
+  line-height: 1.5 !important;
+}
