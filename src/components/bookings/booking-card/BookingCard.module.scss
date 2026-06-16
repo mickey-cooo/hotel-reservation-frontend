@@ -5,12 +5,21 @@
   overflow: hidden;
   background: #fff;
   margin-bottom: 16px;
+
+  @media (max-width: 599px) {
+    flex-direction: column;
+  }
 }
 
 .imageSection {
   width: 220px;
   flex-shrink: 0;
   position: relative;
+
+  @media (max-width: 599px) {
+    width: 100%;
+    height: 200px;
+  }
 }
 
 .image {
@@ -110,6 +119,11 @@
 .datesRow {
   display: flex;
   gap: 32px;
+  flex-wrap: wrap;
+
+  @media (max-width: 599px) {
+    gap: 12px 24px;
+  }
 }
 
 .dateField {
@@ -157,10 +171,15 @@
   align-items: center;
   gap: 8px;
   margin-top: auto;
+  flex-wrap: wrap;
 }
 
 .spacer {
   flex: 1;
+
+  @media (max-width: 599px) {
+    display: none;
+  }
 }
 
 .primaryBtn {

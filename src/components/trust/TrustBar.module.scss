@@ -1,13 +1,14 @@
 .trustBar {
-  padding-block: 24px;
+  padding-block: 32px;
   background: #fff;
+  border-bottom: 1px solid var(--color-border);
 }
 
 .innerRow {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 32px;
+  gap: 40px;
   flex-wrap: wrap;
 }
 
@@ -20,7 +21,7 @@
 .avatarPrimary {
   display: flex;
   align-items: center;
-  background: #1a1a2e;
+  background: var(--color-fg);
   border-radius: 50%;
   width: 32px;
   height: 32px;
@@ -30,7 +31,7 @@
 .avatarSecondary {
   display: flex;
   align-items: center;
-  background: #00b67a;
+  background: #16a34a;
   border-radius: 50%;
   width: 32px;
   height: 32px;
@@ -45,25 +46,27 @@
 }
 
 .trustText {
-  color: var(--color-neutral) !important;
-  font-size: 0.8rem !important;
+  color: var(--color-text-body) !important;
+  font-size: 0.82rem !important;
+  font-weight: 500 !important;
 }
 
 .divider {
   height: 24px;
   align-self: center;
+  border-color: var(--color-border) !important;
 }
 
 .pressRow {
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 28px;
 }
 
 .pressName {
-  color: var(--color-neutral-light) !important;
+  color: var(--color-neutral) !important;
   font-style: italic !important;
   font-size: 0.95rem !important;
   font-weight: 500 !important;
-  letter-spacing: 0.05em !important;
+  letter-spacing: 0.04em !important;
 }

@@ -1,20 +1,22 @@
 .footer {
   background: var(--color-fg);
   color: var(--color-neutral-light);
-  padding-top: 48px;
-  padding-bottom: 24px;
+  padding-top: 64px;
+  padding-bottom: 32px;
 }
 
 .brandName {
   font-weight: 700 !important;
   color: var(--color-bg) !important;
-  margin-bottom: 12px !important;
+  margin-bottom: 14px !important;
+  letter-spacing: -0.02em !important;
 }
 
 .brandDesc {
   font-size: 0.85rem !important;
-  line-height: 1.8 !important;
-  max-width: 280px !important;
+  line-height: 1.75 !important;
+  max-width: 300px !important;
+  color: var(--color-neutral-light) !important;
 }
 
 .socialRow {
@@ -31,6 +33,7 @@
 
 .socialBtn {
   color: var(--color-neutral-light) !important;
+  transition: color 0.2s ease !important;
 
   &:hover {
     color: var(--color-bg) !important;
@@ -38,8 +41,8 @@
 }
 
 .divider {
-  border-color: rgba(255, 255, 255, 0.08) !important;
-  margin-block: 24px !important;
+  border-color: rgba(255, 255, 255, 0.06) !important;
+  margin-block: 32px !important;
 }
 
 .bottomRow {
@@ -52,7 +55,7 @@
 
 .linkList {
   display: flex;
-  gap: 24px;
+  gap: 28px;
   flex-wrap: wrap;
 }
 
@@ -60,6 +63,7 @@
   color: var(--color-neutral) !important;
   font-size: 0.8rem !important;
   cursor: pointer !important;
+  transition: color 0.2s ease !important;
 
   &:hover {
     color: var(--color-bg) !important;

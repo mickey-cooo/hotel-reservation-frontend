@@ -1,26 +1,36 @@
 .section {
-  padding-block: 48px;
+  padding-block: 80px;
   background: var(--color-bg);
+
+  @media (max-width: 599px) {
+    padding-block: 48px;
+  }
 }
 
 .sectionLabel {
   color: var(--color-gold) !important;
   font-weight: 600 !important;
-  letter-spacing: 0.1em !important;
+  letter-spacing: 0.15em !important;
   text-transform: uppercase !important;
+  font-size: 0.7rem !important;
 }
 
 .sectionHeader {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 4px;
-  margin-bottom: 24px;
+  margin-top: 8px;
+  margin-bottom: 40px;
+
+  @media (max-width: 599px) {
+    margin-bottom: 24px;
+  }
 }
 
 .sectionTitle {
   font-weight: 700 !important;
   color: var(--color-fg) !important;
+  letter-spacing: -0.02em !important;
 }
 
 .viewAllLink {
@@ -31,6 +41,8 @@
   text-transform: none !important;
   color: var(--color-neutral) !important;
   font-size: 0.85rem !important;
+  font-weight: 500 !important;
+  transition: color 0.2s ease !important;
 
   &:hover {
     color: var(--color-fg) !important;

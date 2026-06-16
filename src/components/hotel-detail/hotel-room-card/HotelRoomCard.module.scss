@@ -5,6 +5,10 @@
   border-radius: 14px;
   overflow: hidden;
   background: #fff;
+
+  @media (max-width: 599px) {
+    flex-direction: column;
+  }
 }
 
 .imageWrapper {

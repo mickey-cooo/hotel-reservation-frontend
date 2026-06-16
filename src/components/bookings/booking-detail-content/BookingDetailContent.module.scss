@@ -7,6 +7,8 @@
   align-items: flex-start;
   justify-content: space-between;
   margin-bottom: 28px;
+  flex-wrap: wrap;
+  gap: 12px;
 }
 
 .titleBlock {
@@ -54,6 +56,10 @@
   grid-template-columns: 1fr 360px;
   gap: 24px;
   align-items: start;
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+  }
 }
 
 .leftCol {
@@ -66,9 +72,17 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
+
+  @media (max-width: 599px) {
+    grid-template-columns: 1fr;
+  }
 }
 
 .rightCol {
   position: sticky;
   top: 24px;
+
+  @media (max-width: 900px) {
+    position: static;
+  }
 }

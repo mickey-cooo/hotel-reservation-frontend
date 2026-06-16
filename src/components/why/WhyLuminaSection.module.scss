@@ -1,6 +1,10 @@
 .section {
-  padding-block: 64px;
+  padding-block: 96px;
   background: var(--color-fg);
+
+  @media (max-width: 599px) {
+    padding-block: 56px;
+  }
 }
 
 .gridRow {
@@ -10,29 +14,35 @@
 .sectionLabel {
   color: var(--color-gold) !important;
   font-weight: 600 !important;
-  letter-spacing: 0.12em !important;
+  letter-spacing: 0.15em !important;
   text-transform: uppercase !important;
+  font-size: 0.7rem !important;
 }
 
 .sectionTitle {
   color: var(--color-bg) !important;
-  margin-top: 8px !important;
-  margin-bottom: 20px !important;
-  line-height: 1.2 !important;
+  margin-top: 12px !important;
+  margin-bottom: 24px !important;
+  line-height: 1.15 !important;
   font-weight: 700 !important;
+  letter-spacing: -0.02em !important;
+
+  @media (max-width: 599px) {
+    font-size: 1.75rem !important;
+  }
 }
 
 .sectionBody {
   color: var(--color-neutral-light) !important;
-  margin-bottom: 32px !important;
-  line-height: 1.8 !important;
+  margin-bottom: 40px !important;
+  line-height: 1.75 !important;
   font-size: 0.95rem !important;
 }
 
 .featureList {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 24px;
 }
 
 .gallery {
@@ -40,6 +50,11 @@
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 200px 200px;
   gap: 16px;
+
+  @media (max-width: 599px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: 180px 180px 180px;
+  }
 }
 
 .galleryImg {
@@ -47,4 +62,14 @@
   height: 100%;
   object-fit: cover;
   border-radius: 12px;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.02);
+  }
+
+  @media (max-width: 599px) {
+    grid-column: 1 / 2 !important;
+    grid-row: auto !important;
+  }
 }

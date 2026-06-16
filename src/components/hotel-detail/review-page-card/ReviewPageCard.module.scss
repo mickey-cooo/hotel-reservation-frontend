@@ -21,6 +21,7 @@
   display: flex;
   align-items: flex-start;
   gap: 14px;
+  flex-wrap: wrap;
 }
 
 .avatar {
@@ -84,6 +85,12 @@
   gap: 1px;
   flex-shrink: 0;
   padding-top: 2px;
+
+  @media (max-width: 599px) {
+    order: 3;
+    margin-left: 62px; /* align under meta (avatar 48px + gap 14px) */
+    padding-top: 0;
+  }
 }
 
 .starFilled {
