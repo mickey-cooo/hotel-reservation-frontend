@@ -1,5 +1,8 @@
+'use client';
+
 import { Box, Button, Grid, Link, Typography } from '@mui/material';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutlined';
+import NextLink from 'next/link';
 import styles from './BookingBottomCta.module.scss';
 
 export default function BookingBottomCta() {
@@ -14,7 +17,12 @@ export default function BookingBottomCta() {
             Unlock complimentary room upgrades, late check-outs, and private
             airport transfers on all your upcoming bookings.
           </Typography>
-          <Button variant="outlined" className={styles.eliteBtn}>
+          <Button
+            variant="outlined"
+            component={NextLink}
+            href="/membership"
+            className={styles.eliteBtn}
+          >
             Explore Membership
           </Button>
         </Box>

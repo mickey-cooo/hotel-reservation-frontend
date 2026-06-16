@@ -1,0 +1,142 @@
+.section {
+  background: var(--az-surface-container-low);
+  padding-block: 96px;
+
+  @media (max-width: 599px) {
+    padding-block: 64px;
+  }
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-bottom: 48px;
+
+  @media (min-width: 900px) {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+}
+
+.sectionTitle {
+  font-weight: 700 !important;
+  color: var(--az-primary) !important;
+  margin-bottom: 16px !important;
+
+  @media (max-width: 599px) {
+    font-size: 1.5rem !important;
+  }
+}
+
+.sectionSubtitle {
+  color: var(--az-on-surface-variant) !important;
+  max-width: 480px;
+}
+
+.legend {
+  display: flex;
+  gap: 16px;
+  flex-shrink: 0;
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Essential — gold */
+.legendDot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--az-secondary);
+}
+
+/* Select — dark navy */
+.legendDotFeatured {
+  background: var(--az-primary-container);
+}
+
+/* Elite — black */
+.legendDotElite {
+  background: #000;
+}
+
+.legendLabel {
+  font-size: 0.75rem !important;
+  font-weight: 600 !important;
+  color: var(--az-on-surface) !important;
+}
+
+.tableWrapper {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse !important;
+}
+
+.tableHeadRow {
+  border-bottom: 1px solid var(--az-outline-variant) !important;
+}
+
+.tableRow {
+  border-bottom: 1px solid rgba(198, 198, 205, 0.3) !important;
+
+  &:last-child {
+    border-bottom: none !important;
+  }
+}
+
+.tableCell {
+  border-bottom: none !important;
+  padding-block: 24px !important;
+}
+
+.tableCellFeature {
+  font-size: 0.875rem !important;
+  font-weight: 500 !important;
+  color: var(--az-on-surface-variant) !important;
+  text-align: left !important;
+  width: 50% !important;
+  letter-spacing: 0.01em !important;
+}
+
+.tableCellFeatureName {
+  font-size: 1rem !important;
+  font-weight: 400 !important;
+  color: var(--az-on-surface) !important;
+}
+
+.tableCellTier {
+  text-align: center !important;
+  font-size: 0.875rem !important;
+  font-weight: 500 !important;
+  color: var(--az-on-surface) !important;
+}
+
+.tableCellTierSelect {
+  color: var(--az-secondary) !important;
+}
+
+.tableCellCheck {
+  text-align: center !important;
+}
+
+.checkIcon {
+  color: var(--az-on-surface-variant) !important;
+  font-size: 1.25rem !important;
+}
+
+.checkIconFeatured {
+  color: var(--az-secondary) !important;
+}
+
+.dash {
+  color: var(--az-on-surface-variant);
+  font-size: 1rem;
+}

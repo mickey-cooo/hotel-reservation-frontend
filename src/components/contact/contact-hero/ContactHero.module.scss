@@ -1,0 +1,51 @@
+.root {
+  position: relative;
+  height: 380px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+
+  @media (max-width: 599px) {
+    height: 280px;
+  }
+}
+
+.bg {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.55);
+  backdrop-filter: blur(2px);
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding-inline: 24px;
+  max-width: 768px;
+}
+
+.title {
+  font-size: clamp(2rem, 6vw, 3rem) !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.02em !important;
+  color: #fff !important;
+  margin-bottom: 16px !important;
+}
+
+.subtitle {
+  font-size: 1.125rem !important;
+  line-height: 1.75 !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+  max-width: 600px !important;
+  margin: 0 auto !important;
+}

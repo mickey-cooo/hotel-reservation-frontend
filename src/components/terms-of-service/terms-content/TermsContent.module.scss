@@ -1,0 +1,396 @@
+// Color tokens matching the HTML reference design
+$secondary:            #775a19;  // gold accent — section nums, icons, active states
+$secondary-container:  #fed488;  // light amber bg — badge, icon circles
+$surface-low:          #eff4ff;  // blue-tinted card surface
+$surface:              #e5eeff;  // slightly deeper surface — policy card
+$on-surface:           #0b1c30;  // primary dark text
+$on-surface-variant:   #45464d;  // secondary/body text
+$outline-variant:      #c6c6cd;  // borders & dividers
+
+/* ── Page wrapper ────────────────────────────────────────── */
+
+.page {
+  background: #f8f9ff;
+  padding-block: 64px 96px;
+
+  @media (min-width: 900px) {
+    padding-block: 96px;
+  }
+}
+
+/* ── Hero ────────────────────────────────────────────────── */
+
+.hero {
+  max-width: 760px;
+  margin-bottom: 64px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 14px;
+  background: $secondary-container;
+  border-radius: 100px;
+  margin-bottom: 24px;
+}
+
+.badgeIcon {
+  font-size: 1rem !important;
+  color: $secondary !important;
+}
+
+.badgeText {
+  font-size: 0.75rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.05em !important;
+  color: $secondary !important;
+}
+
+.pageTitle {
+  font-size: clamp(2rem, 6vw, 3rem) !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.02em !important;
+  line-height: 1.15 !important;
+  color: $on-surface !important;
+  margin-bottom: 24px !important;
+}
+
+.intro {
+  font-size: 1.125rem !important;
+  line-height: 1.7 !important;
+  color: $on-surface-variant !important;
+}
+
+/* ── Two-column layout ───────────────────────────────────── */
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 64px;
+  align-items: start;
+
+  @media (min-width: 1200px) {
+    grid-template-columns: minmax(0, 3fr) minmax(0, 9fr);
+  }
+}
+
+/* ── Sticky TOC sidebar ──────────────────────────────────── */
+
+.tocAside {
+  display: none;
+
+  @media (min-width: 1200px) {
+    display: block;
+  }
+}
+
+.tocSticky {
+  position: sticky;
+  top: 32px;
+  border-left: 1px solid rgba($outline-variant, 0.35);
+  padding-left: 24px;
+}
+
+.tocLabel {
+  font-size: 0.75rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.12em !important;
+  text-transform: uppercase !important;
+  color: $secondary !important;
+  margin-bottom: 16px !important;
+  display: block !important;
+}
+
+.tocNav {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.tocLink {
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: $on-surface-variant;
+  text-decoration: none;
+  transition: color 0.2s;
+  padding-left: 0;
+  display: block;
+
+  &:hover {
+    color: $secondary;
+  }
+}
+
+.tocLinkActive {
+  color: $secondary !important;
+  border-left: 2px solid $secondary;
+  padding-left: 16px;
+  margin-left: -26px;
+}
+
+/* ── Main content column ─────────────────────────────────── */
+
+.mainContent {
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+}
+
+/* ── Section ─────────────────────────────────────────────── */
+
+.section {
+  scroll-margin-top: 32px;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.sectionNum {
+  font-size: 1.5rem !important;
+  font-weight: 600 !important;
+  color: $secondary !important;
+  opacity: 0.5 !important;
+  flex-shrink: 0 !important;
+}
+
+.sectionTitle {
+  font-size: clamp(1.25rem, 3vw, 2rem) !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.01em !important;
+  line-height: 1.25 !important;
+  color: $on-surface !important;
+}
+
+.body {
+  font-size: 1rem !important;
+  line-height: 1.75 !important;
+  color: $on-surface-variant !important;
+  margin-bottom: 16px !important;
+}
+
+/* ── 2-column card grid (booking section) ────────────────── */
+
+.cardGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+
+  @media (min-width: 600px) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.card {
+  padding: 32px;
+  background: $surface-low;
+  border-radius: 8px;
+  border: 1px solid rgba($outline-variant, 0.2);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.cardIcon {
+  color: $secondary !important;
+  font-size: 2rem !important;
+  margin-bottom: 16px !important;
+  display: block !important;
+}
+
+.cardTitle {
+  font-size: 1.25rem !important;
+  font-weight: 600 !important;
+  color: $on-surface !important;
+  margin-bottom: 12px !important;
+  line-height: 1.4 !important;
+}
+
+.cardBody {
+  font-size: 1rem !important;
+  line-height: 1.65 !important;
+  color: $on-surface-variant !important;
+}
+
+/* ── Quote image ─────────────────────────────────────────── */
+
+.quoteWrap {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+  border-radius: 16px;
+}
+
+.quoteImg {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  filter: grayscale(20%) !important;
+  transition: filter 0.7s ease !important;
+  display: block !important;
+
+  &:hover {
+    filter: grayscale(0%) !important;
+  }
+}
+
+.quoteOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, transparent 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 48px;
+}
+
+.quoteText {
+  color: #fff !important;
+  font-size: clamp(1rem, 2.5vw, 1.5rem) !important;
+  font-weight: 600 !important;
+  font-style: italic !important;
+  max-width: 640px !important;
+  line-height: 1.45 !important;
+}
+
+/* ── Icon item list (payment section) ───────────────────── */
+
+.iconItemList {
+  display: flex;
+  flex-direction: column;
+}
+
+.iconItem {
+  display: flex;
+  gap: 24px;
+  padding: 24px;
+  border-bottom: 1px solid rgba($outline-variant, 0.3);
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.iconCircle {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  border-radius: 50%;
+  background: $secondary-container;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.iconCircleIcon {
+  color: $secondary !important;
+  font-size: 1.25rem !important;
+}
+
+.iconItemTitle {
+  font-size: 1.25rem !important;
+  font-weight: 600 !important;
+  color: $on-surface !important;
+  margin-bottom: 8px !important;
+  line-height: 1.4 !important;
+}
+
+.iconItemBody {
+  font-size: 1rem !important;
+  line-height: 1.65 !important;
+  color: $on-surface-variant !important;
+}
+
+/* ── Policy card (cancellation section) ─────────────────── */
+
+.policyCard {
+  background: $surface;
+  padding: 32px;
+  border-radius: 16px;
+  border-left: 4px solid $secondary;
+}
+
+.policyTitle {
+  font-size: 1.25rem !important;
+  font-weight: 600 !important;
+  color: $on-surface !important;
+  margin-bottom: 16px !important;
+  line-height: 1.4 !important;
+}
+
+.policyRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 8px;
+}
+
+.policyRowBorder {
+  border-bottom: 1px solid rgba($outline-variant, 0.3);
+}
+
+.policyWindow {
+  font-size: 0.875rem !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.01em !important;
+  color: $on-surface !important;
+}
+
+.policyRefund {
+  font-size: 0.875rem !important;
+  font-weight: 700 !important;
+  color: $secondary !important;
+}
+
+.policyNote {
+  font-size: 0.875rem !important;
+  font-style: italic !important;
+  color: $on-surface-variant !important;
+  margin-top: 24px !important;
+  line-height: 1.6 !important;
+}
+
+/* ── Triple card grid (account + contact sections) ───────── */
+
+.tripleCardGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  margin-top: 8px;
+
+  @media (min-width: 600px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.tripleCard {
+  padding: 24px;
+  border: 1px solid rgba($outline-variant, 0.35);
+  border-radius: 4px;
+}
+
+.tripleCardIcon {
+  color: $secondary !important;
+  font-size: 1.5rem !important;
+  margin-bottom: 8px !important;
+  display: block !important;
+}
+
+.tripleCardTitle {
+  font-size: 0.875rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.01em !important;
+  color: $on-surface !important;
+  margin-bottom: 4px !important;
+}
+
+.tripleCardBody {
+  font-size: 0.75rem !important;
+  line-height: 1.65 !important;
+  color: $on-surface-variant !important;
+}

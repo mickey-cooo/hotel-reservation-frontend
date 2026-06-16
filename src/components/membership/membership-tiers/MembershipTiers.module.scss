@@ -1,0 +1,226 @@
+.section {
+  padding-block: 96px;
+
+  @media (max-width: 599px) {
+    padding-block: 64px;
+  }
+}
+
+.heading {
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.sectionTitle {
+  font-weight: 700 !important;
+  color: var(--az-primary) !important;
+  margin-bottom: 16px !important;
+
+  @media (max-width: 599px) {
+    font-size: 1.5rem !important;
+  }
+}
+
+.sectionSubtitle {
+  color: var(--az-on-surface-variant) !important;
+  max-width: 480px;
+  margin-inline: auto !important;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  padding-block: 28px;
+
+  @media (min-width: 900px) {
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+  }
+}
+
+/* Glass card — Essential & Elite */
+.card {
+  position: relative;
+  padding: 32px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(198, 198, 205, 0.3);
+  transition: border-color 0.3s;
+
+  &:hover {
+    border-color: var(--az-secondary);
+  }
+}
+
+/* Featured card — Select (dark navy) */
+.cardFeatured {
+  background: var(--az-primary-container);
+  border-color: rgba(119, 90, 25, 0.3);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+
+  @media (min-width: 900px) {
+    transform: scale(1.05);
+    z-index: 10;
+  }
+
+  @media (max-width: 899px) {
+    transform: none;
+    order: -1;
+  }
+
+  &:hover {
+    border-color: rgba(119, 90, 25, 0.5);
+  }
+
+  /* Override text colors for dark background via descendant selectors */
+  .tierDesc {
+    color: var(--az-on-primary-container) !important;
+  }
+
+  .price {
+    color: #fff !important;
+  }
+
+  .priceNote {
+    color: var(--az-on-primary-container) !important;
+  }
+
+  .perkIcon {
+    color: var(--az-secondary-fixed-dim) !important;
+  }
+
+  .perkText {
+    color: #fff !important;
+  }
+}
+
+.recommendedBadge {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--az-secondary);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 4px 16px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.cardTop {
+  margin-bottom: 32px;
+}
+
+.levelLabel {
+  font-size: 0.75rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.05em !important;
+  text-transform: uppercase !important;
+  color: var(--az-on-surface-variant) !important;
+}
+
+.levelLabelFeatured {
+  color: var(--az-on-primary-container) !important;
+}
+
+.tierName {
+  font-weight: 700 !important;
+  margin-top: 8px !important;
+  margin-bottom: 16px !important;
+  color: var(--az-primary) !important;
+}
+
+.tierNameFeatured {
+  background: linear-gradient(135deg, #775a19 0%, #e9c176 50%, #775a19 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.tierDesc {
+  color: var(--az-on-surface-variant) !important;
+  margin-bottom: 24px !important;
+  line-height: 1.6 !important;
+}
+
+.priceRow {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.price {
+  font-size: 1.875rem !important;
+  font-weight: 700 !important;
+  color: var(--az-primary) !important;
+}
+
+.priceNote {
+  font-size: 0.875rem !important;
+  color: var(--az-on-surface-variant) !important;
+}
+
+.perkList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  flex: 1;
+  margin-bottom: 40px;
+}
+
+.perkItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.perkIcon {
+  color: var(--az-secondary) !important;
+  font-size: 1.25rem !important;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.perkText {
+  color: var(--az-on-surface) !important;
+  line-height: 1.5 !important;
+}
+
+.joinBtn {
+  border-color: var(--az-primary) !important;
+  color: var(--az-primary) !important;
+  text-transform: none !important;
+  font-size: 0.875rem !important;
+  font-weight: 600 !important;
+  padding-block: 14px !important;
+  border-radius: 8px !important;
+  transition: background 0.2s, color 0.2s !important;
+
+  &:hover {
+    background: var(--az-primary) !important;
+    color: #fff !important;
+  }
+}
+
+.joinBtnFeatured {
+  background: var(--az-secondary) !important;
+  border-color: var(--az-secondary) !important;
+  color: #fff !important;
+
+  &:hover {
+    background: var(--az-secondary-fixed-dim) !important;
+    border-color: var(--az-secondary-fixed-dim) !important;
+  }
+}
+
+@media (max-width: 599px) {
+  .card {
+    padding: 24px;
+  }
+}

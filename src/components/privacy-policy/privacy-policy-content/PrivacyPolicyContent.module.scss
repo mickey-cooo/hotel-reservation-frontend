@@ -1,0 +1,404 @@
+/* ── Page wrapper ─────────────────────────────────────────── */
+
+.page {
+  background: var(--color-bg);
+  padding-bottom: 80px;
+}
+
+/* ── Hero ─────────────────────────────────────────────────── */
+
+.heroWrap {
+  background: var(--color-slate-100);
+  padding-block: 72px 64px;
+  border-bottom: 1px solid var(--color-border);
+
+  @media (max-width: 599px) {
+    padding-block: 48px 40px;
+  }
+}
+
+.hero {
+  text-align: center;
+  max-width: 640px;
+  margin-inline: auto;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 14px;
+  border-radius: 100px;
+  background: rgba(197, 160, 89, 0.12);
+  border: 1px solid rgba(197, 160, 89, 0.25);
+  margin-bottom: 20px;
+}
+
+.badgeText {
+  font-size: 0.8125rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.06em !important;
+  text-transform: uppercase !important;
+  color: var(--color-gold) !important;
+}
+
+.pageTitle {
+  font-size: clamp(1.75rem, 5vw, 2.75rem) !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.02em !important;
+  line-height: 1.15 !important;
+  color: var(--color-fg) !important;
+  margin-bottom: 20px !important;
+}
+
+.intro {
+  font-size: 1.0625rem !important;
+  line-height: 1.7 !important;
+  color: var(--color-neutral) !important;
+
+  @media (max-width: 599px) {
+    font-size: 1rem !important;
+  }
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.metaText {
+  font-size: 0.8125rem !important;
+  font-weight: 500 !important;
+  color: var(--color-neutral-light) !important;
+}
+
+.metaDot {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--color-border-light);
+}
+
+/* ── Content column ───────────────────────────────────────── */
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  padding-top: 60px;
+
+  @media (max-width: 599px) {
+    gap: 48px;
+    padding-top: 48px;
+  }
+}
+
+/* ── Section ──────────────────────────────────────────────── */
+
+.section {
+  scroll-margin-top: 32px;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.sectionNum {
+  font-size: 1.25rem !important;
+  font-weight: 700 !important;
+  color: var(--color-gold) !important;
+  opacity: 0.5 !important;
+  flex-shrink: 0 !important;
+}
+
+.sectionTitle {
+  font-size: clamp(1.125rem, 3vw, 1.625rem) !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.01em !important;
+  line-height: 1.25 !important;
+  color: var(--color-fg) !important;
+}
+
+.body {
+  font-size: 0.9375rem !important;
+  line-height: 1.75 !important;
+  color: var(--color-text-body) !important;
+  margin-bottom: 20px !important;
+}
+
+/* ── Checklist (section 01) ───────────────────────────────── */
+
+.checkList {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 4px;
+}
+
+.checkItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 16px 20px;
+  background: var(--color-slate-100);
+  border-radius: 10px;
+  border: 1px solid var(--color-border);
+}
+
+.checkIcon {
+  color: var(--color-gold) !important;
+  font-size: 1rem !important;
+  margin-top: 3px !important;
+  flex-shrink: 0 !important;
+}
+
+.checkText {
+  font-size: 0.9375rem !important;
+  line-height: 1.6 !important;
+  color: var(--color-text-body) !important;
+}
+
+/* ── 2-col card grid (section 02) ────────────────────────── */
+
+.cardGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 4px;
+
+  @media (max-width: 599px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card {
+  padding: 24px;
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid var(--color-border);
+}
+
+.cardTitle {
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  color: var(--color-fg) !important;
+  margin-bottom: 8px !important;
+  line-height: 1.4 !important;
+}
+
+.cardBody {
+  font-size: 0.9375rem !important;
+  line-height: 1.65 !important;
+  color: var(--color-neutral) !important;
+}
+
+/* ── Quote image ──────────────────────────────────────────── */
+
+.quoteWrap {
+  position: relative;
+  width: 100%;
+  height: 280px;
+  overflow: hidden;
+  border-radius: 16px;
+
+  @media (max-width: 599px) {
+    height: 200px;
+    border-radius: 12px;
+  }
+}
+
+.quoteImg {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  display: block !important;
+}
+
+.quoteOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(15, 23, 42, 0.65) 0%, transparent 55%);
+  display: flex;
+  align-items: flex-end;
+  padding: 28px 36px;
+
+  @media (max-width: 599px) {
+    padding: 20px 24px;
+  }
+}
+
+.quoteText {
+  color: #fff !important;
+  font-size: clamp(0.9375rem, 2vw, 1.25rem) !important;
+  font-weight: 500 !important;
+  font-style: italic !important;
+  max-width: 400px !important;
+  line-height: 1.5 !important;
+}
+
+/* ── Icon item list (section 03) ─────────────────────────── */
+
+.iconItemList {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-top: 4px;
+}
+
+.iconItem {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  padding-block: 24px;
+  border-bottom: 1px solid var(--color-border);
+
+  &:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  @media (max-width: 599px) {
+    gap: 16px;
+    padding-block: 20px;
+  }
+}
+
+.iconCircle {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  border-radius: 10px;
+  background: rgba(197, 160, 89, 0.1);
+  border: 1px solid rgba(197, 160, 89, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.iconCircleIcon {
+  color: var(--color-gold) !important;
+  font-size: 1.25rem !important;
+}
+
+.iconItemTitle {
+  font-size: 0.9375rem !important;
+  font-weight: 600 !important;
+  color: var(--color-fg) !important;
+  margin-bottom: 4px !important;
+  line-height: 1.4 !important;
+}
+
+.iconItemBody {
+  font-size: 0.9375rem !important;
+  line-height: 1.65 !important;
+  color: var(--color-text-body) !important;
+}
+
+/* ── Rights grid (section 04) ────────────────────────────── */
+
+.rightsBox {
+  background: var(--color-slate-100);
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  padding: 28px 32px;
+  margin-top: 4px;
+
+  @media (max-width: 599px) {
+    padding: 20px;
+  }
+}
+
+.rightsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+
+  @media (max-width: 599px) {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
+
+.rightsItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.rightsDot {
+  width: 5px;
+  height: 5px;
+  min-width: 5px;
+  border-radius: 50%;
+  background: var(--color-gold);
+}
+
+.rightsText {
+  font-size: 0.9375rem !important;
+  color: var(--color-text-body) !important;
+  line-height: 1.5 !important;
+}
+
+/* ── Contact CTA ──────────────────────────────────────────── */
+
+.ctaBox {
+  background: var(--color-fg);
+  border-radius: 20px;
+  padding: 48px 40px;
+  text-align: center;
+
+  @media (max-width: 599px) {
+    padding: 36px 24px;
+    border-radius: 16px;
+  }
+}
+
+.ctaTitle {
+  font-size: clamp(1.25rem, 3vw, 1.75rem) !important;
+  font-weight: 600 !important;
+  color: #fff !important;
+  margin-bottom: 12px !important;
+  line-height: 1.25 !important;
+}
+
+.ctaBody {
+  font-size: 0.9375rem !important;
+  line-height: 1.7 !important;
+  color: rgba(255, 255, 255, 0.65) !important;
+  max-width: 420px !important;
+  margin-inline: auto !important;
+  margin-bottom: 32px !important;
+}
+
+.ctaButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 28px;
+  background: var(--color-gold);
+  color: #fff;
+  border-radius: 100px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+
+  &:hover {
+    opacity: 0.85;
+  }
+}
+
+.ctaButtonIcon {
+  font-size: 1.125rem !important;
+}

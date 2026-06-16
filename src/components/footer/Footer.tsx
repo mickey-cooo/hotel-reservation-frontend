@@ -1,12 +1,21 @@
+'use client';
+
 import { Box, Container, Divider, Grid, IconButton, Link, Typography } from '@mui/material';
 import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined';
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import SmartphoneOutlinedIcon from '@mui/icons-material/SmartphoneOutlined';
+import { useRouter } from 'next/navigation';
 import styles from './Footer.module.scss';
 
-const FOOTER_LINKS = ['Privacy Policy', 'Terms of Service', 'Help Center', 'Contact Us'] as const;
+const FOOTER_LINKS = [
+  { label: 'Privacy Policy', href: '/privacy-policy' },
+  { label: 'Terms of Service', href: '/terms-of-service' },
+  { label: 'Help Center', href: '/help-center' },
+  { label: 'Contact Us', href: '/contact' },
+] as const;
 
 export default function Footer() {
+  const router = useRouter();
   return (
     <Box component="footer" className={styles.footer}>
       <Container maxWidth="lg">
@@ -41,8 +50,13 @@ export default function Footer() {
 
         <Box className={styles.bottomRow}>
           <Box className={styles.linkList}>
-            {FOOTER_LINKS.map((label) => (
-              <Link key={label} underline="none" className={styles.footerLink}>
+            {FOOTER_LINKS.map(({ label, href }) => (
+              <Link
+                key={label}
+                underline="none"
+                className={styles.footerLink}
+                onClick={() => router.push(href)}
+              >
                 {label}
               </Link>
             ))}
