@@ -1,0 +1,455 @@
+.section {
+  background: var(--az-surface);
+  padding: 0 0 48px;
+}
+
+.wrapper {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.container {
+  background: var(--az-surface-container-lowest);
+  border-radius: 16px;
+  box-shadow: 0 8px 40px rgba(19, 27, 46, 0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 640px;
+  border: 1px solid rgba(198, 198, 205, 0.35);
+}
+
+/* ── Header ── */
+
+.header {
+  background: rgba(248, 249, 255, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(198, 198, 205, 0.2);
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--az-secondary-container);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.avatarIcon {
+  color: var(--az-on-secondary-container) !important;
+  font-size: 20px !important;
+}
+
+.headerCenter {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.botName {
+  color: var(--az-on-surface) !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  line-height: 1.2 !important;
+}
+
+.onlineRow {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.onlineDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #34c759;
+  flex-shrink: 0;
+}
+
+.onlineLabel {
+  font-size: 11px !important;
+  color: var(--az-outline) !important;
+  line-height: 1 !important;
+}
+
+.resetBtn {
+  color: var(--az-outline) !important;
+  transition: color 0.15s, transform 0.2s !important;
+
+  &:hover {
+    color: var(--az-on-surface) !important;
+    transform: rotate(180deg) !important;
+    background: transparent !important;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--az-secondary) !important;
+    outline-offset: 2px !important;
+  }
+}
+
+/* ── Messages ── */
+
+.messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: var(--az-surface-container-lowest);
+
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--az-primary-fixed-dim);
+    border-radius: 10px;
+  }
+}
+
+.timestampRow {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 4px;
+}
+
+.timestampChip {
+  background: var(--az-surface-container-low) !important;
+  color: var(--az-outline) !important;
+  font-size: 11px !important;
+  height: 22px !important;
+}
+
+/* Bot bubble */
+
+.botBubbleWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  max-width: 75%;
+}
+
+.botBubble {
+  background: var(--az-surface-container-high);
+  padding: 8px 14px;
+  border-radius: 20px;
+  border-bottom-left-radius: 4px;
+}
+
+.botText {
+  font-size: 15px !important;
+  line-height: 1.45 !important;
+  color: var(--az-on-surface) !important;
+}
+
+.bubbleTime {
+  font-size: 10px !important;
+  color: var(--az-outline) !important;
+  padding: 0 4px !important;
+}
+
+/* Quick action chips */
+
+.quickActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding-top: 2px;
+}
+
+.quickChip {
+  border-color: var(--az-secondary) !important;
+  color: var(--az-secondary) !important;
+  font-size: 12px !important;
+  height: 30px !important;
+  cursor: pointer !important;
+  background: #ffffff !important;
+  border-radius: 20px !important;
+  opacity: 0;
+  animation: chipFadeIn 0.3s ease forwards;
+
+  &:hover {
+    background: rgba(119, 90, 25, 0.06) !important;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--az-secondary) !important;
+    outline-offset: 2px !important;
+  }
+}
+
+@keyframes chipFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .quickChip {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .resetBtn {
+    transition: color 0.15s !important;
+
+    &:hover {
+      transform: none !important;
+    }
+  }
+
+  .typingDot {
+    animation: none !important;
+    opacity: 0.5 !important;
+  }
+}
+
+/* User bubble */
+
+.userBubbleWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 3px;
+  max-width: 75%;
+  align-self: flex-end;
+}
+
+.userBubble {
+  background: #007aff;
+  padding: 8px 14px;
+  border-radius: 20px;
+  border-bottom-right-radius: 4px;
+}
+
+.userText {
+  font-size: 15px !important;
+  line-height: 1.45 !important;
+  color: #ffffff !important;
+}
+
+.userMeta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 4px;
+}
+
+.deliveredText {
+  font-size: 10px !important;
+  color: var(--az-outline) !important;
+}
+
+.bubbleTimeUser {
+  font-size: 10px !important;
+  color: var(--az-outline) !important;
+}
+
+/* Typing indicator */
+
+.typingBubble {
+  background: var(--az-surface-container-high);
+  padding: 13px 18px;
+  border-radius: 20px;
+  border-bottom-left-radius: 4px;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  width: fit-content;
+}
+
+.typingDot {
+  width: 7px;
+  height: 7px;
+  background: var(--az-on-surface-variant);
+  border-radius: 50%;
+  display: inline-block;
+  animation: typingBounce 1.2s infinite;
+
+  &:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+
+  &:nth-child(3) {
+    animation-delay: 0.4s;
+  }
+}
+
+@keyframes typingBounce {
+  0%,
+  60%,
+  100% {
+    opacity: 0.35;
+    transform: translateY(0);
+  }
+
+  30% {
+    opacity: 1;
+    transform: translateY(-3px);
+  }
+}
+
+/* ── Input ── */
+
+.inputArea {
+  padding: 12px 16px 14px;
+  background: rgba(248, 249, 255, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-top: 1px solid rgba(198, 198, 205, 0.2);
+  flex-shrink: 0;
+}
+
+.inputRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.addBtn {
+  color: var(--az-outline) !important;
+  flex-shrink: 0 !important;
+  padding: 4px !important;
+
+  &:hover {
+    color: var(--az-on-surface) !important;
+    background: transparent !important;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--az-secondary) !important;
+    outline-offset: 2px !important;
+    border-radius: 4px !important;
+  }
+
+  svg {
+    font-size: 28px !important;
+  }
+}
+
+.inputWrapper {
+  flex: 1;
+  position: relative;
+  background: var(--az-surface-container-lowest);
+  border: 1px solid rgba(198, 198, 205, 0.4);
+  border-radius: 40px;
+  transition: border-color 0.15s, box-shadow 0.15s;
+
+  &:focus-within {
+    border-color: #007aff;
+    box-shadow: 0 0 0 1px #007aff;
+  }
+}
+
+.inputBase {
+  width: 100% !important;
+
+  :global(.MuiInputBase-input) {
+    padding: 9px 44px 9px 16px !important;
+    font-size: 15px !important;
+    line-height: 1.4 !important;
+    color: var(--az-on-surface) !important;
+    background: transparent !important;
+    min-height: 44px !important;
+    box-sizing: border-box !important;
+
+    &::placeholder {
+      color: var(--az-outline) !important;
+      opacity: 1 !important;
+    }
+  }
+}
+
+.sendBtn {
+  position: absolute !important;
+  right: 4px !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  width: 32px !important;
+  height: 32px !important;
+  border-radius: 50% !important;
+  background: var(--az-outline-variant) !important;
+  color: var(--az-on-surface-variant) !important;
+  padding: 0 !important;
+  transition: background 0.15s !important;
+
+  &:focus-visible {
+    outline: 2px solid var(--az-secondary) !important;
+    outline-offset: 2px !important;
+  }
+
+  svg {
+    font-size: 18px !important;
+  }
+}
+
+.sendBtnActive {
+  background: #007aff !important;
+  color: #ffffff !important;
+
+  &:hover {
+    background: #0056cc !important;
+  }
+}
+
+.poweredBy {
+  font-size: 10px !important;
+  text-align: center !important;
+  color: var(--az-outline) !important;
+  margin-top: 10px !important;
+  letter-spacing: 0.08em !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  opacity: 0.5 !important;
+}
+
+/* ── Responsive ── */
+
+@media (max-width: 599px) {
+  .container {
+    height: 540px;
+    border-radius: 12px;
+  }
+
+  .messages {
+    padding: 14px 16px;
+    gap: 8px;
+  }
+
+  .botBubbleWrap,
+  .userBubbleWrap {
+    max-width: 88%;
+  }
+
+  .inputArea {
+    padding: 10px 12px 12px;
+  }
+
+  .section {
+    padding-bottom: 36px;
+  }
+}
