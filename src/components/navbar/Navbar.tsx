@@ -17,6 +17,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import NextLink from 'next/link';
 import { usePathname } from 'next/navigation';
 import styles from './Navbar.module.scss';
+import LanguageSwitcher from './language-switcher/LanguageSwitcher';
 
 const NAV_LINKS = [
   { label: 'Home', href: '/' },
@@ -78,6 +79,7 @@ export default function Navbar({ variant = 'dark' }: NavbarProps) {
                   Member Perks
                 </Button>
               )}
+              <LanguageSwitcher variant={variant} />
               <Button
                 variant="contained"
                 component={NextLink}
@@ -143,6 +145,7 @@ export default function Navbar({ variant = 'dark' }: NavbarProps) {
         <Divider className={styles.drawerDivider} />
 
         <Box className={styles.drawerFooter}>
+          <LanguageSwitcher variant="light" fullWidth />
           <Button
             variant="contained"
             component={NextLink}

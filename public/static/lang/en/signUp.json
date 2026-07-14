@@ -1,0 +1,21 @@
+{
+  "auth": {
+    "emailRequire": "Please enter your email",
+    "emailInvalid": "Invalid email format",
+    "passwordRequire": "Please enter your password",
+    "passwordInvalid": "Password must be at least 8 characters",
+    "confirmPasswordRequire": "Please confirm your password",
+    "confirmPasswordInvalid": "Passwords do not match"
+  },
+  "title": "Register",
+  "subTitle": "Start your next-level journey with us today",
+  "email": "Email",
+  "password": "Password",
+  "confirmPassword": "Confirm Password",
+  "buttonSubmit": "Create Account",
+  "haveAccount": "Already have an account?",
+  "signIn": "Sign in here",
+  "termOfCondition": "I accept Terms and Conditions and User Agreement",
+  "newsletter": "Get exclusive deals and updates with our Newsletter Subscription",
+  "signUpFail": "Registration failed. Please try again."
+}

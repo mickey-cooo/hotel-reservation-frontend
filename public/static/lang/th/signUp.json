@@ -1,0 +1,21 @@
+{
+  "auth": {
+    "emailRequire": "กรุณากรอกอีเมล",
+    "emailInvalid": "รูปแบบอีเมลไม่ถูกต้อง",
+    "passwordRequire": "กรุณากรอกรหัสผ่าน",
+    "passwordInvalid": "รหัสผ่านต้องมีอย่างน้อย 8 ตัวอักษร",
+    "confirmPasswordRequire": "กรุณากรอกยืนยันรหัสผ่าน",
+    "confirmPasswordInvalid": "ยืนยันรหัสผ่านไม่ตรงกับรหัสผ่าน"
+  },
+  "title": "สมัครสมาชิก",
+  "subTitle": "เริ่มการเดินทางที่เหนือระดับไปกับเราวันนี้",
+  "email": "อีเมล",
+  "password": "รหัสผ่าน",
+  "confirmPassword": "ยืนยันรหัสผ่าน",
+  "buttonSubmit": "สร้างบัญชีผู้ใช้งาน",
+  "haveAccount": "เป็นสมาชิกอยู่แล้ว?",
+  "signIn": "เข้าสู่ระบบที่นี้",
+  "termOfCondition": "ยอมรับ Terms and Conditions และข้อตกลงการใช้งาน",
+  "newsletter": "รับข้อมูลข่าวสารและสิทธิพิเศษผ่าน Newsletter Subscription",
+  "signUpFail": "สมัครสมาชิกไม่สำเร็จ กรุณาลองใหม่อีกครั้ง"
+}

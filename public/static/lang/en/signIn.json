@@ -1,0 +1,8 @@
+{
+  "auth": {
+    "emailRequire": "Please enter your email",
+    "emailInvalid": "Invalid email format",
+    "passwordRequire": "Please enter your password",
+    "passwordInvalid": "Password must be at least 8 characters"
+  }
+}

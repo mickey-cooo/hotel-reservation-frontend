@@ -1,0 +1,44 @@
+.switcher {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 2px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.switcherFullWidth {
+  width: 100%;
+
+  .langBtn {
+    flex: 1;
+  }
+}
+
+.langBtn {
+  color: rgba(255, 255, 255, 0.7) !important;
+  text-transform: none !important;
+  font-weight: 500 !important;
+  font-size: 0.75rem !important;
+  min-width: 36px !important;
+  padding: 4px 10px !important;
+  border-radius: 6px !important;
+}
+
+.langBtnActive {
+  color: var(--color-fg) !important;
+  background: #fff !important;
+}
+
+.switcherLight {
+  border-color: var(--color-border);
+
+  .langBtn {
+    color: var(--color-neutral) !important;
+  }
+
+  .langBtnActive {
+    color: #fff !important;
+    background: var(--color-fg) !important;
+  }
+}

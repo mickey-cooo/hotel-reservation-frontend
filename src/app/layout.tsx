@@ -2,6 +2,9 @@ import type { Metadata } from 'next';
 import { Geist } from 'next/font/google';
 import './globals.css';
 import MuiThemeRegistry from './MuiThemeRegistry';
+import I18nProvider from './I18nProvider';
+import { themeColorVars } from './theme';
+import { getServerLocale } from '@/lib/server-locale';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -13,15 +16,22 @@ export const metadata: Metadata = {
   description: 'Find your next luxury sanctuary',
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const locale = await getServerLocale();
+
   return (
-    <html lang="en" className={`${geistSans.variable}`}>
+    <html lang={locale} className={`${geistSans.variable}`}>
+      <head>
+        <style>{themeColorVars}</style>
+      </head>
       <body>
-        <MuiThemeRegistry>{children}</MuiThemeRegistry>
+        <I18nProvider initialLng={locale}>
+          <MuiThemeRegistry>{children}</MuiThemeRegistry>
+        </I18nProvider>
       </body>
     </html>
   );
