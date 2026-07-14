@@ -1,7 +1,10 @@
 'use client';
 
 import { useState } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
+import { Controller, useForm } from 'react-hook-form';
 import {
+  Alert,
   Box,
   Button,
   Checkbox,
@@ -19,14 +22,51 @@ import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
 import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined';
 import GoogleIcon from '@mui/icons-material/Google';
 import AppleIcon from '@mui/icons-material/Apple';
+import { loginAction } from '@/service/auth/auth-actions';
 import styles from './LoginForm.module.scss';
 
+interface LoginFormValues {
+  email: string;
+  password: string;
+  rememberMe: boolean;
+}
+
 export default function LoginForm() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
   const [showPassword, setShowPassword] = useState(false);
-  const [rememberMe, setRememberMe] = useState(false);
+  const [error, setError] = useState('');
+
+  const {
+    control,
+    handleSubmit,
+    formState: { isSubmitting },
+  } = useForm<LoginFormValues>({
+    defaultValues: { email: '', password: '', rememberMe: false },
+  });
+
+  const onSubmit = async ({ email, password }: LoginFormValues) => {
+    setError('');
+    try {
+      const result = await loginAction({ email, password });
+      if (!result.ok) {
+        setError(result.message || 'เข้าสู่ระบบไม่สำเร็จ กรุณาลองใหม่อีกครั้ง');
+        return;
+      }
+      router.push(searchParams.get('redirectTo') || '/');
+    } catch {
+      setError('เข้าสู่ระบบไม่สำเร็จ กรุณาลองใหม่อีกครั้ง');
+    }
+  };
 
   return (
-    <Box className={styles.form}>
+    <Box
+      component="form"
+      onSubmit={handleSubmit(onSubmit)}
+      className={styles.form}
+      noValidate
+    >
+      {error && <Alert severity="error">{error}</Alert>}
       <Box className={styles.brandMark}>
         <Typography className={styles.monogram}>LS</Typography>
       </Box>
@@ -44,75 +84,111 @@ export default function LoginForm() {
       <Box className={styles.fields}>
         <Box className={styles.fieldGroup}>
           <Typography className={styles.label}>EMAIL</Typography>
-          <OutlinedInput
-            fullWidth
-            placeholder="example@lumina.com"
-            className={styles.input}
-            startAdornment={
-              <InputAdornment position="start">
-                <EmailOutlinedIcon className={styles.inputIcon} />
-              </InputAdornment>
-            }
+          <Controller
+            name="email"
+            control={control}
+            rules={{ required: true }}
+            render={({ field }) => (
+              <OutlinedInput
+                {...field}
+                fullWidth
+                placeholder="example@lumina.com"
+                className={styles.input}
+                startAdornment={
+                  <InputAdornment position="start">
+                    <EmailOutlinedIcon className={styles.inputIcon} />
+                  </InputAdornment>
+                }
+              />
+            )}
           />
         </Box>
 
         <Box className={styles.fieldGroup}>
           <Typography className={styles.label}>PASSWORD</Typography>
-          <OutlinedInput
-            fullWidth
-            type={showPassword ? 'text' : 'password'}
-            className={styles.input}
-            startAdornment={
-              <InputAdornment position="start">
-                <LockOutlinedIcon className={styles.inputIcon} />
-              </InputAdornment>
-            }
-            endAdornment={
-              <InputAdornment position="end">
-                <IconButton
-                  onClick={() => setShowPassword((prev) => !prev)}
-                  edge="end"
-                  className={styles.eyeBtn}
-                >
-                  {showPassword ? (
-                    <VisibilityOffOutlinedIcon className={styles.inputIcon} />
-                  ) : (
-                    <VisibilityOutlinedIcon className={styles.inputIcon} />
-                  )}
-                </IconButton>
-              </InputAdornment>
-            }
+          <Controller
+            name="password"
+            control={control}
+            rules={{ required: true }}
+            render={({ field }) => (
+              <OutlinedInput
+                {...field}
+                fullWidth
+                type={showPassword ? 'text' : 'password'}
+                className={styles.input}
+                startAdornment={
+                  <InputAdornment position="start">
+                    <LockOutlinedIcon className={styles.inputIcon} />
+                  </InputAdornment>
+                }
+                endAdornment={
+                  <InputAdornment position="end">
+                    <IconButton
+                      onClick={() => setShowPassword((prev) => !prev)}
+                      edge="end"
+                      className={styles.eyeBtn}
+                    >
+                      {showPassword ? (
+                        <VisibilityOffOutlinedIcon
+                          className={styles.inputIcon}
+                        />
+                      ) : (
+                        <VisibilityOutlinedIcon className={styles.inputIcon} />
+                      )}
+                    </IconButton>
+                  </InputAdornment>
+                }
+              />
+            )}
           />
         </Box>
       </Box>
 
       <Box className={styles.rememberRow}>
-        <FormControlLabel
-          control={
-            <Checkbox
-              checked={rememberMe}
-              onChange={(e) => setRememberMe(e.target.checked)}
-              className={styles.checkbox}
-              size="small"
+        <Controller
+          name="rememberMe"
+          control={control}
+          render={({ field: { value, onChange, ...field } }) => (
+            <FormControlLabel
+              control={
+                <Checkbox
+                  {...field}
+                  checked={value}
+                  onChange={(e) => onChange(e.target.checked)}
+                  className={styles.checkbox}
+                  size="small"
+                />
+              }
+              label={
+                <Typography className={styles.rememberLabel}>
+                  จดจำฉันไว้
+                </Typography>
+              }
             />
-          }
-          label={
-            <Typography className={styles.rememberLabel}>
-              จดจำฉันไว้
-            </Typography>
-          }
+          )}
         />
-        <Link href="/forgot-password" underline="none" className={styles.forgotLink}>
+        <Link
+          href="/forgot-password"
+          underline="none"
+          className={styles.forgotLink}
+        >
           ลืมรหัสผ่าน?
         </Link>
       </Box>
 
-      <Button fullWidth className={styles.loginBtn}>
+      <Button
+        fullWidth
+        type="submit"
+        className={styles.loginBtn}
+        disabled={isSubmitting}
+      >
         เข้าสู่ระบบ
       </Button>
 
       <Divider className={styles.divider}>
-        <Typography className={styles.dividerText}>หรือเข้าสู่ระบบด้วย</Typography>
+        <Typography className={styles.dividerText}>
+          หรือเข้าสู่ระบบด้วย
+        </Typography>
       </Divider>
 
       <Box className={styles.socialRow}>

@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import { Box, Typography } from '@mui/material';
 import LoginHero from '@/components/auth/login-hero/LoginHero';
 import LoginForm from '@/components/auth/login-form/LoginForm';
@@ -8,7 +9,9 @@ export default function LoginContent() {
     <Box className={styles.wrapper}>
       <Box className={styles.card}>
         <LoginHero />
-        <LoginForm />
+        <Suspense fallback={null}>
+          <LoginForm />
+        </Suspense>
       </Box>
       <Typography className={styles.siteFooter}>
         LUMINA STAY • GLOBAL HOSPITALITY EXCELLENCE

@@ -115,6 +115,12 @@
   }
 }
 
+.fieldError {
+  font-size: 0.75rem !important;
+  color: #d32f2f !important;
+  margin-top: 2px !important;
+}
+
 .checkboxes {
   display: flex;
   flex-direction: column;
