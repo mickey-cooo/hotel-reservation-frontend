@@ -21,7 +21,7 @@ export default function HotelGrid({ hotels, totalCount }: HotelGridProps) {
       <Box className={styles.header}>
         <Box>
           <Typography variant="h5" className={styles.gridTitle}>
-            Found {totalCount} stays
+            Found {hotels.length} of {totalCount} stays
           </Typography>
           <Typography className={styles.gridSubtitle}>
             Showing premium results for your search.

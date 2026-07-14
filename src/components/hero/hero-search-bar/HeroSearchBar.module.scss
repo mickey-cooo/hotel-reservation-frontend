@@ -25,6 +25,15 @@
   }
 }
 
+.fieldClickable {
+  cursor: pointer;
+  transition: background 0.15s ease;
+
+  &:hover {
+    background: var(--color-slate-100);
+  }
+}
+
 .fieldWide {
   flex: 1.5;
 
@@ -35,9 +44,11 @@
 
 .fieldNarrow {
   flex: 1;
+  min-width: 0;
 
   @media (max-width: 599px) {
     flex: none;
+    min-width: unset;
   }
 }
 
@@ -52,6 +63,8 @@
   flex-direction: column;
   align-items: flex-start;
   width: 100%;
+  min-width: 0;
+  overflow: hidden;
 }
 
 .fieldCaption {
@@ -70,6 +83,18 @@
 .fieldText {
   font-size: 0.85rem !important;
   color: var(--color-neutral) !important;
+}
+
+.fieldTextActive {
+  font-size: 0.85rem !important;
+  color: var(--color-fg) !important;
+  font-weight: 600 !important;
+}
+
+.fieldDateSub {
+  font-size: 0.78rem !important;
+  color: var(--color-neutral) !important;
+  margin-top: 1px !important;
 }
 
 .fieldDivider {
@@ -98,5 +123,153 @@
     margin: 0 !important;
     padding-block: 14px !important;
     width: 100% !important;
+  }
+}
+
+// Guest picker popover
+.guestPopoverPaper {
+  border-radius: 16px !important;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.14) !important;
+  border: 1px solid var(--color-border) !important;
+  overflow: hidden !important;
+  min-width: 300px;
+}
+
+.guestPopoverTitle {
+  display: block !important;
+  font-size: 0.88rem !important;
+  font-weight: 700 !important;
+  color: var(--color-fg) !important;
+  padding: 16px 20px 12px !important;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.guestPopoverContent {
+  padding: 4px 20px 16px;
+}
+
+.guestRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 0;
+
+  & + & {
+    border-top: 1px solid var(--color-border);
+  }
+}
+
+.guestLabelGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.guestLabel {
+  font-size: 0.88rem !important;
+  font-weight: 600 !important;
+  color: var(--color-fg) !important;
+}
+
+.guestSubLabel {
+  font-size: 0.75rem !important;
+  color: var(--color-neutral) !important;
+  margin-top: 1px !important;
+}
+
+.counter {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.counterBtn {
+  border: 1px solid var(--color-border) !important;
+  color: var(--color-fg) !important;
+  padding: 4px !important;
+  width: 28px !important;
+  height: 28px !important;
+
+  &:disabled {
+    opacity: 0.35 !important;
+  }
+}
+
+.counterVal {
+  font-size: 0.9rem !important;
+  font-weight: 600 !important;
+  color: var(--color-fg) !important;
+  min-width: 20px;
+  text-align: center;
+}
+
+.guestDoneBtn {
+  background: var(--color-fg) !important;
+  color: #fff !important;
+  border-radius: 8px !important;
+  margin-top: 8px !important;
+  padding: 8px !important;
+  font-size: 0.85rem !important;
+
+  &:hover {
+    background: var(--color-dark-surface) !important;
+  }
+}
+
+// Date picker popover
+.datePopoverPaper {
+  border-radius: 16px !important;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.14) !important;
+  border: 1px solid var(--color-border) !important;
+  overflow: hidden !important;
+}
+
+.calendarHeader {
+  padding: 16px 20px 4px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.calendarHeaderText {
+  font-size: 0.88rem !important;
+  font-weight: 700 !important;
+  color: var(--color-fg) !important;
+}
+
+.calendarSubText {
+  font-size: 0.78rem !important;
+  color: var(--color-neutral) !important;
+  margin-top: 2px !important;
+}
+
+.calendar {
+  // Selected day — gold
+  :global(.MuiPickersDay-root.Mui-selected) {
+    background-color: var(--color-gold) !important;
+    color: #fff !important;
+    font-weight: 700 !important;
+  }
+
+  :global(.MuiPickersDay-root.Mui-selected:hover) {
+    background-color: #b08c3f !important;
+  }
+
+  // Today indicator
+  :global(.MuiPickersDay-today:not(.Mui-selected)) {
+    border-color: var(--color-gold) !important;
+  }
+
+  // Hover on unselected days
+  :global(.MuiPickersDay-root:not(.Mui-selected):hover) {
+    background-color: rgba(197, 160, 89, 0.12) !important;
+  }
+
+  // Navigation arrows
+  :global(.MuiPickersArrowSwitcher-button) {
+    color: var(--color-fg) !important;
+  }
+
+  // Month/year header
+  :global(.MuiPickersCalendarHeader-label) {
+    font-weight: 700 !important;
+    color: var(--color-fg) !important;
   }
 }

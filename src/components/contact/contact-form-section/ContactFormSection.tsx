@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { Controller, useForm } from 'react-hook-form';
 import {
   Box,
   Container,
@@ -11,7 +12,6 @@ import {
   Select,
   FormControl,
   InputLabel,
-  SelectChangeEvent,
 } from '@mui/material';
 import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
 import PhoneOutlinedIcon from '@mui/icons-material/PhoneOutlined';
@@ -39,24 +39,28 @@ const HQ_INFO = [
 
 type SubmitState = 'idle' | 'loading' | 'sent';
 
+interface ContactFormValues {
+  fullName: string;
+  email: string;
+  subject: string;
+  message: string;
+}
+
 export default function ContactFormSection() {
-  const [subject, setSubject] = useState<string>('General Inquiry');
   const [submitState, setSubmitState] = useState<SubmitState>('idle');
 
-  function handleSubjectChange(e: SelectChangeEvent<string>) {
-    setSubject(e.target.value);
-  }
+  const { control, handleSubmit, reset } = useForm<ContactFormValues>({
+    defaultValues: { fullName: '', email: '', subject: 'General Inquiry', message: '' },
+  });
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
+  const onSubmit = () => {
     setSubmitState('loading');
     setTimeout(() => {
       setSubmitState('sent');
-      (e.target as HTMLFormElement).reset();
-      setSubject('General Inquiry');
+      reset();
       setTimeout(() => setSubmitState('idle'), 3000);
     }, 1500);
-  }
+  };
 
   return (
     <Box className={styles.root}>
@@ -72,58 +76,83 @@ export default function ContactFormSection() {
               <Box className={styles.accent} aria-hidden />
             </Box>
 
-            <Box component="form" onSubmit={handleSubmit} className={styles.form}>
+            <Box component="form" onSubmit={handleSubmit(onSubmit)} className={styles.form} noValidate>
               <Box className={styles.nameRow}>
-                <TextField
-                  label="Full Name"
-                  placeholder="John Doe"
-                  fullWidth
-                  className={styles.field}
-                  slotProps={{
-                    inputLabel: { className: styles.label },
-                    input: { className: styles.input },
-                  }}
+                <Controller
+                  name="fullName"
+                  control={control}
+                  rules={{ required: true }}
+                  render={({ field }) => (
+                    <TextField
+                      {...field}
+                      label="Full Name"
+                      placeholder="John Doe"
+                      fullWidth
+                      className={styles.field}
+                      slotProps={{
+                        inputLabel: { className: styles.label },
+                        input: { className: styles.input },
+                      }}
+                    />
+                  )}
                 />
-                <TextField
-                  label="Email Address"
-                  type="email"
-                  placeholder="john@example.com"
-                  fullWidth
-                  className={styles.field}
-                  slotProps={{
-                    inputLabel: { className: styles.label },
-                    input: { className: styles.input },
-                  }}
+                <Controller
+                  name="email"
+                  control={control}
+                  rules={{ required: true }}
+                  render={({ field }) => (
+                    <TextField
+                      {...field}
+                      label="Email Address"
+                      type="email"
+                      placeholder="john@example.com"
+                      fullWidth
+                      className={styles.field}
+                      slotProps={{
+                        inputLabel: { className: styles.label },
+                        input: { className: styles.input },
+                      }}
+                    />
+                  )}
                 />
               </Box>
 
               <FormControl fullWidth className={styles.field}>
                 <InputLabel className={styles.label}>Subject</InputLabel>
-                <Select
-                  value={subject}
-                  label="Subject"
-                  onChange={handleSubjectChange}
-                  className={styles.select}
-                >
-                  {SUBJECTS.map((s) => (
-                    <MenuItem key={s} value={s}>
-                      {s}
-                    </MenuItem>
-                  ))}
-                </Select>
+                <Controller
+                  name="subject"
+                  control={control}
+                  render={({ field }) => (
+                    <Select {...field} label="Subject" className={styles.select}>
+                      {SUBJECTS.map((s) => (
+                        <MenuItem key={s} value={s}>
+                          {s}
+                        </MenuItem>
+                      ))}
+                    </Select>
+                  )}
+                />
               </FormControl>
 
-              <TextField
-                label="Message"
-                placeholder="How can we assist you today?"
-                multiline
-                rows={5}
-                fullWidth
-                className={styles.field}
-                slotProps={{
-                  inputLabel: { className: styles.label },
-                  input: { className: styles.input },
-                }}
+              <Controller
+                name="message"
+                control={control}
+                rules={{ required: true }}
+                render={({ field }) => (
+                  <TextField
+                    {...field}
+                    label="Message"
+                    placeholder="How can we assist you today?"
+                    multiline
+                    rows={5}
+                    fullWidth
+                    className={styles.field}
+                    slotProps={{
+                      inputLabel: { className: styles.label },
+                      input: { className: styles.input },
+                    }}
+                  />
+                )}
               />
 
               <Button

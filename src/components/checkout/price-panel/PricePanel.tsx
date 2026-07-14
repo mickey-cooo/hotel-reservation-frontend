@@ -9,12 +9,14 @@ interface PricePanelProps {
   pricePerNight: number;
   nights: number;
   onPay: () => void;
+  disabled?: boolean;
 }
 
 export default function PricePanel({
   pricePerNight,
   nights,
   onPay,
+  disabled,
 }: PricePanelProps) {
   const subtotal = pricePerNight * nights;
   const tax = Math.round(subtotal * 0.07);
@@ -66,6 +68,7 @@ export default function PricePanel({
         endIcon={<ArrowForwardIcon />}
         className={styles.payBtn}
         onClick={onPay}
+        disabled={disabled}
       >
         Pay Now
       </Button>

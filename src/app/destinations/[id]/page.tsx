@@ -9,8 +9,9 @@ import HotelAmenities from '@/components/hotel-detail/hotel-amenities/HotelAmeni
 import HotelRoomList from '@/components/hotel-detail/hotel-room-list/HotelRoomList';
 import HotelReviews from '@/components/hotel-detail/hotel-reviews/HotelReviews';
 import HotelBookingPanel from '@/components/hotel-detail/hotel-booking-panel/HotelBookingPanel';
+import Reveal from '@/components/reveal/Reveal';
 import WhyLuminaSection from '@/components/why/WhyLuminaSection';
-import { getHotelById } from '@/lib/hotel-data';
+import { getHotelById } from '@/lib/hotel-adapter';
 import styles from './page.module.scss';
 
 interface PageProps {
@@ -19,7 +20,7 @@ interface PageProps {
 
 export async function generateMetadata({ params }: PageProps) {
   const { id } = await params;
-  const hotel = getHotelById(id);
+  const hotel = await getHotelById(id);
   if (!hotel) return {};
   return {
     title: `${hotel.name} — Lumina Stay`,
@@ -29,7 +30,7 @@ export async function generateMetadata({ params }: PageProps) {
 
 export default async function HotelDetailPage({ params }: PageProps) {
   const { id } = await params;
-  const hotel = getHotelById(id);
+  const hotel = await getHotelById(id);
 
   if (!hotel) notFound();
 
@@ -64,7 +65,7 @@ export default async function HotelDetailPage({ params }: PageProps) {
 
               <Divider className={styles.divider} />
 
-              <HotelRoomList rooms={hotel.rooms} />
+              <HotelRoomList rooms={hotel.rooms} hotelId={hotel.id} />
 
               <Divider className={styles.divider} />
 
@@ -73,7 +74,7 @@ export default async function HotelDetailPage({ params }: PageProps) {
 
             <Box className={styles.sidePanel}>
               <HotelBookingPanel
-                price={hotel.price}
+                rooms={hotel.rooms}
                 rating={hotel.rating}
                 hotelName={hotel.name}
                 hotelId={hotel.id}
@@ -83,7 +84,9 @@ export default async function HotelDetailPage({ params }: PageProps) {
         </Container>
       </Box>
 
-      <WhyLuminaSection />
+      <Reveal>
+        <WhyLuminaSection />
+      </Reveal>
 
       <Footer />
     </>

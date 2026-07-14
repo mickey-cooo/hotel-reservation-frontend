@@ -12,6 +12,7 @@ const FOOTER_LINKS = [
   { label: 'Terms of Service', href: '/terms-of-service' },
   { label: 'Help Center', href: '/help-center' },
   { label: 'Contact Us', href: '/contact' },
+  { label: 'Concierge', href: '/concierge' },
 ] as const;
 
 export default function Footer() {

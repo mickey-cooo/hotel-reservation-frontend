@@ -1,3 +1,4 @@
+import NextLink from 'next/link';
 import { Box, Button, Chip, Typography } from '@mui/material';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutlineOutlined';
 import ChildCareIcon from '@mui/icons-material/ChildCare';
@@ -8,6 +9,7 @@ import styles from './HotelRoomCard.module.scss';
 
 interface HotelRoomCardProps {
   room: Room;
+  hotelId: string;
 }
 
 const BADGE_LABELS: Record<NonNullable<Room['badge']>, string> = {
@@ -15,8 +17,8 @@ const BADGE_LABELS: Record<NonNullable<Room['badge']>, string> = {
   FEATURED: 'Popular',
 };
 
-export default function HotelRoomCard({ room }: HotelRoomCardProps) {
-  const { name, badge, capacity, sizeSqm, features, price, imageUrl } = room;
+export default function HotelRoomCard({ room, hotelId }: HotelRoomCardProps) {
+  const { id, name, badge, capacity, sizeSqm, features, price, imageUrl } = room;
 
   return (
     <Box className={styles.card}>
@@ -37,10 +39,12 @@ export default function HotelRoomCard({ room }: HotelRoomCardProps) {
         </Box>
 
         <Box className={styles.capacityRow}>
-          <Box className={styles.capacityItem}>
-            <AspectRatioIcon className={styles.capacityIcon} />
-            <Typography className={styles.capacityText}>{sizeSqm} sqm</Typography>
-          </Box>
+          {sizeSqm > 0 && (
+            <Box className={styles.capacityItem}>
+              <AspectRatioIcon className={styles.capacityIcon} />
+              <Typography className={styles.capacityText}>{sizeSqm} sqm</Typography>
+            </Box>
+          )}
           <Box className={styles.capacityItem}>
             <PersonOutlineIcon className={styles.capacityIcon} />
             <Typography className={styles.capacityText}>{capacity.adults} adults</Typography>
@@ -69,7 +73,12 @@ export default function HotelRoomCard({ room }: HotelRoomCardProps) {
             </Typography>
             <Typography className={styles.perNight}>/night</Typography>
           </Box>
-          <Button variant="contained" className={styles.bookBtn}>
+          <Button
+            variant="contained"
+            component={NextLink}
+            href={`/destinations/${hotelId}?roomId=${id}`}
+            className={styles.bookBtn}
+          >
             Book
           </Button>
         </Box>

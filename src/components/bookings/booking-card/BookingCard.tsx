@@ -27,11 +27,11 @@ export interface Booking {
 
 const SECONDARY_ACTION_CONFIG: Record<
   SecondaryAction,
-  { label: string; Icon: React.ElementType }
+  { label: string; Icon: React.ElementType; href?: string }
 > = {
   DOWNLOAD_INVOICE: { label: 'Download Invoice', Icon: DownloadOutlinedIcon },
-  GET_SUPPORT: { label: 'Get Support', Icon: HelpOutlineIcon },
-  CHAT_WITH_CONCIERGE: { label: 'Chat with Concierge', Icon: ChatOutlinedIcon },
+  GET_SUPPORT: { label: 'Get Support', Icon: HelpOutlineIcon, href: '/concierge' },
+  CHAT_WITH_CONCIERGE: { label: 'Chat with Concierge', Icon: ChatOutlinedIcon, href: '/concierge' },
 };
 
 interface BookingCardProps {
@@ -53,7 +53,7 @@ export default function BookingCard({ booking }: BookingCardProps) {
     detailHref,
   } = booking;
 
-  const { label: secondaryLabel, Icon: SecondaryIcon } =
+  const { label: secondaryLabel, Icon: SecondaryIcon, href: secondaryHref } =
     SECONDARY_ACTION_CONFIG[secondaryAction];
 
   const isActionRequired = status === 'ACTION_REQUIRED';
@@ -126,6 +126,7 @@ export default function BookingCard({ booking }: BookingCardProps) {
           <Button
             className={styles.secondaryActionBtn}
             startIcon={<SecondaryIcon fontSize="small" />}
+            {...(secondaryHref ? { component: Link, href: secondaryHref } : {})}
           >
             {secondaryLabel}
           </Button>

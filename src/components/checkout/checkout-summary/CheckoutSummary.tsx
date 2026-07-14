@@ -14,7 +14,7 @@ interface CheckoutSummaryProps {
   checkIn: string;
   checkOut: string;
   adults: number;
-  children: number;
+  childrenCount: number;
   nights: number;
 }
 
@@ -41,7 +41,7 @@ export default function CheckoutSummary({
   checkIn,
   checkOut,
   adults,
-  children,
+  childrenCount,
   nights,
 }: CheckoutSummaryProps) {
   return (
@@ -89,7 +89,7 @@ export default function CheckoutSummary({
       <Box className={styles.guestRow}>
         <PersonOutlineIcon className={styles.guestIcon} />
         <Typography className={styles.guestText}>
-          {guestLabel(adults, children)}
+          {guestLabel(adults, childrenCount)}
         </Typography>
       </Box>
     </Box>

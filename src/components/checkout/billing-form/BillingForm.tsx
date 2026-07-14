@@ -1,5 +1,7 @@
 'use client';
 
+import { useEffect } from 'react';
+import { Controller, useForm } from 'react-hook-form';
 import { Box, TextField, Typography } from '@mui/material';
 import styles from './BillingForm.module.scss';
 
@@ -16,55 +18,77 @@ interface BillingFormProps {
 }
 
 export default function BillingForm({ values, onChange }: BillingFormProps) {
-  function handleField(field: keyof BillingValues) {
-    return (e: React.ChangeEvent<HTMLInputElement>) =>
-      onChange({ ...values, [field]: e.target.value });
-  }
+  const { control, watch } = useForm<BillingValues>({ defaultValues: values });
+
+  useEffect(() => {
+    const subscription = watch((value) => onChange(value as BillingValues));
+    return () => subscription.unsubscribe();
+  }, [watch, onChange]);
 
   return (
     <Box className={styles.card}>
       <Typography className={styles.sectionTitle}>Billing Information</Typography>
 
       <Box className={styles.nameRow}>
-        <TextField
-          label="First Name"
-          value={values.firstName}
-          onChange={handleField('firstName')}
-          placeholder="First name"
-          fullWidth
-          className={styles.field}
-          slotProps={{ inputLabel: { className: styles.label }, input: { className: styles.input } }}
+        <Controller
+          name="firstName"
+          control={control}
+          render={({ field }) => (
+            <TextField
+              {...field}
+              label="First Name"
+              placeholder="First name"
+              fullWidth
+              className={styles.field}
+              slotProps={{ inputLabel: { className: styles.label }, input: { className: styles.input } }}
+            />
+          )}
         />
-        <TextField
-          label="Last Name"
-          value={values.lastName}
-          onChange={handleField('lastName')}
-          placeholder="Last name"
-          fullWidth
-          className={styles.field}
-          slotProps={{ inputLabel: { className: styles.label }, input: { className: styles.input } }}
+        <Controller
+          name="lastName"
+          control={control}
+          render={({ field }) => (
+            <TextField
+              {...field}
+              label="Last Name"
+              placeholder="Last name"
+              fullWidth
+              className={styles.field}
+              slotProps={{ inputLabel: { className: styles.label }, input: { className: styles.input } }}
+            />
+          )}
         />
       </Box>
 
-      <TextField
-        label="Email"
-        type="email"
-        value={values.email}
-        onChange={handleField('email')}
-        placeholder="example@lumina.com"
-        fullWidth
-        className={styles.field}
-        slotProps={{ inputLabel: { className: styles.label }, input: { className: styles.input } }}
+      <Controller
+        name="email"
+        control={control}
+        render={({ field }) => (
+          <TextField
+            {...field}
+            label="Email"
+            type="email"
+            placeholder="example@lumina.com"
+            fullWidth
+            className={styles.field}
+            slotProps={{ inputLabel: { className: styles.label }, input: { className: styles.input } }}
+          />
+        )}
       />
 
-      <TextField
-        label="Address"
-        value={values.address}
-        onChange={handleField('address')}
-        placeholder="Street, district, province"
-        fullWidth
-        className={styles.field}
-        slotProps={{ inputLabel: { className: styles.label }, input: { className: styles.input } }}
+      <Controller
+        name="address"
+        control={control}
+        render={({ field }) => (
+          <TextField
+            {...field}
+            label="Address"
+            placeholder="Street, district, province"
+            fullWidth
+            className={styles.field}
+            slotProps={{ inputLabel: { className: styles.label }, input: { className: styles.input } }}
+          />
+        )}
       />
     </Box>
   );

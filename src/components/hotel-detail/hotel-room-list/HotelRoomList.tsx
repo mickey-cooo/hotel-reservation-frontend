@@ -5,9 +5,10 @@ import styles from './HotelRoomList.module.scss';
 
 interface HotelRoomListProps {
   rooms: Room[];
+  hotelId: string;
 }
 
-export default function HotelRoomList({ rooms }: HotelRoomListProps) {
+export default function HotelRoomList({ rooms, hotelId }: HotelRoomListProps) {
   return (
     <Box className={styles.section}>
       <Typography variant="h6" className={styles.sectionTitle}>
@@ -15,7 +16,7 @@ export default function HotelRoomList({ rooms }: HotelRoomListProps) {
       </Typography>
       <Box className={styles.list}>
         {rooms.map((room) => (
-          <HotelRoomCard key={room.id} room={room} />
+          <HotelRoomCard key={room.id} room={room} hotelId={hotelId} />
         ))}
       </Box>
     </Box>

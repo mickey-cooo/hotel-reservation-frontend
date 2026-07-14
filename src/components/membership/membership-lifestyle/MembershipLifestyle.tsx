@@ -1,5 +1,6 @@
 import { Box, Typography } from '@mui/material';
 import VerifiedUserOutlinedIcon from '@mui/icons-material/VerifiedUserOutlined';
+import LanguageIcon from '@mui/icons-material/Language';
 import styles from './MembershipLifestyle.module.scss';
 
 export default function MembershipLifestyle() {
@@ -7,17 +8,31 @@ export default function MembershipLifestyle() {
     <Box component="section" className={styles.section}>
       <Box className={styles.textSide}>
         <Typography variant="h3" className={styles.title}>
-          มากกว่าแค่ที่พัก แต่คือรางวัลของชีวิต
+          มากกว่าแค่ที่พัก
+          <br />
+          แต่คือรางวัลของชีวิต
         </Typography>
         <Typography className={styles.description}>
           สัมผัสไลฟ์สไตล์ระดับพรีเมียมที่ถูกออกแบบมาเพื่อคุณ ไม่ว่าจะเป็นดินเนอร์สุดหรูริมหาด
           หรือการเดินทางด้วยเครื่องบินเจ็ทส่วนตัว
         </Typography>
-        <Box className={styles.trustRow}>
-          <VerifiedUserOutlinedIcon className={styles.trustIcon} />
-          <Typography className={styles.trustText}>
-            ความปลอดภัยและความเป็นส่วนตัวสูงสุด
-          </Typography>
+        <Box className={styles.trustList}>
+          <Box className={styles.trustRow}>
+            <Box className={styles.trustIconWrap}>
+              <VerifiedUserOutlinedIcon className={styles.trustIcon} />
+            </Box>
+            <Typography className={styles.trustText}>
+              ความปลอดภัยและความเป็นส่วนตัวสูงสุด
+            </Typography>
+          </Box>
+          <Box className={styles.trustRow}>
+            <Box className={styles.trustIconWrap}>
+              <LanguageIcon className={styles.trustIcon} />
+            </Box>
+            <Typography className={styles.trustText}>
+              เครือข่ายรีสอร์ทระดับ 5 ดาวทั่วโลก
+            </Typography>
+          </Box>
         </Box>
       </Box>
 

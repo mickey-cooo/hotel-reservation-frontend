@@ -8,13 +8,21 @@
 
 .heading {
   text-align: center;
-  margin-bottom: 64px;
+  margin-bottom: 80px;
+  max-width: 720px;
+  margin-inline: auto !important;
 }
 
 .sectionTitle {
+  font-size: 2rem !important;
   font-weight: 700 !important;
   color: var(--az-primary) !important;
-  margin-bottom: 16px !important;
+  margin-bottom: 24px !important;
+  letter-spacing: -0.01em !important;
+
+  @media (min-width: 900px) {
+    font-size: 2.5rem !important;
+  }
 
   @media (max-width: 599px) {
     font-size: 1.5rem !important;
@@ -23,92 +31,86 @@
 
 .sectionSubtitle {
   color: var(--az-on-surface-variant) !important;
-  max-width: 480px;
-  margin-inline: auto !important;
+  font-size: 1.0625rem !important;
+  line-height: 1.7 !important;
 }
 
 .grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 24px;
-  padding-block: 28px;
+  gap: 32px;
 
   @media (min-width: 900px) {
     grid-template-columns: repeat(3, 1fr);
-    align-items: center;
+    align-items: stretch;
   }
 }
 
-/* Glass card — Essential & Elite */
+/* ── Base card ── */
 .card {
   position: relative;
-  padding: 32px;
-  border-radius: 12px;
+  padding: 40px;
+  border-radius: 16px;
   display: flex;
   flex-direction: column;
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(198, 198, 205, 0.3);
-  transition: border-color 0.3s;
+  min-height: 680px;
+  background: #fff;
+  border: 1px solid rgba(198, 198, 205, 0.5);
+  transition:
+    box-shadow 0.3s,
+    border-color 0.3s;
 
   &:hover {
+    box-shadow: 0 10px 40px rgba(11, 28, 48, 0.08);
+    border-color: rgba(119, 90, 25, 0.2);
+  }
+
+  @media (max-width: 599px) {
+    padding: 28px;
+    min-height: auto;
+  }
+}
+
+/* ── Featured card (Select) ── */
+.cardFeatured {
+  border: 2px solid var(--az-secondary);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.12);
+
+  @media (min-width: 900px) {
+    transform: scale(1.02);
+    z-index: 10;
+  }
+
+  &:hover {
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.18);
     border-color: var(--az-secondary);
   }
 }
 
-/* Featured card — Select (dark navy) */
-.cardFeatured {
+/* ── Elite card (dark navy) ── */
+.cardElite {
   background: var(--az-primary-container);
-  border-color: rgba(119, 90, 25, 0.3);
+  border-color: transparent;
   box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
 
-  @media (min-width: 900px) {
-    transform: scale(1.05);
-    z-index: 10;
-  }
-
-  @media (max-width: 899px) {
-    transform: none;
-    order: -1;
-  }
-
   &:hover {
-    border-color: rgba(119, 90, 25, 0.5);
-  }
-
-  /* Override text colors for dark background via descendant selectors */
-  .tierDesc {
-    color: var(--az-on-primary-container) !important;
-  }
-
-  .price {
-    color: #fff !important;
-  }
-
-  .priceNote {
-    color: var(--az-on-primary-container) !important;
-  }
-
-  .perkIcon {
-    color: var(--az-secondary-fixed-dim) !important;
-  }
-
-  .perkText {
-    color: #fff !important;
+    box-shadow: 0 35px 70px rgba(0, 0, 0, 0.3);
+    border-color: transparent;
   }
 }
 
 .recommendedBadge {
   position: absolute;
-  top: -14px;
+  top: -16px;
   left: 50%;
   transform: translateX(-50%);
   background: var(--az-secondary);
   color: #fff;
-  font-size: 0.7rem;
+  font-size: 0.625rem;
   font-weight: 700;
-  letter-spacing: 0.08em;
-  padding: 4px 16px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 6px 20px;
   border-radius: 999px;
   white-space: nowrap;
 }
@@ -118,78 +120,100 @@
 }
 
 .levelLabel {
-  font-size: 0.75rem !important;
-  font-weight: 600 !important;
-  letter-spacing: 0.05em !important;
+  font-size: 0.6875rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.1em !important;
   text-transform: uppercase !important;
-  color: var(--az-on-surface-variant) !important;
+  color: var(--az-secondary) !important;
+  display: block !important;
+  margin-bottom: 16px !important;
 }
 
-.levelLabelFeatured {
-  color: var(--az-on-primary-container) !important;
+.levelLabelElite {
+  color: var(--az-secondary-fixed-dim) !important;
 }
 
 .tierName {
+  font-size: 1.875rem !important;
   font-weight: 700 !important;
-  margin-top: 8px !important;
-  margin-bottom: 16px !important;
+  margin-bottom: 24px !important;
   color: var(--az-primary) !important;
 }
 
-.tierNameFeatured {
-  background: linear-gradient(135deg, #775a19 0%, #e9c176 50%, #775a19 100%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.tierDesc {
-  color: var(--az-on-surface-variant) !important;
-  margin-bottom: 24px !important;
-  line-height: 1.6 !important;
+.tierNameElite {
+  color: #fff !important;
 }
 
 .priceRow {
   display: flex;
   align-items: baseline;
-  gap: 8px;
+  gap: 6px;
+  margin-bottom: 24px;
 }
 
 .price {
-  font-size: 1.875rem !important;
-  font-weight: 700 !important;
+  font-size: 2.25rem !important;
+  font-weight: 800 !important;
   color: var(--az-primary) !important;
+}
+
+.priceElite {
+  color: #fff !important;
 }
 
 .priceNote {
   font-size: 0.875rem !important;
+  font-weight: 500 !important;
   color: var(--az-on-surface-variant) !important;
+}
+
+.priceNoteElite {
+  color: rgba(124, 131, 155, 0.6) !important;
+}
+
+.tierDesc {
+  color: var(--az-on-surface-variant) !important;
+  line-height: 1.65 !important;
+  font-size: 0.9375rem !important;
+}
+
+.tierDescElite {
+  color: rgba(255, 255, 255, 0.8) !important;
 }
 
 .perkList {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 24px;
   flex: 1;
-  margin-bottom: 40px;
+  margin-bottom: 48px;
 }
 
 .perkItem {
   display: flex;
   align-items: flex-start;
-  gap: 12px;
+  gap: 16px;
 }
 
 .perkIcon {
   color: var(--az-secondary) !important;
   font-size: 1.25rem !important;
   flex-shrink: 0;
-  margin-top: 1px;
+  margin-top: 2px;
+}
+
+.perkIconElite {
+  color: var(--az-secondary-fixed-dim) !important;
 }
 
 .perkText {
   color: var(--az-on-surface) !important;
-  line-height: 1.5 !important;
+  line-height: 1.55 !important;
+  font-size: 0.9375rem !important;
+}
+
+.perkTextElite {
+  color: #fff !important;
 }
 
 .joinBtn {
@@ -197,14 +221,12 @@
   color: var(--az-primary) !important;
   text-transform: none !important;
   font-size: 0.875rem !important;
-  font-weight: 600 !important;
+  font-weight: 700 !important;
   padding-block: 14px !important;
-  border-radius: 8px !important;
-  transition: background 0.2s, color 0.2s !important;
+  border-radius: 12px !important;
 
-  &:hover {
-    background: var(--az-primary) !important;
-    color: #fff !important;
+  :global(.MuiTouchRipple-root) {
+    display: none;
   }
 }
 
@@ -213,14 +235,17 @@
   border-color: var(--az-secondary) !important;
   color: #fff !important;
 
-  &:hover {
-    background: var(--az-secondary-fixed-dim) !important;
-    border-color: var(--az-secondary-fixed-dim) !important;
+  :global(.MuiTouchRipple-root) {
+    display: none;
   }
 }
 
-@media (max-width: 599px) {
-  .card {
-    padding: 24px;
+.joinBtnElite {
+  background: #fff !important;
+  border-color: #fff !important;
+  color: var(--az-primary-container) !important;
+
+  :global(.MuiTouchRipple-root) {
+    display: none;
   }
 }

@@ -12,10 +12,11 @@ import styles from './BookingDetailContent.module.scss';
 interface BookingDetailContentProps {
   bookingRef: string;
   hotel: HotelDetail;
+  pricePerNight: number;
   checkIn: string;
   checkOut: string;
   adults: number;
-  children: number;
+  childrenCount: number;
   nights: number;
   guestFirstName: string;
   guestLastName: string;
@@ -27,10 +28,11 @@ interface BookingDetailContentProps {
 export default function BookingDetailContent({
   bookingRef,
   hotel,
+  pricePerNight,
   checkIn,
   checkOut,
   adults,
-  children,
+  childrenCount,
   nights,
   guestFirstName,
   guestLastName,
@@ -57,7 +59,7 @@ export default function BookingDetailContent({
           <BookingHotelCard hotel={hotel} roomName={roomName} />
 
           <Box className={styles.twoCol}>
-            <BookingStayDetails checkIn={checkIn} checkOut={checkOut} adults={adults} children={children} />
+            <BookingStayDetails checkIn={checkIn} checkOut={checkOut} adults={adults} childrenCount={childrenCount} />
             <BookingCancellationPolicy checkIn={checkIn} />
           </Box>
 
@@ -70,7 +72,7 @@ export default function BookingDetailContent({
         </Box>
 
         <Box className={styles.rightCol}>
-          <BookingPriceSummary roomName={roomName} pricePerNight={hotel.price} nights={nights} />
+          <BookingPriceSummary roomName={roomName} pricePerNight={pricePerNight} nights={nights} />
         </Box>
       </Box>
     </Box>

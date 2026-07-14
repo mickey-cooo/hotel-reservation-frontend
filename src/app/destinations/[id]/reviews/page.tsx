@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation';
 import Navbar from '@/components/navbar/Navbar';
 import Footer from '@/components/footer/Footer';
 import ReviewsPageContent from '@/components/hotel-detail/reviews-page-content/ReviewsPageContent';
-import { getHotelById } from '@/lib/hotel-data';
+import { getHotelById } from '@/lib/hotel-adapter';
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -10,7 +10,7 @@ interface PageProps {
 
 export async function generateMetadata({ params }: PageProps) {
   const { id } = await params;
-  const hotel = getHotelById(id);
+  const hotel = await getHotelById(id);
   if (!hotel) return {};
   return {
     title: `Guest Reviews — ${hotel.name} | Lumina Stay`,
@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: PageProps) {
 
 export default async function HotelReviewsPage({ params }: PageProps) {
   const { id } = await params;
-  const hotel = getHotelById(id);
+  const hotel = await getHotelById(id);
 
   if (!hotel) notFound();
 

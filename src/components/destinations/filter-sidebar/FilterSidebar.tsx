@@ -6,9 +6,13 @@ import CategoryFilter, { type CategoryId } from '@/components/destinations/categ
 import PriceRangeFilter from '@/components/destinations/price-range-filter/PriceRangeFilter';
 import AmenitiesFilter from '@/components/destinations/amenities-filter/AmenitiesFilter';
 
-export default function FilterSidebar() {
+interface FilterSidebarProps {
+  priceRange: [number, number];
+  onPriceChange: (range: [number, number]) => void;
+}
+
+export default function FilterSidebar({ priceRange, onPriceChange }: FilterSidebarProps) {
   const [activeCategory, setActiveCategory] = useState<CategoryId>('luxury');
-  const [priceRange, setPriceRange] = useState<[number, number]>([200, 2500]);
   const [selectedAmenities, setSelectedAmenities] = useState<string[]>([]);
 
   function toggleAmenity(amenity: string) {
@@ -20,7 +24,7 @@ export default function FilterSidebar() {
   return (
     <Box>
       <CategoryFilter activeCategory={activeCategory} onCategoryChange={setActiveCategory} />
-      <PriceRangeFilter priceRange={priceRange} onPriceChange={setPriceRange} />
+      <PriceRangeFilter priceRange={priceRange} onPriceChange={onPriceChange} />
       <AmenitiesFilter selectedAmenities={selectedAmenities} onToggle={toggleAmenity} />
     </Box>
   );

@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation';
 import Navbar from '@/components/navbar/Navbar';
 import Footer from '@/components/footer/Footer';
 import PhotosPageContent from '@/components/hotel-detail/photos-page-content/PhotosPageContent';
-import { getHotelById } from '@/lib/hotel-data';
+import { getHotelById } from '@/lib/hotel-adapter';
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -10,7 +10,7 @@ interface PageProps {
 
 export async function generateMetadata({ params }: PageProps) {
   const { id } = await params;
-  const hotel = getHotelById(id);
+  const hotel = await getHotelById(id);
   if (!hotel) return {};
   return {
     title: `All Photos — ${hotel.name} | Lumina Stay`,
@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: PageProps) {
 
 export default async function HotelPhotosPage({ params }: PageProps) {
   const { id } = await params;
-  const hotel = getHotelById(id);
+  const hotel = await getHotelById(id);
 
   if (!hotel) notFound();
 

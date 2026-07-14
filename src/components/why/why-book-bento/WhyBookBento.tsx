@@ -42,7 +42,7 @@ export default function WhyBookBento() {
               Best Rate Guarantee
             </Typography>
             <Typography className={styles.cardDesc}>
-              Book directly and we'll match any lower rate you find elsewhere —
+              Book directly and we&apos;ll match any lower rate you find elsewhere —
               no questions asked.
             </Typography>
           </Box>

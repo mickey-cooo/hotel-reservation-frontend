@@ -1,8 +1,3 @@
-@import 'bootstrap/scss/functions';
-@import 'bootstrap/scss/variables';
-@import 'bootstrap/scss/variables-dark';
-@import 'bootstrap/scss/mixins/breakpoints';
-
 $color-brand: #c5a059;
 $color-dark: #0f172a;
 $color-dark-hover: #1e293b;
@@ -25,7 +20,7 @@ $color-dark-hover: #1e293b;
     url('https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1920&q=90')
       center / cover no-repeat;
 
-  @include media-breakpoint-up(md) {
+  @media (min-width: 900px) {
     min-height: 360px;
     padding-block: 48px;
   }
@@ -42,7 +37,7 @@ $color-dark-hover: #1e293b;
   margin-bottom: 24px !important;
   font-size: 1.75rem !important;
 
-  @include media-breakpoint-up(md) {
+  @media (min-width: 900px) {
     font-size: 2.25rem !important;
   }
 }
@@ -56,7 +51,7 @@ $color-dark-hover: #1e293b;
   overflow: hidden !important;
   padding-inline: 8px !important;
 
-  @include media-breakpoint-down(sm) {
+  @media (max-width: 599px) {
     flex-direction: column !important;
     align-items: stretch !important;
     padding-inline: 0 !important;
@@ -66,16 +61,18 @@ $color-dark-hover: #1e293b;
 .fieldWide {
   flex: 1.5;
 
-  @include media-breakpoint-down(sm) {
+  @media (max-width: 599px) {
     flex: none;
   }
 }
 
 .fieldNarrow {
   flex: 1;
+  min-width: 0;
 
-  @include media-breakpoint-down(sm) {
+  @media (max-width: 599px) {
     flex: none;
+    min-width: unset;
   }
 }
 
@@ -97,7 +94,7 @@ $color-dark-hover: #1e293b;
 .fieldDivider {
   margin-block: 12px !important;
 
-  @include media-breakpoint-down(sm) {
+  @media (max-width: 599px) {
     display: none !important;
   }
 }
@@ -108,7 +105,7 @@ $color-dark-hover: #1e293b;
   align-items: center;
   padding: 8px 12px;
 
-  @include media-breakpoint-down(sm) {
+  @media (max-width: 599px) {
     padding: 12px 16px;
     border-bottom: 1px solid var(--color-border);
   }
@@ -125,6 +122,8 @@ $color-dark-hover: #1e293b;
   flex-direction: column !important;
   align-items: flex-start !important;
   width: 100% !important;
+  min-width: 0 !important;
+  overflow: hidden !important;
 }
 
 .fieldLabel {
@@ -132,6 +131,170 @@ $color-dark-hover: #1e293b;
   font-weight: 600;
   letter-spacing: 0.06em;
   text-align: start !important;
+}
+
+.fieldClickable {
+  cursor: pointer;
+  transition: background 0.15s ease;
+
+  &:hover {
+    background: var(--color-slate-100);
+  }
+}
+
+.fieldTextActive {
+  font-size: 0.875rem !important;
+  color: var(--color-fg) !important;
+  font-weight: 600 !important;
+}
+
+.fieldDateSub {
+  font-size: 0.78rem !important;
+  color: var(--color-neutral) !important;
+  margin-top: 1px !important;
+}
+
+// Guest picker popover
+.guestPopoverPaper {
+  border-radius: 16px !important;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.14) !important;
+  border: 1px solid var(--color-border) !important;
+  overflow: hidden !important;
+  min-width: 300px;
+}
+
+.guestPopoverTitle {
+  display: block !important;
+  font-size: 0.88rem !important;
+  font-weight: 700 !important;
+  color: var(--color-fg) !important;
+  padding: 16px 20px 12px !important;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.guestPopoverContent {
+  padding: 4px 20px 16px;
+}
+
+.guestRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 0;
+
+  & + & {
+    border-top: 1px solid var(--color-border);
+  }
+}
+
+.guestLabelGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.guestLabel {
+  font-size: 0.88rem !important;
+  font-weight: 600 !important;
+  color: var(--color-fg) !important;
+}
+
+.guestSubLabel {
+  font-size: 0.75rem !important;
+  color: var(--color-neutral) !important;
+  margin-top: 1px !important;
+}
+
+.counter {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.counterBtn {
+  border: 1px solid var(--color-border) !important;
+  color: var(--color-fg) !important;
+  padding: 4px !important;
+  width: 28px !important;
+  height: 28px !important;
+
+  &:disabled {
+    opacity: 0.35 !important;
+  }
+}
+
+.counterVal {
+  font-size: 0.9rem !important;
+  font-weight: 600 !important;
+  color: var(--color-fg) !important;
+  min-width: 20px;
+  text-align: center;
+}
+
+.guestDoneBtn {
+  background: $color-dark !important;
+  color: #fff !important;
+  border-radius: 8px !important;
+  margin-top: 8px !important;
+  padding: 8px !important;
+  font-size: 0.85rem !important;
+
+  &:hover {
+    background: $color-dark-hover !important;
+  }
+}
+
+// Calendar popover
+.datePopoverPaper {
+  border-radius: 16px !important;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.14) !important;
+  border: 1px solid var(--color-border) !important;
+  overflow: hidden !important;
+}
+
+.calendarHeader {
+  padding: 14px 20px 4px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.calendarHeaderText {
+  font-size: 0.85rem !important;
+  font-weight: 700 !important;
+  color: var(--color-fg) !important;
+}
+
+.calendarSubText {
+  font-size: 0.78rem !important;
+  color: var(--color-neutral) !important;
+  margin-top: 2px !important;
+}
+
+.calendar {
+  :global(.MuiPickersDay-root.Mui-selected) {
+    background-color: $color-brand !important;
+    color: #fff !important;
+    font-weight: 700 !important;
+  }
+
+  :global(.MuiPickersDay-root.Mui-selected:hover) {
+    background-color: #b08c3f !important;
+  }
+
+  :global(.MuiPickersDay-today:not(.Mui-selected)) {
+    border-color: $color-brand !important;
+  }
+
+  :global(.MuiPickersDay-root:not(.Mui-selected):hover) {
+    background-color: rgba(197, 160, 89, 0.12) !important;
+  }
+
+  :global(.MuiPickersArrowSwitcher-button) {
+    color: var(--color-fg) !important;
+  }
+
+  :global(.MuiPickersCalendarHeader-label) {
+    font-weight: 700 !important;
+    color: var(--color-fg) !important;
+  }
 }
 
 .searchButton {
@@ -144,7 +307,7 @@ $color-dark-hover: #1e293b;
     background-color: $color-dark-hover !important;
   }
 
-  @include media-breakpoint-down(sm) {
+  @media (max-width: 599px) {
     border-radius: 0 0 12px 12px !important;
     margin: 0 !important;
     padding-block: 12px !important;

@@ -7,7 +7,7 @@ interface BookingStayDetailsProps {
   checkIn: string;
   checkOut: string;
   adults: number;
-  children: number;
+  childrenCount: number;
 }
 
 function formatDate(iso: string): string {
@@ -24,7 +24,7 @@ function guestLabel(adults: number, children: number): string {
   return parts.join(', ');
 }
 
-export default function BookingStayDetails({ checkIn, checkOut, adults, children }: BookingStayDetailsProps) {
+export default function BookingStayDetails({ checkIn, checkOut, adults, childrenCount }: BookingStayDetailsProps) {
   return (
     <Box className={styles.card}>
       <Box className={styles.header}>
@@ -51,7 +51,7 @@ export default function BookingStayDetails({ checkIn, checkOut, adults, children
         <PersonOutlinedIcon className={styles.guestsIcon} />
         <Box>
           <Typography className={styles.guestsLabel}>Guests</Typography>
-          <Typography className={styles.guestsValue}>{guestLabel(adults, children)}</Typography>
+          <Typography className={styles.guestsValue}>{guestLabel(adults, childrenCount)}</Typography>
         </Box>
       </Box>
     </Box>

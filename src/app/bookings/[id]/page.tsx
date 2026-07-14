@@ -3,12 +3,13 @@ import { Container } from '@mui/material';
 import Navbar from '@/components/navbar/Navbar';
 import Footer from '@/components/footer/Footer';
 import BookingDetailContent from '@/components/bookings/booking-detail-content/BookingDetailContent';
-import { getHotelById } from '@/lib/hotel-data';
+import { getHotelById } from '@/lib/hotel-adapter';
 
 interface BookingDetailPageProps {
   params: Promise<{ id: string }>;
   searchParams: Promise<{
     hotelId?: string;
+    roomId?: string;
     checkIn?: string;
     checkOut?: string;
     adults?: string;
@@ -29,13 +30,15 @@ function nightsBetween(a: string, b: string): number {
 
 export default async function BookingDetailPage({ params, searchParams }: BookingDetailPageProps) {
   const { id } = await params;
-  const { hotelId, checkIn, checkOut, adults, children, firstName, lastName, email, address, roomName } =
+  const { hotelId, roomId, checkIn, checkOut, adults, children, firstName, lastName, email, address, roomName } =
     await searchParams;
 
   if (!hotelId || !checkIn || !checkOut) notFound();
 
-  const hotel = getHotelById(hotelId);
+  const hotel = await getHotelById(hotelId);
   if (!hotel) notFound();
+
+  const room = hotel.rooms.find((r) => r.id === roomId) ?? hotel.rooms[0];
 
   const nights = nightsBetween(checkIn, checkOut);
 
@@ -46,16 +49,17 @@ export default async function BookingDetailPage({ params, searchParams }: Bookin
         <BookingDetailContent
           bookingRef={id}
           hotel={hotel}
+          pricePerNight={room?.price ?? 0}
           checkIn={checkIn}
           checkOut={checkOut}
           adults={parseInt(adults ?? '2', 10)}
-          children={parseInt(children ?? '0', 10)}
+          childrenCount={parseInt(children ?? '0', 10)}
           nights={nights}
           guestFirstName={firstName ?? ''}
           guestLastName={lastName ?? ''}
           guestEmail={email ?? ''}
           guestAddress={address ?? ''}
-          roomName={roomName ?? hotel.rooms[0]?.name ?? 'Standard Room'}
+          roomName={roomName ?? room?.name ?? 'Standard Room'}
         />
       </Container>
       <Footer />

@@ -40,7 +40,12 @@ export default function BookingBottomCta() {
             Our 24/7 dedicated concierge is ready to help with your
             reservations.
           </Typography>
-          <Link underline="none" className={styles.assistLink}>
+          <Link
+            component={NextLink}
+            href="/concierge"
+            underline="none"
+            className={styles.assistLink}
+          >
             Contact Support
           </Link>
         </Box>

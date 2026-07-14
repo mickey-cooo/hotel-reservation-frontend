@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { Box, Container, Typography, InputBase, Button } from '@mui/material';
+import NextLink from 'next/link';
 import SearchIcon from '@mui/icons-material/Search';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import PaymentsIcon from '@mui/icons-material/Payments';
@@ -158,6 +159,8 @@ export default function HelpCenterContent() {
               <Button
                 className={styles.ctaBtnPrimary}
                 startIcon={<ChatBubbleIcon />}
+                component={NextLink}
+                href="/concierge"
                 disableElevation
               >
                 Live Chat Now
