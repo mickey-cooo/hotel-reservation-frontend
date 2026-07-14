@@ -4,19 +4,7 @@
   --background: #ffffff;
   --foreground: #171717;
 
-  /* Lumina Stay theme tokens (mirrors theme.ts) */
-  --color-bg: #F8FAFC;
-  --color-fg: #0F172A;
-  --color-gold: #C5A059;
-  --color-neutral: #64748B;
-  --color-neutral-light: #94A3B8;
-  --color-dark-surface: #1E293B;
-
-  /* Extended palette used in components */
-  --color-border: #E2E8F0;
-  --color-border-light: #CBD5E1;
-  --color-text-body: #334155;
-  --color-slate-100: #F1F5F9;
+  /* --color-* tokens are injected from src/app/theme.ts via layout.tsx <style> tag */
 
   /* Azure & Gilt — surface */
   --az-surface: #f8f9ff;
