@@ -8,7 +8,8 @@ import CheckoutSummary from '@/components/checkout/checkout-summary/CheckoutSumm
 import BillingForm, { BillingValues } from '@/components/checkout/billing-form/BillingForm';
 import PaymentMethod, { PaymentMethodType } from '@/components/checkout/payment-method/PaymentMethod';
 import PricePanel from '@/components/checkout/price-panel/PricePanel';
-import type { HotelDetail, Room } from '@/lib/hotel-data';
+import type { HotelDetail } from '@/models/entity/hotel/hotel.model';
+import type { Room } from '@/models/entity/hotel-room/hotel-room.model';
 import { createBookingAction } from '@/service/hotel-booking/booking-actions';
 import styles from './CheckoutContent.module.scss';
 

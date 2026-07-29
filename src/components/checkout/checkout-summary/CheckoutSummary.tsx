@@ -1,10 +1,17 @@
-import { Box, Chip, Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutlined';
 import Image from 'next/image';
+import StatusBadge from '@/components/ui/status-badge/StatusBadge';
 import styles from './CheckoutSummary.module.scss';
 
 type Badge = 'TRENDING' | 'FEATURED' | 'EXCLUSIVE';
+
+const BADGE_CONFIG: Record<Badge, { background: string; color: string }> = {
+  TRENDING: { background: '#fef3c7', color: '#92400e' },
+  FEATURED: { background: '#ede9fe', color: '#5b21b6' },
+  EXCLUSIVE: { background: 'var(--color-fg)', color: 'var(--color-gold)' },
+};
 
 interface CheckoutSummaryProps {
   hotelName: string;
@@ -61,10 +68,11 @@ export default function CheckoutSummary({
           <Box className={styles.nameRow}>
             <Typography className={styles.hotelName}>{hotelName}</Typography>
             {badge && (
-              <Chip
+              <StatusBadge
                 label={badge}
-                size="small"
-                className={`${styles.badge} ${styles[`badge${badge}`]}`}
+                background={BADGE_CONFIG[badge].background}
+                color={BADGE_CONFIG[badge].color}
+                className={styles.badge}
               />
             )}
           </Box>

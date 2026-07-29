@@ -1,20 +1,14 @@
-import { notFound } from 'next/navigation';
-import { Container } from '@mui/material';
+'use client';
+
+import { Suspense, useEffect, useState } from 'react';
+import { notFound, useSearchParams } from 'next/navigation';
+import { Box, CircularProgress, Container } from '@mui/material';
 import Navbar from '@/components/navbar/Navbar';
 import Footer from '@/components/footer/Footer';
 import CheckoutContent from '@/components/checkout/checkout-content/CheckoutContent';
-import { getHotelById } from '@/lib/hotel-adapter';
-
-interface CheckoutPageProps {
-  searchParams: Promise<{
-    hotelId?: string;
-    roomId?: string;
-    checkIn?: string;
-    checkOut?: string;
-    adults?: string;
-    children?: string;
-  }>;
-}
+import { getHotelByIdAction } from '@/lib/hotel-actions';
+import type { HotelDetail } from '@/models/entity/hotel/hotel.model';
+import styles from './page.module.scss';
 
 function nightsBetween(a: string, b: string): number {
   const diff = new Date(b).getTime() - new Date(a).getTime();
@@ -22,17 +16,63 @@ function nightsBetween(a: string, b: string): number {
   return nights > 0 ? nights : 1;
 }
 
-export default async function CheckoutPage({
-  searchParams,
-}: CheckoutPageProps) {
-  const { hotelId, roomId, checkIn, checkOut, adults, children } = await searchParams;
+function CheckoutPageFallback() {
+  return (
+    <>
+      <Navbar variant="light" />
+      <Box className={styles.loadingContainer}>
+        <CircularProgress />
+      </Box>
+      <Footer />
+    </>
+  );
+}
+
+export default function CheckoutPage() {
+  return (
+    <Suspense fallback={<CheckoutPageFallback />}>
+      <CheckoutPageInner />
+    </Suspense>
+  );
+}
+
+function CheckoutPageInner() {
+  const searchParams = useSearchParams();
+  const hotelId = searchParams.get('hotelId') ?? undefined;
+  const roomId = searchParams.get('roomId') ?? undefined;
+  const checkIn = searchParams.get('checkIn') ?? undefined;
+  const checkOut = searchParams.get('checkOut') ?? undefined;
+  const adults = searchParams.get('adults') ?? undefined;
+  const children = searchParams.get('children') ?? undefined;
+
+  const [hotelDetail, setHotelDetail] = useState<HotelDetail | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (!hotelId) return;
+    getHotelByIdAction(hotelId).then((data) => {
+      setHotelDetail(data ?? null);
+      setLoading(false);
+    });
+  }, [hotelId]);
 
   if (!hotelId || !roomId || !checkIn || !checkOut) notFound();
 
-  const hotel = await getHotelById(hotelId);
-  if (!hotel) notFound();
+  if (loading) {
+    return (
+      <>
+        <Navbar variant="light" />
+        <Box className={styles.loadingContainer}>
+          <CircularProgress />
+        </Box>
+        <Footer />
+      </>
+    );
+  }
 
-  const room = hotel.rooms.find((r) => r.id === roomId);
+  if (!hotelDetail) notFound();
+
+  const room = hotelDetail.rooms.find((r) => r.id === roomId);
   if (!room) notFound();
 
   const nights = nightsBetween(checkIn, checkOut);
@@ -44,7 +84,7 @@ export default async function CheckoutPage({
       <Navbar variant="light" />
       <Container maxWidth="lg">
         <CheckoutContent
-          hotel={hotel}
+          hotel={hotelDetail}
           room={room}
           checkIn={checkIn}
           checkOut={checkOut}
