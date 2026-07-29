@@ -1,0 +1,15 @@
+.row {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.icon {
+  font-size: 14px !important;
+  color: var(--color-neutral) !important;
+}
+
+.text {
+  font-size: 0.8rem !important;
+  color: var(--color-neutral) !important;
+}

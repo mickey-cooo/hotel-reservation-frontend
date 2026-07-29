@@ -1,0 +1,31 @@
+.numericRow {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.starIcon {
+  font-size: 14px !important;
+  color: var(--color-gold) !important;
+}
+
+.ratingText {
+  font-size: 0.8rem !important;
+  font-weight: 600 !important;
+  color: var(--color-fg) !important;
+}
+
+.starsRow {
+  display: flex;
+  gap: 1px;
+}
+
+.starFilled {
+  color: var(--color-gold) !important;
+  font-size: 0.95rem !important;
+}
+
+.starEmpty {
+  color: var(--color-border) !important;
+  font-size: 0.95rem !important;
+}

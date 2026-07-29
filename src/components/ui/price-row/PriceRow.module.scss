@@ -1,0 +1,16 @@
+.row {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.amount {
+  font-weight: 700 !important;
+  font-size: 1.1rem !important;
+  color: var(--color-fg) !important;
+}
+
+.unit {
+  font-size: 0.75rem !important;
+  color: var(--color-neutral) !important;
+}
