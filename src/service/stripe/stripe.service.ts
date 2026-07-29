@@ -1,15 +1,8 @@
 import { AxiosError } from 'axios';
 import { requestClient, authHeader } from '../request';
 
-export interface CreateCheckoutSessionDto {
-  orderId: string;
-  bookingCode: string;
-  amount: number;
-  currency: string;
-  productName: string;
-  successUrl: string;
-  cancelUrl: string;
-}
+export type { CreateCheckoutSessionDto } from '@/models/entity/stripe/stripe.model';
+import type { CreateCheckoutSessionDto } from '@/models/entity/stripe/stripe.model';
 
 const BASE_PATH = '/api/v1/stripe';
 

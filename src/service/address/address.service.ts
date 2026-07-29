@@ -1,23 +1,14 @@
 import { AxiosError } from 'axios';
 import { requestClient, authHeader } from '../request';
 
-export interface CreateAddressBodyDto {
-  country: string;
-  province: string;
-  district: string;
-  subDistrict: string;
-  postalCode: string;
-  detail: string;
-}
-
-export interface UpdateAddressBodyDto {
-  country: string;
-  province: string;
-  district: string;
-  subDistrict: string;
-  postalCode: string;
-  detail: string;
-}
+export type {
+  CreateAddressBodyDto,
+  UpdateAddressBodyDto,
+} from '@/models/entity/address/address.model';
+import type {
+  CreateAddressBodyDto,
+  UpdateAddressBodyDto,
+} from '@/models/entity/address/address.model';
 
 const BASE_PATH = '/api/v1/address';
 

@@ -1,17 +1,14 @@
 import { AxiosError } from 'axios';
 import { requestClient, authHeader } from '../request';
 
-export interface CreateBodyRoleDto {
-  name: string;
-  description: string;
-  priority: number;
-}
-
-export interface UpdateBodyRoleDto {
-  name: string;
-  description: string;
-  priority: number;
-}
+export type {
+  CreateBodyRoleDto,
+  UpdateBodyRoleDto,
+} from '@/models/entity/role/role.model';
+import type {
+  CreateBodyRoleDto,
+  UpdateBodyRoleDto,
+} from '@/models/entity/role/role.model';
 
 const BASE_PATH = '/api/v1/role';
 

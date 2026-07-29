@@ -1,49 +1,22 @@
 import { AxiosError } from 'axios';
 import { requestClient, authHeader } from '../request';
 
-export interface AddressDto {
-  country: string;
-  province: string;
-  district: string;
-  subDistrict: string;
-  postalCode: string;
-  detail: string;
-}
-
-export interface RegisterBodyDto {
-  email: string;
-  password: string;
-  confirmPassword: string;
-}
-
-export interface VerifyOtpBodyDto {
-  email: string;
-  otp: string;
-}
-
-export interface LoginBodyDto {
-  email: string;
-  password: string;
-}
-
-export interface UserNameDto {
-  th: string;
-  en: string;
-}
-
-export interface CreateBodyUserDto {
-  firstName: UserNameDto;
-  lastName: UserNameDto;
-  phoneNumber: string;
-  addressDetail: AddressDto;
-}
-
-export interface UpdateBodyUserDto {
-  firstName: UserNameDto;
-  lastName: UserNameDto;
-  phoneNumber: string;
-  addressDetail: AddressDto;
-}
+export type {
+  AddressDto,
+  RegisterBodyDto,
+  VerifyOtpBodyDto,
+  LoginBodyDto,
+  UserNameDto,
+  CreateBodyUserDto,
+  UpdateBodyUserDto,
+} from '@/models/entity/user/user.model';
+import type {
+  RegisterBodyDto,
+  VerifyOtpBodyDto,
+  LoginBodyDto,
+  CreateBodyUserDto,
+  UpdateBodyUserDto,
+} from '@/models/entity/user/user.model';
 
 const BASE_PATH = '/api/v1/user';
 

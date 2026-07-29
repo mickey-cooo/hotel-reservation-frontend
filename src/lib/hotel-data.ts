@@ -1,47 +1,4 @@
-import type { Hotel } from '@/components/destinations/hotel-card/HotelCard';
-
-export type PhotoCategory =
-  | 'Guest Rooms'
-  | 'Suites'
-  | 'Dining'
-  | 'Spa & Wellness'
-  | 'Poolside';
-
-export interface GalleryPhoto {
-  url: string;
-  category: PhotoCategory;
-}
-
-export interface Room {
-  id: string;
-  name: string;
-  badge?: 'BESTSELLER' | 'FEATURED';
-  capacity: { adults: number; children: number };
-  sizeSqm: number;
-  features: string[];
-  price: number;
-  imageUrl: string;
-}
-
-export interface Review {
-  id: string;
-  author: string;
-  date: string;
-  rating: number;
-  comment: string;
-  helpfulCount?: number;
-  photos?: string[];
-}
-
-export interface HotelDetail extends Hotel {
-  description: string;
-  reviewCount: number;
-  galleryImages: string[];
-  amenities: string[];
-  rooms: Room[];
-  reviews: Review[];
-  photos: GalleryPhoto[];
-}
+import type { HotelDetail } from '@/models/entity/hotel/hotel.model';
 
 export const HOTEL_DETAILS: HotelDetail[] = [
   {

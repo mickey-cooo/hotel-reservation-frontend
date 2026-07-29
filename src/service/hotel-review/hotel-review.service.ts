@@ -1,33 +1,18 @@
 import { AxiosError } from 'axios';
 import { requestClient, authHeader } from '../request';
 
-export interface CreateHotelReviewBodyDto {
-  hotel_id: string;
-  title: string;
-  description: string;
-  rating: number;
-  isAnonymous: boolean;
-  isReply: boolean;
-}
-
-export interface UpdateHotelReviewBodyDto {
-  hotel_id: string;
-  title: string;
-  description: string;
-  rating: number;
-  isAnonymous: boolean;
-}
-
-export interface ReplyHotelReviewBodyDto {
-  hotel_id: string;
-  review_id: string;
-  reply: string;
-  isReply: boolean;
-}
-
-export interface FindAllHotelReviewQuery {
-  hotel_id: string;
-}
+export type {
+  CreateHotelReviewBodyDto,
+  UpdateHotelReviewBodyDto,
+  ReplyHotelReviewBodyDto,
+  FindAllHotelReviewQuery,
+} from '@/models/entity/hotel-review/hotel-review.model';
+import type {
+  CreateHotelReviewBodyDto,
+  UpdateHotelReviewBodyDto,
+  ReplyHotelReviewBodyDto,
+  FindAllHotelReviewQuery,
+} from '@/models/entity/hotel-review/hotel-review.model';
 
 const BASE_PATH = '/api/v1/hotel-review';
 

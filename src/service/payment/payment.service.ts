@@ -1,34 +1,18 @@
 import { AxiosError } from 'axios';
 import { requestClient, authHeader } from '../request';
 
-export interface PaymentResponse {
-  id: string;
-  cardHolderName: string;
-  cardExpiryMonth: string;
-  cardExpiryYear: string;
-  status: string;
-}
-
-export interface CreatePaymentBodyDto {
-  cardNumber: string;
-  cardHolderName: string;
-  cardExpiryMonth: string;
-  cardExpiryYear: string;
-  cardCvv: string;
-}
-
-export interface UpdatePaymentBodyDto {
-  user_id?: string;
-  cardNumber?: string;
-  cardHolderName?: string;
-  cardExpiryMonth?: string;
-  cardExpiryYear?: string;
-  cardCvv?: string;
-}
-
-export interface FindAllPaymentQuery {
-  user_id?: string;
-}
+export type {
+  PaymentResponse,
+  CreatePaymentBodyDto,
+  UpdatePaymentBodyDto,
+  FindAllPaymentQuery,
+} from '@/models/entity/payment/payment.model';
+import type {
+  PaymentResponse,
+  CreatePaymentBodyDto,
+  UpdatePaymentBodyDto,
+  FindAllPaymentQuery,
+} from '@/models/entity/payment/payment.model';
 
 const BASE_PATH = '/api/v1/payment';
 

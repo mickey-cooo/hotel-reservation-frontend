@@ -1,28 +1,16 @@
 import { AxiosError } from 'axios';
 import { requestClient, authHeader } from '../request';
 
-export interface CreateManyHotelRoomBodyDto {
-  rooms: string[];
-}
-
-export interface UpdateHotelRoomBodyDto {
-  name: string;
-  description: string;
-  image: string;
-  price: number;
-  capacity: number;
-  policies: string[];
-  amenities: string[];
-  type: string;
-}
-
-export interface FindAllHotelRoomQuery {
-  hotel_id?: string;
-  checkInDate?: string;
-  checkOutDate?: string;
-  guestNumber?: number;
-  roomCount?: number;
-}
+export type {
+  CreateManyHotelRoomBodyDto,
+  UpdateHotelRoomBodyDto,
+  FindAllHotelRoomQuery,
+} from '@/models/entity/hotel-room/hotel-room.model';
+import type {
+  CreateManyHotelRoomBodyDto,
+  UpdateHotelRoomBodyDto,
+  FindAllHotelRoomQuery,
+} from '@/models/entity/hotel-room/hotel-room.model';
 
 const BASE_PATH = '/api/v1/hotel-room';
 

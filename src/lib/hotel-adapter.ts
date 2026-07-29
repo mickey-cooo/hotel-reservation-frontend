@@ -1,55 +1,20 @@
 import { hotelService } from '@/service/hotel/hotel.service';
 import { hotelReviewService } from '@/service/hotel-review/hotel-review.service';
 import { getServerAuthToken } from '@/service/server-auth';
-import type { Hotel } from '@/components/destinations/hotel-card/HotelCard';
-import type { HotelDetail, Room, Review } from '@/lib/hotel-data';
-
-export interface ApiAddress {
-  id: string;
-  country: string;
-  province: string;
-  district: string;
-  subDistrict: string;
-  postalCode: string;
-  detail?: string;
-}
-
-export interface ApiHotelRoom {
-  id: string;
-  name: string;
-  description: string;
-  status: string;
-  image?: string;
-  price: number;
-  capacity: number;
-  policies: string[];
-  amenities: string[];
-  type: string;
-}
-
-export interface ApiHotel {
-  id: string;
-  name: string;
-  description: string;
-  image?: string;
-  phoneNumber: string;
-  email: string;
-  website?: string;
-  status: string;
-  address?: ApiAddress;
-  rooms?: ApiHotelRoom[];
-}
-
-export interface ApiHotelReview {
-  id: string;
-  title: string;
-  description: string;
-  rating: number;
-  isAnonymous: boolean;
-  isReply: boolean;
-  createdBy: string;
-  createdAt: string;
-}
+import type {
+  ApiHotel,
+  Hotel,
+  HotelDetail,
+} from '@/models/entity/hotel/hotel.model';
+import type {
+  ApiHotelRoom,
+  Room,
+} from '@/models/entity/hotel-room/hotel-room.model';
+import type {
+  ApiHotelReview,
+  Review,
+} from '@/models/entity/hotel-review/hotel-review.model';
+import type { ApiAddress } from '@/models/entity/address/address.model';
 
 const AMENITY_LABELS: Record<string, string> = {
   wifi: 'Free WiFi',
@@ -166,14 +131,13 @@ interface FindAllHotelResponse {
 
 export async function getAllHotels(
   page?: number,
+  limit?: number,
 ): Promise<{ hotels: Hotel[]; totalCount: number }> {
-  const token = await getServerAuthToken();
-
   try {
-    const res = await hotelService.findAll<FindAllHotelResponse>(
-      { page },
-      token,
-    );
+    const res = await hotelService.findAll<FindAllHotelResponse>({
+      page,
+      limit,
+    });
     return {
       hotels: res.data.map((hotel) => adaptHotelCard(hotel)),
       totalCount: res.meta.totalItems,
