@@ -12,11 +12,13 @@ import {
 } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import StarIcon from '@mui/icons-material/Star';
+import StarBorderIcon from '@mui/icons-material/StarBorder';
+import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined';
+import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutlineOutlined';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import Breadcrumb from '@/components/breadcrumb/Breadcrumb';
-import ReviewPageCard from '@/components/hotel-detail/review-page-card/ReviewPageCard';
-import type { HotelDetail } from '@/lib/hotel-data';
+import type { HotelDetail } from '@/models/entity/hotel/hotel.model';
 import styles from './ReviewsPageContent.module.scss';
 
 const AVATAR_COLORS = ['#C5A059', '#3B82F6', '#10B981', '#8B5CF6', '#EF4444', '#F97316'];
@@ -166,17 +168,72 @@ export default function ReviewsPageContent({ hotel }: ReviewsPageContentProps) {
           <Box className={styles.main}>
             {pageReviews.length > 0 ? (
               <Box className={styles.reviewsList}>
-                {pageReviews.map((review, index) => (
-                  <ReviewPageCard
-                    key={review.id}
-                    review={review}
-                    avatarColor={
-                      AVATAR_COLORS[
-                        ((currentPage - 1) * PAGE_SIZE + index) % AVATAR_COLORS.length
-                      ]
-                    }
-                  />
-                ))}
+                {pageReviews.map((review, index) => {
+                  const avatarColor =
+                    AVATAR_COLORS[
+                      ((currentPage - 1) * PAGE_SIZE + index) % AVATAR_COLORS.length
+                    ];
+                  return (
+                    <Box key={review.id} className={styles.reviewCard}>
+                      <Box className={styles.reviewCardHeader}>
+                        <Box className={styles.avatar} style={{ background: avatarColor }}>
+                          <Typography className={styles.avatarInitial}>
+                            {review.author.charAt(0)}
+                          </Typography>
+                        </Box>
+
+                        <Box className={styles.meta}>
+                          <Typography className={styles.authorName}>{review.author}</Typography>
+                          <Box className={styles.metaRow}>
+                            <Typography className={styles.stayDate}>Stayed in {review.date}</Typography>
+                            <Box className={styles.verifiedBadge}>
+                              <Typography className={styles.verifiedText}>VERIFIED STAY</Typography>
+                            </Box>
+                          </Box>
+                        </Box>
+
+                        <Box className={styles.reviewStars}>
+                          {Array.from({ length: 5 }).map((_, i) =>
+                            i < review.rating ? (
+                              <StarIcon key={i} className={styles.reviewStarFilled} />
+                            ) : (
+                              <StarBorderIcon key={i} className={styles.reviewStarEmpty} />
+                            ),
+                          )}
+                        </Box>
+                      </Box>
+
+                      <Typography className={styles.comment}>{review.comment}</Typography>
+
+                      {review.photos && review.photos.length > 0 && (
+                        <Box className={styles.photos}>
+                          {review.photos.map((src, i) => (
+                            <Box
+                              key={i}
+                              component="img"
+                              src={src}
+                              alt={`Review photo ${i + 1}`}
+                              className={styles.photo}
+                            />
+                          ))}
+                        </Box>
+                      )}
+
+                      <Box className={styles.actions}>
+                        <Box className={styles.actionBtn}>
+                          <ThumbUpOutlinedIcon className={styles.actionIcon} />
+                          <Typography className={styles.actionLabel}>
+                            Helpful ({review.helpfulCount ?? 0})
+                          </Typography>
+                        </Box>
+                        <Box className={styles.actionBtn}>
+                          <ChatBubbleOutlineIcon className={styles.actionIcon} />
+                          <Typography className={styles.actionLabel}>Comment</Typography>
+                        </Box>
+                      </Box>
+                    </Box>
+                  );
+                })}
               </Box>
             ) : (
               <Box className={styles.emptyState}>

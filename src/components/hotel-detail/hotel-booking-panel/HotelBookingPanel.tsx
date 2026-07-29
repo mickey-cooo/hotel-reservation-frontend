@@ -13,7 +13,6 @@ import {
   Select,
   Typography,
 } from '@mui/material';
-import StarIcon from '@mui/icons-material/Star';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import VerifiedUserOutlinedIcon from '@mui/icons-material/VerifiedUserOutlined';
@@ -21,20 +20,19 @@ import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import { LocalizationProvider, DateCalendar } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import dayjs, { Dayjs } from 'dayjs';
-import type { Room } from '@/lib/hotel-data';
+import Rating from '@/components/ui/rating/Rating';
+import type { Room } from '@/models/entity/hotel-room/hotel-room.model';
 import styles from './HotelBookingPanel.module.scss';
 
 interface HotelBookingPanelProps {
   rooms: Room[];
   rating: number;
-  hotelName: string;
   hotelId: string;
 }
 
 export default function HotelBookingPanel({
   rooms,
   rating,
-  hotelName: _hotelName,
   hotelId,
 }: HotelBookingPanelProps) {
   const router = useRouter();
@@ -86,12 +84,12 @@ export default function HotelBookingPanel({
             </Typography>
             <Typography className={styles.perNight}>&nbsp;/ night</Typography>
           </Box>
-          <Box className={styles.ratingRow}>
-            <StarIcon className={styles.starIcon} />
-            <Typography className={styles.ratingText}>
-              {rating.toFixed(1)}
-            </Typography>
-          </Box>
+          <Rating
+            value={rating}
+            className={styles.ratingRow}
+            iconClassName={styles.starIcon}
+            textClassName={styles.ratingText}
+          />
         </Box>
 
         <Select

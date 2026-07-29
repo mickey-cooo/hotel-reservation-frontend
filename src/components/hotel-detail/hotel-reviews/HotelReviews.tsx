@@ -1,7 +1,8 @@
 import NextLink from 'next/link';
 import { Box, Grid, Typography } from '@mui/material';
-import StarIcon from '@mui/icons-material/Star';
-import type { Review } from '@/lib/hotel-data';
+import InitialAvatar from '@/components/ui/initial-avatar/InitialAvatar';
+import Rating from '@/components/ui/rating/Rating';
+import type { Review } from '@/models/entity/hotel-review/hotel-review.model';
 import styles from './HotelReviews.module.scss';
 
 interface HotelReviewsProps {
@@ -29,25 +30,24 @@ export default function HotelReviews({ reviews, reviewCount, hotelId }: HotelRev
           <Grid key={review.id} size={{ xs: 12, sm: 6 }}>
             <Box className={styles.reviewCard}>
               <Box className={styles.reviewTop}>
-                <Box
+                <InitialAvatar
+                  name={review.author}
+                  color={AVATAR_COLORS[index % AVATAR_COLORS.length]}
+                  size={40}
                   className={styles.avatar}
-                  style={{ background: AVATAR_COLORS[index % AVATAR_COLORS.length] }}
-                >
-                  <Typography className={styles.avatarInitial}>
-                    {review.author.charAt(0)}
-                  </Typography>
-                </Box>
+                />
                 <Box className={styles.reviewMeta}>
                   <Typography className={styles.authorName}>{review.author}</Typography>
                   <Typography className={styles.reviewDate}>{review.date}</Typography>
                 </Box>
               </Box>
 
-              <Box className={styles.stars}>
-                {Array.from({ length: review.rating }).map((_, i) => (
-                  <StarIcon key={i} className={styles.starIcon} />
-                ))}
-              </Box>
+              <Rating
+                value={review.rating}
+                variant="stars"
+                className={styles.stars}
+                iconClassName={styles.starIcon}
+              />
 
               <Typography className={styles.reviewText}>{review.comment}</Typography>
             </Box>

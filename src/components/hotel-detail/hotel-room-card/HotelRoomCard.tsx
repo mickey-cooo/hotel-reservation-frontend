@@ -1,10 +1,12 @@
 import NextLink from 'next/link';
-import { Box, Button, Chip, Typography } from '@mui/material';
+import { Box, Button, Typography } from '@mui/material';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutlineOutlined';
 import ChildCareIcon from '@mui/icons-material/ChildCare';
 import AspectRatioIcon from '@mui/icons-material/AspectRatio';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutlined';
-import type { Room } from '@/lib/hotel-data';
+import StatusBadge from '@/components/ui/status-badge/StatusBadge';
+import PriceRow from '@/components/ui/price-row/PriceRow';
+import type { Room } from '@/models/entity/hotel-room/hotel-room.model';
 import styles from './HotelRoomCard.module.scss';
 
 interface HotelRoomCardProps {
@@ -12,9 +14,22 @@ interface HotelRoomCardProps {
   hotelId: string;
 }
 
-const BADGE_LABELS: Record<NonNullable<Room['badge']>, string> = {
-  BESTSELLER: 'Recommended',
-  FEATURED: 'Popular',
+const BADGE_CONFIG: Record<
+  NonNullable<Room['badge']>,
+  { label: string; background: string; color: string; border: string }
+> = {
+  BESTSELLER: {
+    label: 'Recommended',
+    background: 'rgba(197, 160, 89, 0.15)',
+    color: '#96700a',
+    border: '1px solid rgba(197, 160, 89, 0.4)',
+  },
+  FEATURED: {
+    label: 'Popular',
+    background: 'rgba(59, 130, 246, 0.1)',
+    color: '#1d4ed8',
+    border: '1px solid rgba(59, 130, 246, 0.25)',
+  },
 };
 
 export default function HotelRoomCard({ room, hotelId }: HotelRoomCardProps) {
@@ -30,10 +45,12 @@ export default function HotelRoomCard({ room, hotelId }: HotelRoomCardProps) {
         <Box className={styles.topRow}>
           <Typography className={styles.roomName}>{name}</Typography>
           {badge && (
-            <Chip
-              label={BADGE_LABELS[badge]}
-              size="small"
-              className={`${styles.badge} ${badge === 'BESTSELLER' ? styles.badgeBestseller : styles.badgeFeatured}`}
+            <StatusBadge
+              label={BADGE_CONFIG[badge].label}
+              background={BADGE_CONFIG[badge].background}
+              color={BADGE_CONFIG[badge].color}
+              border={BADGE_CONFIG[badge].border}
+              className={styles.badge}
             />
           )}
         </Box>
@@ -67,12 +84,13 @@ export default function HotelRoomCard({ room, hotelId }: HotelRoomCardProps) {
         </Box>
 
         <Box className={styles.bottomRow}>
-          <Box className={styles.priceBlock}>
-            <Typography className={styles.price}>
-              ฿{price.toLocaleString()}
-            </Typography>
-            <Typography className={styles.perNight}>/night</Typography>
-          </Box>
+          <PriceRow
+            amount={price}
+            currency="฿"
+            className={styles.priceBlock}
+            amountClassName={styles.price}
+            unitClassName={styles.perNight}
+          />
           <Button
             variant="contained"
             component={NextLink}

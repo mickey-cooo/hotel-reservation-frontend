@@ -1,6 +1,6 @@
 import { Box, Typography } from '@mui/material';
 import HotelRoomCard from '../hotel-room-card/HotelRoomCard';
-import type { Room } from '@/lib/hotel-data';
+import type { Room } from '@/models/entity/hotel-room/hotel-room.model';
 import styles from './HotelRoomList.module.scss';
 
 interface HotelRoomListProps {

@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { Box, Container, Chip, IconButton, Typography } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import Breadcrumb from '@/components/breadcrumb/Breadcrumb';
-import type { HotelDetail, PhotoCategory } from '@/lib/hotel-data';
+import type { HotelDetail, PhotoCategory } from '@/models/entity/hotel/hotel.model';
 import styles from './PhotosPageContent.module.scss';
 
 const INITIAL_COUNT = 6;
