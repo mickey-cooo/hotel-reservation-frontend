@@ -5,7 +5,7 @@ import { Box, Grid, IconButton, Tooltip, Typography } from '@mui/material';
 import GridViewIcon from '@mui/icons-material/GridView';
 import MapOutlinedIcon from '@mui/icons-material/MapOutlined';
 import HotelCard from '../hotel-card/HotelCard';
-import type { Hotel } from '../hotel-card/HotelCard';
+import type { Hotel } from '@/models/entity/hotel/hotel.model';
 import styles from './HotelGrid.module.scss';
 
 interface HotelGridProps {

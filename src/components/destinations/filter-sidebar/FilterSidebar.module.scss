@@ -1,0 +1,103 @@
+.categoryTitle {
+  font-weight: 700 !important;
+  color: var(--color-fg) !important;
+  margin-bottom: 12px !important;
+}
+
+.categoryList {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 24px;
+}
+
+.categoryItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  background: transparent;
+  color: var(--color-neutral);
+  transition: background-color 0.15s;
+
+  &:hover {
+    background: var(--color-bg);
+  }
+}
+
+.categoryItemActive {
+  background: #FEF3C7;
+  color: #92400E;
+
+  &:hover {
+    background: #FEF3C7;
+  }
+}
+
+.categoryIcon {
+  font-size: 18px !important;
+}
+
+.categoryLabel {
+  font-size: 0.875rem !important;
+}
+
+.categoryLabelActive {
+  font-weight: 600 !important;
+}
+
+.priceTitle {
+  font-weight: 700 !important;
+  color: var(--color-fg) !important;
+  margin-bottom: 16px !important;
+}
+
+.sliderWrapper {
+  padding-inline: 8px;
+  margin-bottom: 24px;
+}
+
+.slider {
+  color: var(--color-gold) !important;
+
+  :global(.MuiSlider-thumb) {
+    width: 14px !important;
+    height: 14px !important;
+  }
+}
+
+.priceLabels {
+  display: flex;
+  justify-content: space-between;
+}
+
+.priceLabel {
+  font-size: 0.8rem !important;
+  color: var(--color-neutral) !important;
+}
+
+.amenitiesTitle {
+  font-weight: 700 !important;
+  color: var(--color-fg) !important;
+  margin-bottom: 8px !important;
+}
+
+.amenitiesList {
+  display: flex;
+  flex-direction: column;
+}
+
+.checkbox {
+  color: var(--color-border-light) !important;
+
+  &:global(.Mui-checked) {
+    color: var(--color-gold) !important;
+  }
+}
+
+.checkboxLabel {
+  font-size: 0.875rem !important;
+  color: var(--color-text-body) !important;
+}

@@ -1,8 +1,6 @@
 import { notFound } from 'next/navigation';
-import Navbar from '@/components/navbar/Navbar';
-import Footer from '@/components/footer/Footer';
-import PhotosPageContent from '@/components/hotel-detail/photos-page-content/PhotosPageContent';
 import { getHotelById } from '@/lib/hotel-adapter';
+import PhotosPageClient from './PhotosPageClient';
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -24,11 +22,5 @@ export default async function HotelPhotosPage({ params }: PageProps) {
 
   if (!hotel) notFound();
 
-  return (
-    <>
-      <Navbar variant="light" />
-      <PhotosPageContent hotel={hotel} />
-      <Footer />
-    </>
-  );
+  return <PhotosPageClient id={id} />;
 }

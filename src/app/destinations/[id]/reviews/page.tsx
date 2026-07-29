@@ -1,8 +1,6 @@
 import { notFound } from 'next/navigation';
-import Navbar from '@/components/navbar/Navbar';
-import Footer from '@/components/footer/Footer';
-import ReviewsPageContent from '@/components/hotel-detail/reviews-page-content/ReviewsPageContent';
 import { getHotelById } from '@/lib/hotel-adapter';
+import ReviewsPageClient from './ReviewsPageClient';
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -24,11 +22,5 @@ export default async function HotelReviewsPage({ params }: PageProps) {
 
   if (!hotel) notFound();
 
-  return (
-    <>
-      <Navbar variant="light" />
-      <ReviewsPageContent hotel={hotel} />
-      <Footer />
-    </>
-  );
+  return <ReviewsPageClient id={id} />;
 }
