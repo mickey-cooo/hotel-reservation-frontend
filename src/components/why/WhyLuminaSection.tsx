@@ -1,7 +1,6 @@
 import { Box, Container, Grid, Typography } from '@mui/material';
 import VerifiedOutlinedIcon from '@mui/icons-material/VerifiedOutlined';
 import SupportAgentIcon from '@mui/icons-material/SupportAgent';
-import FeatureItem from '@/components/why/feature-item/FeatureItem';
 import styles from './WhyLuminaSection.module.scss';
 
 const GALLERY_IMAGES = [
@@ -57,8 +56,16 @@ export default function WhyLuminaSection() {
             </Typography>
 
             <Box className={styles.featureList}>
-              {FEATURES.map(({ icon, title, description }) => (
-                <FeatureItem key={title} icon={icon} title={title} description={description} />
+              {FEATURES.map(({ icon: Icon, title, description }) => (
+                <Box key={title} className={styles.featureItem}>
+                  <Box className={styles.iconWrapper}>
+                    <Icon className={styles.icon} />
+                  </Box>
+                  <Box>
+                    <Typography className={styles.featureTitle}>{title}</Typography>
+                    <Typography className={styles.featureDescription}>{description}</Typography>
+                  </Box>
+                </Box>
               ))}
             </Box>
           </Grid>
