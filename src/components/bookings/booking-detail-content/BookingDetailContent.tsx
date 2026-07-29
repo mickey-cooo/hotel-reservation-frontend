@@ -6,7 +6,7 @@ import BookingStayDetails from '@/components/bookings/booking-stay-details/Booki
 import BookingCancellationPolicy from '@/components/bookings/booking-cancellation-policy/BookingCancellationPolicy';
 import BookingGuestInfo from '@/components/bookings/booking-guest-info/BookingGuestInfo';
 import BookingPriceSummary from '@/components/bookings/booking-price-summary/BookingPriceSummary';
-import type { HotelDetail } from '@/lib/hotel-data';
+import type { HotelDetail } from '@/models/entity/hotel/hotel.model';
 import styles from './BookingDetailContent.module.scss';
 
 interface BookingDetailContentProps {

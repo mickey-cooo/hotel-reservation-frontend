@@ -1,10 +1,11 @@
 import Image from 'next/image';
 import { Box, Divider, Typography } from '@mui/material';
-import StarIcon from '@mui/icons-material/Star';
 import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
 import WifiOutlinedIcon from '@mui/icons-material/WifiOutlined';
 import AccessibleOutlinedIcon from '@mui/icons-material/AccessibleOutlined';
-import type { HotelDetail } from '@/lib/hotel-data';
+import Rating from '@/components/ui/rating/Rating';
+import IconLabelRow from '@/components/ui/icon-label-row/IconLabelRow';
+import type { HotelDetail } from '@/models/entity/hotel/hotel.model';
 import styles from './BookingHotelCard.module.scss';
 
 interface BookingHotelCardProps {
@@ -24,15 +25,19 @@ export default function BookingHotelCard({ hotel, roomName }: BookingHotelCardPr
 
       <Box className={styles.info}>
         <Typography className={styles.hotelName}>{hotel.name}</Typography>
-        <Box className={styles.starsRow}>
-          {Array.from({ length: starCount }).map((_, i) => (
-            <StarIcon key={i} className={styles.starIcon} />
-          ))}
-        </Box>
-        <Box className={styles.locationRow}>
-          <LocationOnOutlinedIcon className={styles.locationIcon} />
-          <Typography className={styles.locationText}>{hotel.location}</Typography>
-        </Box>
+        <Rating
+          value={starCount}
+          variant="stars"
+          className={styles.starsRow}
+          iconClassName={styles.starIcon}
+        />
+        <IconLabelRow
+          icon={LocationOnOutlinedIcon}
+          text={hotel.location}
+          className={styles.locationRow}
+          iconClassName={styles.locationIcon}
+          textClassName={styles.locationText}
+        />
 
         <Divider className={styles.divider} />
 

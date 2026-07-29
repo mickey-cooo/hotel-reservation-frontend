@@ -1,26 +1,14 @@
-import { notFound } from 'next/navigation';
-import { Container } from '@mui/material';
+'use client';
+
+import { Suspense, useEffect, useState } from 'react';
+import { notFound, useParams, useSearchParams } from 'next/navigation';
+import { Box, CircularProgress, Container } from '@mui/material';
 import Navbar from '@/components/navbar/Navbar';
 import Footer from '@/components/footer/Footer';
 import BookingDetailContent from '@/components/bookings/booking-detail-content/BookingDetailContent';
-import { getHotelById } from '@/lib/hotel-adapter';
-
-interface BookingDetailPageProps {
-  params: Promise<{ id: string }>;
-  searchParams: Promise<{
-    hotelId?: string;
-    roomId?: string;
-    checkIn?: string;
-    checkOut?: string;
-    adults?: string;
-    children?: string;
-    firstName?: string;
-    lastName?: string;
-    email?: string;
-    address?: string;
-    roomName?: string;
-  }>;
-}
+import { getHotelByIdAction } from '@/lib/hotel-actions';
+import type { HotelDetail } from '@/models/entity/hotel/hotel.model';
+import styles from './page.module.scss';
 
 function nightsBetween(a: string, b: string): number {
   const diff = new Date(b).getTime() - new Date(a).getTime();
@@ -28,18 +16,61 @@ function nightsBetween(a: string, b: string): number {
   return nights > 0 ? nights : 1;
 }
 
-export default async function BookingDetailPage({ params, searchParams }: BookingDetailPageProps) {
-  const { id } = await params;
-  const { hotelId, roomId, checkIn, checkOut, adults, children, firstName, lastName, email, address, roomName } =
-    await searchParams;
+function BookingDetailPageFallback() {
+  return (
+    <>
+      <Navbar variant="light" />
+      <Box className={styles.loadingContainer}>
+        <CircularProgress />
+      </Box>
+      <Footer />
+    </>
+  );
+}
+
+export default function BookingDetailPage() {
+  return (
+    <Suspense fallback={<BookingDetailPageFallback />}>
+      <BookingDetailPageInner />
+    </Suspense>
+  );
+}
+
+function BookingDetailPageInner() {
+  const { id } = useParams<{ id: string }>();
+  const searchParams = useSearchParams();
+  const hotelId = searchParams.get('hotelId') ?? undefined;
+  const roomId = searchParams.get('roomId') ?? undefined;
+  const checkIn = searchParams.get('checkIn') ?? undefined;
+  const checkOut = searchParams.get('checkOut') ?? undefined;
+  const adults = searchParams.get('adults') ?? undefined;
+  const children = searchParams.get('children') ?? undefined;
+  const firstName = searchParams.get('firstName') ?? undefined;
+  const lastName = searchParams.get('lastName') ?? undefined;
+  const email = searchParams.get('email') ?? undefined;
+  const address = searchParams.get('address') ?? undefined;
+  const roomName = searchParams.get('roomName') ?? undefined;
+
+  const [hotelDetail, setHotelDetail] = useState<HotelDetail | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (!hotelId) return;
+    getHotelByIdAction(hotelId).then((data) => {
+      setHotelDetail(data ?? null);
+      setLoading(false);
+    });
+  }, [hotelId]);
 
   if (!hotelId || !checkIn || !checkOut) notFound();
 
-  const hotel = await getHotelById(hotelId);
-  if (!hotel) notFound();
+  if (loading) {
+    return <BookingDetailPageFallback />;
+  }
 
-  const room = hotel.rooms.find((r) => r.id === roomId) ?? hotel.rooms[0];
+  if (!hotelDetail) notFound();
 
+  const room = hotelDetail.rooms.find((r) => r.id === roomId) ?? hotelDetail.rooms[0];
   const nights = nightsBetween(checkIn, checkOut);
 
   return (
@@ -48,7 +79,7 @@ export default async function BookingDetailPage({ params, searchParams }: Bookin
       <Container maxWidth="lg">
         <BookingDetailContent
           bookingRef={id}
-          hotel={hotel}
+          hotel={hotelDetail}
           pricePerNight={room?.price ?? 0}
           checkIn={checkIn}
           checkOut={checkOut}
