@@ -2,42 +2,14 @@ import { Box, Button, Container, Typography } from '@mui/material';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import NextLink from 'next/link';
 import DestinationCard from '../destination-card/DestinationCard';
+import type { Hotel } from '@/models/entity/hotel/hotel.model';
 import styles from './MostBookedSection.module.scss';
 
-const DESTINATIONS = [
-  {
-    id: '7',
-    label: 'EXCLUSIVE',
-    name: 'Azure Cliff Retreat',
-    location: 'Santorini, Greece',
-    rating: 4.9,
-    price: 540,
-    imageUrl:
-      'https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=600&q=80',
-  },
-  {
-    id: '5',
-    label: 'TOP CHOICE',
-    name: 'Summit Peak Chalet',
-    location: 'Zermatt, Switzerland',
-    rating: 5.0,
-    price: 890,
-    imageUrl:
-      'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=600&q=80',
-  },
-  {
-    id: '3',
-    label: 'EXCLUSIVE',
-    name: 'Vayu Jungle Oasis',
-    location: 'Ubud, Bali',
-    rating: 4.8,
-    price: 420,
-    imageUrl:
-      'https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=600&q=80',
-  },
-];
+interface MostBookedSectionProps {
+  hotels: Hotel[];
+}
 
-export default function MostBookedSection() {
+export default function MostBookedSection({ hotels }: MostBookedSectionProps) {
   return (
     <Box className={styles.section}>
       <Container maxWidth="lg">
@@ -60,8 +32,21 @@ export default function MostBookedSection() {
         </Box>
 
         <Box className={styles.cardList}>
-          {DESTINATIONS.map((dest) => (
-            <DestinationCard key={dest.name} destination={dest} href={`/destinations/${dest.id}`} />
+          {hotels.map((hotel) => (
+            <DestinationCard
+              key={hotel.id}
+              destination={{
+                label: hotel.badge,
+                name: hotel.name,
+                location: hotel.location,
+                rating: hotel.rating,
+                price: hotel.price,
+                imageUrl: hotel.imageUrl
+                  ? hotel.imageUrl
+                  : hotel.name.charAt(0),
+              }}
+              href={`/destinations/${hotel.id}`}
+            />
           ))}
         </Box>
       </Container>

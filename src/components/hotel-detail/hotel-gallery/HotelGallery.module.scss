@@ -12,6 +12,10 @@
   }
 }
 
+.galleryFull {
+  grid-template-columns: 1fr;
+}
+
 .mainImage {
   position: relative;
   overflow: hidden;
@@ -47,6 +51,18 @@
   &:hover {
     transform: scale(1.04);
   }
+}
+
+.imgFallback {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-fg);
+  color: var(--color-gold);
+  font-size: 3rem;
+  font-weight: 700;
 }
 
 .viewAllBtn {

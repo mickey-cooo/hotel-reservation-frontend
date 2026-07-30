@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import NextLink from 'next/link';
 import { Box, Button, Typography } from '@mui/material';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutlineOutlined';
@@ -34,11 +35,23 @@ const BADGE_CONFIG: Record<
 
 export default function HotelRoomCard({ room, hotelId }: HotelRoomCardProps) {
   const { id, name, badge, capacity, sizeSqm, features, price, imageUrl } = room;
+  const [imageFailed, setImageFailed] = useState(false);
+  const showImage = Boolean(imageUrl) && !imageFailed;
 
   return (
     <Box className={styles.card}>
       <Box className={styles.imageWrapper}>
-        <Box component="img" src={imageUrl} alt={name} className={styles.image} />
+        {showImage ? (
+          <Box
+            component="img"
+            src={imageUrl}
+            alt={name}
+            className={styles.image}
+            onError={() => setImageFailed(true)}
+          />
+        ) : (
+          <Box className={styles.imageFallback}>{name.charAt(0).toUpperCase()}</Box>
+        )}
       </Box>
 
       <Box className={styles.content}>
