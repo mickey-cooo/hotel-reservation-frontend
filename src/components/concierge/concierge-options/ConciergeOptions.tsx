@@ -1,40 +1,35 @@
+'use client';
+
 import { Box, Container, Typography } from '@mui/material';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
 import PhoneIcon from '@mui/icons-material/Phone';
 import VerifiedUserIcon from '@mui/icons-material/VerifiedUser';
-import { ElementType } from 'react';
-import { SvgIconProps } from '@mui/material/SvgIcon';
 import styles from './ConciergeOptions.module.scss';
+import { useTranslation } from 'react-i18next';
 
-interface Option {
-  Icon: ElementType<SvgIconProps>;
-  title: string;
-  desc: string;
-  label: string;
-}
-
-const OPTIONS: Option[] = [
+const OPTIONS = [
   {
     Icon: MenuBookIcon,
-    title: 'Knowledge Base',
-    desc: 'Find answers to common questions about policies and amenities.',
-    label: 'Browse Knowledge Base',
+    title: 'knowledgeTitle',
+    desc: 'knowledgeDesc',
+    label: 'knowledgeLabel',
   },
   {
     Icon: PhoneIcon,
-    title: 'Speak to Concierge',
-    desc: 'Prefer a human touch? Our global team is just a phone call away.',
-    label: 'Call Concierge',
+    title: 'speakTitle',
+    desc: 'speakDesc',
+    label: 'speakLabel',
   },
   {
     Icon: VerifiedUserIcon,
-    title: 'Premium Support',
-    desc: 'Dedicated priority handling for our Lumina Gold members.',
-    label: 'Access Premium Support',
+    title: 'premiumTitle',
+    desc: 'premiumDesc',
+    label: 'premiumLabel',
   },
 ];
 
 export default function ConciergeOptions() {
+  const { t } = useTranslation('concierge');
   return (
     <Box className={styles.section}>
       <Container maxWidth="lg">
@@ -45,13 +40,13 @@ export default function ConciergeOptions() {
               className={styles.card}
               role="listitem"
               tabIndex={0}
-              aria-label={label}
+              aria-label={t(`options.${label}`)}
             >
               <Box className={styles.iconWrap} aria-hidden="true">
                 <Icon className={styles.icon} />
               </Box>
-              <Typography className={styles.title}>{title}</Typography>
-              <Typography className={styles.desc}>{desc}</Typography>
+              <Typography className={styles.title}>{t(`options.${title}`)}</Typography>
+              <Typography className={styles.desc}>{t(`options.${desc}`)}</Typography>
             </Box>
           ))}
         </Box>

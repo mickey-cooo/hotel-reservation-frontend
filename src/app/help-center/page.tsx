@@ -1,12 +1,16 @@
 import Navbar from '@/components/navbar/Navbar';
 import Footer from '@/components/footer/Footer';
 import HelpCenterContent from '@/components/help-center/help-center-content/HelpCenterContent';
+import { getServerLocale } from '@/lib/server-locale';
+import { getCommonTranslation } from '@/lib/server-common-i18n';
 
-export const metadata = {
-  title: 'Help Center — Lumina Stay',
-  description:
-    'Find answers to common questions about bookings, payments, cancellations, and account management at Lumina Stay.',
-};
+export async function generateMetadata() {
+  const locale = await getServerLocale();
+  return {
+    title: getCommonTranslation(locale, 'metadata.helpTitle'),
+    description: getCommonTranslation(locale, 'metadata.helpDescription'),
+  };
+}
 
 export default function HelpCenterPage() {
   return (

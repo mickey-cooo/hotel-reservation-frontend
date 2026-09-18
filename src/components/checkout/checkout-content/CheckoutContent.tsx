@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Box, Typography } from '@mui/material';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import { useTranslation } from 'react-i18next';
 import CheckoutSummary from '@/components/checkout/checkout-summary/CheckoutSummary';
 import BillingForm, { BillingValues } from '@/components/checkout/billing-form/BillingForm';
 import PaymentMethod, { PaymentMethodType } from '@/components/checkout/payment-method/PaymentMethod';
@@ -48,6 +49,7 @@ export default function CheckoutContent({
   nights,
 }: CheckoutContentProps) {
   const router = useRouter();
+  const { t } = useTranslation('checkout');
   const [billing, setBilling] = useState<BillingValues>(EMPTY_BILLING);
   const [paymentMethod, setPaymentMethod] = useState<PaymentMethodType>('card');
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -68,7 +70,7 @@ export default function CheckoutContent({
       });
 
       if (!result.ok) {
-        throw new Error(result.message ?? 'Booking failed');
+        throw new Error(result.message ?? t('errors.bookingFailed'));
       }
 
       // Unverified: backend returns the raw insert row, whose key casing
@@ -90,7 +92,7 @@ export default function CheckoutContent({
       });
       router.push(`/bookings/${bookingCode}?${params.toString()}`);
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Booking failed');
+      setError(err instanceof Error ? err.message : t('errors.bookingFailed'));
     } finally {
       setIsSubmitting(false);
     }
@@ -99,10 +101,10 @@ export default function CheckoutContent({
   return (
     <Box className={styles.wrapper}>
       <Box className={styles.pageHeader}>
-        <Typography className={styles.pageTitle}>Checkout</Typography>
+        <Typography className={styles.pageTitle}>{t('page.title')}</Typography>
         <Box className={styles.secureTag}>
           <LockOutlinedIcon className={styles.lockIcon} />
-          <Typography className={styles.secureLabel}>Secure Payment</Typography>
+          <Typography className={styles.secureLabel}>{t('page.securePayment')}</Typography>
         </Box>
       </Box>
 

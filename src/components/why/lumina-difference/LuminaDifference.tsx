@@ -1,36 +1,28 @@
+'use client';
+
 import { Box, Container, Grid, Typography } from '@mui/material';
 import EmojiEventsOutlinedIcon from '@mui/icons-material/EmojiEventsOutlined';
 import BoltOutlinedIcon from '@mui/icons-material/BoltOutlined';
 import LocalOfferOutlinedIcon from '@mui/icons-material/LocalOfferOutlined';
 import VerifiedOutlinedIcon from '@mui/icons-material/VerifiedOutlined';
 import styles from './LuminaDifference.module.scss';
+import { useTranslation } from 'react-i18next';
 
 const FEATURES = [
-  {
-    icon: EmojiEventsOutlinedIcon,
-    title: 'สะสมคะแนน Lumina Rewards',
-    desc: 'จองโดยตรงเพื่อรับคะแนนสะสมที่มากกว่าถึง 2 เท่า เพื่อใช้แลกสิทธิ์เข้าพักฟรีและรางวัลพิเศษอื่นๆ',
-  },
-  {
-    icon: BoltOutlinedIcon,
-    title: 'การยืนยันทันที',
-    desc: 'รับอีเมลยืนยันการจองโดยตรงจากโรงแรม หมดกังวลเรื่องการจองตกหล่นหรือข้อผิดพลาดจากบุคคลที่สาม',
-  },
-  {
-    icon: LocalOfferOutlinedIcon,
-    title: 'สิทธิพิเศษสำหรับสปาและห้องอาหาร',
-    desc: 'รับ Voucher ส่วนลด 20% สำหรับบริการสปาและห้องอาหารพรีเมียมตลอดการเข้าพัก',
-  },
+  { icon: EmojiEventsOutlinedIcon, title: 'rewardsTitle', desc: 'rewardsDesc' },
+  { icon: BoltOutlinedIcon, title: 'confirmationTitle', desc: 'confirmationDesc' },
+  { icon: LocalOfferOutlinedIcon, title: 'perksTitle', desc: 'perksDesc' },
 ] as const;
 
 export default function LuminaDifference() {
+  const { t } = useTranslation(['whyLumina', 'common']);
   return (
     <Box className={styles.section}>
       <Container maxWidth="lg">
         <Grid container spacing={6} className={styles.grid}>
           <Grid size={{ xs: 12, md: 6 }}>
             <Typography variant="h3" className={styles.title}>
-              ความแตกต่างที่สัมผัสได้
+              {t('difference.title')}
             </Typography>
             <Box className={styles.featureList}>
               {FEATURES.map(({ icon: Icon, title, desc }) => (
@@ -40,10 +32,10 @@ export default function LuminaDifference() {
                   </Box>
                   <Box>
                     <Typography className={styles.featureTitle}>
-                      {title}
+                      {t(`difference.${title}`)}
                     </Typography>
                     <Typography className={styles.featureDesc}>
-                      {desc}
+                      {t(`difference.${desc}`)}
                     </Typography>
                   </Box>
                 </Box>
@@ -56,23 +48,22 @@ export default function LuminaDifference() {
               <Box
                 component="img"
                 src="https://images.unsplash.com/photo-1445019980597-93fa8acb246c?w=800&q=80"
-                alt="Luxury pool at sunset"
+                alt={t('common:imageAlt.poolSunset')}
                 className={styles.trustImg}
               />
               <Box className={styles.trustBadge}>
                 <VerifiedOutlinedIcon className={styles.badgeIcon} />
                 <Box>
                   <Typography className={styles.badgeTitle}>
-                    TRUST BADGE
+                    {t('difference.trustBadge')}
                   </Typography>
                   <Typography className={styles.badgeSub}>
-                    Official Partner
+                    {t('difference.officialPartner')}
                   </Typography>
                 </Box>
               </Box>
               <Typography className={styles.trustQuote}>
-                &ldquo;The only way to experience Lumina Stay&apos;s full
-                hospitality is through our direct portal.&rdquo;
+                {t('difference.trustQuote')}
               </Typography>
             </Box>
           </Grid>

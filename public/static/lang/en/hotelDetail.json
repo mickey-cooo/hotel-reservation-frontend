@@ -1,0 +1,116 @@
+{
+  "header": {
+    "reviews": "({{n}} reviews)"
+  },
+  "gallery": {
+    "viewAllPhotos": "View all photos"
+  },
+  "amenities": {
+    "title": "Amenities",
+    "labels": {
+      "Free WiFi": "Free WiFi",
+      "Infinity Pool": "Infinity Pool",
+      "Heated Pool": "Heated Pool",
+      "Private Plunge Pool": "Private Plunge Pool",
+      "Luxury Spa": "Luxury Spa",
+      "Restaurant": "Restaurant",
+      "Fine Dining": "Fine Dining",
+      "Michelin-Starred Restaurant": "Michelin-Starred Restaurant",
+      "Fitness Centre": "Fitness Centre",
+      "Fitness Studio": "Fitness Studio",
+      "Private Beach": "Private Beach",
+      "Room Service": "Room Service",
+      "Concierge": "Concierge",
+      "Valet Parking": "Valet Parking",
+      "Cocktail Bar": "Cocktail Bar",
+      "Sky Bar": "Sky Bar",
+      "Cycling Tours": "Cycling Tours",
+      "Private Terrace": "Private Terrace",
+      "Wine Cellar": "Wine Cellar",
+      "Rooftop Terrace": "Rooftop Terrace",
+      "Yoga Pavilion": "Yoga Pavilion",
+      "Airport Transfer": "Airport Transfer",
+      "Water Sports": "Water Sports",
+      "In-house Sommelier": "In-house Sommelier"
+    }
+  },
+  "policies": {
+    "pets": "Pet Friendly",
+    "children": "Child Friendly",
+    "smoking": "Smoking Allowed",
+    "adults": "Adults Only"
+  },
+  "rooms": {
+    "title": "Our Rooms",
+    "recommended": "Recommended",
+    "popular": "Popular",
+    "sqm": "{{size}} sqm",
+    "adults": "{{n}} adults",
+    "children": "{{n}} children",
+    "book": "Book"
+  },
+  "booking": {
+    "perNight": "/ night",
+    "checkIn": "Check-in",
+    "checkOut": "Check-out",
+    "selectCheckIn": "Select check-in date",
+    "selectCheckOut": "Select check-out date",
+    "guests": "Guests",
+    "adults": "Adults",
+    "children": "Children",
+    "bookNow": "Book Now",
+    "nightsBreakdown": "฿{{price}} × {{nights}} night",
+    "nightsBreakdownPlural": "฿{{price}} × {{nights}} nights",
+    "serviceFee": "Service fee",
+    "total": "Total",
+    "freeCancellation": "Free cancellation available",
+    "whyBookWith": "Why book with Lumina Stay?",
+    "whyBookDesc": "Best rate guarantee · Secure payment · 24/7 concierge support · Earn Lumina Points"
+  },
+  "reviewsSection": {
+    "title": "Guest Reviews ({{n}})",
+    "seeAll": "See all ›"
+  },
+  "reviewAuthor": {
+    "anonymous": "Anonymous Guest",
+    "guest": "Guest"
+  },
+  "photosPage": {
+    "allPhotos": "All Photos",
+    "title": "Atmospheric Visuals",
+    "subtitle": "Experience the luxury of Lumina Stay through our curated collection of premium spaces and amenities.",
+    "all": "All",
+    "discoverMore": "Discover More",
+    "discoverMoreAria": "Discover more photos",
+    "categories": {
+      "Guest Rooms": "Guest Rooms",
+      "Suites": "Suites",
+      "Dining": "Dining",
+      "Spa & Wellness": "Spa & Wellness",
+      "Poolside": "Poolside"
+    }
+  },
+  "reviewsPage": {
+    "allReviews": "All Reviews",
+    "title": "Guest Experiences",
+    "subtitle": "Discover why discerning travelers choose Lumina Stay for their most precious moments. Real stories from our global community.",
+    "basedOn": "Based on {{n}} reviews",
+    "categories": {
+      "Cleanliness": "Cleanliness",
+      "Service": "Service",
+      "Location": "Location",
+      "Value": "Value",
+      "Facilities": "Facilities"
+    },
+    "filterTitle": "Filter Reviews",
+    "searchPlaceholder": "Search within reviews…",
+    "sortLatest": "Latest Reviews",
+    "sortHighest": "Highest Rated",
+    "sortLowest": "Lowest Rated",
+    "stayedIn": "Stayed in {{date}}",
+    "verifiedStay": "VERIFIED STAY",
+    "helpful": "Helpful ({{n}})",
+    "comment": "Comment",
+    "noMatch": "No reviews match your search."
+  }
+}

@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { Box, Button } from '@mui/material';
 import PhotoLibraryOutlinedIcon from '@mui/icons-material/PhotoLibraryOutlined';
 import { useRouter } from 'next/navigation';
+import { useTranslation } from 'react-i18next';
 import styles from './HotelGallery.module.scss';
 
 interface HotelGalleryProps {
@@ -33,6 +34,7 @@ function GalleryImage({ src, alt, fallbackLetter, className, fallbackClassName }
 
 export default function HotelGallery({ images, hotelName, hotelId }: HotelGalleryProps) {
   const router = useRouter();
+  const { t } = useTranslation('hotelDetail');
   const [main, ...thumbs] = images;
   const initial = hotelName.charAt(0).toUpperCase();
   const visibleThumbs = thumbs.slice(0, 4);
@@ -67,7 +69,7 @@ export default function HotelGallery({ images, hotelName, hotelId }: HotelGaller
                   startIcon={<PhotoLibraryOutlinedIcon />}
                   onClick={() => router.push(`/destinations/${hotelId}/photos`)}
                 >
-                  View all photos
+                  {t('gallery.viewAllPhotos')}
                 </Button>
               )}
             </Box>

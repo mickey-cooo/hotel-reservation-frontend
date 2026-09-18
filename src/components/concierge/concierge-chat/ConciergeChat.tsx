@@ -15,6 +15,7 @@ import RefreshIcon from '@mui/icons-material/Refresh';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import styles from './ConciergeChat.module.scss';
+import { useTranslation } from 'react-i18next';
 
 interface Message {
   id: string;
@@ -22,27 +23,6 @@ interface Message {
   text: string;
   time: string;
 }
-
-const QUICK_ACTIONS = [
-  'Cancel Booking',
-  'Request Late Check-out',
-  'Billing Inquiry',
-  'Room Service',
-];
-
-const BOT_RESPONSES: Record<string, string> = {
-  'Cancel Booking':
-    "I can help you cancel your booking. Please share your booking reference number and I'll process the cancellation right away.",
-  'Request Late Check-out':
-    "Late check-out is subject to availability. Please share your booking ID and I'll check what options are available for your stay.",
-  'Billing Inquiry':
-    "Happy to help with your billing inquiry. Could you share your booking ID or describe the specific charge you're asking about?",
-  'Room Service':
-    'Room service is available 24/7 at all Lumina Stay properties. What would you like to order or request?',
-};
-
-const DEFAULT_BOT_RESPONSE =
-  "Thank you for your message. Let me look into that for you — I'll have an answer shortly.";
 
 function formatTime(date: Date): string {
   return date.toLocaleTimeString('en-US', {
@@ -52,18 +32,25 @@ function formatTime(date: Date): string {
   });
 }
 
-const INITIAL_MESSAGE: Message = {
-  id: '1',
-  role: 'bot',
-  text: 'Sawadee ka! Welcome to Lumina Stay Support. How can I assist you with your booking today?',
-  time: '',
-};
-
 export default function ConciergeChat() {
-  const [messages, setMessages] = useState<Message[]>([INITIAL_MESSAGE]);
+  const { t } = useTranslation('concierge');
+  const actions = [
+    ['cancelBooking', t('actions.cancelBooking')],
+    ['lateCheckout', t('actions.lateCheckout')],
+    ['billing', t('actions.billing')],
+    ['roomService', t('actions.roomService')],
+  ] as const;
+  const responses = {
+    [t('actions.cancelBooking')]: t('responses.cancelBooking'),
+    [t('actions.lateCheckout')]: t('responses.lateCheckout'),
+    [t('actions.billing')]: t('responses.billing'),
+    [t('actions.roomService')]: t('responses.roomService'),
+  };
+  const initialMessage: Message = { id: '1', role: 'bot', text: t('initialMessage'), time: '' };
+  const [messages, setMessages] = useState<Message[]>([initialMessage]);
   const [input, setInput] = useState('');
   const [isBotTyping, setIsBotTyping] = useState(false);
-  const [sessionLabel] = useState(() => `Today, ${formatTime(new Date())}`);
+  const [sessionLabel] = useState(() => t('sessionToday', { time: formatTime(new Date()) }));
 
   const messagesContainerRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -96,7 +83,7 @@ export default function ConciergeChat() {
       const botMsg: Message = {
         id: String(idCounterRef.current++),
         role: 'bot',
-        text: BOT_RESPONSES[trimmed] ?? DEFAULT_BOT_RESPONSE,
+        text: responses[trimmed] ?? t('defaultResponse'),
         time: formatTime(new Date()),
       };
       setMessages((prev) => [...prev, botMsg]);
@@ -106,7 +93,7 @@ export default function ConciergeChat() {
 
   const handleReset = () => {
     idCounterRef.current = 2;
-    setMessages([INITIAL_MESSAGE]);
+    setMessages([initialMessage]);
     setInput('');
     setIsBotTyping(false);
     inputRef.current?.focus();
@@ -123,25 +110,25 @@ export default function ConciergeChat() {
     <Box className={styles.section}>
       <Container maxWidth="lg">
         <Box className={styles.wrapper}>
-          <Box className={styles.container} role="region" aria-label="Lumina Concierge chat">
+          <Box className={styles.container} role="region" aria-label={t('botName')}>
             {/* Header */}
             <Box className={styles.header}>
               <Box className={styles.avatar} aria-hidden="true">
                 <SmartToyIcon className={styles.avatarIcon} />
               </Box>
               <Box className={styles.headerCenter}>
-                <Typography className={styles.botName}>Lumina Concierge</Typography>
+                <Typography className={styles.botName}>{t('botName')}</Typography>
                 <Box className={styles.onlineRow}>
                   <Box className={styles.onlineDot} aria-hidden="true" />
-                  <Typography className={styles.onlineLabel}>Online</Typography>
+                  <Typography className={styles.onlineLabel}>{t('online')}</Typography>
                 </Box>
               </Box>
-              <Tooltip title="New conversation" placement="left">
+              <Tooltip title={t('newConversation')} placement="left">
                 <IconButton
                   className={styles.resetBtn}
                   size="small"
                   onClick={handleReset}
-                  aria-label="Start new conversation"
+                  aria-label={t('startNewConversation')}
                 >
                   <RefreshIcon fontSize="small" />
                 </IconButton>
@@ -154,7 +141,7 @@ export default function ConciergeChat() {
               ref={messagesContainerRef}
               role="log"
               aria-live="polite"
-              aria-label="Conversation messages"
+              aria-label={t('conversationMessages')}
             >
               <Box className={styles.timestampRow}>
                 <Chip
@@ -180,7 +167,7 @@ export default function ConciergeChat() {
                       <Typography className={styles.userText}>{msg.text}</Typography>
                     </Box>
                     <Box className={styles.userMeta}>
-                      <Typography className={styles.deliveredText}>Delivered</Typography>
+                    <Typography className={styles.deliveredText}>{t('delivered')}</Typography>
                       {msg.time && (
                         <Typography className={styles.bubbleTimeUser}>{msg.time}</Typography>
                       )}
@@ -190,8 +177,8 @@ export default function ConciergeChat() {
               )}
 
               {!hasUserSentMessage && !isBotTyping && (
-                <Box className={styles.quickActions} role="group" aria-label="Quick actions">
-                  {QUICK_ACTIONS.map((action, i) => (
+                <Box className={styles.quickActions} role="group" aria-label={t('quickActions')}>
+                  {actions.map(([, action], i) => (
                     <Chip
                       key={action}
                       label={action}
@@ -205,7 +192,7 @@ export default function ConciergeChat() {
               )}
 
               {isBotTyping && (
-                <Box className={styles.botBubbleWrap} aria-label="Lumina Concierge is typing">
+                <Box className={styles.botBubbleWrap} aria-label={t('typing')}>
                   <Box className={styles.typingBubble} aria-hidden="true">
                     <span className={styles.typingDot} />
                     <span className={styles.typingDot} />
@@ -224,25 +211,25 @@ export default function ConciergeChat() {
                 <Box className={styles.inputWrapper}>
                   <InputBase
                     className={styles.inputBase}
-                    placeholder="Message Lumina Concierge…"
+                  placeholder={t('messagePlaceholder')}
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
                     onKeyDown={handleKeyDown}
                     inputRef={inputRef}
-                    inputProps={{ 'aria-label': 'Chat message' }}
+                    inputProps={{ 'aria-label': t('chatMessage') }}
                   />
                   <IconButton
                     className={`${styles.sendBtn}${input.trim() && !isBotTyping ? ` ${styles.sendBtnActive}` : ''}`}
                     size="small"
                     onClick={() => sendMessage(input)}
                     disabled={!input.trim() || isBotTyping}
-                    aria-label="Send message"
+                    aria-label={t('sendMessage')}
                   >
                     <ArrowUpwardIcon fontSize="small" />
                   </IconButton>
                 </Box>
               </Box>
-              <Typography className={styles.poweredBy}>Powered by Lumina AI</Typography>
+              <Typography className={styles.poweredBy}>{t('poweredBy')}</Typography>
             </Box>
           </Box>
         </Box>

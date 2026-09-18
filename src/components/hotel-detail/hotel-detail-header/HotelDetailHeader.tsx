@@ -1,6 +1,9 @@
+'use client';
+
 import { Box, Typography } from '@mui/material';
 import StarIcon from '@mui/icons-material/Star';
 import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
+import { useTranslation } from 'react-i18next';
 import IconLabelRow from '@/components/ui/icon-label-row/IconLabelRow';
 import styles from './HotelDetailHeader.module.scss';
 
@@ -19,6 +22,8 @@ export default function HotelDetailHeader({
   reviewCount,
   description,
 }: HotelDetailHeaderProps) {
+  const { t } = useTranslation('hotelDetail');
+
   return (
     <Box className={styles.header}>
       <Box className={styles.metaRow}>
@@ -28,7 +33,7 @@ export default function HotelDetailHeader({
             {rating.toFixed(1)}
           </Typography>
           <Typography component="span" className={styles.reviewCount}>
-            ({reviewCount} reviews)
+            {t('header.reviews', { n: reviewCount })}
           </Typography>
         </Box>
         <Box className={styles.separator} />

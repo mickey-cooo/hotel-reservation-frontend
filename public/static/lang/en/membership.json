@@ -1,0 +1,80 @@
+{
+  "hero": {
+    "badge": "Experience Perfection",
+    "titleLine1": "Elevate Every Stay",
+    "titleLine2": "With Privileges Made for You",
+    "description": "Join the Lumina Rewards program to experience exceptional service, paired with exclusive privileges curated for your luxury lifestyle.",
+    "joinNow": "Join Now",
+    "myAccount": "My Account",
+    "learnMore": "Learn More"
+  },
+  "tiers": {
+    "sectionTitle": "Membership Tiers & Benefits",
+    "sectionSubtitle": "Choose the plan that suits you and start earning points toward valuable experiences curated exclusively for Lumina Stay members.",
+    "myAccount": "My Account",
+    "lifetime": "Lifetime",
+    "perYear": "/ year",
+    "essential": {
+      "level": "Entry Level",
+      "name": "Essential",
+      "description": "The foundation of comfort, letting you start earning rewards from your very first trip.",
+      "price": "Free",
+      "btnLabel": "Join for Free",
+      "perks": [
+        "Free high-speed Wi-Fi",
+        "Earn Reward Points on every stay",
+        "Member-exclusive room rates"
+      ]
+    },
+    "select": {
+      "level": "Most Popular",
+      "name": "Select",
+      "description": "Elevate your stay standard with thoughtfully curated added services.",
+      "price": "฿15,000",
+      "badge": "Recommended",
+      "btnLabel": "Join Select",
+      "perks": [
+        "Late checkout until 2:00 PM",
+        "Special welcome amenity",
+        "10% off spa and dining",
+        "25% bonus reward points"
+      ]
+    },
+    "elite": {
+      "level": "The Ultimate",
+      "name": "Elite",
+      "description": "The pinnacle of personal privilege, for an exceptional experience in every dimension.",
+      "price": "฿45,000",
+      "btnLabel": "Join Elite",
+      "perks": [
+        "Automatic room upgrades (where available)",
+        "24/7 personal concierge service",
+        "Access to exclusive lounges worldwide",
+        "Priority advance reservation privileges",
+        "1 complimentary spa treatment per year"
+      ]
+    }
+  },
+  "comparison": {
+    "sectionTitle": "Compare the Difference",
+    "sectionSubtitle": "Dive into every detail of each tier to get the most value for you.",
+    "benefits": "Benefits",
+    "essential": "Essential",
+    "select": "Select",
+    "elite": "Elite",
+    "features": {
+      "rewardPoints": "Reward points earning",
+      "exclusiveRates": "Member-exclusive room rates",
+      "lateCheckout": "Late checkout until 2:00 PM",
+      "roomUpgrade": "Room upgrade (when available)",
+      "priorityCheckin": "Priority Check-in & Concierge"
+    }
+  },
+  "lifestyle": {
+    "titleLine1": "More Than a Stay",
+    "titleLine2": "A Reward for Life",
+    "description": "Experience a premium lifestyle designed for you — from lavish beachside dinners to private jet travel.",
+    "security": "Maximum security and privacy",
+    "network": "A worldwide network of 5-star resorts"
+  }
+}

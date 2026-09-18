@@ -1,4 +1,7 @@
+'use client';
+
 import { Box, Container, Typography } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 import Navbar from '@/components/navbar/Navbar';
 import BookingsContent from '@/components/bookings/bookings-content/BookingsContent';
 import BookingBottomCta from '@/components/bookings/booking-bottom-cta/BookingBottomCta';
@@ -6,6 +9,8 @@ import Footer from '@/components/footer/Footer';
 import styles from './page.module.scss';
 
 export default function BookingsPage() {
+  const { t } = useTranslation('bookings');
+
   return (
     <>
       <Navbar variant="light" />
@@ -13,11 +18,10 @@ export default function BookingsPage() {
         <Container maxWidth="lg">
           <Box className={styles.pageHeader}>
             <Typography variant="h4" className={styles.pageTitle}>
-              My Bookings
+              {t('list.title')}
             </Typography>
             <Typography className={styles.pageSubtitle}>
-              Manage your upcoming retreats and revisit your past luxury
-              experiences across the globe.
+              {t('list.subtitle')}
             </Typography>
           </Box>
           <BookingsContent />

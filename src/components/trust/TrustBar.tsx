@@ -1,9 +1,14 @@
+'use client';
+
 import { Box, Container, Divider, Typography } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 import styles from './TrustBar.module.scss';
 
 const PRESS_MENTIONS = ['Forbes', 'Vogue', 'Traveler'] as const;
 
 export default function TrustBar() {
+  const { t } = useTranslation('home');
+
   return (
     <Box className={styles.trustBar}>
       <Container maxWidth="lg">
@@ -16,7 +21,7 @@ export default function TrustBar() {
               <Typography className={styles.avatarLabel}>★</Typography>
             </Box>
             <Typography className={styles.trustText}>
-              Trusted by 500,000+ travelers worldwide
+              {t('trustBar.trustText')}
             </Typography>
           </Box>
 

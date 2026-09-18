@@ -20,6 +20,7 @@ import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import { LocalizationProvider, DateCalendar } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import dayjs, { Dayjs } from 'dayjs';
+import { useTranslation } from 'react-i18next';
 import Rating from '@/components/ui/rating/Rating';
 import type { Room } from '@/models/entity/hotel-room/hotel-room.model';
 import styles from './HotelBookingPanel.module.scss';
@@ -36,6 +37,7 @@ export default function HotelBookingPanel({
   hotelId,
 }: HotelBookingPanelProps) {
   const router = useRouter();
+  const { t } = useTranslation('hotelDetail');
   const searchParams = useSearchParams();
   const preselectedRoomId = searchParams.get('roomId');
 
@@ -82,7 +84,7 @@ export default function HotelBookingPanel({
             <Typography className={styles.price}>
               ฿{price.toLocaleString()}
             </Typography>
-            <Typography className={styles.perNight}>&nbsp;/ night</Typography>
+            <Typography className={styles.perNight}>&nbsp;{t('booking.perNight')}</Typography>
           </Box>
           <Rating
             value={rating}
@@ -101,7 +103,8 @@ export default function HotelBookingPanel({
         >
           {rooms.map((room) => (
             <MenuItem key={room.id} value={room.id}>
-              {room.name} — ฿{room.price.toLocaleString()}/night
+              {room.name} — ฿{room.price.toLocaleString()}
+              {t('booking.perNight')}
             </MenuItem>
           ))}
         </Select>
@@ -111,7 +114,7 @@ export default function HotelBookingPanel({
             className={styles.dateField}
             onClick={(e) => setCheckInAnchor(e.currentTarget)}
           >
-            <Typography className={styles.fieldLabel}>Check-in</Typography>
+            <Typography className={styles.fieldLabel}>{t('booking.checkIn')}</Typography>
             <Typography className={styles.dateDisplay}>
               {checkIn.format('D MMM YYYY')}
             </Typography>
@@ -121,7 +124,7 @@ export default function HotelBookingPanel({
             className={styles.dateField}
             onClick={(e) => setCheckOutAnchor(e.currentTarget)}
           >
-            <Typography className={styles.fieldLabel}>Check-out</Typography>
+            <Typography className={styles.fieldLabel}>{t('booking.checkOut')}</Typography>
             <Typography className={styles.dateDisplay}>
               {checkOut.format('D MMM YYYY')}
             </Typography>
@@ -139,7 +142,7 @@ export default function HotelBookingPanel({
         >
           <Box className={styles.calendarPopoverHeader}>
             <Typography className={styles.calendarPopoverLabel}>
-              Select check-in date
+              {t('booking.selectCheckIn')}
             </Typography>
           </Box>
           <DateCalendar
@@ -162,7 +165,7 @@ export default function HotelBookingPanel({
         >
           <Box className={styles.calendarPopoverHeader}>
             <Typography className={styles.calendarPopoverLabel}>
-              Select check-out date
+              {t('booking.selectCheckOut')}
             </Typography>
           </Box>
           <DateCalendar
@@ -174,10 +177,10 @@ export default function HotelBookingPanel({
         </Popover>
 
         <Box className={styles.guestField}>
-          <Typography className={styles.fieldLabel}>Guests</Typography>
+          <Typography className={styles.fieldLabel}>{t('booking.guests')}</Typography>
           <Box className={styles.guestControls}>
             <Box className={styles.guestItem}>
-              <Typography className={styles.guestType}>Adults</Typography>
+              <Typography className={styles.guestType}>{t('booking.adults')}</Typography>
               <Box className={styles.counter}>
                 <IconButton
                   size="small"
@@ -199,7 +202,7 @@ export default function HotelBookingPanel({
               </Box>
             </Box>
             <Box className={styles.guestItem}>
-              <Typography className={styles.guestType}>Children</Typography>
+              <Typography className={styles.guestType}>{t('booking.children')}</Typography>
               <Box className={styles.counter}>
                 <IconButton
                   size="small"
@@ -236,7 +239,7 @@ export default function HotelBookingPanel({
             )
           }
         >
-          Book Now
+          {t('booking.bookNow')}
         </Button>
 
         <Divider className={styles.divider} />
@@ -244,7 +247,10 @@ export default function HotelBookingPanel({
         <Box className={styles.breakdown}>
           <Box className={styles.breakdownRow}>
             <Typography className={styles.breakdownLabel}>
-              ฿{price.toLocaleString()} × {nights} night{nights > 1 ? 's' : ''}
+              {t(nights > 1 ? 'booking.nightsBreakdownPlural' : 'booking.nightsBreakdown', {
+                price: price.toLocaleString(),
+                nights,
+              })}
             </Typography>
             <Typography className={styles.breakdownValue}>
               ฿{subtotal.toLocaleString()}
@@ -252,14 +258,14 @@ export default function HotelBookingPanel({
           </Box>
           <Box className={styles.breakdownRow}>
             <Typography className={styles.breakdownLabel}>
-              Service fee
+              {t('booking.serviceFee')}
             </Typography>
             <Typography className={styles.breakdownValue}>
               ฿{serviceFee.toLocaleString()}
             </Typography>
           </Box>
           <Box className={`${styles.breakdownRow} ${styles.totalRow}`}>
-            <Typography className={styles.totalLabel}>Total</Typography>
+            <Typography className={styles.totalLabel}>{t('booking.total')}</Typography>
             <Typography className={styles.totalValue}>
               ฿{total.toLocaleString()}
             </Typography>
@@ -269,7 +275,7 @@ export default function HotelBookingPanel({
         <Box className={styles.freeCancelRow}>
           <VerifiedUserOutlinedIcon className={styles.shieldIcon} />
           <Typography className={styles.freeCancelText}>
-            Free cancellation available
+            {t('booking.freeCancellation')}
           </Typography>
         </Box>
 
@@ -283,12 +289,11 @@ export default function HotelBookingPanel({
               underline="none"
               className={styles.whyLink}
             >
-              Why book with Lumina Stay?
+              {t('booking.whyBookWith')}
             </Link>
           </Box>
           <Typography className={styles.whyDesc}>
-            Best rate guarantee · Secure payment · 24/7 concierge support ·
-            Earn Lumina Points
+            {t('booking.whyBookDesc')}
           </Typography>
         </Box>
       </Box>

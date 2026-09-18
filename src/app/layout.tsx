@@ -5,16 +5,20 @@ import MuiThemeRegistry from './MuiThemeRegistry';
 import I18nProvider from './I18nProvider';
 import { themeColorVars } from './theme';
 import { getServerLocale } from '@/lib/server-locale';
+import { getCommonTranslation } from '@/lib/server-common-i18n';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
   subsets: ['latin'],
 });
 
-export const metadata: Metadata = {
-  title: 'Lumina Stay',
-  description: 'Find your next luxury sanctuary',
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getServerLocale();
+  return {
+    title: getCommonTranslation(locale, 'metadata.siteTitle'),
+    description: getCommonTranslation(locale, 'metadata.siteDescription'),
+  };
+}
 
 export default async function RootLayout({
   children,

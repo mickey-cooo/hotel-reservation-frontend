@@ -1,3 +1,8 @@
+'use client';
+
+import { useTranslation } from 'react-i18next';
+
 export default function FeaturesPage() {
-  return <div>Features</div>;
+  const { t } = useTranslation('common');
+  return <div>{t('pages.features')}</div>;
 }

@@ -10,6 +10,7 @@ import Rating from '@/components/ui/rating/Rating';
 import IconLabelRow from '@/components/ui/icon-label-row/IconLabelRow';
 import PriceRow from '@/components/ui/price-row/PriceRow';
 import styles from './PropertyCard.module.scss';
+import { useTranslation } from 'react-i18next';
 
 interface PropertyCardBadge {
   label: string;
@@ -38,6 +39,7 @@ export default function PropertyCard({
   badge,
   variant = 'elevated',
 }: PropertyCardProps) {
+  const { t } = useTranslation('common');
   const [imageFailed, setImageFailed] = useState(false);
   const showImage = Boolean(imageUrl) && !imageFailed;
 
@@ -79,7 +81,7 @@ export default function PropertyCard({
           <Rating value={rating} />
         </Box>
 
-        <IconLabelRow icon={LocationOnOutlinedIcon} text={location} className={styles.locationRow} />
+        <IconLabelRow icon={LocationOnOutlinedIcon} text={location || t('card.locationUnavailable')} className={styles.locationRow} />
 
         <PriceRow amount={price} className={styles.priceRow} />
       </Box>

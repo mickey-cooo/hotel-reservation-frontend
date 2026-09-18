@@ -1,0 +1,48 @@
+{
+  "page": {
+    "title": "ชำระเงิน",
+    "securePayment": "การชำระเงินที่ปลอดภัย"
+  },
+  "summary": {
+    "bookingSummary": "สรุปการจอง",
+    "night": "คืน",
+    "nightsPlural": "คืน",
+    "adult": "ผู้ใหญ่",
+    "adultsPlural": "ผู้ใหญ่",
+    "child": "เด็ก",
+    "childrenPlural": "เด็ก"
+  },
+  "billing": {
+    "title": "ข้อมูลการเรียกเก็บเงิน",
+    "firstName": "ชื่อ",
+    "firstNamePlaceholder": "ชื่อ",
+    "lastName": "นามสกุล",
+    "lastNamePlaceholder": "นามสกุล",
+    "email": "อีเมล",
+    "address": "ที่อยู่",
+    "addressPlaceholder": "ถนน เขต/อำเภอ จังหวัด"
+  },
+  "payment": {
+    "title": "วิธีการชำระเงิน",
+    "card": "บัตรเครดิต / เดบิต",
+    "wallet": "กระเป๋าเงินดิจิทัล",
+    "walletSub": "Apple Pay, Google Pay",
+    "bank": "โอนผ่านธนาคาร",
+    "expiry": "วันหมดอายุ",
+    "cvc": "CVC / CVV"
+  },
+  "price": {
+    "title": "รายละเอียดค่าใช้จ่าย",
+    "night": "คืน",
+    "nightsPlural": "คืน",
+    "taxAndFees": "ภาษีและค่าธรรมเนียม (7%)",
+    "memberDiscount": "ส่วนลดสมาชิก Lumina",
+    "total": "ยอดรวม",
+    "currency": "บาท",
+    "payNow": "ชำระเงินตอนนี้",
+    "protectionText": "การคุ้มครองการชำระเงิน — บัตรของคุณจะถูกเรียกเก็บเงินหลังจากการจองได้รับการยืนยันเท่านั้น เราไม่เก็บข้อมูลบัตรของคุณ"
+  },
+  "errors": {
+    "bookingFailed": "การจองล้มเหลว"
+  }
+}

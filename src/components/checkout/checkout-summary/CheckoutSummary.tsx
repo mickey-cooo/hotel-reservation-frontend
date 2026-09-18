@@ -1,7 +1,11 @@
+'use client';
+
 import { Box, Typography } from '@mui/material';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutlined';
 import Image from 'next/image';
+import { useTranslation } from 'react-i18next';
+import type { TFunction } from 'i18next';
 import StatusBadge from '@/components/ui/status-badge/StatusBadge';
 import styles from './CheckoutSummary.module.scss';
 
@@ -34,9 +38,13 @@ function formatDisplayDate(dateStr: string): string {
   });
 }
 
-function guestLabel(adults: number, children: number): string {
-  const parts: string[] = [`${adults} Adult${adults > 1 ? 's' : ''}`];
-  if (children > 0) parts.push(`${children} Child${children > 1 ? 'ren' : ''}`);
+function guestLabel(t: TFunction, adults: number, children: number): string {
+  const parts: string[] = [
+    `${adults} ${adults > 1 ? t('summary.adultsPlural') : t('summary.adult')}`,
+  ];
+  if (children > 0) {
+    parts.push(`${children} ${children > 1 ? t('summary.childrenPlural') : t('summary.child')}`);
+  }
   return parts.join(', ');
 }
 
@@ -51,9 +59,11 @@ export default function CheckoutSummary({
   childrenCount,
   nights,
 }: CheckoutSummaryProps) {
+  const { t } = useTranslation('checkout');
+
   return (
     <Box className={styles.card}>
-      <Typography className={styles.sectionTitle}>Booking Summary</Typography>
+      <Typography className={styles.sectionTitle}>{t('summary.bookingSummary')}</Typography>
 
       <Box className={styles.hotelRow}>
         <Box className={styles.imageWrapper}>
@@ -90,14 +100,14 @@ export default function CheckoutSummary({
           {formatDisplayDate(checkOut)}
         </Typography>
         <Typography className={styles.nightsBadge}>
-          {nights} night{nights > 1 ? 's' : ''}
+          {nights} {nights > 1 ? t('summary.nightsPlural') : t('summary.night')}
         </Typography>
       </Box>
 
       <Box className={styles.guestRow}>
         <PersonOutlineIcon className={styles.guestIcon} />
         <Typography className={styles.guestText}>
-          {guestLabel(adults, childrenCount)}
+          {guestLabel(t, adults, childrenCount)}
         </Typography>
       </Box>
     </Box>

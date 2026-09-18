@@ -1,6 +1,9 @@
+'use client';
+
 import { Box, Button, Divider, Typography } from '@mui/material';
 import VerifiedUserOutlinedIcon from '@mui/icons-material/VerifiedUserOutlined';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import { useTranslation } from 'react-i18next';
 import styles from './PricePanel.module.scss';
 
 const LUMINA_DISCOUNT = 2000;
@@ -18,19 +21,20 @@ export default function PricePanel({
   onPay,
   disabled,
 }: PricePanelProps) {
+  const { t } = useTranslation('checkout');
   const subtotal = pricePerNight * nights;
   const tax = Math.round(subtotal * 0.07);
   const total = subtotal + tax - LUMINA_DISCOUNT;
 
   return (
     <Box className={styles.panel}>
-      <Typography className={styles.panelTitle}>Cost Details</Typography>
+      <Typography className={styles.panelTitle}>{t('price.title')}</Typography>
 
       <Box className={styles.breakdown}>
         <Box className={styles.row}>
           <Typography className={styles.label}>
-            ฿{pricePerNight.toLocaleString()} × {nights} night
-            {nights > 1 ? 's' : ''}
+            ฿{pricePerNight.toLocaleString()} × {nights}{' '}
+            {nights > 1 ? t('price.nightsPlural') : t('price.night')}
           </Typography>
           <Typography className={styles.value}>
             ฿{subtotal.toLocaleString()}
@@ -38,12 +42,12 @@ export default function PricePanel({
         </Box>
 
         <Box className={styles.row}>
-          <Typography className={styles.label}>Tax &amp; fees (7%)</Typography>
+          <Typography className={styles.label}>{t('price.taxAndFees')}</Typography>
           <Typography className={styles.value}>฿{tax.toLocaleString()}</Typography>
         </Box>
 
         <Box className={styles.row}>
-          <Typography className={styles.label}>Lumina member discount</Typography>
+          <Typography className={styles.label}>{t('price.memberDiscount')}</Typography>
           <Typography className={styles.discount}>
             −฿{LUMINA_DISCOUNT.toLocaleString()}
           </Typography>
@@ -54,8 +58,8 @@ export default function PricePanel({
 
       <Box className={styles.totalRow}>
         <Box>
-          <Typography className={styles.totalLabel}>Total</Typography>
-          <Typography className={styles.currency}>THB</Typography>
+          <Typography className={styles.totalLabel}>{t('price.total')}</Typography>
+          <Typography className={styles.currency}>{t('price.currency')}</Typography>
         </Box>
         <Typography className={styles.totalValue}>
           ฿{total.toLocaleString()}
@@ -70,14 +74,13 @@ export default function PricePanel({
         onClick={onPay}
         disabled={disabled}
       >
-        Pay Now
+        {t('price.payNow')}
       </Button>
 
       <Box className={styles.secureRow}>
         <VerifiedUserOutlinedIcon className={styles.shieldIcon} />
         <Typography className={styles.secureText}>
-          Payment Protection — your card is charged only after your booking is
-          confirmed. We never store your card data.
+          {t('price.protectionText')}
         </Typography>
       </Box>
     </Box>

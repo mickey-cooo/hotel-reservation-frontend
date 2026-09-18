@@ -1,7 +1,12 @@
+'use client';
+
 import { Box, Typography } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 import styles from './ContactHero.module.scss';
 
 export default function ContactHero() {
+  const { t } = useTranslation('contact');
+
   return (
     <Box className={styles.root}>
       <Box
@@ -14,11 +19,10 @@ export default function ContactHero() {
       <Box className={styles.overlay} aria-hidden />
       <Box className={styles.content}>
         <Typography variant="h1" className={styles.title}>
-          Concierge Services
+          {t('hero.title')}
         </Typography>
         <Typography className={styles.subtitle}>
-          Personalized assistance for your global luxury stays. We are here to ensure every detail
-          of your journey is perfect.
+          {t('hero.subtitle')}
         </Typography>
       </Box>
     </Box>

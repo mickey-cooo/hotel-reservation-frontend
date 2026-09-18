@@ -1,0 +1,36 @@
+{
+  "hero": {
+    "title": "How can we assist you?",
+    "subtitle": "Search our knowledge base or browse categories below to find answers to your travel inquiries.",
+    "searchPlaceholder": "Search for topics, bookings, or advice...",
+    "searchAriaLabel": "search help center",
+    "search": "Search"
+  },
+  "categories": {
+    "bookingTitle": "Booking",
+    "bookingDesc": "Reservations, cancellations, and modifications.",
+    "paymentTitle": "Payment",
+    "paymentDesc": "Refunds, billing methods, and receipts.",
+    "accountTitle": "Account",
+    "accountDesc": "Security, profile settings, and Lumina Rewards.",
+    "travelAdviceTitle": "Travel Advice",
+    "travelAdviceDesc": "Local guides, safety tips, and packing lists."
+  },
+  "faq": {
+    "heading": "Frequently Asked Questions",
+    "q1": "What is the Lumina Stay cancellation policy?",
+    "a1": "Our standard cancellation policy allows for a full refund if the booking is cancelled at least 48 hours before the scheduled check-in time. For premium suites and certain promotional rates, a non-refundable policy may apply. Please refer to your booking confirmation email for specific terms related to your stay.",
+    "q2": "Can I pay for my booking with multiple credit cards?",
+    "a2": "Yes, Lumina Stay supports split payments for reservations over $1,000. You can distribute the balance across up to three different payment methods during the final step of the checkout process.",
+    "q3": "How do I access the Lumina Concierge service?",
+    "a3": "Once your booking is confirmed, you will find a \"Concierge\" tab in your mobile app dashboard. From there, you can chat live with our dedicated travel experts to book dining, arrange transportation, or request personalized local itineraries.",
+    "q4": "Are there any hidden fees for international travel advice?",
+    "a4": "Absolutely not. All travel advice, packing guides, and basic destination insights provided through the Support Center are complimentary for all Lumina Stay members."
+  },
+  "cta": {
+    "title": "Still need assistance?",
+    "subtitle": "Our global support team is available 24/7 to help you with any urgent travel needs or specialized requests.",
+    "liveChat": "Live Chat Now",
+    "emailSupport": "Email Support"
+  }
+}

@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { Box, Container, Chip, IconButton, Typography } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
+import { useTranslation } from 'react-i18next';
 import Breadcrumb from '@/components/breadcrumb/Breadcrumb';
 import type { HotelDetail, PhotoCategory } from '@/models/entity/hotel/hotel.model';
 import styles from './PhotosPageContent.module.scss';
@@ -17,6 +18,7 @@ interface PhotosPageContentProps {
 }
 
 export default function PhotosPageContent({ hotel }: PhotosPageContentProps) {
+  const { t } = useTranslation(['hotelDetail', 'common']);
   const [activeCategory, setActiveCategory] = useState<PhotoCategory | typeof ALL_LABEL>(ALL_LABEL);
   const [visibleCount, setVisibleCount] = useState(INITIAL_COUNT);
 
@@ -38,19 +40,19 @@ export default function PhotosPageContent({ hotel }: PhotosPageContentProps) {
       <Container maxWidth="lg">
         <Breadcrumb
           items={[
-            { label: 'Home', href: '/' },
-            { label: 'Destinations', href: '/destinations' },
+            { label: t('common:nav.home'), href: '/' },
+            { label: t('common:nav.destinations'), href: '/destinations' },
             { label: hotel.name, href: `/destinations/${hotel.id}` },
-            { label: 'All Photos' },
+            { label: t('hotelDetail:photosPage.allPhotos') },
           ]}
         />
 
         <Box className={styles.header}>
           <Typography variant="h3" className={styles.title}>
-            Atmospheric Visuals
+            {t('hotelDetail:photosPage.title')}
           </Typography>
           <Typography className={styles.subtitle}>
-            Experience the luxury of Lumina Stay through our curated collection of premium spaces and amenities.
+            {t('hotelDetail:photosPage.subtitle')}
           </Typography>
         </Box>
 
@@ -58,7 +60,11 @@ export default function PhotosPageContent({ hotel }: PhotosPageContentProps) {
           {[ALL_LABEL, ...CATEGORIES].map((cat) => (
             <Chip
               key={cat}
-              label={cat}
+              label={
+                cat === ALL_LABEL
+                  ? t('hotelDetail:photosPage.all')
+                  : t(`hotelDetail:photosPage.categories.${cat}`)
+              }
               onClick={() => handleCategoryChange(cat as PhotoCategory | typeof ALL_LABEL)}
               className={`${styles.chip}${activeCategory === cat ? ` ${styles.chipActive}` : ''}`}
             />
@@ -83,11 +89,13 @@ export default function PhotosPageContent({ hotel }: PhotosPageContentProps) {
             <IconButton
               className={styles.discoverBtn}
               onClick={() => setVisibleCount((c) => c + LOAD_MORE_COUNT)}
-              aria-label="Discover more photos"
+              aria-label={t('hotelDetail:photosPage.discoverMoreAria')}
             >
               <AddIcon />
             </IconButton>
-            <Typography className={styles.discoverLabel}>Discover More</Typography>
+            <Typography className={styles.discoverLabel}>
+              {t('hotelDetail:photosPage.discoverMore')}
+            </Typography>
           </Box>
         )}
       </Container>

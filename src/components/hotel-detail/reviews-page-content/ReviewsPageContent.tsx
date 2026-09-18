@@ -17,6 +17,7 @@ import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined';
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutlineOutlined';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import { useTranslation } from 'react-i18next';
 import Breadcrumb from '@/components/breadcrumb/Breadcrumb';
 import type { HotelDetail } from '@/models/entity/hotel/hotel.model';
 import styles from './ReviewsPageContent.module.scss';
@@ -30,15 +31,18 @@ interface ReviewsPageContentProps {
   hotel: HotelDetail;
 }
 
+const CATEGORY_KEYS = ['Cleanliness', 'Service', 'Location', 'Value', 'Facilities'] as const;
+
 function getCategoryScores(rating: number) {
-  const c = (n: number) => Math.min(5, Math.max(1, +n.toFixed(1)));
-  return [
-    { label: 'Cleanliness', score: c(rating * 0.95) },
-    { label: 'Service',     score: c(rating * 1.02) },
-    { label: 'Location',    score: c(rating * 0.98) },
-    { label: 'Value',       score: c(rating * 0.93) },
-    { label: 'Facilities',  score: c(rating * 0.95) },
-  ];
+  const c = (n: number) => Math.min(5, Math.max(0, +n.toFixed(1)));
+  const multipliers: Record<(typeof CATEGORY_KEYS)[number], number> = {
+    Cleanliness: 0.95,
+    Service: 1.02,
+    Location: 0.98,
+    Value: 0.93,
+    Facilities: 0.95,
+  };
+  return CATEGORY_KEYS.map((key) => ({ key, score: c(rating * multipliers[key]) }));
 }
 
 function buildPageItems(current: number, total: number): (number | '...')[] {
@@ -54,6 +58,7 @@ function buildPageItems(current: number, total: number): (number | '...')[] {
 }
 
 export default function ReviewsPageContent({ hotel }: ReviewsPageContentProps) {
+  const { t } = useTranslation(['hotelDetail', 'common']);
   const [searchQuery, setSearchQuery] = useState('');
   const [sortOrder, setSortOrder] = useState<SortOrder>('latest');
   const [page, setPage] = useState(1);
@@ -78,20 +83,19 @@ export default function ReviewsPageContent({ hotel }: ReviewsPageContentProps) {
       <Container maxWidth="lg">
         <Breadcrumb
           items={[
-            { label: 'Home', href: '/' },
-            { label: 'Destinations', href: '/destinations' },
+            { label: t('common:nav.home'), href: '/' },
+            { label: t('common:nav.destinations'), href: '/destinations' },
             { label: hotel.name, href: `/destinations/${hotel.id}` },
-            { label: 'All Reviews' },
+            { label: t('hotelDetail:reviewsPage.allReviews') },
           ]}
         />
 
         <Box className={styles.pageHeader}>
           <Typography variant="h3" className={styles.pageTitle}>
-            Guest Experiences
+            {t('hotelDetail:reviewsPage.title')}
           </Typography>
           <Typography className={styles.pageSubtitle}>
-            Discover why discerning travelers choose Lumina Stay for their most precious
-            moments. Real stories from our global community.
+            {t('hotelDetail:reviewsPage.subtitle')}
           </Typography>
         </Box>
 
@@ -113,14 +117,16 @@ export default function ReviewsPageContent({ hotel }: ReviewsPageContentProps) {
                 ))}
               </Box>
               <Typography className={styles.ratingLabel}>
-                Based on {hotel.reviewCount.toLocaleString()} reviews
+                {t('hotelDetail:reviewsPage.basedOn', { n: hotel.reviewCount.toLocaleString() })}
               </Typography>
 
               <Box className={styles.categoryDivider} />
 
-              {categories.map(({ label, score }) => (
-                <Box key={label} className={styles.categoryRow}>
-                  <Typography className={styles.categoryLabel}>{label}</Typography>
+              {categories.map(({ key, score }) => (
+                <Box key={key} className={styles.categoryRow}>
+                  <Typography className={styles.categoryLabel}>
+                    {t(`hotelDetail:reviewsPage.categories.${key}`)}
+                  </Typography>
                   <Box className={styles.barTrack}>
                     <Box
                       className={styles.barFill}
@@ -133,12 +139,12 @@ export default function ReviewsPageContent({ hotel }: ReviewsPageContentProps) {
             </Box>
 
             <Box className={styles.filterBox}>
-              <Typography className={styles.filterTitle}>Filter Reviews</Typography>
+              <Typography className={styles.filterTitle}>{t('hotelDetail:reviewsPage.filterTitle')}</Typography>
               <Box className={styles.searchField}>
                 <SearchIcon className={styles.searchIcon} />
                 <InputBase
                   fullWidth
-                  placeholder="Search within reviews…"
+                  placeholder={t('hotelDetail:reviewsPage.searchPlaceholder')}
                   value={searchQuery}
                   onChange={(e) => {
                     setSearchQuery(e.target.value);
@@ -157,9 +163,9 @@ export default function ReviewsPageContent({ hotel }: ReviewsPageContentProps) {
                 }}
                 className={styles.sortSelect}
               >
-                <MenuItem value="latest">Latest Reviews</MenuItem>
-                <MenuItem value="highest">Highest Rated</MenuItem>
-                <MenuItem value="lowest">Lowest Rated</MenuItem>
+                <MenuItem value="latest">{t('hotelDetail:reviewsPage.sortLatest')}</MenuItem>
+                <MenuItem value="highest">{t('hotelDetail:reviewsPage.sortHighest')}</MenuItem>
+                <MenuItem value="lowest">{t('hotelDetail:reviewsPage.sortLowest')}</MenuItem>
               </Select>
             </Box>
           </Box>
@@ -169,6 +175,7 @@ export default function ReviewsPageContent({ hotel }: ReviewsPageContentProps) {
             {pageReviews.length > 0 ? (
               <Box className={styles.reviewsList}>
                 {pageReviews.map((review, index) => {
+                  const author = t(`hotelDetail:reviewAuthor.${review.author}`, { defaultValue: review.author });
                   const avatarColor =
                     AVATAR_COLORS[
                       ((currentPage - 1) * PAGE_SIZE + index) % AVATAR_COLORS.length
@@ -178,16 +185,20 @@ export default function ReviewsPageContent({ hotel }: ReviewsPageContentProps) {
                       <Box className={styles.reviewCardHeader}>
                         <Box className={styles.avatar} style={{ background: avatarColor }}>
                           <Typography className={styles.avatarInitial}>
-                            {review.author.charAt(0)}
+                            {author.charAt(0)}
                           </Typography>
                         </Box>
 
                         <Box className={styles.meta}>
-                          <Typography className={styles.authorName}>{review.author}</Typography>
+                          <Typography className={styles.authorName}>{author}</Typography>
                           <Box className={styles.metaRow}>
-                            <Typography className={styles.stayDate}>Stayed in {review.date}</Typography>
+                            <Typography className={styles.stayDate}>
+                              {t('hotelDetail:reviewsPage.stayedIn', { date: review.date })}
+                            </Typography>
                             <Box className={styles.verifiedBadge}>
-                              <Typography className={styles.verifiedText}>VERIFIED STAY</Typography>
+                              <Typography className={styles.verifiedText}>
+                                {t('hotelDetail:reviewsPage.verifiedStay')}
+                              </Typography>
                             </Box>
                           </Box>
                         </Box>
@@ -223,12 +234,14 @@ export default function ReviewsPageContent({ hotel }: ReviewsPageContentProps) {
                         <Box className={styles.actionBtn}>
                           <ThumbUpOutlinedIcon className={styles.actionIcon} />
                           <Typography className={styles.actionLabel}>
-                            Helpful ({review.helpfulCount ?? 0})
+                            {t('hotelDetail:reviewsPage.helpful', { n: review.helpfulCount ?? 0 })}
                           </Typography>
                         </Box>
                         <Box className={styles.actionBtn}>
                           <ChatBubbleOutlineIcon className={styles.actionIcon} />
-                          <Typography className={styles.actionLabel}>Comment</Typography>
+                          <Typography className={styles.actionLabel}>
+                            {t('hotelDetail:reviewsPage.comment')}
+                          </Typography>
                         </Box>
                       </Box>
                     </Box>
@@ -238,7 +251,7 @@ export default function ReviewsPageContent({ hotel }: ReviewsPageContentProps) {
             ) : (
               <Box className={styles.emptyState}>
                 <Typography className={styles.emptyText}>
-                  No reviews match your search.
+                  {t('hotelDetail:reviewsPage.noMatch')}
                 </Typography>
               </Box>
             )}

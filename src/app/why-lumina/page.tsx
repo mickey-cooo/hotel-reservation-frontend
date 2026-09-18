@@ -5,12 +5,16 @@ import WhyLuminaHero from '@/components/why/why-lumina-hero/WhyLuminaHero';
 import WhyBookBento from '@/components/why/why-book-bento/WhyBookBento';
 import LuminaDifference from '@/components/why/lumina-difference/LuminaDifference';
 import LuminaCta from '@/components/why/lumina-cta/LuminaCta';
+import { getServerLocale } from '@/lib/server-locale';
+import { getCommonTranslation } from '@/lib/server-common-i18n';
 
-export const metadata = {
-  title: 'Why Book with Lumina Stay — Lumina Stay',
-  description:
-    'Best rate guarantee, secure payment, 24/7 concierge support, and exclusive member rewards — only when you book directly with Lumina Stay.',
-};
+export async function generateMetadata() {
+  const locale = await getServerLocale();
+  return {
+    title: getCommonTranslation(locale, 'metadata.whyTitle'),
+    description: getCommonTranslation(locale, 'metadata.whyDescription'),
+  };
+}
 
 export default function WhyLuminaPage() {
   return (

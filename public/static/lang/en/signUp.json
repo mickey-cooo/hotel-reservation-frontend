@@ -15,7 +15,9 @@
   "buttonSubmit": "Create Account",
   "haveAccount": "Already have an account?",
   "signIn": "Sign in here",
-  "termOfCondition": "I accept Terms and Conditions and User Agreement",
+  "termPrefix": "I accept",
+  "termLink": "Terms and Conditions",
+  "termSuffix": "and User Agreement",
   "newsletter": "Get exclusive deals and updates with our Newsletter Subscription",
   "signUpFail": "Registration failed. Please try again."
 }

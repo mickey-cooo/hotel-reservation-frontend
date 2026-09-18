@@ -4,6 +4,7 @@ import { Box, Radio, TextField, Typography } from '@mui/material';
 import CreditCardIcon from '@mui/icons-material/CreditCard';
 import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
 import PhoneIphoneIcon from '@mui/icons-material/PhoneIphone';
+import { useTranslation } from 'react-i18next';
 import styles from './PaymentMethod.module.scss';
 
 export type PaymentMethodType = 'card' | 'wallet' | 'bank';
@@ -15,32 +16,34 @@ interface PaymentMethodProps {
 
 const METHODS: {
   id: PaymentMethodType;
-  label: string;
-  subLabel?: string;
+  labelKey: string;
+  subLabelKey?: string;
   icon: React.ReactNode;
 }[] = [
   {
     id: 'card',
-    label: 'Credit / Debit Card',
+    labelKey: 'payment.card',
     icon: <CreditCardIcon />,
   },
   {
     id: 'wallet',
-    label: 'Digital Wallet',
-    subLabel: 'Apple Pay, Google Pay',
+    labelKey: 'payment.wallet',
+    subLabelKey: 'payment.walletSub',
     icon: <PhoneIphoneIcon />,
   },
   {
     id: 'bank',
-    label: 'Bank Transfer',
+    labelKey: 'payment.bank',
     icon: <AccountBalanceIcon />,
   },
 ];
 
 export default function PaymentMethod({ value, onChange }: PaymentMethodProps) {
+  const { t } = useTranslation('checkout');
+
   return (
     <Box className={styles.card}>
-      <Typography className={styles.sectionTitle}>Payment Method</Typography>
+      <Typography className={styles.sectionTitle}>{t('payment.title')}</Typography>
 
       <Box className={styles.methodList}>
         {METHODS.map((method) => {
@@ -59,11 +62,11 @@ export default function PaymentMethod({ value, onChange }: PaymentMethodProps) {
                 />
                 <Box className={styles.methodLabel}>
                   <Typography className={styles.methodName}>
-                    {method.label}
+                    {t(method.labelKey)}
                   </Typography>
-                  {method.subLabel && (
+                  {method.subLabelKey && (
                     <Typography className={styles.methodSub}>
-                      {method.subLabel}
+                      {t(method.subLabelKey)}
                     </Typography>
                   )}
                 </Box>
@@ -88,13 +91,13 @@ export default function PaymentMethod({ value, onChange }: PaymentMethodProps) {
                   <Box className={styles.cardRow}>
                     <TextField
                       placeholder="MM / YY"
-                      label="Expiry"
+                      label={t('payment.expiry')}
                       className={styles.field}
                       slotProps={{ inputLabel: { className: styles.fieldLabel }, input: { className: styles.input } }}
                     />
                     <TextField
                       placeholder="•••"
-                      label="CVC / CVV"
+                      label={t('payment.cvc')}
                       className={styles.field}
                       slotProps={{ inputLabel: { className: styles.fieldLabel }, input: { className: styles.input } }}
                     />

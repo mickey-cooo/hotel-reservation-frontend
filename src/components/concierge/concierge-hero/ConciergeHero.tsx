@@ -1,20 +1,23 @@
+'use client';
+
 import { Box, Container, Typography } from '@mui/material';
 import styles from './ConciergeHero.module.scss';
+import { useTranslation } from 'react-i18next';
 
 export default function ConciergeHero() {
+  const { t } = useTranslation('concierge');
   return (
     <Box className={styles.root}>
       <Container maxWidth="lg">
         <Box className={styles.inner}>
           <Typography component="p" className={styles.eyebrow}>
-            24 / 7 Support
+            {t('heroEyebrow')}
           </Typography>
           <Typography variant="h1" className={styles.heading}>
-            How can we help?
+            {t('heroTitle')}
           </Typography>
           <Typography className={styles.subtitle}>
-            Our Lumina Concierge is available around the clock to assist with your journey — from
-            suite upgrades to personalized itinerary planning.
+            {t('heroSubtitle')}
           </Typography>
           <Box className={styles.divider} />
         </Box>

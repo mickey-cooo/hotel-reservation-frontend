@@ -2,9 +2,14 @@
 
 import { Box, Button, Container, Typography } from '@mui/material';
 import NextLink from 'next/link';
+import { useTranslation } from 'react-i18next';
 import styles from './MembershipHero.module.scss';
+import { useUserEmail } from '@/hooks/useUserEmail';
 
 export default function MembershipHero() {
+  const userEmail = useUserEmail();
+  const { t } = useTranslation('membership');
+
   return (
     <Box className={styles.hero}>
       <Box className={styles.heroBg}>
@@ -20,24 +25,23 @@ export default function MembershipHero() {
 
       <Container maxWidth="lg" className={styles.container}>
         <Box className={styles.inner}>
-          <span className={styles.badge}>Experience Perfection</span>
+          <span className={styles.badge}>{t('hero.badge')}</span>
           <Typography variant="h1" className={styles.title}>
-            ยกระดับทุกการเข้าพัก
+            {t('hero.titleLine1')}
             <br />
-            <span className={styles.titleGold}>ด้วยเอกสิทธิ์เฉพาะคุณ</span>
+            <span className={styles.titleGold}>{t('hero.titleLine2')}</span>
           </Typography>
           <Typography className={styles.description}>
-            เข้าร่วมโปรแกรม Lumina Rewards เพื่อสัมผัสประสบการณ์การบริการเหนือระดับ
-            พร้อมรับสิทธิพิเศษที่คัดสรรมาเพื่อตอบโจทย์ไลฟ์สไตล์ที่หรูหราของคุณโดยเฉพาะ
+            {t('hero.description')}
           </Typography>
           <Box className={styles.btnRow}>
             <Button
               variant="contained"
               component={NextLink}
-              href="/register"
+              href={userEmail ? '/bookings' : '/register'}
               className={styles.ctaBtn}
             >
-              สมัครสมาชิกตอนนี้
+              {userEmail ? t('hero.myAccount') : t('hero.joinNow')}
             </Button>
             <Button
               variant="outlined"
@@ -45,7 +49,7 @@ export default function MembershipHero() {
               href="/membership"
               className={styles.outlineBtn}
             >
-              ดูรายละเอียดเพิ่มเติม
+              {t('hero.learnMore')}
             </Button>
           </Box>
         </Box>

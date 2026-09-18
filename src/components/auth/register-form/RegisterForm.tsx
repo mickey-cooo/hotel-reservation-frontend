@@ -64,12 +64,12 @@ export default function RegisterForm() {
     try {
       const result = await registerAction({ email, password, confirmPassword });
       if (!result.ok) {
-        setError(result.message || 'สมัครสมาชิกไม่สำเร็จ กรุณาลองใหม่อีกครั้ง');
+        setError(result.message || t('signUpFail'));
         return;
       }
-      router.push(`/verify-otp?email=${encodeURIComponent(email)}`);
+      router.push('/login');
     } catch {
-      setError('สมัครสมาชิกไม่สำเร็จ กรุณาลองใหม่อีกครั้ง');
+      setError(t('signUpFail'));
     }
   };
 
@@ -95,7 +95,7 @@ export default function RegisterForm() {
 
       <Box className={styles.fields}>
         <Box className={styles.fieldGroup}>
-          <Typography className={styles.label}>EMAIL</Typography>
+          <Typography className={styles.label}>{t('email')}</Typography>
           <Controller
             name="email"
             control={control}
@@ -117,7 +117,7 @@ export default function RegisterForm() {
         </Box>
 
         <Box className={styles.fieldGroup}>
-          <Typography className={styles.label}>PASSWORD</Typography>
+          <Typography className={styles.label}>{t('password')}</Typography>
           <Controller
             name="password"
             control={control}
@@ -156,7 +156,7 @@ export default function RegisterForm() {
         </Box>
 
         <Box className={styles.fieldGroup}>
-          <Typography className={styles.label}>CONFIRM PASSWORD</Typography>
+          <Typography className={styles.label}>{t('confirmPassword')}</Typography>
           <Controller
             name="confirmPassword"
             control={control}
@@ -164,7 +164,7 @@ export default function RegisterForm() {
               required: true,
               validate: (value) =>
                 value === watch('password') ||
-                'รหัสผ่านและยืนยันรหัสผ่านไม่ตรงกัน',
+                t('auth.confirmPasswordInvalid'),
             }}
             render={({ field, fieldState }) => (
               <>
@@ -227,15 +227,15 @@ export default function RegisterForm() {
               }
               label={
                 <Typography className={styles.checkboxLabel}>
-                  ยอมรับ{' '}
+                  {t('termPrefix')}{' '}
                   <Link
                     href="#"
                     underline="always"
                     className={styles.termsLink}
                   >
-                    Terms and Conditions
+                    {t('termLink')}
                   </Link>{' '}
-                  และข้อตกลงการใช้งาน
+                  {' '}{t('termSuffix')}
                 </Typography>
               }
             />
@@ -257,7 +257,7 @@ export default function RegisterForm() {
               }
               label={
                 <Typography className={styles.checkboxLabel}>
-                  รับข้อมูลข่าวสารและสิทธิพิเศษผ่าน Newsletter Subscription
+                  {t('newsletter')}
                 </Typography>
               }
             />
@@ -271,15 +271,15 @@ export default function RegisterForm() {
         className={styles.registerBtn}
         disabled={isSubmitting || !isValid}
       >
-        สร้างบัญชีผู้ใช้
+        {t('buttonSubmit')}
       </Button>
 
       <Box className={styles.loginRow}>
         <Typography className={styles.loginText}>
-          เป็นสมาชิกอยู่แล้ว?
+          {t('haveAccount')}
         </Typography>
         <Link href="/login" underline="none" className={styles.loginLink}>
-          เข้าสู่ระบบที่นี่
+          {t('signIn')}
         </Link>
       </Box>
     </Box>

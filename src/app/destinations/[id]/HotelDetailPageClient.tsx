@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { notFound } from 'next/navigation';
 import { Box, CircularProgress, Container, Divider } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 import Navbar from '@/components/navbar/Navbar';
 import Footer from '@/components/footer/Footer';
 import Breadcrumb from '@/components/breadcrumb/Breadcrumb';
@@ -23,6 +24,7 @@ interface HotelDetailPageClientProps {
 }
 
 export default function HotelDetailPageClient({ id }: HotelDetailPageClientProps) {
+  const { t } = useTranslation('common');
   const [hotelDetail, setHotelDetail] = useState<HotelDetail | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -53,8 +55,8 @@ export default function HotelDetailPageClient({ id }: HotelDetailPageClientProps
         <Container maxWidth="lg">
           <Breadcrumb
             items={[
-              { label: 'Home', href: '/' },
-              { label: 'Destinations', href: '/destinations' },
+              { label: t('nav.home'), href: '/' },
+              { label: t('nav.destinations'), href: '/destinations' },
               { label: hotel.name },
             ]}
           />

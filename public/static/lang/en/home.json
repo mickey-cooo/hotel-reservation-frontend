@@ -1,0 +1,46 @@
+{
+  "hero": {
+    "title": "Find Your Next Sanctuary"
+  },
+  "search": {
+    "location": "Location",
+    "locationPlaceholder": "Where are you going?",
+    "dates": "Check In — Check Out",
+    "addDates": "Add dates",
+    "guests": "Guests",
+    "adult": "Adult",
+    "adultsPlural": "Adults",
+    "child": "Child",
+    "childrenPlural": "Children",
+    "room": "Room",
+    "roomsPlural": "Rooms",
+    "selectCheckIn": "Select check-in date",
+    "selectCheckOut": "Select check-out date",
+    "checkInLabel": "Check-in",
+    "checkOutLabel": "Check-out",
+    "guestsAndRooms": "Guests & Rooms",
+    "adults": "Adults",
+    "adultsAgeNote": "Ages 13 or above",
+    "children": "Children",
+    "childrenAgeNote": "Ages 0–12",
+    "rooms": "Rooms",
+    "done": "Done"
+  },
+  "trustBar": {
+    "trustText": "Trusted by 500,000+ travelers worldwide"
+  },
+  "mostBooked": {
+    "sectionLabel": "Our Curated Selection",
+    "sectionTitle": "Most Booked Destinations",
+    "viewAll": "View all destinations"
+  },
+  "whyLumina": {
+    "sectionLabel": "The Lumina Difference",
+    "sectionTitle": "Elevated Stays for the Discerning Traveler",
+    "sectionBody": "We curate only the most exceptional properties, ensuring every booking meets our 150-point quality standard. Experience luxury as it was meant to be: personal, seamless, and unforgettable.",
+    "verifiedTitle": "Verified Properties",
+    "verifiedDesc": "Every property is hand-picked and physically inspected.",
+    "conciergeTitle": "24/7 Priority Concierge",
+    "conciergeDesc": "Expert assistance from booking to checkout."
+  }
+}

@@ -18,6 +18,7 @@ import PhoneOutlinedIcon from '@mui/icons-material/PhoneOutlined';
 import MailOutlinedIcon from '@mui/icons-material/MailOutlined';
 import SendIcon from '@mui/icons-material/Send';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutlined';
+import { useTranslation } from 'react-i18next';
 import styles from './ContactFormSection.module.scss';
 
 const SUBJECTS = [
@@ -28,13 +29,9 @@ const SUBJECTS = [
 ] as const;
 
 const HQ_INFO = [
-  {
-    Icon: LocationOnOutlinedIcon,
-    label: 'Address',
-    value: '1100 Avenue of the Americas\nNew York, NY 10036, USA',
-  },
-  { Icon: PhoneOutlinedIcon, label: 'Phone', value: '+1 (212) 555-0198' },
-  { Icon: MailOutlinedIcon, label: 'Email', value: 'concierge@luminastay.com' },
+  { Icon: LocationOnOutlinedIcon, labelKey: 'form.address', valueKey: 'form.addressValue' },
+  { Icon: PhoneOutlinedIcon, labelKey: 'form.phone', value: '+1 (212) 555-0198' },
+  { Icon: MailOutlinedIcon, labelKey: 'form.mail', value: 'concierge@luminastay.com' },
 ] as const;
 
 type SubmitState = 'idle' | 'loading' | 'sent';
@@ -47,6 +44,7 @@ interface ContactFormValues {
 }
 
 export default function ContactFormSection() {
+  const { t } = useTranslation(['contact', 'common']);
   const [submitState, setSubmitState] = useState<SubmitState>('idle');
 
   const { control, handleSubmit, reset } = useForm<ContactFormValues>({
@@ -69,9 +67,9 @@ export default function ContactFormSection() {
           {/* Left: Form */}
           <Box className={styles.formCol}>
             <Box className={styles.formHeader}>
-              <Typography className={styles.eyebrow}>Reach Out</Typography>
+              <Typography className={styles.eyebrow}>{t('form.eyebrow')}</Typography>
               <Typography variant="h2" className={styles.heading}>
-                Send a Message
+                {t('form.heading')}
               </Typography>
               <Box className={styles.accent} aria-hidden />
             </Box>
@@ -85,8 +83,8 @@ export default function ContactFormSection() {
                   render={({ field }) => (
                     <TextField
                       {...field}
-                      label="Full Name"
-                      placeholder="John Doe"
+                      label={t('form.fullName')}
+                      placeholder={t('form.fullNamePlaceholder')}
                       fullWidth
                       className={styles.field}
                       slotProps={{
@@ -103,9 +101,9 @@ export default function ContactFormSection() {
                   render={({ field }) => (
                     <TextField
                       {...field}
-                      label="Email Address"
+                      label={t('form.email')}
                       type="email"
-                      placeholder="john@example.com"
+                      placeholder={t('form.emailPlaceholder')}
                       fullWidth
                       className={styles.field}
                       slotProps={{
@@ -118,15 +116,15 @@ export default function ContactFormSection() {
               </Box>
 
               <FormControl fullWidth className={styles.field}>
-                <InputLabel className={styles.label}>Subject</InputLabel>
+                <InputLabel className={styles.label}>{t('form.subject')}</InputLabel>
                 <Controller
                   name="subject"
                   control={control}
                   render={({ field }) => (
-                    <Select {...field} label="Subject" className={styles.select}>
+                    <Select {...field} label={t('form.subject')} className={styles.select}>
                       {SUBJECTS.map((s) => (
                         <MenuItem key={s} value={s}>
-                          {s}
+                          {t(`form.subjects.${s}`)}
                         </MenuItem>
                       ))}
                     </Select>
@@ -141,8 +139,8 @@ export default function ContactFormSection() {
                 render={({ field }) => (
                   <TextField
                     {...field}
-                    label="Message"
-                    placeholder="How can we assist you today?"
+                    label={t('form.message')}
+                    placeholder={t('form.messagePlaceholder')}
                     multiline
                     rows={5}
                     fullWidth
@@ -162,9 +160,9 @@ export default function ContactFormSection() {
                 endIcon={submitState === 'sent' ? <CheckCircleOutlineIcon /> : <SendIcon />}
                 disableElevation
               >
-                {submitState === 'idle' && 'Send Inquiry'}
-                {submitState === 'loading' && 'Sending…'}
-                {submitState === 'sent' && 'Message Sent'}
+                {submitState === 'idle' && t('form.sendInquiry')}
+                {submitState === 'loading' && t('form.sending')}
+                {submitState === 'sent' && t('form.messageSent')}
               </Button>
             </Box>
           </Box>
@@ -173,16 +171,18 @@ export default function ContactFormSection() {
           <Box className={styles.infoCol}>
             <Box className={styles.hqCard}>
               <Box className={styles.hqBlob} aria-hidden />
-              <Typography className={styles.hqTitle}>Lumina Stay Global Headquarters</Typography>
+              <Typography className={styles.hqTitle}>{t('form.hqTitle')}</Typography>
               <Box className={styles.hqList}>
-                {HQ_INFO.map(({ Icon, label, value }) => (
-                  <Box key={label} className={styles.hqItem}>
+                {HQ_INFO.map(({ Icon, labelKey, ...rest }) => (
+                  <Box key={labelKey} className={styles.hqItem}>
                     <Box className={styles.hqIconWrap}>
                       <Icon className={styles.hqIcon} />
                     </Box>
                     <Box>
-                      <Typography className={styles.hqLabel}>{label}</Typography>
-                      <Typography className={styles.hqValue}>{value}</Typography>
+                      <Typography className={styles.hqLabel}>{t(labelKey)}</Typography>
+                      <Typography className={styles.hqValue}>
+                        {'valueKey' in rest ? t(rest.valueKey) : rest.value}
+                      </Typography>
                     </Box>
                   </Box>
                 ))}
@@ -193,13 +193,13 @@ export default function ContactFormSection() {
               <Box
                 component="img"
                 src="https://images.unsplash.com/photo-1524661135-423995f22d0b?w=800&q=80"
-                alt="New York City aerial view"
+                alt={t('common:imageAlt.newYork')}
                 className={styles.mapImg}
               />
               <Box className={styles.mapOverlay} aria-hidden />
               <Box className={styles.mapBadge}>
                 <Box className={styles.mapDot} aria-hidden />
-                Live Concierge Available
+                {t('form.liveConcierge')}
               </Box>
             </Box>
           </Box>

@@ -1,0 +1,44 @@
+{
+  "botName": "Lumina Concierge",
+  "online": "Online",
+  "newConversation": "New conversation",
+  "startNewConversation": "Start new conversation",
+  "conversationMessages": "Conversation messages",
+  "quickActions": "Quick actions",
+  "delivered": "Delivered",
+  "messagePlaceholder": "Message Lumina Concierge…",
+  "chatMessage": "Chat message",
+  "attachFile": "Attach file",
+  "sendMessage": "Send message",
+  "poweredBy": "Powered by Lumina AI",
+  "heroEyebrow": "24 / 7 Support",
+  "heroTitle": "How can we help?",
+  "heroSubtitle": "Our Lumina Concierge is available around the clock to assist with your journey — from suite upgrades to personalized itinerary planning.",
+  "typing": "Lumina Concierge is typing",
+  "options": {
+    "knowledgeTitle": "Knowledge Base",
+    "knowledgeDesc": "Find answers to common questions about policies and amenities.",
+    "knowledgeLabel": "Browse Knowledge Base",
+    "speakTitle": "Speak to Concierge",
+    "speakDesc": "Prefer a human touch? Our global team is just a phone call away.",
+    "speakLabel": "Call Concierge",
+    "premiumTitle": "Premium Support",
+    "premiumDesc": "Dedicated priority handling for our Lumina Gold members.",
+    "premiumLabel": "Access Premium Support"
+  },
+  "sessionToday": "Today, {{time}}",
+  "initialMessage": "Sawadee ka! Welcome to Lumina Stay Support. How can I assist you with your booking today?",
+  "defaultResponse": "Thank you for your message. Let me look into that for you — I'll have an answer shortly.",
+  "actions": {
+    "cancelBooking": "Cancel Booking",
+    "lateCheckout": "Request Late Check-out",
+    "billing": "Billing Inquiry",
+    "roomService": "Room Service"
+  },
+  "responses": {
+    "cancelBooking": "I can help you cancel your booking. Please share your booking reference number and I'll process the cancellation right away.",
+    "lateCheckout": "Late check-out is subject to availability. Please share your booking ID and I'll check what options are available for your stay.",
+    "billing": "Happy to help with your billing inquiry. Could you share your booking ID or describe the specific charge you're asking about?",
+    "roomService": "Room service is available 24/7 at all Lumina Stay properties. What would you like to order or request?"
+  }
+}

@@ -1,3 +1,5 @@
+'use client';
+
 import { Box, Typography } from '@mui/material';
 import WifiIcon from '@mui/icons-material/Wifi';
 import PoolIcon from '@mui/icons-material/Pool';
@@ -16,6 +18,7 @@ import SelfImprovementIcon from '@mui/icons-material/SelfImprovement';
 import FlightLandIcon from '@mui/icons-material/FlightLand';
 import WaterIcon from '@mui/icons-material/Water';
 import LocalDiningIcon from '@mui/icons-material/LocalDining';
+import { useTranslation } from 'react-i18next';
 import styles from './HotelAmenities.module.scss';
 
 const AMENITY_ICONS: Record<string, React.ElementType> = {
@@ -50,10 +53,12 @@ interface HotelAmenitiesProps {
 }
 
 export default function HotelAmenities({ amenities }: HotelAmenitiesProps) {
+  const { t } = useTranslation('hotelDetail');
+
   return (
     <Box className={styles.section}>
       <Typography variant="h6" className={styles.sectionTitle}>
-        Amenities
+        {t('amenities.title')}
       </Typography>
       <Box className={styles.grid}>
         {amenities.map((amenity) => {
@@ -61,7 +66,9 @@ export default function HotelAmenities({ amenities }: HotelAmenitiesProps) {
           return (
             <Box key={amenity} className={styles.amenityItem}>
               <Icon className={styles.amenityIcon} />
-              <Typography className={styles.amenityLabel}>{amenity}</Typography>
+              <Typography className={styles.amenityLabel}>
+                {t(`amenities.labels.${amenity}`, { defaultValue: amenity })}
+              </Typography>
             </Box>
           );
         })}

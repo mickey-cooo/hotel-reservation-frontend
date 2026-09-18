@@ -11,55 +11,20 @@ import ExploreIcon from '@mui/icons-material/Explore';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
 import MailIcon from '@mui/icons-material/Mail';
+import { useTranslation } from 'react-i18next';
 import styles from './HelpCenterContent.module.scss';
 
 const CATEGORIES = [
-  {
-    Icon: CalendarMonthIcon,
-    title: 'Booking',
-    desc: 'Reservations, cancellations, and modifications.',
-  },
-  {
-    Icon: PaymentsIcon,
-    title: 'Payment',
-    desc: 'Refunds, billing methods, and receipts.',
-  },
-  {
-    Icon: AccountCircleIcon,
-    title: 'Account',
-    desc: 'Security, profile settings, and Lumina Rewards.',
-  },
-  {
-    Icon: ExploreIcon,
-    title: 'Travel Advice',
-    desc: 'Local guides, safety tips, and packing lists.',
-  },
+  { Icon: CalendarMonthIcon, key: 'booking' },
+  { Icon: PaymentsIcon, key: 'payment' },
+  { Icon: AccountCircleIcon, key: 'account' },
+  { Icon: ExploreIcon, key: 'travelAdvice' },
 ] as const;
 
-const FAQS = [
-  {
-    question: 'What is the Lumina Stay cancellation policy?',
-    answer:
-      'Our standard cancellation policy allows for a full refund if the booking is cancelled at least 48 hours before the scheduled check-in time. For premium suites and certain promotional rates, a non-refundable policy may apply. Please refer to your booking confirmation email for specific terms related to your stay.',
-  },
-  {
-    question: 'Can I pay for my booking with multiple credit cards?',
-    answer:
-      'Yes, Lumina Stay supports split payments for reservations over $1,000. You can distribute the balance across up to three different payment methods during the final step of the checkout process.',
-  },
-  {
-    question: 'How do I access the Lumina Concierge service?',
-    answer:
-      'Once your booking is confirmed, you will find a "Concierge" tab in your mobile app dashboard. From there, you can chat live with our dedicated travel experts to book dining, arrange transportation, or request personalized local itineraries.',
-  },
-  {
-    question: 'Are there any hidden fees for international travel advice?',
-    answer:
-      'Absolutely not. All travel advice, packing guides, and basic destination insights provided through the Support Center are complimentary for all Lumina Stay members.',
-  },
-] as const;
+const FAQ_KEYS = ['q1', 'q2', 'q3', 'q4'] as const;
 
 export default function HelpCenterContent() {
+  const { t } = useTranslation('helpCenter');
   const [openFaq, setOpenFaq] = useState<number>(0);
 
   const handleFaqToggle = (index: number) => {
@@ -74,21 +39,20 @@ export default function HelpCenterContent() {
         <Box className={styles.heroBlobLeft} aria-hidden />
         <Box className={styles.heroInner}>
           <Typography variant="h1" className={styles.heroTitle}>
-            How can we assist you?
+            {t('hero.title')}
           </Typography>
           <Typography className={styles.heroSubtitle}>
-            Search our knowledge base or browse categories below to find answers to your travel
-            inquiries.
+            {t('hero.subtitle')}
           </Typography>
           <Box className={styles.searchBar}>
             <SearchIcon className={styles.searchIcon} />
             <InputBase
               className={styles.searchInput}
-              placeholder="Search for topics, bookings, or advice..."
-              inputProps={{ 'aria-label': 'search help center' }}
+              placeholder={t('hero.searchPlaceholder')}
+              inputProps={{ 'aria-label': t('hero.searchAriaLabel') }}
             />
             <Button className={styles.searchBtn} disableElevation>
-              Search
+              {t('hero.search')}
             </Button>
           </Box>
         </Box>
@@ -97,13 +61,13 @@ export default function HelpCenterContent() {
       {/* Category grid — overlaps hero bottom */}
       <Container maxWidth="lg">
         <Box className={styles.categoryGrid}>
-          {CATEGORIES.map(({ Icon, title, desc }) => (
-            <Box key={title} className={styles.categoryCard}>
+          {CATEGORIES.map(({ Icon, key }) => (
+            <Box key={key} className={styles.categoryCard}>
               <Box className={styles.categoryIconWrap}>
                 <Icon className={styles.categoryIcon} />
               </Box>
-              <Typography className={styles.categoryTitle}>{title}</Typography>
-              <Typography className={styles.categoryDesc}>{desc}</Typography>
+              <Typography className={styles.categoryTitle}>{t(`categories.${key}Title`)}</Typography>
+              <Typography className={styles.categoryDesc}>{t(`categories.${key}Desc`)}</Typography>
             </Box>
           ))}
         </Box>
@@ -111,17 +75,17 @@ export default function HelpCenterContent() {
         {/* FAQ */}
         <Box className={styles.faqSection}>
           <Typography variant="h2" className={styles.faqHeading}>
-            Frequently Asked Questions
+            {t('faq.heading')}
           </Typography>
           <Box className={styles.faqList}>
-            {FAQS.map(({ question, answer }, index) => (
-              <Box key={question} className={styles.faqItem}>
+            {FAQ_KEYS.map((key, index) => (
+              <Box key={key} className={styles.faqItem}>
                 <button
                   className={styles.faqBtn}
                   onClick={() => handleFaqToggle(index)}
                   aria-expanded={openFaq === index}
                 >
-                  <Typography className={styles.faqQuestion}>{question}</Typography>
+                  <Typography className={styles.faqQuestion}>{t(`faq.${key}`)}</Typography>
                   <ExpandMoreIcon
                     className={`${styles.faqChevron}${openFaq === index ? ` ${styles.faqChevronOpen}` : ''}`}
                   />
@@ -129,7 +93,7 @@ export default function HelpCenterContent() {
                 <Box
                   className={`${styles.faqAnswer}${openFaq === index ? ` ${styles.faqAnswerOpen}` : ''}`}
                 >
-                  <Typography className={styles.faqAnswerText}>{answer}</Typography>
+                  <Typography className={styles.faqAnswerText}>{t(`faq.a${key.slice(1)}`)}</Typography>
                 </Box>
               </Box>
             ))}
@@ -149,11 +113,10 @@ export default function HelpCenterContent() {
           />
           <Box className={styles.ctaInner}>
             <Typography variant="h2" className={styles.ctaTitle}>
-              Still need assistance?
+              {t('cta.title')}
             </Typography>
             <Typography className={styles.ctaSubtitle}>
-              Our global support team is available 24/7 to help you with any urgent travel needs or
-              specialized requests.
+              {t('cta.subtitle')}
             </Typography>
             <Box className={styles.ctaBtns}>
               <Button
@@ -163,10 +126,10 @@ export default function HelpCenterContent() {
                 href="/concierge"
                 disableElevation
               >
-                Live Chat Now
+                {t('cta.liveChat')}
               </Button>
               <Button className={styles.ctaBtnOutline} startIcon={<MailIcon />}>
-                Email Support
+                {t('cta.emailSupport')}
               </Button>
             </Box>
           </Box>

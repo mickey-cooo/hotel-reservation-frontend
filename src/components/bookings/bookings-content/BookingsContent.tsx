@@ -8,15 +8,16 @@ import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import DownloadOutlinedIcon from '@mui/icons-material/DownloadOutlined';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutlined';
 import ChatOutlinedIcon from '@mui/icons-material/ChatOutlined';
+import { useTranslation } from 'react-i18next';
 import StatusBadge from '@/components/ui/status-badge/StatusBadge';
 import styles from './BookingsContent.module.scss';
 
 type TabId = 'upcoming' | 'past' | 'cancelled';
 
-const TABS: { id: TabId; label: string }[] = [
-  { id: 'upcoming', label: 'Upcoming' },
-  { id: 'past', label: 'Past' },
-  { id: 'cancelled', label: 'Cancelled' },
+const TABS: { id: TabId; labelKey: string }[] = [
+  { id: 'upcoming', labelKey: 'list.tabUpcoming' },
+  { id: 'past', labelKey: 'list.tabPast' },
+  { id: 'cancelled', labelKey: 'list.tabCancelled' },
 ];
 
 type BookingStatus = 'CONFIRMED' | 'ACTION_REQUIRED';
@@ -39,11 +40,11 @@ interface Booking {
 
 const SECONDARY_ACTION_CONFIG: Record<
   SecondaryAction,
-  { label: string; Icon: React.ElementType; href?: string }
+  { labelKey: string; Icon: React.ElementType; href?: string }
 > = {
-  DOWNLOAD_INVOICE: { label: 'Download Invoice', Icon: DownloadOutlinedIcon },
-  GET_SUPPORT: { label: 'Get Support', Icon: HelpOutlineIcon, href: '/concierge' },
-  CHAT_WITH_CONCIERGE: { label: 'Chat with Concierge', Icon: ChatOutlinedIcon, href: '/concierge' },
+  DOWNLOAD_INVOICE: { labelKey: 'list.downloadInvoice', Icon: DownloadOutlinedIcon },
+  GET_SUPPORT: { labelKey: 'list.getSupport', Icon: HelpOutlineIcon, href: '/concierge' },
+  CHAT_WITH_CONCIERGE: { labelKey: 'list.chatWithConcierge', Icon: ChatOutlinedIcon, href: '/concierge' },
 };
 
 // The backend's GET /hotel-booking/list requires a specific hotel_id — there
@@ -56,6 +57,7 @@ const BOOKINGS_BY_TAB: Record<TabId, Booking[]> = {
 };
 
 export default function BookingsContent() {
+  const { t } = useTranslation('bookings');
   const [activeTab, setActiveTab] = useState<TabId>('upcoming');
   const bookings = BOOKINGS_BY_TAB[activeTab];
 
@@ -67,11 +69,11 @@ export default function BookingsContent() {
         className={styles.tabs}
         slotProps={{ indicator: { className: styles.indicator } }}
       >
-        {TABS.map(({ id, label }) => (
+        {TABS.map(({ id, labelKey }) => (
           <Tab
             key={id}
             value={id}
-            label={label}
+            label={t(labelKey)}
             className={styles.tab}
           />
         ))}
@@ -81,7 +83,7 @@ export default function BookingsContent() {
       <Box className={styles.cardList}>
         {bookings.length === 0 ? (
           <Box className={styles.emptyState}>
-            <Typography className={styles.emptyText}>No bookings found.</Typography>
+            <Typography className={styles.emptyText}>{t('list.noBookings')}</Typography>
           </Box>
         ) : (
           bookings.map((booking) => {
@@ -100,7 +102,7 @@ export default function BookingsContent() {
               detailHref,
             } = booking;
 
-            const { label: secondaryLabel, Icon: SecondaryIcon, href: secondaryHref } =
+            const { labelKey: secondaryLabelKey, Icon: SecondaryIcon, href: secondaryHref } =
               SECONDARY_ACTION_CONFIG[secondaryAction];
 
             const isActionRequired = status === 'ACTION_REQUIRED';
@@ -115,7 +117,7 @@ export default function BookingsContent() {
                     className={styles.image}
                   />
                   <StatusBadge
-                    label={isActionRequired ? 'ACTION REQUIRED' : 'CONFIRMED'}
+                    label={isActionRequired ? t('list.actionRequired') : t('list.confirmed')}
                     background={isActionRequired ? '#F97316' : 'var(--color-gold)'}
                     color={isActionRequired ? '#fff' : 'var(--color-fg)'}
                     className={styles.badge}
@@ -132,7 +134,7 @@ export default function BookingsContent() {
                       </Box>
                     </Box>
                     <Box className={styles.priceBlock}>
-                      <Typography className={styles.priceLabel}>TOTAL PRICE</Typography>
+                      <Typography className={styles.priceLabel}>{t('list.totalPrice')}</Typography>
                       <Typography className={styles.price}>
                         ${totalPrice.toLocaleString('en-US', { minimumFractionDigits: 2 })}
                       </Typography>
@@ -141,9 +143,9 @@ export default function BookingsContent() {
 
                   <Box className={styles.datesRow}>
                     {[
-                      { label: 'CHECK-IN', value: checkIn },
-                      { label: 'CHECK-OUT', value: checkOut },
-                      { label: 'GUESTS', value: guests },
+                      { label: t('list.checkIn'), value: checkIn },
+                      { label: t('list.checkOut'), value: checkOut },
+                      { label: t('list.guests'), value: guests },
                     ].map(({ label, value }) => (
                       <Box key={label} className={styles.dateField}>
                         <Typography className={styles.dateLabel}>{label}</Typography>
@@ -165,10 +167,10 @@ export default function BookingsContent() {
                       className={`${styles.primaryBtn}${isActionRequired ? ` ${styles.primaryBtnGold}` : ''}`}
                       {...(detailHref ? { component: Link, href: detailHref } : {})}
                     >
-                      {isActionRequired ? 'Provide Details' : 'View Details'}
+                      {isActionRequired ? t('list.provideDetails') : t('list.viewDetails')}
                     </Button>
                     <Button variant="outlined" className={styles.manageBtn}>
-                      Manage
+                      {t('list.manage')}
                     </Button>
                     <Box className={styles.spacer} />
                     <Button
@@ -176,7 +178,7 @@ export default function BookingsContent() {
                       startIcon={<SecondaryIcon fontSize="small" />}
                       {...(secondaryHref ? { component: Link, href: secondaryHref } : {})}
                     >
-                      {secondaryLabel}
+                      {t(secondaryLabelKey)}
                     </Button>
                   </Box>
                 </Box>

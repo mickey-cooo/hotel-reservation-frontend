@@ -20,6 +20,7 @@ import RemoveIcon from '@mui/icons-material/Remove';
 import { LocalizationProvider, DateCalendar } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import dayjs, { Dayjs } from 'dayjs';
+import { useTranslation } from 'react-i18next';
 import styles from './HeroSearchBar.module.scss';
 
 type SelectingStep = 'checkIn' | 'checkOut';
@@ -30,6 +31,7 @@ function formatDate(d: Dayjs | null): string | null {
 
 
 export default function HeroSearchBar() {
+  const { t } = useTranslation('home');
   const [checkIn, setCheckIn] = useState<Dayjs | null>(null);
   const [checkOut, setCheckOut] = useState<Dayjs | null>(null);
   const [dateAnchor, setDateAnchor] = useState<HTMLElement | null>(null);
@@ -69,10 +71,10 @@ export default function HeroSearchBar() {
           <LocationOnOutlinedIcon className={styles.fieldIcon} />
           <Box className={styles.fieldLabelBox}>
             <Typography variant="caption" className={styles.fieldCaption}>
-              Location
+              {t('search.location')}
             </Typography>
             <InputBase
-              placeholder="Where are you going?"
+              placeholder={t('search.locationPlaceholder')}
               className={styles.fieldInput}
             />
           </Box>
@@ -87,7 +89,7 @@ export default function HeroSearchBar() {
           <CalendarTodayOutlinedIcon className={styles.fieldIcon} />
           <Box className={styles.fieldLabelBox}>
             <Typography variant="caption" className={styles.fieldCaption}>
-              Check In — Check Out
+              {t('search.dates')}
             </Typography>
             {checkIn || checkOut ? (
               <>
@@ -99,7 +101,7 @@ export default function HeroSearchBar() {
                 </Typography>
               </>
             ) : (
-              <Typography className={styles.fieldText}>Add dates</Typography>
+              <Typography className={styles.fieldText}>{t('search.addDates')}</Typography>
             )}
           </Box>
         </Box>
@@ -113,13 +115,14 @@ export default function HeroSearchBar() {
           <PeopleOutlinedIcon className={styles.fieldIcon} />
           <Box className={styles.fieldLabelBox}>
             <Typography variant="caption" className={styles.fieldCaption}>
-              Guests
+              {t('search.guests')}
             </Typography>
             <Typography className={styles.fieldTextActive}>
-              {adults} Adult{adults !== 1 ? 's' : ''}, {children} Child{children !== 1 ? 'ren' : ''}
+              {adults} {adults !== 1 ? t('search.adultsPlural') : t('search.adult')},{' '}
+              {children} {children !== 1 ? t('search.childrenPlural') : t('search.child')}
             </Typography>
             <Typography className={styles.fieldDateSub}>
-              {rooms} Room{rooms !== 1 ? 's' : ''}
+              {rooms} {rooms !== 1 ? t('search.roomsPlural') : t('search.room')}
             </Typography>
           </Box>
         </Box>
@@ -140,14 +143,14 @@ export default function HeroSearchBar() {
         <Box className={styles.calendarHeader}>
           <Typography className={styles.calendarHeaderText}>
             {selecting === 'checkIn'
-              ? 'Select check-in date'
-              : 'Select check-out date'}
+              ? t('search.selectCheckIn')
+              : t('search.selectCheckOut')}
           </Typography>
           {(checkIn || checkOut) && (
             <Typography className={styles.calendarSubText}>
-              {checkIn ? `Check-in: ${formatDate(checkIn)}` : ''}
+              {checkIn ? `${t('search.checkInLabel')}: ${formatDate(checkIn)}` : ''}
               {checkIn && checkOut ? ' · ' : ''}
-              {checkOut ? `Check-out: ${formatDate(checkOut)}` : ''}
+              {checkOut ? `${t('search.checkOutLabel')}: ${formatDate(checkOut)}` : ''}
             </Typography>
           )}
         </Box>
@@ -168,12 +171,12 @@ export default function HeroSearchBar() {
         transformOrigin={{ vertical: 'top', horizontal: 'left' }}
         slotProps={{ paper: { className: styles.guestPopoverPaper } }}
       >
-        <Typography className={styles.guestPopoverTitle}>Guests &amp; Rooms</Typography>
+        <Typography className={styles.guestPopoverTitle}>{t('search.guestsAndRooms')}</Typography>
         <Box className={styles.guestPopoverContent}>
           <Box className={styles.guestRow}>
             <Box className={styles.guestLabelGroup}>
-              <Typography className={styles.guestLabel}>Adults</Typography>
-              <Typography className={styles.guestSubLabel}>Ages 13 or above</Typography>
+              <Typography className={styles.guestLabel}>{t('search.adults')}</Typography>
+              <Typography className={styles.guestSubLabel}>{t('search.adultsAgeNote')}</Typography>
             </Box>
             <Box className={styles.counter}>
               <IconButton
@@ -198,8 +201,8 @@ export default function HeroSearchBar() {
 
           <Box className={styles.guestRow}>
             <Box className={styles.guestLabelGroup}>
-              <Typography className={styles.guestLabel}>Children</Typography>
-              <Typography className={styles.guestSubLabel}>Ages 0–12</Typography>
+              <Typography className={styles.guestLabel}>{t('search.children')}</Typography>
+              <Typography className={styles.guestSubLabel}>{t('search.childrenAgeNote')}</Typography>
             </Box>
             <Box className={styles.counter}>
               <IconButton
@@ -223,7 +226,7 @@ export default function HeroSearchBar() {
           </Box>
 
           <Box className={styles.guestRow}>
-            <Typography className={styles.guestLabel}>Rooms</Typography>
+            <Typography className={styles.guestLabel}>{t('search.rooms')}</Typography>
             <Box className={styles.counter}>
               <IconButton
                 size="small"
@@ -251,7 +254,7 @@ export default function HeroSearchBar() {
             className={styles.guestDoneBtn}
             onClick={() => setGuestAnchor(null)}
           >
-            Done
+            {t('search.done')}
           </Button>
         </Box>
       </Popover>

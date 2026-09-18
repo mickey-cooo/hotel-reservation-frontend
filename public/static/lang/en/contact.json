@@ -1,0 +1,52 @@
+{
+  "hero": {
+    "title": "Get in Touch",
+    "subtitle": "Have a question or need assistance? Our team is here to help with anything from bookings to bespoke travel requests."
+  },
+  "form": {
+    "eyebrow": "Reach Out",
+    "heading": "Send a Message",
+    "fullName": "Full Name",
+    "fullNamePlaceholder": "John Doe",
+    "email": "Email Address",
+    "emailPlaceholder": "john@example.com",
+    "subject": "Subject",
+    "subjects": {
+      "General Inquiry": "General Inquiry",
+      "Reservation Assistance": "Reservation Assistance",
+      "Corporate Accounts": "Corporate Accounts",
+      "Feedback": "Feedback"
+    },
+    "message": "Message",
+    "messagePlaceholder": "How can we assist you today?",
+    "sendInquiry": "Send Inquiry",
+    "sending": "Sending…",
+    "messageSent": "Message Sent",
+    "hqTitle": "Lumina Stay Global Headquarters",
+    "address": "Address",
+    "addressValue": "1100 Avenue of the Americas\nNew York, NY 10036, USA",
+    "phone": "Phone",
+    "mail": "Email",
+    "liveConcierge": "Live Concierge Available"
+  },
+  "hubs": {
+    "heading": "Our Regional Hubs",
+    "subheading": "Wherever your destination, Lumina Stay provides local expertise and unparalleled service through our regional offices.",
+    "london": "London",
+    "londonRole": "European Headquarters",
+    "tokyo": "Tokyo",
+    "tokyoRole": "Asia-Pacific Hub",
+    "dubai": "Dubai",
+    "dubaiRole": "Middle East & Africa"
+  },
+  "faq": {
+    "heading": "Frequently Asked",
+    "subheading": "Quick answers for our distinguished guests.",
+    "q1": "Can I modify a booking via the contact form?",
+    "a1": "Yes, you can request modifications through this form. Please include your Booking ID in the message body. Our concierge team will process your request and confirm via email within 4 business hours.",
+    "q2": "How do I inquire about corporate group rates?",
+    "a2": "Select \"Corporate Accounts\" in the subject dropdown. Our dedicated business relations manager will provide you with a tailored portfolio of properties and bespoke pricing within 24 hours.",
+    "q3": "Is there a 24/7 emergency contact?",
+    "a3": "For active bookings with immediate on-site issues, please use the direct WhatsApp concierge number provided in your check-in digital packet. This form is monitored 8 AM to 10 PM EST."
+  }
+}

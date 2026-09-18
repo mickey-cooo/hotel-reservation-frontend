@@ -3,23 +3,24 @@
 import { Box, Button, Container, Typography } from '@mui/material';
 import Link from 'next/link';
 import styles from './WhyLuminaHero.module.scss';
+import { useTranslation } from 'react-i18next';
 
 export default function WhyLuminaHero() {
+  const { t } = useTranslation('whyLumina');
   return (
     <Box className={styles.hero}>
       <Box className={styles.overlay} />
       <Container maxWidth="lg" className={styles.content}>
         <Typography variant="caption" className={styles.label}>
-          Direct Booking Benefits
+          {t('hero.label')}
         </Typography>
         <Typography variant="h1" className={styles.title}>
-          สิทธิพิเศษเหนือระดับ
+          {t('hero.titleLine1')}
           <br />
-          <span className={styles.titleGold}>เมื่อจอง โดยตรงกับเรา</span>
+          <span className={styles.titleGold}>{t('hero.titleLine2')}</span>
         </Typography>
         <Typography className={styles.desc}>
-          สัมผัสความหรูหราที่มาพร้อมกับความคุ้มค่าสูงสุด และการบริการที่เป็นส่วนตัวยิ่งกว่า
-          เมื่อคุณเลือกจองห้องพักผ่านเว็บไซต์ทางการของ Lumina Stay
+          {t('hero.desc')}
         </Typography>
         <Box className={styles.actions}>
           <Button
@@ -28,7 +29,7 @@ export default function WhyLuminaHero() {
             variant="contained"
             className={styles.btnPrimary}
           >
-            จองตอนนี้
+            {t('hero.bookNow')}
           </Button>
           <Button
             component={Link}
@@ -36,7 +37,7 @@ export default function WhyLuminaHero() {
             variant="outlined"
             className={styles.btnSecondary}
           >
-            ดูรายละเอียดเพิ่มเติม
+            {t('hero.learnMore')}
           </Button>
         </Box>
       </Container>

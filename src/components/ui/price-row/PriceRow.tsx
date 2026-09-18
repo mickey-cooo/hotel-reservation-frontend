@@ -1,4 +1,7 @@
+'use client';
+
 import { Box, Typography } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 import styles from './PriceRow.module.scss';
 
 interface PriceRowProps {
@@ -13,11 +16,14 @@ interface PriceRowProps {
 export default function PriceRow({
   amount,
   currency = '$',
-  unit = '/night',
+  unit,
   className,
   amountClassName,
   unitClassName,
 }: PriceRowProps) {
+  const { t } = useTranslation('common');
+  const resolvedUnit = unit ?? t('card.perNight');
+
   return (
     <Box className={`${styles.row}${className ? ` ${className}` : ''}`}>
       <Typography className={`${styles.amount}${amountClassName ? ` ${amountClassName}` : ''}`}>
@@ -25,7 +31,7 @@ export default function PriceRow({
         {amount.toLocaleString()}
       </Typography>
       <Typography className={`${styles.unit}${unitClassName ? ` ${unitClassName}` : ''}`}>
-        {unit}
+        {resolvedUnit}
       </Typography>
     </Box>
   );

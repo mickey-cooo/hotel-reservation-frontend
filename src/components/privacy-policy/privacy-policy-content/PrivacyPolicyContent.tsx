@@ -6,58 +6,20 @@ import VerifiedUserOutlinedIcon from '@mui/icons-material/VerifiedUserOutlined';
 import CheckCircleOutlinedIcon from '@mui/icons-material/CheckCircleOutlined';
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import styles from './PrivacyPolicyContent.module.scss';
+import { useTranslation } from 'react-i18next';
 
-const COLLECT_ITEMS = [
-  {
-    title: 'Identity Data',
-    body: 'Full name, passport details, and date of birth for international travel compliance.',
-  },
-  {
-    title: 'Contact Data',
-    body: 'Residential address, billing address, personal email, and telephone numbers.',
-  },
-  {
-    title: 'Financial Data',
-    body: 'Encrypted payment card details and transaction history.',
-  },
-  {
-    title: 'Preference Data',
-    body: 'Dietary requirements, pillow preferences, and historical stay details to personalize your concierge service.',
-  },
-] as const;
+const COLLECT_ITEMS = [0, 1, 2, 3];
+const USE_CARDS = [0, 1];
 
-const USE_CARDS = [
-  {
-    title: 'Service Execution',
-    body: 'Processing reservations, managing check-ins, and facilitating on-site concierge requests.',
-  },
-  {
-    title: 'Personalization',
-    body: 'Tailoring room settings and curated destination recommendations based on your unique profile.',
-  },
-] as const;
-
-const SECURITY_ITEMS = [
-  {
-    Icon: LockOutlinedIcon,
-    title: 'Advanced Encryption',
-    body: 'All sensitive data is encrypted using AES-256 standards both at rest and in transit.',
-  },
-  {
-    Icon: VerifiedUserOutlinedIcon,
-    title: 'Access Control',
-    body: 'Strict "Least Privilege" access policies ensure only essential personnel interact with your information.',
-  },
-] as const;
-
-const RIGHTS_ITEMS = [
-  'Request access to your data profile',
-  'Rectify inaccurate information',
-  'Request the "Right to be Forgotten"',
-  'Object to automated processing',
-] as const;
+const SECURITY_ITEMS = [LockOutlinedIcon, VerifiedUserOutlinedIcon] as const;
+const RIGHTS_ITEMS = [0, 1, 2, 3];
 
 export default function PrivacyPolicyContent() {
+  const { t } = useTranslation('privacyPolicy');
+  const collectItems = t('collect', { returnObjects: true }) as Array<{ title: string; body: string }>;
+  const useCards = t('uses', { returnObjects: true }) as Array<{ title: string; body: string }>;
+  const securityItems = t('security', { returnObjects: true }) as Array<{ title: string; body: string }>;
+  const rightsItems = t('rights', { returnObjects: true }) as string[];
   return (
     <Box className={styles.page}>
       {/* Hero */}
@@ -65,19 +27,18 @@ export default function PrivacyPolicyContent() {
         <Container maxWidth="md">
           <Box className={styles.hero}>
             <Box className={styles.badge}>
-              <Typography className={styles.badgeText}>Privacy Commitment</Typography>
+              <Typography className={styles.badgeText}>{t('badge')}</Typography>
             </Box>
             <Typography variant="h1" className={styles.pageTitle}>
-              Privacy Policy
+              {t('title')}
             </Typography>
             <Typography className={styles.intro}>
-              At Lumina Stay, we treat your personal data with the same uncompromising standard
-              of excellence as we do our guest experiences.
+              {t('intro')}
             </Typography>
             <Box className={styles.meta}>
-              <Typography className={styles.metaText}>Effective Date: June 1, 2024</Typography>
+              <Typography className={styles.metaText}>{t('effectiveDate')}</Typography>
               <Box className={styles.metaDot} />
-              <Typography className={styles.metaText}>Version 2.1</Typography>
+              <Typography className={styles.metaText}>{t('version')}</Typography>
             </Box>
           </Box>
         </Container>
@@ -91,20 +52,18 @@ export default function PrivacyPolicyContent() {
             <Box className={styles.sectionHeader}>
               <Typography className={styles.sectionNum}>01</Typography>
               <Typography variant="h2" className={styles.sectionTitle}>
-                Information We Collect
+                {t('sections.collectTitle')}
               </Typography>
             </Box>
             <Typography className={styles.body}>
-              To provide you with a bespoke travel experience, Lumina Stay collects information
-              that identifies you or relates to an identifiable individual (&ldquo;Personal
-              Information&rdquo;). This includes:
+              {t('sections.collectBody')}
             </Typography>
             <Box className={styles.checkList}>
-              {COLLECT_ITEMS.map(({ title, body }) => (
-                <Box key={title} className={styles.checkItem}>
+              {COLLECT_ITEMS.map((index) => (
+                <Box key={index} className={styles.checkItem}>
                   <CheckCircleOutlinedIcon className={styles.checkIcon} />
                   <Typography className={styles.checkText}>
-                    <strong>{title}:</strong> {body}
+                    <strong>{collectItems[index].title}:</strong> {collectItems[index].body}
                   </Typography>
                 </Box>
               ))}
@@ -116,18 +75,17 @@ export default function PrivacyPolicyContent() {
             <Box className={styles.sectionHeader}>
               <Typography className={styles.sectionNum}>02</Typography>
               <Typography variant="h2" className={styles.sectionTitle}>
-                How We Use Your Data
+                {t('sections.useTitle')}
               </Typography>
             </Box>
             <Typography className={styles.body}>
-              Our use of your information is strictly governed by the necessity of fulfilling our
-              luxury service standards and legal obligations. We utilize your data to:
+              {t('sections.useBody')}
             </Typography>
             <Box className={styles.cardGrid}>
-              {USE_CARDS.map(({ title, body }) => (
-                <Box key={title} className={styles.card}>
-                  <Typography className={styles.cardTitle}>{title}</Typography>
-                  <Typography className={styles.cardBody}>{body}</Typography>
+              {USE_CARDS.map((index) => (
+                <Box key={index} className={styles.card}>
+                  <Typography className={styles.cardTitle}>{useCards[index].title}</Typography>
+                  <Typography className={styles.cardBody}>{useCards[index].body}</Typography>
                 </Box>
               ))}
             </Box>
@@ -138,12 +96,12 @@ export default function PrivacyPolicyContent() {
             <Box
               component="img"
               src="https://images.unsplash.com/photo-1582719508461-905c673771fd?w=1200&q=80"
-              alt="Luxury hotel interior"
+              alt={t('common:imageAlt.interior')}
               className={styles.quoteImg}
             />
             <Box className={styles.quoteOverlay}>
               <Typography className={styles.quoteText}>
-                &ldquo;Privacy is the ultimate luxury.&rdquo;
+                {t('sections.quote')}
               </Typography>
             </Box>
           </Box>
@@ -153,22 +111,21 @@ export default function PrivacyPolicyContent() {
             <Box className={styles.sectionHeader}>
               <Typography className={styles.sectionNum}>03</Typography>
               <Typography variant="h2" className={styles.sectionTitle}>
-                Data Security &amp; Sovereignty
+                {t('sections.securityTitle')}
               </Typography>
             </Box>
             <Typography className={styles.body}>
-              We implement industry-leading technical and organizational measures to protect your
-              Personal Information. Our security framework includes:
+              {t('sections.securityBody')}
             </Typography>
             <Box className={styles.iconItemList}>
-              {SECURITY_ITEMS.map(({ Icon, title, body }) => (
-                <Box key={title} className={styles.iconItem}>
+              {SECURITY_ITEMS.map((Icon, index) => (
+                <Box key={index} className={styles.iconItem}>
                   <Box className={styles.iconCircle}>
                     <Icon className={styles.iconCircleIcon} />
                   </Box>
                   <Box>
-                    <Typography className={styles.iconItemTitle}>{title}</Typography>
-                    <Typography className={styles.iconItemBody}>{body}</Typography>
+                    <Typography className={styles.iconItemTitle}>{securityItems[index].title}</Typography>
+                    <Typography className={styles.iconItemBody}>{securityItems[index].body}</Typography>
                   </Box>
                 </Box>
               ))}
@@ -180,19 +137,18 @@ export default function PrivacyPolicyContent() {
             <Box className={styles.sectionHeader}>
               <Typography className={styles.sectionNum}>04</Typography>
               <Typography variant="h2" className={styles.sectionTitle}>
-                Your Rights
+                {t('sections.rightsTitle')}
               </Typography>
             </Box>
             <Typography className={styles.body}>
-              As a Lumina Stay guest, you retain full sovereignty over your data. Under global
-              data protection regulations (including GDPR and CCPA), you have the right to:
+              {t('sections.rightsBody')}
             </Typography>
             <Box className={styles.rightsBox}>
               <Box className={styles.rightsGrid}>
-                {RIGHTS_ITEMS.map((item) => (
-                  <Box key={item} className={styles.rightsItem}>
+                {RIGHTS_ITEMS.map((index) => (
+                  <Box key={index} className={styles.rightsItem}>
                     <Box className={styles.rightsDot} />
-                    <Typography className={styles.rightsText}>{item}</Typography>
+                    <Typography className={styles.rightsText}>{rightsItems[index]}</Typography>
                   </Box>
                 ))}
               </Box>
@@ -202,11 +158,10 @@ export default function PrivacyPolicyContent() {
           {/* Contact CTA */}
           <Box className={styles.ctaBox}>
             <Typography variant="h3" className={styles.ctaTitle}>
-              Privacy Inquiries
+              {t('sections.privacyInquiries')}
             </Typography>
             <Typography className={styles.ctaBody}>
-              Should you have any questions regarding our privacy practices or wish to exercise your
-              rights, our dedicated Data Protection Officer is available to assist.
+              {t('sections.privacyInquiriesBody')}
             </Typography>
             <Box
               component="a"
@@ -214,7 +169,7 @@ export default function PrivacyPolicyContent() {
               className={styles.ctaButton}
             >
               <EmailOutlinedIcon className={styles.ctaButtonIcon} />
-              Contact Privacy Team
+              {t('sections.contactTeam')}
             </Box>
           </Box>
         </Box>

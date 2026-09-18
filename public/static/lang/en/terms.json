@@ -1,0 +1,42 @@
+{
+  "badge": "Updated January 2024",
+  "title": "Terms of Service",
+  "intro": "Welcome to Lumina Stay. These terms govern your use of our platform and the luxury travel services we provide. By accessing our services, you agree to these authoritative standards of conduct and excellence.",
+  "contents": "Contents",
+  "toc": ["Acceptance of Terms", "User Responsibilities", "Booking Rules", "Cancellation Policies", "Property Standards", "Liability & Indemnity"],
+  "sections": {
+    "acceptanceTitle": "Acceptance of Terms",
+    "responsibilitiesTitle": "User Responsibilities",
+    "acceptanceBody1": "Lumina Stay provides a high-end travel booking platform (“Service”). By creating an account or making a reservation, you acknowledge that you have read, understood, and agree to be bound by these Terms of Service and our Privacy Policy.",
+    "acceptanceBody2": "We reserve the right to update these terms at any time. Significant changes will be communicated via email or through the platform interface. Continued use after such modifications constitutes acceptance of the new terms.",
+    "bookingTitle": "Booking Rules",
+    "cancellationTitle": "Cancellation Policies",
+    "policyTitle": "The Lumina Standard Policy",
+    "policyNote": "Note: Certain exclusive properties may have “Non-Refundable” or “Strict” custom policies which will be clearly indicated during checkout.",
+    "propertyTitle": "Property Standards",
+    "propertyBody": "Lumina Stay maintains a curation of properties that meet our “Five-Star Integrity” benchmark. Hosts are required to maintain high standards of cleanliness, safety, and amenity availability. If a property significantly fails to meet the description provided at booking, Lumina Stay will intervene to provide an alternative or refund at our discretion.",
+    "liabilityTitle": "Liability & Indemnity",
+    "liabilityBody1": "To the maximum extent permitted by law, Lumina Stay shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including but not limited to loss of profits, data, goodwill, or other intangible losses resulting from your access to or use of (or inability to access or use) the Service.",
+    "liabilityBody2": "You agree to indemnify, defend, and hold harmless Lumina Stay and its officers, directors, employees, agents, and licensors from and against any claims, liabilities, damages, judgments, awards, losses, costs, expenses, or fees (including reasonable attorney’s fees) arising out of or relating to your violation of these Terms or your use of the Service.",
+    "liabilityBody3": "These Terms shall be governed by and construed in accordance with the laws of the jurisdiction in which Lumina Stay operates, without regard to its conflict of law provisions.",
+    "quote": "“Elegance is not being noticed, it’s being remembered.”"
+  },
+  "responsibilities": [
+    { "title": "Identity Verification", "body": "Users must provide accurate, current, and complete information during the registration process. Impersonation of any individual or entity is strictly prohibited and grounds for immediate termination." },
+    { "title": "Account Security", "body": "You are solely responsible for maintaining the confidentiality of your login credentials and for all activities that occur under your account." }
+  ],
+  "bookingItems": [
+    { "title": "Payment Authorization", "body": "Upon booking, a temporary hold may be placed on your payment method. Full payment is typically required at the time of booking unless specified otherwise in the property-specific details." },
+    { "title": "Occupancy Limits", "body": "Properties are limited to the number of guests specified in the confirmation. Unauthorized guests may result in additional fees or immediate eviction without refund." }
+  ],
+  "refundTiers": [
+    { "window": "Up to 14 days before check-in", "refund": "100% Refund" },
+    { "window": "7 to 13 days before check-in", "refund": "50% Refund" },
+    { "window": "Less than 7 days before check-in", "refund": "0% Refund" }
+  ],
+  "propertyCards": [
+    { "title": "Sanitization", "body": "Medical-grade cleaning protocols for every stay." },
+    { "title": "Curation", "body": "Every property is personally vetted by our agents." },
+    { "title": "24/7 Concierge", "body": "Global support available for all premium bookings." }
+  ]
+}

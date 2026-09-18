@@ -1,6 +1,10 @@
+'use client';
+
 import { Box, Divider, Typography } from '@mui/material';
 import CalendarTodayOutlinedIcon from '@mui/icons-material/CalendarTodayOutlined';
 import PersonOutlinedIcon from '@mui/icons-material/PersonOutlined';
+import { useTranslation } from 'react-i18next';
+import type { TFunction } from 'i18next';
 import styles from './BookingStayDetails.module.scss';
 
 interface BookingStayDetailsProps {
@@ -18,30 +22,38 @@ function formatDate(iso: string): string {
   });
 }
 
-function guestLabel(adults: number, children: number): string {
-  const parts = [`${adults} Adult${adults > 1 ? 's' : ''}`];
-  if (children > 0) parts.push(`${children} Child${children > 1 ? 'ren' : ''}`);
+function guestLabel(t: TFunction, adults: number, children: number): string {
+  const parts = [
+    `${adults} ${adults > 1 ? t('stayDetails.adultsPlural') : t('stayDetails.adult')}`,
+  ];
+  if (children > 0) {
+    parts.push(
+      `${children} ${children > 1 ? t('stayDetails.childrenPlural') : t('stayDetails.child')}`,
+    );
+  }
   return parts.join(', ');
 }
 
 export default function BookingStayDetails({ checkIn, checkOut, adults, childrenCount }: BookingStayDetailsProps) {
+  const { t } = useTranslation('bookings');
+
   return (
     <Box className={styles.card}>
       <Box className={styles.header}>
         <CalendarTodayOutlinedIcon className={styles.headerIcon} />
-        <Typography className={styles.headerTitle}>Stay Details</Typography>
+        <Typography className={styles.headerTitle}>{t('stayDetails.title')}</Typography>
       </Box>
 
       <Box className={styles.datesGrid}>
         <Box className={styles.dateField}>
-          <Typography className={styles.dateLabel}>Check-In</Typography>
+          <Typography className={styles.dateLabel}>{t('stayDetails.checkIn')}</Typography>
           <Typography className={styles.dateValue}>{formatDate(checkIn)}</Typography>
-          <Typography className={styles.dateNote}>After 14:00</Typography>
+          <Typography className={styles.dateNote}>{t('stayDetails.afterTime')}</Typography>
         </Box>
         <Box className={styles.dateField}>
-          <Typography className={styles.dateLabel}>Check-Out</Typography>
+          <Typography className={styles.dateLabel}>{t('stayDetails.checkOut')}</Typography>
           <Typography className={styles.dateValue}>{formatDate(checkOut)}</Typography>
-          <Typography className={styles.dateNote}>Before 12:00</Typography>
+          <Typography className={styles.dateNote}>{t('stayDetails.beforeTime')}</Typography>
         </Box>
       </Box>
 
@@ -50,8 +62,8 @@ export default function BookingStayDetails({ checkIn, checkOut, adults, children
       <Box className={styles.guestsRow}>
         <PersonOutlinedIcon className={styles.guestsIcon} />
         <Box>
-          <Typography className={styles.guestsLabel}>Guests</Typography>
-          <Typography className={styles.guestsValue}>{guestLabel(adults, childrenCount)}</Typography>
+          <Typography className={styles.guestsLabel}>{t('stayDetails.guests')}</Typography>
+          <Typography className={styles.guestsValue}>{guestLabel(t, adults, childrenCount)}</Typography>
         </Box>
       </Box>
     </Box>

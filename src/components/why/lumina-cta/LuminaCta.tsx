@@ -3,16 +3,18 @@
 import { Box, Button, Container, Typography } from '@mui/material';
 import Link from 'next/link';
 import styles from './LuminaCta.module.scss';
+import { useTranslation } from 'react-i18next';
 
 export default function LuminaCta() {
+  const { t } = useTranslation('whyLumina');
   return (
     <Box className={styles.section}>
       <Container maxWidth="md" className={styles.inner}>
         <Typography variant="h3" className={styles.title}>
-          เริ่มต้นการเดินทางที่สมบูรณ์แบบ
+          {t('cta.title')}
         </Typography>
         <Typography className={styles.subtitle}>
-          ปลดล็อกสิทธิพิเศษของคุณวันนี้ และร่วมเป็นส่วนหนึ่งของครอบครัว Lumina Stay
+          {t('cta.subtitle')}
         </Typography>
         <Box className={styles.actions}>
           <Button
@@ -21,13 +23,13 @@ export default function LuminaCta() {
             variant="contained"
             className={styles.btnPrimary}
           >
-            ค้นหาห้องพัก
+            {t('cta.findRooms')}
           </Button>
           <Button
             variant="outlined"
             className={styles.btnSecondary}
           >
-            สมัครสมาชิก
+            {t('cta.joinMembership')}
           </Button>
         </Box>
       </Container>

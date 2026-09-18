@@ -1,0 +1,48 @@
+{
+  "page": {
+    "title": "Checkout",
+    "securePayment": "Secure Payment"
+  },
+  "summary": {
+    "bookingSummary": "Booking Summary",
+    "night": "night",
+    "nightsPlural": "nights",
+    "adult": "Adult",
+    "adultsPlural": "Adults",
+    "child": "Child",
+    "childrenPlural": "Children"
+  },
+  "billing": {
+    "title": "Billing Information",
+    "firstName": "First Name",
+    "firstNamePlaceholder": "First name",
+    "lastName": "Last Name",
+    "lastNamePlaceholder": "Last name",
+    "email": "Email",
+    "address": "Address",
+    "addressPlaceholder": "Street, district, province"
+  },
+  "payment": {
+    "title": "Payment Method",
+    "card": "Credit / Debit Card",
+    "wallet": "Digital Wallet",
+    "walletSub": "Apple Pay, Google Pay",
+    "bank": "Bank Transfer",
+    "expiry": "Expiry",
+    "cvc": "CVC / CVV"
+  },
+  "price": {
+    "title": "Cost Details",
+    "night": "night",
+    "nightsPlural": "nights",
+    "taxAndFees": "Tax & fees (7%)",
+    "memberDiscount": "Lumina member discount",
+    "total": "Total",
+    "currency": "THB",
+    "payNow": "Pay Now",
+    "protectionText": "Payment Protection — your card is charged only after your booking is confirmed. We never store your card data."
+  },
+  "errors": {
+    "bookingFailed": "Booking failed"
+  }
+}

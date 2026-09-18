@@ -4,93 +4,48 @@ import { Box, Button, Container, Typography } from '@mui/material';
 import CheckIcon from '@mui/icons-material/Check';
 import StarIcon from '@mui/icons-material/Star';
 import NextLink from 'next/link';
+import { useTranslation } from 'react-i18next';
+import type { TFunction } from 'i18next';
 import styles from './MembershipTiers.module.scss';
+import { useUserEmail } from '@/hooks/useUserEmail';
 
-interface Tier {
-  id: string;
-  level: string;
-  name: string;
-  description: string;
-  price: string;
-  priceNote: string;
+interface TierMeta {
+  id: 'essential' | 'select' | 'elite';
+  priceNoteKey: 'tiers.lifetime' | 'tiers.perYear';
   featured: boolean;
   elite: boolean;
-  badge?: string;
-  perks: string[];
-  btnLabel: string;
+  hasBadge: boolean;
 }
 
-const TIERS: Tier[] = [
-  {
-    id: 'essential',
-    level: 'Entry Level',
-    name: 'Essential',
-    description: 'พื้นฐานแห่งความสบาย ให้คุณเริ่มสะสมความสุขตั้งแต่วันแรกที่เดินทาง',
-    price: 'ฟรี',
-    priceNote: 'ตลอดชีพ',
-    featured: false,
-    elite: false,
-    btnLabel: 'สมัครสมาชิกฟรี',
-    perks: [
-      'บริการ Wi-Fi ความเร็วสูงฟรี',
-      'สะสมคะแนน Reward Points ทุกการเข้าพัก',
-      'สิทธิ์เข้าพักในราคาพิเศษสำหรับสมาชิก',
-    ],
-  },
-  {
-    id: 'select',
-    level: 'Most Popular',
-    name: 'Select',
-    description: 'ยกระดับมาตรฐานการพักผ่อนด้วยบริการเสริมที่คัดสรรมาอย่างดีเยี่ยม',
-    price: '฿15,000',
-    priceNote: '/ ปี',
-    featured: true,
-    elite: false,
-    badge: 'Recommended',
-    btnLabel: 'สมัครสมาชิก Select',
-    perks: [
-      'สิทธิ์เช็คเอาท์ล่าช้าได้ถึง 14:00 น.',
-      'ของขวัญต้อนรับพิเศษ (Welcome Amenity)',
-      'ส่วนลด 10% สำหรับสปาและห้องอาหาร',
-      'โบนัสคะแนนสะสมเพิ่มขึ้น 25%',
-    ],
-  },
-  {
-    id: 'elite',
-    level: 'The Ultimate',
-    name: 'Elite',
-    description: 'ที่สุดแห่งเอกสิทธิ์เฉพาะบุคคล เพื่อประสบการณ์ที่เหนือระดับในทุกมิติ',
-    price: '฿45,000',
-    priceNote: '/ ปี',
-    featured: false,
-    elite: true,
-    btnLabel: 'สมัครสมาชิก Elite',
-    perks: [
-      'อัปเกรดห้องพักโดยอัตโนมัติ (ตามสิทธิ์)',
-      'บริการผู้ช่วยส่วนตัว (Concierge) 24/7',
-      'เข้าใช้ Exclusive Lounge ได้ทั่วโลก',
-      'สิทธิ์สำรองที่พักล่วงหน้าเป็นกรณีพิเศษ',
-      'รับบริการสปาทรีทเมนท์ฟรี 1 ครั้ง/ปี',
-    ],
-  },
+const TIER_META: TierMeta[] = [
+  { id: 'essential', priceNoteKey: 'tiers.lifetime', featured: false, elite: false, hasBadge: false },
+  { id: 'select', priceNoteKey: 'tiers.perYear', featured: true, elite: false, hasBadge: true },
+  { id: 'elite', priceNoteKey: 'tiers.perYear', featured: false, elite: true, hasBadge: false },
 ];
 
+function getPerks(t: TFunction, id: TierMeta['id']): string[] {
+  const perks = t(`tiers.${id}.perks`, { returnObjects: true });
+  return Array.isArray(perks) ? (perks as string[]) : [];
+}
+
 export default function MembershipTiers() {
+  const userEmail = useUserEmail();
+  const { t } = useTranslation('membership');
+
   return (
     <Box component="section" className={styles.section}>
       <Container maxWidth="lg">
         <Box className={styles.heading}>
           <Typography variant="h2" className={styles.sectionTitle}>
-            ระดับสมาชิกและสิทธิประโยชน์
+            {t('tiers.sectionTitle')}
           </Typography>
           <Typography className={styles.sectionSubtitle}>
-            เลือกแผนการเข้าพักที่ตรงใจ และเริ่มสะสมคะแนนเพื่อแลกรับประสบการณ์อันทรงคุณค่า
-            ที่คัดสรรมาเป็นพิเศษสำหรับสมาชิก Lumina Stay เท่านั้น
+            {t('tiers.sectionSubtitle')}
           </Typography>
         </Box>
 
         <Box className={styles.grid}>
-          {TIERS.map((tier) => {
+          {TIER_META.map((tier) => {
             const cardClass = [
               styles.card,
               tier.featured ? styles.cardFeatured : '',
@@ -100,48 +55,49 @@ export default function MembershipTiers() {
               .join(' ');
 
             const PerkIcon = tier.elite ? StarIcon : CheckIcon;
+            const perks = getPerks(t, tier.id);
 
             return (
               <Box key={tier.id} className={cardClass}>
-                {tier.badge && (
-                  <span className={styles.recommendedBadge}>{tier.badge}</span>
+                {tier.hasBadge && (
+                  <span className={styles.recommendedBadge}>{t(`tiers.${tier.id}.badge`)}</span>
                 )}
 
                 <Box className={styles.cardTop}>
                   <Typography
                     className={`${styles.levelLabel}${tier.elite ? ` ${styles.levelLabelElite}` : ''}`}
                   >
-                    {tier.level}
+                    {t(`tiers.${tier.id}.level`)}
                   </Typography>
                   <Typography
                     variant="h4"
                     className={`${styles.tierName}${tier.elite ? ` ${styles.tierNameElite}` : ''}`}
                   >
-                    {tier.name}
+                    {t(`tiers.${tier.id}.name`)}
                   </Typography>
                   <Box className={styles.priceRow}>
                     <Typography
                       component="span"
                       className={`${styles.price}${tier.elite ? ` ${styles.priceElite}` : ''}`}
                     >
-                      {tier.price}
+                      {t(`tiers.${tier.id}.price`)}
                     </Typography>
                     <Typography
                       component="span"
                       className={`${styles.priceNote}${tier.elite ? ` ${styles.priceNoteElite}` : ''}`}
                     >
-                      {tier.priceNote}
+                      {t(tier.priceNoteKey)}
                     </Typography>
                   </Box>
                   <Typography
                     className={`${styles.tierDesc}${tier.elite ? ` ${styles.tierDescElite}` : ''}`}
                   >
-                    {tier.description}
+                    {t(`tiers.${tier.id}.description`)}
                   </Typography>
                 </Box>
 
                 <Box className={styles.perkList}>
-                  {tier.perks.map((perk) => (
+                  {perks.map((perk) => (
                     <Box key={perk} className={styles.perkItem}>
                       <PerkIcon
                         className={`${styles.perkIcon}${tier.elite ? ` ${styles.perkIconElite}` : ''}`}
@@ -158,11 +114,11 @@ export default function MembershipTiers() {
                 <Button
                   variant={tier.featured ? 'contained' : 'outlined'}
                   component={NextLink}
-                  href="/register"
+                  href={userEmail ? '/bookings' : '/register'}
                   fullWidth
                   className={`${styles.joinBtn}${tier.featured ? ` ${styles.joinBtnFeatured}` : ''}${tier.elite ? ` ${styles.joinBtnElite}` : ''}`}
                 >
-                  {tier.btnLabel}
+                  {userEmail ? t('tiers.myAccount') : t(`tiers.${tier.id}.btnLabel`)}
                 </Button>
               </Box>
             );

@@ -1,0 +1,36 @@
+{
+  "badge": "Privacy Commitment",
+  "title": "Privacy Policy",
+  "intro": "At Lumina Stay, we treat your personal data with the same uncompromising standard of excellence as we do our guest experiences.",
+  "effectiveDate": "Effective Date: June 1, 2024",
+  "version": "Version 2.1",
+  "sections": {
+    "collectTitle": "Information We Collect",
+    "collectBody": "To provide you with a bespoke travel experience, Lumina Stay collects information that identifies you or relates to an identifiable individual (“Personal Information”). This includes:",
+    "useTitle": "How We Use Your Data",
+    "useBody": "Our use of your information is strictly governed by the necessity of fulfilling our luxury service standards and legal obligations. We utilize your data to:",
+    "securityTitle": "Data Security & Sovereignty",
+    "securityBody": "We implement industry-leading technical and organizational measures to protect your Personal Information. Our security framework includes:",
+    "rightsTitle": "Your Rights",
+    "rightsBody": "As a Lumina Stay guest, you retain full sovereignty over your data. Under global data protection regulations (including GDPR and CCPA), you have the right to:",
+    "quote": "“Privacy is the ultimate luxury.”",
+    "privacyInquiries": "Privacy Inquiries",
+    "privacyInquiriesBody": "Should you have any questions regarding our privacy practices or wish to exercise your rights, our dedicated Data Protection Officer is available to assist.",
+    "contactTeam": "Contact Privacy Team"
+  },
+  "collect": [
+    { "title": "Identity Data", "body": "Full name, passport details, and date of birth for international travel compliance." },
+    { "title": "Contact Data", "body": "Residential address, billing address, personal email, and telephone numbers." },
+    { "title": "Financial Data", "body": "Encrypted payment card details and transaction history." },
+    { "title": "Preference Data", "body": "Dietary requirements, pillow preferences, and historical stay details to personalize your concierge service." }
+  ],
+  "uses": [
+    { "title": "Service Execution", "body": "Processing reservations, managing check-ins, and facilitating on-site concierge requests." },
+    { "title": "Personalization", "body": "Tailoring room settings and curated destination recommendations based on your unique profile." }
+  ],
+  "security": [
+    { "title": "Advanced Encryption", "body": "All sensitive data is encrypted using AES-256 standards both at rest and in transit." },
+    { "title": "Access Control", "body": "Strict “Least Privilege” access policies ensure only essential personnel interact with your information." }
+  ],
+  "rights": ["Request access to your data profile", "Rectify inaccurate information", "Request the “Right to be Forgotten”", "Object to automated processing"]
+}

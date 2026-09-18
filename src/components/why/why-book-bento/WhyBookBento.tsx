@@ -1,3 +1,5 @@
+'use client';
+
 import { Box, Container, Typography } from '@mui/material';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutlined';
 import SupportAgentIcon from '@mui/icons-material/SupportAgent';
@@ -6,23 +8,21 @@ import NoEncryptionGmailerrorredIcon from '@mui/icons-material/NoEncryptionGmail
 import StarIcon from '@mui/icons-material/Star';
 import styles from './WhyBookBento.module.scss';
 
-const MEMBER_PERKS = [
-  'Members-only exclusive rates',
-  'Early check-in from 14:00',
-  'Late check-out until 13:00',
-  'Welcome gift on arrival',
-];
+import { useTranslation } from 'react-i18next';
+
+const MEMBER_PERKS = ['perk1', 'perk2', 'perk3', 'perk4'] as const;
 
 export default function WhyBookBento() {
+  const { t } = useTranslation(['whyLumina', 'common']);
   return (
     <Box className={styles.section}>
       <Container maxWidth="lg">
         <Box className={styles.heading}>
           <Typography variant="caption" className={styles.label}>
-            Direct Booking Benefits
+            {t('bento.label')}
           </Typography>
           <Typography variant="h3" className={styles.title}>
-            Why book with Lumina Stay?
+            {t('bento.title')}
           </Typography>
         </Box>
 
@@ -31,7 +31,7 @@ export default function WhyBookBento() {
           <Box
             component="img"
             src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&q=80"
-            alt="Luxury hotel room"
+            alt={t('common:imageAlt.luxuryRoom')}
             className={`${styles.cell} ${styles.imgCell}`}
           />
 
@@ -39,11 +39,10 @@ export default function WhyBookBento() {
           <Box className={`${styles.cell} ${styles.serviceCard}`}>
             <CheckCircleOutlineIcon className={styles.serviceIcon} />
             <Typography className={styles.cardTitle}>
-              Best Rate Guarantee
+              {t('bento.bestRateTitle')}
             </Typography>
             <Typography className={styles.cardDesc}>
-              Book directly and we&apos;ll match any lower rate you find elsewhere —
-              no questions asked.
+              {t('bento.bestRateDesc')}
             </Typography>
           </Box>
 
@@ -51,11 +50,10 @@ export default function WhyBookBento() {
           <Box className={`${styles.cell} ${styles.supportCard}`}>
             <SupportAgentIcon className={styles.supportIcon} />
             <Typography className={styles.supportTitle}>
-              24/7 Premium Support
+              {t('bento.supportTitle')}
             </Typography>
             <Typography className={styles.supportDesc}>
-              Dedicated concierge available around the clock, from booking to
-              check-out.
+              {t('bento.supportDesc')}
             </Typography>
             <Box className={styles.ratingRow}>
               {[1, 2, 3, 4, 5].map((s) => (
@@ -69,13 +67,13 @@ export default function WhyBookBento() {
           <Box className={`${styles.cell} ${styles.memberCard}`}>
             <CardMembershipIcon className={styles.memberIcon} />
             <Typography className={styles.cardTitle}>
-              Members-Only Perks
+              {t('bento.memberPerksTitle')}
             </Typography>
             <Box className={styles.perkList}>
               {MEMBER_PERKS.map((perk) => (
                 <Box key={perk} className={styles.perkRow}>
                   <Box className={styles.perkDot} />
-                  <Typography className={styles.perkText}>{perk}</Typography>
+                  <Typography className={styles.perkText}>{t(`bento.${perk}`)}</Typography>
                 </Box>
               ))}
             </Box>
@@ -85,11 +83,10 @@ export default function WhyBookBento() {
           <Box className={`${styles.cell} ${styles.noFeesCard}`}>
             <NoEncryptionGmailerrorredIcon className={styles.noFeesIcon} />
             <Typography className={styles.cardTitle}>
-              No Hidden Charges
+              {t('bento.noFeesTitle')}
             </Typography>
             <Typography className={styles.cardDesc}>
-              Transparent pricing, secure payment, and instant confirmation —
-              every time.
+              {t('bento.noFeesDesc')}
             </Typography>
           </Box>
 
@@ -97,7 +94,7 @@ export default function WhyBookBento() {
           <Box
             component="img"
             src="https://images.unsplash.com/photo-1445019980597-93fa8acb246c?w=800&q=80"
-            alt="Luxury pool"
+            alt={t('common:imageAlt.luxuryPool')}
             className={`${styles.cell} ${styles.imgCell}`}
           />
         </Box>

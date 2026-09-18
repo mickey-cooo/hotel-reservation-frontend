@@ -1,3 +1,5 @@
+'use client';
+
 import {
   Box,
   Container,
@@ -9,51 +11,54 @@ import {
   Typography,
 } from '@mui/material';
 import CheckIcon from '@mui/icons-material/Check';
+import { useTranslation } from 'react-i18next';
 import styles from './MembershipComparison.module.scss';
 
 interface Feature {
-  name: string;
+  key: string;
   essential: boolean;
   select: boolean;
   elite: boolean;
 }
 
 const FEATURES: Feature[] = [
-  { name: 'การสะสมคะแนน Reward Points', essential: true, select: true, elite: true },
-  { name: 'สิทธิ์เข้าพักราคาพิเศษสมาชิก', essential: true, select: true, elite: true },
-  { name: 'สิทธิ์เช็คเอาท์ได้ถึง 14:00 น.', essential: false, select: true, elite: true },
-  { name: 'อัปเกรดห้องพัก (เมื่อมีห้องว่าง)', essential: false, select: false, elite: true },
-  { name: 'Priority Check-in & Concierge', essential: false, select: false, elite: true },
+  { key: 'rewardPoints', essential: true, select: true, elite: true },
+  { key: 'exclusiveRates', essential: true, select: true, elite: true },
+  { key: 'lateCheckout', essential: false, select: true, elite: true },
+  { key: 'roomUpgrade', essential: false, select: false, elite: true },
+  { key: 'priorityCheckin', essential: false, select: false, elite: true },
 ];
 
 type TierKey = 'essential' | 'select' | 'elite';
 
-const TIER_DOTS: Array<{ key: TierKey; label: string; featured: boolean }> = [
-  { key: 'essential', label: 'Essential', featured: false },
-  { key: 'select', label: 'Select', featured: true },
-  { key: 'elite', label: 'Elite', featured: false },
+const TIER_DOTS: Array<{ key: TierKey; featured: boolean }> = [
+  { key: 'essential', featured: false },
+  { key: 'select', featured: true },
+  { key: 'elite', featured: false },
 ];
 
 export default function MembershipComparison() {
+  const { t } = useTranslation('membership');
+
   return (
     <Box component="section" className={styles.section}>
       <Container maxWidth="lg">
         <Box className={styles.header}>
           <Box>
             <Typography variant="h2" className={styles.sectionTitle}>
-              เปรียบเทียบความแตกต่าง
+              {t('comparison.sectionTitle')}
             </Typography>
             <Typography className={styles.sectionSubtitle}>
-              เจาะลึกทุกรายละเอียดของแต่ละระดับ เพื่อความคุ้มค่าสูงสุดสำหรับคุณ
+              {t('comparison.sectionSubtitle')}
             </Typography>
           </Box>
           <Box className={styles.legend}>
-            {TIER_DOTS.map(({ key, label, featured }) => (
+            {TIER_DOTS.map(({ key, featured }) => (
               <Box key={key} className={styles.legendItem}>
                 <Box
                   className={`${styles.legendDot}${featured ? ` ${styles.legendDotFeatured}` : key === 'elite' ? ` ${styles.legendDotElite}` : ''}`}
                 />
-                <Typography className={styles.legendLabel}>{label}</Typography>
+                <Typography className={styles.legendLabel}>{t(`comparison.${key}`)}</Typography>
               </Box>
             ))}
           </Box>
@@ -64,24 +69,24 @@ export default function MembershipComparison() {
             <TableHead>
               <TableRow className={styles.tableHeadRow}>
                 <TableCell className={`${styles.tableCell} ${styles.tableCellFeature}`}>
-                  สิทธิประโยชน์
+                  {t('comparison.benefits')}
                 </TableCell>
                 <TableCell className={`${styles.tableCell} ${styles.tableCellTier}`}>
-                  Essential
+                  {t('comparison.essential')}
                 </TableCell>
                 <TableCell className={`${styles.tableCell} ${styles.tableCellTier} ${styles.tableCellTierSelect}`}>
-                  Select
+                  {t('comparison.select')}
                 </TableCell>
                 <TableCell className={`${styles.tableCell} ${styles.tableCellTier}`}>
-                  Elite
+                  {t('comparison.elite')}
                 </TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
               {FEATURES.map((feature) => (
-                <TableRow key={feature.name} className={styles.tableRow}>
+                <TableRow key={feature.key} className={styles.tableRow}>
                   <TableCell className={`${styles.tableCell} ${styles.tableCellFeatureName}`}>
-                    {feature.name}
+                    {t(`comparison.features.${feature.key}`)}
                   </TableCell>
                   {TIER_DOTS.map(({ key, featured }) => (
                     <TableCell

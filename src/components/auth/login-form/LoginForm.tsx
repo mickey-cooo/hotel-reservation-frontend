@@ -23,6 +23,7 @@ import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined
 import GoogleIcon from '@mui/icons-material/Google';
 import AppleIcon from '@mui/icons-material/Apple';
 import { loginAction } from '@/service/auth/auth-actions';
+import { useTranslation } from 'react-i18next';
 import styles from './LoginForm.module.scss';
 
 interface LoginFormValues {
@@ -32,6 +33,7 @@ interface LoginFormValues {
 }
 
 export default function LoginForm() {
+  const { t } = useTranslation('signIn');
   const router = useRouter();
   const searchParams = useSearchParams();
   const [showPassword, setShowPassword] = useState(false);
@@ -50,12 +52,12 @@ export default function LoginForm() {
     try {
       const result = await loginAction({ email, password });
       if (!result.ok) {
-        setError(result.message || 'เข้าสู่ระบบไม่สำเร็จ กรุณาลองใหม่อีกครั้ง');
+        setError(result.message || t('auth.loginFailed'));
         return;
       }
       router.push(searchParams.get('redirectTo') || '/');
     } catch {
-      setError('เข้าสู่ระบบไม่สำเร็จ กรุณาลองใหม่อีกครั้ง');
+      setError(t('auth.loginFailed'));
     }
   };
 
@@ -73,17 +75,17 @@ export default function LoginForm() {
 
       <Box className={styles.header}>
         <Typography variant="h5" className={styles.title}>
-          เข้าสู่ระบบ
+          {t('auth.title')}
         </Typography>
         <Box className={styles.titleAccent} />
         <Typography className={styles.subtitle}>
-          ยินดีต้อนรับกลับสู่ความหรูหราที่คุณคุ้นเคย
+          {t('auth.subtitle')}
         </Typography>
       </Box>
 
       <Box className={styles.fields}>
         <Box className={styles.fieldGroup}>
-          <Typography className={styles.label}>EMAIL</Typography>
+          <Typography className={styles.label}>{t('auth.emailLabel')}</Typography>
           <Controller
             name="email"
             control={control}
@@ -105,7 +107,7 @@ export default function LoginForm() {
         </Box>
 
         <Box className={styles.fieldGroup}>
-          <Typography className={styles.label}>PASSWORD</Typography>
+          <Typography className={styles.label}>{t('auth.passwordLabel')}</Typography>
           <Controller
             name="password"
             control={control}
@@ -161,7 +163,7 @@ export default function LoginForm() {
               }
               label={
                 <Typography className={styles.rememberLabel}>
-                  จดจำฉันไว้
+                  {t('auth.rememberMe')}
                 </Typography>
               }
             />
@@ -172,7 +174,7 @@ export default function LoginForm() {
           underline="none"
           className={styles.forgotLink}
         >
-          ลืมรหัสผ่าน?
+          {t('auth.forgotPassword')}
         </Link>
       </Box>
 
@@ -182,12 +184,12 @@ export default function LoginForm() {
         className={styles.loginBtn}
         disabled={isSubmitting}
       >
-        เข้าสู่ระบบ
+        {t('auth.submit')}
       </Button>
 
       <Divider className={styles.divider}>
         <Typography className={styles.dividerText}>
-          หรือเข้าสู่ระบบด้วย
+          {t('auth.orContinueWith')}
         </Typography>
       </Divider>
 
@@ -211,9 +213,9 @@ export default function LoginForm() {
       </Box>
 
       <Box className={styles.registerRow}>
-        <Typography className={styles.registerText}>ยังไม่มีบัญชี?</Typography>
+        <Typography className={styles.registerText}>{t('auth.noAccount')}</Typography>
         <Link href="/register" underline="none" className={styles.registerLink}>
-          สมัครสมาชิกที่นี่
+          {t('auth.signUp')}
         </Link>
       </Box>
     </Box>

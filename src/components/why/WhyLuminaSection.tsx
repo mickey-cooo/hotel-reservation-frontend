@@ -1,6 +1,9 @@
+'use client';
+
 import { Box, Container, Grid, Typography } from '@mui/material';
 import VerifiedOutlinedIcon from '@mui/icons-material/VerifiedOutlined';
 import SupportAgentIcon from '@mui/icons-material/SupportAgent';
+import { useTranslation } from 'react-i18next';
 import styles from './WhyLuminaSection.module.scss';
 
 const GALLERY_IMAGES = [
@@ -26,44 +29,46 @@ const GALLERY_IMAGES = [
 
 const FEATURES = [
   {
+    key: 'verified',
     icon: VerifiedOutlinedIcon,
-    title: 'Verified Properties',
-    description: 'Every property is hand-picked and physically inspected.',
   },
   {
+    key: 'concierge',
     icon: SupportAgentIcon,
-    title: '24/7 Priority Concierge',
-    description: 'Expert assistance from booking to checkout.',
   },
 ] as const;
 
 export default function WhyLuminaSection() {
+  const { t } = useTranslation('home');
+
   return (
     <Box className={styles.section}>
       <Container maxWidth="lg">
         <Grid container spacing={6} className={styles.gridRow}>
           <Grid size={{ xs: 12, md: 5 }}>
             <Typography variant="caption" className={styles.sectionLabel}>
-              The Lumina Difference
+              {t('whyLumina.sectionLabel')}
             </Typography>
             <Typography variant="h3" className={styles.sectionTitle}>
-              Elevated Stays for the Discerning Traveler
+              {t('whyLumina.sectionTitle')}
             </Typography>
             <Typography className={styles.sectionBody}>
-              We curate only the most exceptional properties, ensuring every
-              booking meets our 150-point quality standard. Experience luxury as
-              it was meant to be: personal, seamless, and unforgettable.
+              {t('whyLumina.sectionBody')}
             </Typography>
 
             <Box className={styles.featureList}>
-              {FEATURES.map(({ icon: Icon, title, description }) => (
-                <Box key={title} className={styles.featureItem}>
+              {FEATURES.map(({ key, icon: Icon }) => (
+                <Box key={key} className={styles.featureItem}>
                   <Box className={styles.iconWrapper}>
                     <Icon className={styles.icon} />
                   </Box>
                   <Box>
-                    <Typography className={styles.featureTitle}>{title}</Typography>
-                    <Typography className={styles.featureDescription}>{description}</Typography>
+                    <Typography className={styles.featureTitle}>
+                      {t(`whyLumina.${key}Title`)}
+                    </Typography>
+                    <Typography className={styles.featureDescription}>
+                      {t(`whyLumina.${key}Desc`)}
+                    </Typography>
                   </Box>
                 </Box>
               ))}

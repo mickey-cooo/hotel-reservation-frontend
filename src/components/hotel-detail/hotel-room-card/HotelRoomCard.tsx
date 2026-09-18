@@ -1,3 +1,5 @@
+'use client';
+
 import { useState } from 'react';
 import NextLink from 'next/link';
 import { Box, Button, Typography } from '@mui/material';
@@ -5,8 +7,13 @@ import PersonOutlineIcon from '@mui/icons-material/PersonOutlineOutlined';
 import ChildCareIcon from '@mui/icons-material/ChildCare';
 import AspectRatioIcon from '@mui/icons-material/AspectRatio';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutlined';
+import { useTranslation } from 'react-i18next';
 import StatusBadge from '@/components/ui/status-badge/StatusBadge';
 import PriceRow from '@/components/ui/price-row/PriceRow';
+import {
+  AMENITY_LABEL_TO_VALUE,
+  POLICY_LABEL_TO_VALUE,
+} from '@/models/entity/hotel-room/hotel-room.model';
 import type { Room } from '@/models/entity/hotel-room/hotel-room.model';
 import styles from './HotelRoomCard.module.scss';
 
@@ -17,16 +24,16 @@ interface HotelRoomCardProps {
 
 const BADGE_CONFIG: Record<
   NonNullable<Room['badge']>,
-  { label: string; background: string; color: string; border: string }
+  { key: string; background: string; color: string; border: string }
 > = {
   BESTSELLER: {
-    label: 'Recommended',
+    key: 'recommended',
     background: 'rgba(197, 160, 89, 0.15)',
     color: '#96700a',
     border: '1px solid rgba(197, 160, 89, 0.4)',
   },
   FEATURED: {
-    label: 'Popular',
+    key: 'popular',
     background: 'rgba(59, 130, 246, 0.1)',
     color: '#1d4ed8',
     border: '1px solid rgba(59, 130, 246, 0.25)',
@@ -34,6 +41,7 @@ const BADGE_CONFIG: Record<
 };
 
 export default function HotelRoomCard({ room, hotelId }: HotelRoomCardProps) {
+  const { t } = useTranslation('hotelDetail');
   const { id, name, badge, capacity, sizeSqm, features, price, imageUrl } = room;
   const [imageFailed, setImageFailed] = useState(false);
   const showImage = Boolean(imageUrl) && !imageFailed;
@@ -59,7 +67,7 @@ export default function HotelRoomCard({ room, hotelId }: HotelRoomCardProps) {
           <Typography className={styles.roomName}>{name}</Typography>
           {badge && (
             <StatusBadge
-              label={BADGE_CONFIG[badge].label}
+              label={t(`rooms.${BADGE_CONFIG[badge].key}`)}
               background={BADGE_CONFIG[badge].background}
               color={BADGE_CONFIG[badge].color}
               border={BADGE_CONFIG[badge].border}
@@ -72,17 +80,23 @@ export default function HotelRoomCard({ room, hotelId }: HotelRoomCardProps) {
           {sizeSqm > 0 && (
             <Box className={styles.capacityItem}>
               <AspectRatioIcon className={styles.capacityIcon} />
-              <Typography className={styles.capacityText}>{sizeSqm} sqm</Typography>
+              <Typography className={styles.capacityText}>
+                {t('rooms.sqm', { size: sizeSqm })}
+              </Typography>
             </Box>
           )}
           <Box className={styles.capacityItem}>
             <PersonOutlineIcon className={styles.capacityIcon} />
-            <Typography className={styles.capacityText}>{capacity.adults} adults</Typography>
+            <Typography className={styles.capacityText}>
+              {t('rooms.adults', { n: capacity.adults })}
+            </Typography>
           </Box>
           {capacity.children > 0 && (
             <Box className={styles.capacityItem}>
               <ChildCareIcon className={styles.capacityIcon} />
-              <Typography className={styles.capacityText}>{capacity.children} children</Typography>
+              <Typography className={styles.capacityText}>
+                {t('rooms.children', { n: capacity.children })}
+              </Typography>
             </Box>
           )}
         </Box>
@@ -91,7 +105,16 @@ export default function HotelRoomCard({ room, hotelId }: HotelRoomCardProps) {
           {features.map((feature) => (
             <Box key={feature} className={styles.featureItem}>
               <CheckCircleOutlineIcon className={styles.checkIcon} />
-              <Typography className={styles.featureText}>{feature}</Typography>
+              <Typography className={styles.featureText}>
+                {(() => {
+                  const amenityValue = AMENITY_LABEL_TO_VALUE[feature];
+                  return amenityValue
+                    ? t(`destinations:amenities.${amenityValue}`)
+                    : POLICY_LABEL_TO_VALUE[feature]
+                      ? t(`policies.${POLICY_LABEL_TO_VALUE[feature]}`)
+                      : feature;
+                })()}
+              </Typography>
             </Box>
           ))}
         </Box>
@@ -110,7 +133,7 @@ export default function HotelRoomCard({ room, hotelId }: HotelRoomCardProps) {
             href={`/destinations/${hotelId}?roomId=${id}`}
             className={styles.bookBtn}
           >
-            Book
+            {t('rooms.book')}
           </Button>
         </Box>
       </Box>

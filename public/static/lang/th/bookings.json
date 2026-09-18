@@ -1,0 +1,80 @@
+{
+  "list": {
+    "title": "การจองของฉัน",
+    "subtitle": "จัดการทริปที่กำลังจะมาถึงและย้อนดูประสบการณ์สุดหรูในอดีตของคุณทั่วโลก",
+    "tabUpcoming": "กำลังจะมาถึง",
+    "tabPast": "ผ่านมาแล้ว",
+    "tabCancelled": "ยกเลิกแล้ว",
+    "noBookings": "ไม่พบการจอง",
+    "actionRequired": "ต้องดำเนินการ",
+    "confirmed": "ยืนยันแล้ว",
+    "totalPrice": "ราคารวม",
+    "checkIn": "เช็คอิน",
+    "checkOut": "เช็คเอาต์",
+    "guests": "ผู้เข้าพัก",
+    "provideDetails": "กรอกรายละเอียด",
+    "viewDetails": "ดูรายละเอียด",
+    "manage": "จัดการ",
+    "downloadInvoice": "ดาวน์โหลดใบแจ้งหนี้",
+    "getSupport": "ขอความช่วยเหลือ",
+    "chatWithConcierge": "แชทกับคอนเซียร์จ"
+  },
+  "cta": {
+    "eliteTitle": "ยกระดับการเข้าพักของคุณด้วย Lumina Elite",
+    "eliteDesc": "ปลดล็อกการอัปเกรดห้องพักฟรี เช็คเอาต์ล่าช้า และบริการรับส่งสนามบินส่วนตัวสำหรับการจองที่กำลังจะมาถึงทั้งหมดของคุณ",
+    "eliteBtn": "สำรวจสมาชิก",
+    "assistTitle": "ต้องการความช่วยเหลือ?",
+    "assistDesc": "ทีมคอนเซียร์จของเราพร้อมช่วยเหลือเรื่องการจองของคุณตลอด 24 ชั่วโมง",
+    "assistLink": "ติดต่อฝ่ายสนับสนุน"
+  },
+  "detail": {
+    "breadcrumbBookings": "การจองของฉัน",
+    "breadcrumbDetails": "รายละเอียด",
+    "title": "รายละเอียดการจอง",
+    "reference": "หมายเลขการจอง: #{{ref}}",
+    "confirmed": "ยืนยันการจองแล้ว"
+  },
+  "hotelCard": {
+    "premiumCollection": "คอลเลกชันพรีเมียม",
+    "roomType": "ประเภทห้องพัก"
+  },
+  "stayDetails": {
+    "title": "รายละเอียดการเข้าพัก",
+    "checkIn": "เช็คอิน",
+    "checkOut": "เช็คเอาต์",
+    "afterTime": "หลัง 14:00 น.",
+    "beforeTime": "ก่อน 12:00 น.",
+    "guests": "ผู้เข้าพัก",
+    "adult": "ผู้ใหญ่",
+    "adultsPlural": "ผู้ใหญ่",
+    "child": "เด็ก",
+    "childrenPlural": "เด็ก"
+  },
+  "cancellationPolicy": {
+    "title": "นโยบายการยกเลิก",
+    "freeLabel": "ยกเลิกฟรี",
+    "policyText": "คุณสามารถยกเลิกได้ฟรีก่อนวันที่ {{deadline}} (ก่อนเวลา 23:59 น. ตามเวลาท้องถิ่น) หลังจากนั้นจะไม่สามารถขอคืนเงินได้",
+    "readMore": "อ่านข้อกำหนดและเงื่อนไขฉบับเต็ม"
+  },
+  "guestInfo": {
+    "title": "ข้อมูลผู้เข้าพัก",
+    "primaryContact": "ผู้ติดต่อหลัก",
+    "email": "อีเมล",
+    "address": "ที่อยู่",
+    "specialRequests": "คำขอพิเศษ"
+  },
+  "priceSummary": {
+    "title": "สรุปราคา",
+    "night": "คืน",
+    "nightsPlural": "คืน",
+    "taxAndFees": "ภาษีและค่าธรรมเนียม (7%)",
+    "memberDiscount": "ส่วนลดสมาชิก Lumina",
+    "netTotal": "ยอดสุทธิ",
+    "currency": "บาท",
+    "manageBooking": "จัดการการจอง",
+    "printReceipt": "พิมพ์ใบเสร็จ",
+    "contactHotel": "ติดต่อโรงแรม",
+    "conciergeTitle": "บริการคอนเซียร์จตลอด 24 ชั่วโมง",
+    "conciergeText": "เราพร้อมให้ความช่วยเหลือคุณได้ทุกเมื่อ"
+  }
+}

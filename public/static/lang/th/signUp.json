@@ -15,7 +15,9 @@
   "buttonSubmit": "สร้างบัญชีผู้ใช้งาน",
   "haveAccount": "เป็นสมาชิกอยู่แล้ว?",
   "signIn": "เข้าสู่ระบบที่นี้",
-  "termOfCondition": "ยอมรับ Terms and Conditions และข้อตกลงการใช้งาน",
+  "termPrefix": "ยอมรับ",
+  "termLink": "ข้อกำหนดและเงื่อนไข",
+  "termSuffix": "และข้อตกลงการใช้งาน",
   "newsletter": "รับข้อมูลข่าวสารและสิทธิพิเศษผ่าน Newsletter Subscription",
   "signUpFail": "สมัครสมาชิกไม่สำเร็จ กรุณาลองใหม่อีกครั้ง"
 }

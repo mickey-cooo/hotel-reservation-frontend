@@ -1,0 +1,43 @@
+{
+  "hero": {
+    "label": "Direct Booking Benefits",
+    "titleLine1": "Exceptional Privileges",
+    "titleLine2": "When You Book Directly With Us",
+    "desc": "Experience luxury paired with unmatched value and even more personalized service when you book your stay through the official Lumina Stay website.",
+    "bookNow": "Book Now",
+    "learnMore": "Learn More"
+  },
+  "bento": {
+    "label": "Direct Booking Benefits",
+    "title": "Why book with Lumina Stay?",
+    "bestRateTitle": "Best Rate Guarantee",
+    "bestRateDesc": "Book directly and we'll match any lower rate you find elsewhere — no questions asked.",
+    "supportTitle": "24/7 Premium Support",
+    "supportDesc": "Dedicated concierge available around the clock, from booking to check-out.",
+    "memberPerksTitle": "Members-Only Perks",
+    "perk1": "Members-only exclusive rates",
+    "perk2": "Early check-in from 14:00",
+    "perk3": "Late check-out until 13:00",
+    "perk4": "Welcome gift on arrival",
+    "noFeesTitle": "No Hidden Charges",
+    "noFeesDesc": "Transparent pricing, secure payment, and instant confirmation — every time."
+  },
+  "difference": {
+    "title": "A Difference You Can Feel",
+    "rewardsTitle": "Earn Lumina Rewards Points",
+    "rewardsDesc": "Book directly to earn up to 2x the points, redeemable for free nights and other exclusive rewards.",
+    "confirmationTitle": "Instant Confirmation",
+    "confirmationDesc": "Get your booking confirmation email straight from the hotel — no more worrying about lost bookings or third-party errors.",
+    "perksTitle": "Exclusive Spa & Dining Perks",
+    "perksDesc": "Receive a 20% discount voucher for premium spa and dining services throughout your stay.",
+    "trustBadge": "TRUST BADGE",
+    "officialPartner": "Official Partner",
+    "trustQuote": "“The only way to experience Lumina Stay’s full hospitality is through our direct portal.”"
+  },
+  "cta": {
+    "title": "Begin Your Perfect Journey",
+    "subtitle": "Unlock your exclusive privileges today and join the Lumina Stay family.",
+    "findRooms": "Find Rooms",
+    "joinMembership": "Join Membership"
+  }
+}

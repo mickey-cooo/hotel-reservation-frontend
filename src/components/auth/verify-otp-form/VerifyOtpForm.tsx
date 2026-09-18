@@ -17,12 +17,14 @@ import PinOutlinedIcon from '@mui/icons-material/PinOutlined';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import styles from './VerifyOtpForm.module.scss';
 import { verifyOtpAction } from '@/service/auth/auth-actions';
+import { useTranslation } from 'react-i18next';
 
 interface VerifyOtpFormValues {
   otp: string;
 }
 
 export default function VerifyOtpForm() {
+  const { t } = useTranslation('signIn');
   const router = useRouter();
   const searchParams = useSearchParams();
   const email = searchParams.get('email') ?? '';
@@ -39,12 +41,12 @@ export default function VerifyOtpForm() {
     try {
       const result = await verifyOtpAction({ email, otp });
       if (!result.ok) {
-        setError(result.message || 'ยืนยัน OTP ไม่สำเร็จ กรุณาลองใหม่อีกครั้ง');
+        setError(result.message || t('auth.verifyFailed'));
         return;
       }
       router.push('/login');
     } catch {
-      setError('ยืนยัน OTP ไม่สำเร็จ กรุณาลองใหม่อีกครั้ง');
+      setError(t('auth.verifyFailed'));
     }
   };
 
@@ -57,17 +59,17 @@ export default function VerifyOtpForm() {
 
       <Box className={styles.header}>
         <Typography variant="h5" className={styles.title}>
-          ยืนยันบัญชีของคุณ
+          {t('auth.verifyTitle')}
         </Typography>
         <Box className={styles.titleAccent} />
         <Typography className={styles.subtitle}>
-          กรุณากรอกรหัส OTP ที่ส่งไปยังอีเมลของคุณ
+          {t('auth.verifySubtitle')}
         </Typography>
       </Box>
 
       <Box className={styles.fields}>
         <Box className={styles.fieldGroup}>
-          <Typography className={styles.label}>EMAIL</Typography>
+          <Typography className={styles.label}>{t('auth.emailLabel')}</Typography>
           <OutlinedInput
             fullWidth
             readOnly
@@ -82,7 +84,7 @@ export default function VerifyOtpForm() {
         </Box>
 
         <Box className={styles.fieldGroup}>
-          <Typography className={styles.label}>OTP CODE</Typography>
+          <Typography className={styles.label}>{t('auth.otpLabel')}</Typography>
           <Controller
             name="otp"
             control={control}
@@ -110,13 +112,13 @@ export default function VerifyOtpForm() {
         className={styles.submitBtn}
         disabled={isSubmitting || !email}
       >
-        ยืนยัน OTP
+        {t('auth.verifySubmit')}
       </Button>
 
       <Box className={styles.backRow}>
         <Link href="/login" underline="none" className={styles.backLink}>
           <ArrowBackIcon className={styles.backIcon} />
-          กลับสู่หน้าเข้าสู่ระบบ
+          {t('auth.backToSignIn')}
         </Link>
       </Box>
     </Box>

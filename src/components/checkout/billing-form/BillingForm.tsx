@@ -3,6 +3,7 @@
 import { useEffect } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { Box, TextField, Typography } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 import styles from './BillingForm.module.scss';
 
 export interface BillingValues {
@@ -18,6 +19,7 @@ interface BillingFormProps {
 }
 
 export default function BillingForm({ values, onChange }: BillingFormProps) {
+  const { t } = useTranslation('checkout');
   const { control, watch } = useForm<BillingValues>({ defaultValues: values });
 
   useEffect(() => {
@@ -27,7 +29,7 @@ export default function BillingForm({ values, onChange }: BillingFormProps) {
 
   return (
     <Box className={styles.card}>
-      <Typography className={styles.sectionTitle}>Billing Information</Typography>
+      <Typography className={styles.sectionTitle}>{t('billing.title')}</Typography>
 
       <Box className={styles.nameRow}>
         <Controller
@@ -36,8 +38,8 @@ export default function BillingForm({ values, onChange }: BillingFormProps) {
           render={({ field }) => (
             <TextField
               {...field}
-              label="First Name"
-              placeholder="First name"
+              label={t('billing.firstName')}
+              placeholder={t('billing.firstNamePlaceholder')}
               fullWidth
               className={styles.field}
               slotProps={{ inputLabel: { className: styles.label }, input: { className: styles.input } }}
@@ -50,8 +52,8 @@ export default function BillingForm({ values, onChange }: BillingFormProps) {
           render={({ field }) => (
             <TextField
               {...field}
-              label="Last Name"
-              placeholder="Last name"
+              label={t('billing.lastName')}
+              placeholder={t('billing.lastNamePlaceholder')}
               fullWidth
               className={styles.field}
               slotProps={{ inputLabel: { className: styles.label }, input: { className: styles.input } }}
@@ -66,7 +68,7 @@ export default function BillingForm({ values, onChange }: BillingFormProps) {
         render={({ field }) => (
           <TextField
             {...field}
-            label="Email"
+            label={t('billing.email')}
             type="email"
             placeholder="example@lumina.com"
             fullWidth
@@ -82,8 +84,8 @@ export default function BillingForm({ values, onChange }: BillingFormProps) {
         render={({ field }) => (
           <TextField
             {...field}
-            label="Address"
-            placeholder="Street, district, province"
+            label={t('billing.address')}
+            placeholder={t('billing.addressPlaceholder')}
             fullWidth
             className={styles.field}
             slotProps={{ inputLabel: { className: styles.label }, input: { className: styles.input } }}

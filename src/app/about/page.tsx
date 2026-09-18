@@ -1,3 +1,8 @@
+'use client';
+
+import { useTranslation } from 'react-i18next';
+
 export default function AboutPage() {
-  return <div>About</div>;
+  const { t } = useTranslation('common');
+  return <div>{t('pages.about')}</div>;
 }

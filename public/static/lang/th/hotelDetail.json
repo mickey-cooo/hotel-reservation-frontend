@@ -1,0 +1,116 @@
+{
+  "header": {
+    "reviews": "({{n}} รีวิว)"
+  },
+  "gallery": {
+    "viewAllPhotos": "ดูรูปภาพทั้งหมด"
+  },
+  "amenities": {
+    "title": "สิ่งอำนวยความสะดวก",
+    "labels": {
+      "Free WiFi": "ไวไฟฟรี",
+      "Infinity Pool": "สระว่ายน้ำอินฟินิตี้",
+      "Heated Pool": "สระว่ายน้ำอุ่น",
+      "Private Plunge Pool": "สระส่วนตัวขนาดเล็ก",
+      "Luxury Spa": "สปาหรูหรา",
+      "Restaurant": "ร้านอาหาร",
+      "Fine Dining": "ร้านอาหารระดับไฟน์ไดนิ่ง",
+      "Michelin-Starred Restaurant": "ร้านอาหารมิชลินสตาร์",
+      "Fitness Centre": "ศูนย์ฟิตเนส",
+      "Fitness Studio": "สตูดิโอฟิตเนส",
+      "Private Beach": "ชายหาดส่วนตัว",
+      "Room Service": "รูมเซอร์วิส",
+      "Concierge": "บริการคอนเซียร์จ",
+      "Valet Parking": "บริการจอดรถ",
+      "Cocktail Bar": "บาร์ค็อกเทล",
+      "Sky Bar": "บาร์ลอยฟ้า",
+      "Cycling Tours": "ทัวร์ปั่นจักรยาน",
+      "Private Terrace": "ระเบียงส่วนตัว",
+      "Wine Cellar": "ห้องเก็บไวน์",
+      "Rooftop Terrace": "ระเบียงดาดฟ้า",
+      "Yoga Pavilion": "ศาลาโยคะ",
+      "Airport Transfer": "บริการรับส่งสนามบิน",
+      "Water Sports": "กีฬาทางน้ำ",
+      "In-house Sommelier": "ผู้เชี่ยวชาญด้านไวน์ประจำโรงแรม"
+    }
+  },
+  "policies": {
+    "pets": "ยินดีต้อนรับสัตว์เลี้ยง",
+    "children": "เหมาะสำหรับเด็ก",
+    "smoking": "อนุญาตให้สูบบุหรี่",
+    "adults": "สำหรับผู้ใหญ่เท่านั้น"
+  },
+  "rooms": {
+    "title": "ห้องพักของเรา",
+    "recommended": "แนะนำ",
+    "popular": "ยอดนิยม",
+    "sqm": "{{size}} ตร.ม.",
+    "adults": "ผู้ใหญ่ {{n}} คน",
+    "children": "เด็ก {{n}} คน",
+    "book": "จอง"
+  },
+  "booking": {
+    "perNight": "/ คืน",
+    "checkIn": "เช็คอิน",
+    "checkOut": "เช็คเอาต์",
+    "selectCheckIn": "เลือกวันเช็คอิน",
+    "selectCheckOut": "เลือกวันเช็คเอาต์",
+    "guests": "ผู้เข้าพัก",
+    "adults": "ผู้ใหญ่",
+    "children": "เด็ก",
+    "bookNow": "จองเลย",
+    "nightsBreakdown": "฿{{price}} × {{nights}} คืน",
+    "nightsBreakdownPlural": "฿{{price}} × {{nights}} คืน",
+    "serviceFee": "ค่าบริการ",
+    "total": "ยอดรวม",
+    "freeCancellation": "ยกเลิกฟรีได้",
+    "whyBookWith": "ทำไมต้องจองกับ Lumina Stay?",
+    "whyBookDesc": "รับประกันราคาดีที่สุด · ชำระเงินปลอดภัย · บริการคอนเซียร์จตลอด 24 ชั่วโมง · สะสมคะแนน Lumina Points"
+  },
+  "reviewsSection": {
+    "title": "รีวิวจากผู้เข้าพัก ({{n}})",
+    "seeAll": "ดูทั้งหมด ›"
+  },
+  "reviewAuthor": {
+    "anonymous": "ผู้เข้าพักไม่ระบุชื่อ",
+    "guest": "ผู้เข้าพัก"
+  },
+  "photosPage": {
+    "allPhotos": "รูปภาพทั้งหมด",
+    "title": "ภาพบรรยากาศ",
+    "subtitle": "สัมผัสความหรูหราของ Lumina Stay ผ่านคอลเลกชันภาพพื้นที่และสิ่งอำนวยความสะดวกระดับพรีเมียมที่คัดสรรมาอย่างดี",
+    "all": "ทั้งหมด",
+    "discoverMore": "ดูเพิ่มเติม",
+    "discoverMoreAria": "ดูรูปภาพเพิ่มเติม",
+    "categories": {
+      "Guest Rooms": "ห้องพัก",
+      "Suites": "สวีท",
+      "Dining": "ร้านอาหาร",
+      "Spa & Wellness": "สปาและเวลเนส",
+      "Poolside": "ริมสระน้ำ"
+    }
+  },
+  "reviewsPage": {
+    "allReviews": "รีวิวทั้งหมด",
+    "title": "ประสบการณ์จากผู้เข้าพัก",
+    "subtitle": "ค้นพบเหตุผลที่นักเดินทางผู้มีรสนิยมเลือก Lumina Stay สำหรับช่วงเวลาอันมีค่า เรื่องราวจริงจากชุมชนของเราทั่วโลก",
+    "basedOn": "จากรีวิว {{n}} รายการ",
+    "categories": {
+      "Cleanliness": "ความสะอาด",
+      "Service": "การบริการ",
+      "Location": "ทำเล",
+      "Value": "ความคุ้มค่า",
+      "Facilities": "สิ่งอำนวยความสะดวก"
+    },
+    "filterTitle": "กรองรีวิว",
+    "searchPlaceholder": "ค้นหาภายในรีวิว…",
+    "sortLatest": "รีวิวล่าสุด",
+    "sortHighest": "คะแนนสูงสุด",
+    "sortLowest": "คะแนนต่ำสุด",
+    "stayedIn": "เข้าพักเมื่อ {{date}}",
+    "verifiedStay": "ยืนยันการเข้าพักจริง",
+    "helpful": "มีประโยชน์ ({{n}})",
+    "comment": "แสดงความคิดเห็น",
+    "noMatch": "ไม่พบรีวิวที่ตรงกับการค้นหาของคุณ"
+  }
+}

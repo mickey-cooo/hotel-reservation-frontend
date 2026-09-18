@@ -1,0 +1,80 @@
+{
+  "list": {
+    "title": "My Bookings",
+    "subtitle": "Manage your upcoming retreats and revisit your past luxury experiences across the globe.",
+    "tabUpcoming": "Upcoming",
+    "tabPast": "Past",
+    "tabCancelled": "Cancelled",
+    "noBookings": "No bookings found.",
+    "actionRequired": "ACTION REQUIRED",
+    "confirmed": "CONFIRMED",
+    "totalPrice": "TOTAL PRICE",
+    "checkIn": "CHECK-IN",
+    "checkOut": "CHECK-OUT",
+    "guests": "GUESTS",
+    "provideDetails": "Provide Details",
+    "viewDetails": "View Details",
+    "manage": "Manage",
+    "downloadInvoice": "Download Invoice",
+    "getSupport": "Get Support",
+    "chatWithConcierge": "Chat with Concierge"
+  },
+  "cta": {
+    "eliteTitle": "Elevate Your Stay with Lumina Elite",
+    "eliteDesc": "Unlock complimentary room upgrades, late check-outs, and private airport transfers on all your upcoming bookings.",
+    "eliteBtn": "Explore Membership",
+    "assistTitle": "Need Assistance?",
+    "assistDesc": "Our 24/7 dedicated concierge is ready to help with your reservations.",
+    "assistLink": "Contact Support"
+  },
+  "detail": {
+    "breadcrumbBookings": "My Bookings",
+    "breadcrumbDetails": "Details",
+    "title": "Booking Details",
+    "reference": "Booking reference: #{{ref}}",
+    "confirmed": "Booking confirmed"
+  },
+  "hotelCard": {
+    "premiumCollection": "PREMIUM COLLECTION",
+    "roomType": "Room Type"
+  },
+  "stayDetails": {
+    "title": "Stay Details",
+    "checkIn": "Check-In",
+    "checkOut": "Check-Out",
+    "afterTime": "After 14:00",
+    "beforeTime": "Before 12:00",
+    "guests": "Guests",
+    "adult": "Adult",
+    "adultsPlural": "Adults",
+    "child": "Child",
+    "childrenPlural": "Children"
+  },
+  "cancellationPolicy": {
+    "title": "Cancellation Policy",
+    "freeLabel": "Free Cancellation",
+    "policyText": "You can cancel free of charge before {{deadline}} (by 23:59, local time). After that, the booking is non-refundable.",
+    "readMore": "Read full terms and conditions"
+  },
+  "guestInfo": {
+    "title": "Guest Information",
+    "primaryContact": "Primary Contact",
+    "email": "Email",
+    "address": "Address",
+    "specialRequests": "Special Requests"
+  },
+  "priceSummary": {
+    "title": "Price Summary",
+    "night": "night",
+    "nightsPlural": "nights",
+    "taxAndFees": "Tax & fees (7%)",
+    "memberDiscount": "Lumina member discount",
+    "netTotal": "Net Total",
+    "currency": "THB",
+    "manageBooking": "Manage Booking",
+    "printReceipt": "Print Receipt",
+    "contactHotel": "Contact Hotel",
+    "conciergeTitle": "24/7 Concierge Service",
+    "conciergeText": "We are ready to assist you at any time"
+  }
+}
