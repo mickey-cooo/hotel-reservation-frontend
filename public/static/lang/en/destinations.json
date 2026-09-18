@@ -1,0 +1,57 @@
+{
+  "hero": {
+    "title": "Discover Exceptional stays"
+  },
+  "search": {
+    "location": "LOCATION",
+    "locationPlaceholder": "Where to?",
+    "dates": "DATES",
+    "addDates": "Add dates",
+    "guests": "GUESTS",
+    "adult": "Adult",
+    "adultsPlural": "Adults",
+    "child": "Child",
+    "childrenPlural": "Children",
+    "room": "Room",
+    "roomsPlural": "Rooms",
+    "selectCheckIn": "Select check-in date",
+    "selectCheckOut": "Select check-out date",
+    "checkInLabel": "Check-in",
+    "checkOutLabel": "Check-out",
+    "guestsAndRooms": "Guests & Rooms",
+    "adults": "Adults",
+    "adultsAgeNote": "Ages 13 or above",
+    "children": "Children",
+    "childrenAgeNote": "Ages 0–12",
+    "rooms": "Rooms",
+    "done": "Done"
+  },
+  "grid": {
+    "foundOf": "Found {{shown}} of {{total}} stays",
+    "subtitle": "Showing premium results for your search.",
+    "gridView": "Grid view",
+    "mapView": "Map view",
+    "mapComingSoon": "Map view coming soon"
+  },
+  "filters": {
+    "categories": "Categories",
+    "categoryAll": "All",
+    "categoryLuxury": "Luxury",
+    "categoryFamilyFriendly": "Family Friendly",
+    "categoryBoutique": "Boutique",
+    "categoryBeachfront": "Beachfront",
+    "priceRange": "Price Range",
+    "amenities": "Amenities",
+    "clearAll": "Clear all"
+  },
+  "amenities": {
+    "wifi": "Free WiFi",
+    "tv": "TV",
+    "air_conditioning": "Air Conditioning",
+    "minibar": "Minibar",
+    "safe": "Safe",
+    "private_bathroom": "Private Bathroom",
+    "private_balcony": "Private Balcony",
+    "private_terrace": "Private Terrace"
+  }
+}

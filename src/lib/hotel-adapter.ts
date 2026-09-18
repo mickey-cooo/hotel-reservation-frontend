@@ -1,11 +1,17 @@
 import { hotelService } from '@/service/hotel/hotel.service';
 import { hotelReviewService } from '@/service/hotel-review/hotel-review.service';
+import { hotelRoomService } from '@/service/hotel-room/hotel-room.service';
 import { getServerAuthToken } from '@/service/server-auth';
 import type {
   ApiHotel,
   Hotel,
+  HotelCategory,
   HotelDetail,
 } from '@/models/entity/hotel/hotel.model';
+import {
+  AMENITY_LABELS,
+  POLICY_LABELS,
+} from '@/models/entity/hotel-room/hotel-room.model';
 import type {
   ApiHotelRoom,
   Room,
@@ -16,23 +22,16 @@ import type {
 } from '@/models/entity/hotel-review/hotel-review.model';
 import type { ApiAddress } from '@/models/entity/address/address.model';
 
-const AMENITY_LABELS: Record<string, string> = {
-  wifi: 'Free WiFi',
-  tv: 'TV',
-  air_conditioning: 'Air Conditioning',
-  minibar: 'Minibar',
-  safe: 'Safe',
-  private_bathroom: 'Private Bathroom',
-  private_balcony: 'Private Balcony',
-  private_terrace: 'Private Terrace',
-};
-
 function labelizeAmenity(value: string): string {
-  return AMENITY_LABELS[value] ?? value;
+  return AMENITY_LABELS[value as keyof typeof AMENITY_LABELS] ?? value;
+}
+
+function labelizePolicy(value: string): string {
+  return POLICY_LABELS[value as keyof typeof POLICY_LABELS] ?? value;
 }
 
 function formatLocation(address?: ApiAddress): string {
-  if (!address) return 'Location unavailable';
+  if (!address) return '';
   return [address.district, address.province].filter(Boolean).join(', ');
 }
 
@@ -49,7 +48,10 @@ export function adaptRoom(room: ApiHotelRoom): Room {
     name: room.name,
     capacity: { adults: room.capacity, children: 0 },
     sizeSqm: 0,
-    features: [...room.amenities.map(labelizeAmenity), ...room.policies],
+    features: [
+      ...room.amenities.map(labelizeAmenity),
+      ...room.policies.map(labelizePolicy),
+    ],
     price: room.price,
     imageUrl: room.image ?? '',
   };
@@ -87,7 +89,7 @@ export function adaptHotelDetail(
 
   const adaptedReviews: Review[] = reviews.map((review) => ({
     id: review.id,
-    author: review.isAnonymous ? 'Anonymous Guest' : 'Guest',
+    author: review.isAnonymous ? 'anonymous' : 'guest',
     date: formatReviewDate(review.createdAt),
     rating: review.rating,
     comment: review.description,
@@ -129,15 +131,81 @@ interface FindAllHotelResponse {
   meta: { totalItems: number };
 }
 
+export interface RoomFilters {
+  price?: number;
+  amenities?: string[];
+  checkInDate?: string;
+  checkOutDate?: string;
+  guestNumber?: number;
+}
+
+function hasRoomFilters(filters?: RoomFilters): filters is RoomFilters {
+  if (!filters) return false;
+  return Boolean(
+    filters.price ||
+      filters.amenities?.length ||
+      (filters.checkInDate && filters.checkOutDate) ||
+      filters.guestNumber,
+  );
+}
+
+export async function getHotelIdsMatchingRoomFilters(
+  filters: RoomFilters,
+): Promise<Set<string>> {
+  try {
+    const rooms = await hotelRoomService.findAll<ApiHotelRoom[]>({
+      price: filters.price,
+      amenities: filters.amenities?.join(','),
+      checkInDate: filters.checkInDate,
+      checkOutDate: filters.checkOutDate,
+      guestNumber: filters.guestNumber,
+    });
+    return new Set(
+      rooms.map((room) => room.hotel_id).filter((id): id is string => Boolean(id)),
+    );
+  } catch {
+    return new Set();
+  }
+}
+
+// Room-filter matching needs every category-matching hotel in hand before it can
+// filter and count correctly, so it pulls the whole category in one shot rather
+// than intersecting a single backend page against the (unpaginated) match set.
+const ALL_HOTELS_LIMIT = 1000;
+
 export async function getAllHotels(
   page?: number,
   limit?: number,
+  category?: HotelCategory,
+  roomFilters?: RoomFilters,
 ): Promise<{ hotels: Hotel[]; totalCount: number }> {
   try {
+    if (hasRoomFilters(roomFilters)) {
+      const [res, matchingHotelIds] = await Promise.all([
+        hotelService.findAll<FindAllHotelResponse>({
+          limit: ALL_HOTELS_LIMIT,
+          category,
+        }),
+        getHotelIdsMatchingRoomFilters(roomFilters),
+      ]);
+
+      const filtered = res.data.filter((hotel) => matchingHotelIds.has(hotel.id));
+      const paged = limit
+        ? filtered.slice(((page ?? 1) - 1) * limit, ((page ?? 1) - 1) * limit + limit)
+        : filtered;
+
+      return {
+        hotels: paged.map((hotel) => adaptHotelCard(hotel)),
+        totalCount: filtered.length,
+      };
+    }
+
     const res = await hotelService.findAll<FindAllHotelResponse>({
       page,
       limit,
+      category,
     });
+
     return {
       hotels: res.data.map((hotel) => adaptHotelCard(hotel)),
       totalCount: res.meta.totalItems,

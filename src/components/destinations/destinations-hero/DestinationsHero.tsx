@@ -1,8 +1,33 @@
+'use client';
+
 import { Box, Container, Typography } from '@mui/material';
-import DestinationsSearchBar from '@/components/destinations/destinations-search-bar/DestinationsSearchBar';
+import { useTranslation } from 'react-i18next';
+import DestinationsSearchBar, {
+  type DestinationsSearchValues,
+} from '@/components/destinations/destinations-search-bar/DestinationsSearchBar';
 import styles from './DestinationsHero.module.scss';
 
-export default function DestinationsHero() {
+interface DestinationsHeroProps {
+  initialLocation?: string;
+  initialCheckIn?: string | null;
+  initialCheckOut?: string | null;
+  initialAdults?: number;
+  initialChildren?: number;
+  initialRooms?: number;
+  onSearch: (values: DestinationsSearchValues) => void;
+}
+
+export default function DestinationsHero({
+  initialLocation,
+  initialCheckIn,
+  initialCheckOut,
+  initialAdults,
+  initialChildren,
+  initialRooms,
+  onSearch,
+}: DestinationsHeroProps) {
+  const { t } = useTranslation('destinations');
+
   return (
     <Box className={styles.heroWrapper}>
       <Container maxWidth="md" className={styles.heroContent}>
@@ -10,9 +35,17 @@ export default function DestinationsHero() {
           variant="h3"
           className={styles.heroTitle}
         >
-          Discover Exceptional stays
+          {t('hero.title')}
         </Typography>
-        <DestinationsSearchBar />
+        <DestinationsSearchBar
+          initialLocation={initialLocation}
+          initialCheckIn={initialCheckIn}
+          initialCheckOut={initialCheckOut}
+          initialAdults={initialAdults}
+          initialChildren={initialChildren}
+          initialRooms={initialRooms}
+          onSearch={onSearch}
+        />
       </Container>
     </Box>
   );

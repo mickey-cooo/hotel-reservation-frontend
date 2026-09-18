@@ -101,11 +101,12 @@ export interface UpdateHotelBodyDto {
   rooms: UpdateHotelRoomInHotelDto[];
 }
 
-export type HotelCategory =
-  | 'luxury'
-  | 'family_friendly'
-  | 'boutique'
-  | 'beachfront';
+export enum HotelCategory {
+  LUXURY = 'luxury',
+  FAMILY_FRIENDLY = 'family_friendly',
+  BOUTIQUE = 'boutique',
+  BEACHFRONT = 'beachfront',
+}
 
 export interface FindAllHotelQuery {
   page?: number;

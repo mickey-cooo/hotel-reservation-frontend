@@ -1,6 +1,9 @@
+'use client';
+
 import { Box, Button, Container, Typography } from '@mui/material';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import NextLink from 'next/link';
+import { useTranslation } from 'react-i18next';
 import DestinationCard from '../destination-card/DestinationCard';
 import type { Hotel } from '@/models/entity/hotel/hotel.model';
 import styles from './MostBookedSection.module.scss';
@@ -10,23 +13,25 @@ interface MostBookedSectionProps {
 }
 
 export default function MostBookedSection({ hotels }: MostBookedSectionProps) {
+  const { t } = useTranslation('home');
+
   return (
     <Box className={styles.section}>
       <Container maxWidth="lg">
         <Typography variant="caption" className={styles.sectionLabel}>
-          Our Curated Selection
+          {t('mostBooked.sectionLabel')}
         </Typography>
 
         <Box className={styles.sectionHeader}>
           <Typography variant="h5" className={styles.sectionTitle}>
-            Most Booked Destinations
+            {t('mostBooked.sectionTitle')}
           </Typography>
           <NextLink href="/destinations" className={styles.viewAllLink}>
             <Button
               endIcon={<ArrowForwardIcon fontSize="small" />}
               className={styles.viewAllBtn}
             >
-              View all destinations
+              {t('mostBooked.viewAll')}
             </Button>
           </NextLink>
         </Box>

@@ -40,9 +40,8 @@ export const hotelService = {
     try {
       return await requestClient.post<TResponse, TResponse>(
         `${BASE_PATH}/list`,
-        {
-          params: query,
-        },
+        undefined,
+        { params: query },
       );
     } catch (error) {
       throw error;

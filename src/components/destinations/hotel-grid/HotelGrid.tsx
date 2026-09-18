@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { Box, Grid, IconButton, Tooltip, Typography } from '@mui/material';
 import GridViewIcon from '@mui/icons-material/GridView';
 import MapOutlinedIcon from '@mui/icons-material/MapOutlined';
+import { useTranslation } from 'react-i18next';
 import HotelCard from '../hotel-card/HotelCard';
 import type { Hotel } from '@/models/entity/hotel/hotel.model';
 import styles from './HotelGrid.module.scss';
@@ -14,6 +15,7 @@ interface HotelGridProps {
 }
 
 export default function HotelGrid({ hotels, totalCount }: HotelGridProps) {
+  const { t } = useTranslation('destinations');
   const [view, setView] = useState<'grid' | 'map'>('grid');
 
   return (
@@ -21,15 +23,15 @@ export default function HotelGrid({ hotels, totalCount }: HotelGridProps) {
       <Box className={styles.header}>
         <Box>
           <Typography variant="h5" className={styles.gridTitle}>
-            Found {hotels.length} of {totalCount} stays
+            {t('grid.foundOf', { shown: hotels.length, total: totalCount })}
           </Typography>
           <Typography className={styles.gridSubtitle}>
-            Showing premium results for your search.
+            {t('grid.subtitle')}
           </Typography>
         </Box>
 
         <Box className={styles.viewToggle}>
-          <Tooltip title="Grid view">
+          <Tooltip title={t('grid.gridView')}>
             <IconButton
               onClick={() => setView('grid')}
               size="small"
@@ -38,7 +40,7 @@ export default function HotelGrid({ hotels, totalCount }: HotelGridProps) {
               <GridViewIcon fontSize="small" />
             </IconButton>
           </Tooltip>
-          <Tooltip title="Map view">
+          <Tooltip title={t('grid.mapView')}>
             <IconButton
               onClick={() => setView('map')}
               size="small"
@@ -61,7 +63,7 @@ export default function HotelGrid({ hotels, totalCount }: HotelGridProps) {
       ) : (
         <Box className={styles.mapPlaceholder}>
           <Typography className={styles.mapPlaceholderText}>
-            Map view coming soon
+            {t('grid.mapComingSoon')}
           </Typography>
         </Box>
       )}

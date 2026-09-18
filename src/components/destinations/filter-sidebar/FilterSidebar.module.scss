@@ -78,10 +78,32 @@
   color: var(--color-neutral) !important;
 }
 
+.amenitiesHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
 .amenitiesTitle {
   font-weight: 700 !important;
   color: var(--color-fg) !important;
-  margin-bottom: 8px !important;
+  margin-bottom: 0 !important;
+}
+
+.clearAmenitiesBtn {
+  min-width: 0 !important;
+  padding: 0 !important;
+  font-size: 0.75rem !important;
+  font-weight: 600 !important;
+  text-transform: none !important;
+  color: var(--color-gold) !important;
+
+  &:hover {
+    background: transparent !important;
+    text-decoration: underline;
+  }
 }
 
 .amenitiesList {
