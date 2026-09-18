@@ -1,0 +1,66 @@
+{
+  "nav": {
+    "home": "Home",
+    "destinations": "Destinations",
+    "membership": "Membership",
+    "myBookings": "My Bookings"
+  },
+  "navbar": {
+    "memberPerks": "Member Perks",
+    "signIn": "Sign In",
+    "openMenu": "Open menu",
+    "myAccount": "My Account",
+    "logOut": "Log Out",
+    "accountMenu": "Account menu",
+    "signedInAs": "Signed in as"
+  },
+  "card": {
+    "perNight": "/night",
+    "locationUnavailable": "Location unavailable"
+  },
+  "footer": {
+    "brandDesc": "Redefining hotel booking meets our 150-point quality standard. Experience luxury as it was meant to be: personal, seamless, and extraordinary.",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service",
+    "helpCenter": "Help Center",
+    "contactUs": "Contact Us",
+    "concierge": "Concierge",
+    "copyright": "© 2025 Lumina Stay. All rights reserved."
+  },
+  "metadata": {
+    "siteTitle": "Lumina Stay",
+    "siteDescription": "Find your next luxury sanctuary",
+    "contactTitle": "Contact Us — Lumina Stay",
+    "contactDescription": "Get in touch with Lumina Stay's global concierge team for personalized assistance with your luxury travel.",
+    "helpTitle": "Help Center — Lumina Stay",
+    "helpDescription": "Find answers to common questions about bookings, payments, cancellations, and account management at Lumina Stay.",
+    "privacyTitle": "Privacy Policy — Lumina Stay",
+    "privacyDescription": "Learn how Lumina Stay collects, uses, and protects your personal data in accordance with global privacy regulations.",
+    "termsTitle": "Terms of Service — Lumina Stay",
+    "termsDescription": "Read the terms and conditions governing your use of Lumina Stay and our luxury travel booking services.",
+    "conciergeTitle": "Lumina Concierge — Lumina Stay",
+    "conciergeDescription": "Our Lumina Concierge is available 24/7 to assist with your journey, from suite upgrades to personalized itinerary planning.",
+    "whyTitle": "Why Book with Lumina Stay — Lumina Stay",
+    "whyDescription": "Best rate guarantee, secure payment, 24/7 concierge support, and exclusive member rewards — only when you book directly with Lumina Stay.",
+    "hotelTitle": "{{name}} — Lumina Stay",
+    "photosTitle": "All Photos — {{name}} | Lumina Stay",
+    "photosDescription": "Browse the full photo gallery for {{name}}.",
+    "reviewsTitle": "Guest Reviews — {{name}} | Lumina Stay",
+    "reviewsDescription": "Read authentic guest reviews for {{name}}."
+  },
+  "pages": {
+    "about": "About",
+    "pricing": "Pricing",
+    "features": "Features"
+  },
+  "imageAlt": {
+    "luxuryRoom": "Luxury hotel room",
+    "luxuryPool": "Luxury pool",
+    "poolSunset": "Luxury pool at sunset",
+    "interior": "Lumina Stay luxury interior",
+    "cityView": "City view at night",
+    "newYork": "New York City aerial view",
+    "breakfast": "Luxury lifestyle breakfast on terrace",
+    "lobby": "Luxury hotel lobby"
+  }
+}

@@ -20,7 +20,7 @@ export function proxy(req: NextRequest) {
     const token = req.cookies.get(AUTH_COOKIE_NAME)?.value;
     if (!token) {
       const loginUrl = new URL('/login', req.url);
-      loginUrl.searchParams.set('redirectTo', pathname);
+      loginUrl.searchParams.set('redirectTo', pathname + req.nextUrl.search);
       return NextResponse.redirect(loginUrl);
     }
 

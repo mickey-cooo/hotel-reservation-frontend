@@ -1,0 +1,57 @@
+.profileBtn {
+  padding: 2px !important;
+}
+
+.menuPaper {
+  margin-top: 8px !important;
+  min-width: 220px !important;
+  border-radius: 12px !important;
+  border: 1px solid var(--color-border) !important;
+  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.12) !important;
+}
+
+.menuHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 12px 16px;
+}
+
+.menuHeaderLabel {
+  font-size: 0.7rem;
+  color: var(--color-neutral);
+}
+
+.menuHeaderEmail {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-fg);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.menuDivider {
+  margin: 4px 0 !important;
+  border-color: var(--color-border) !important;
+}
+
+.menuItem {
+  font-size: 0.875rem !important;
+  color: var(--color-text-body) !important;
+  padding: 10px 16px !important;
+}
+
+.menuItemIcon {
+  min-width: 32px !important;
+  color: var(--color-neutral) !important;
+}
+
+.menuItemDanger {
+  color: #DC2626 !important;
+}
+
+.menuItemIconDanger {
+  min-width: 32px !important;
+  color: #DC2626 !important;
+}

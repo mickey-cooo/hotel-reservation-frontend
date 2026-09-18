@@ -1,0 +1,66 @@
+{
+  "nav": {
+    "home": "หน้าแรก",
+    "destinations": "จุดหมายปลายทาง",
+    "membership": "สมาชิก",
+    "myBookings": "การจองของฉัน"
+  },
+  "navbar": {
+    "memberPerks": "สิทธิพิเศษสมาชิก",
+    "signIn": "เข้าสู่ระบบ",
+    "openMenu": "เปิดเมนู",
+    "myAccount": "บัญชีของฉัน",
+    "logOut": "ออกจากระบบ",
+    "accountMenu": "เมนูบัญชี",
+    "signedInAs": "เข้าสู่ระบบในชื่อ"
+  },
+  "card": {
+    "perNight": "/คืน",
+    "locationUnavailable": "ไม่พบข้อมูลสถานที่"
+  },
+  "footer": {
+    "brandDesc": "ปฏิวัติการจองโรงแรมด้วยมาตรฐานคุณภาพ 150 ข้อ สัมผัสความหรูหราในแบบที่ควรจะเป็น ทั้งเป็นส่วนตัว ราบรื่น และเหนือระดับ",
+    "privacyPolicy": "นโยบายความเป็นส่วนตัว",
+    "termsOfService": "ข้อกำหนดการให้บริการ",
+    "helpCenter": "ศูนย์ช่วยเหลือ",
+    "contactUs": "ติดต่อเรา",
+    "concierge": "บริการคอนเซียร์จ",
+    "copyright": "© 2025 Lumina Stay สงวนลิขสิทธิ์"
+  },
+  "metadata": {
+    "siteTitle": "Lumina Stay",
+    "siteDescription": "ค้นหาสถานที่พักผ่อนหรูหราแห่งถัดไปของคุณ",
+    "contactTitle": "ติดต่อเรา — Lumina Stay",
+    "contactDescription": "ติดต่อทีม Concierge ทั่วโลกของ Lumina Stay เพื่อรับความช่วยเหลือด้านการเดินทางระดับพรีเมียม",
+    "helpTitle": "ศูนย์ช่วยเหลือ — Lumina Stay",
+    "helpDescription": "ค้นหาคำตอบเกี่ยวกับการจอง การชำระเงิน การยกเลิก และการจัดการบัญชีที่ Lumina Stay",
+    "privacyTitle": "นโยบายความเป็นส่วนตัว — Lumina Stay",
+    "privacyDescription": "เรียนรู้วิธีที่ Lumina Stay เก็บ ใช้ และปกป้องข้อมูลส่วนบุคคลของคุณตามกฎหมายคุ้มครองข้อมูลทั่วโลก",
+    "termsTitle": "ข้อกำหนดการให้บริการ — Lumina Stay",
+    "termsDescription": "อ่านข้อกำหนดและเงื่อนไขการใช้ Lumina Stay และบริการจองการเดินทางระดับพรีเมียมของเรา",
+    "conciergeTitle": "Lumina Concierge — Lumina Stay",
+    "conciergeDescription": "Lumina Concierge พร้อมช่วยเหลือคุณตลอด 24 ชั่วโมง ตั้งแต่การอัปเกรดห้องไปจนถึงการวางแผนการเดินทางเฉพาะบุคคล",
+    "whyTitle": "ทำไมต้องจองกับ Lumina Stay — Lumina Stay",
+    "whyDescription": "รับประกันราคาดีที่สุด ชำระเงินปลอดภัย บริการ Concierge ตลอด 24 ชั่วโมง และสิทธิพิเศษสำหรับสมาชิกเมื่อจองโดยตรงกับ Lumina Stay",
+    "hotelTitle": "{{name}} — Lumina Stay",
+    "photosTitle": "รูปภาพทั้งหมด — {{name}} | Lumina Stay",
+    "photosDescription": "ชมแกลเลอรีรูปภาพทั้งหมดของ {{name}}",
+    "reviewsTitle": "รีวิวผู้เข้าพัก — {{name}} | Lumina Stay",
+    "reviewsDescription": "อ่านรีวิวจริงจากผู้เข้าพักของ {{name}}"
+  },
+  "pages": {
+    "about": "เกี่ยวกับเรา",
+    "pricing": "ราคา",
+    "features": "ฟีเจอร์"
+  },
+  "imageAlt": {
+    "luxuryRoom": "ห้องพักโรงแรมหรู",
+    "luxuryPool": "สระว่ายน้ำหรู",
+    "poolSunset": "สระว่ายน้ำหรูยามพระอาทิตย์ตก",
+    "interior": "การตกแต่งภายในสุดหรูของ Lumina Stay",
+    "cityView": "วิวเมืองยามค่ำคืน",
+    "newYork": "มุมสูงของนครนิวยอร์ก",
+    "breakfast": "อาหารเช้าสไตล์หรูบนระเบียง",
+    "lobby": "ล็อบบี้โรงแรมหรู"
+  }
+}

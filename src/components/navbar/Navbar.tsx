@@ -15,15 +15,20 @@ import {
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import NextLink from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
+import { useTranslation } from 'react-i18next';
 import styles from './Navbar.module.scss';
 import LanguageSwitcher from './language-switcher/LanguageSwitcher';
+import InitialAvatar from '@/components/ui/initial-avatar/InitialAvatar';
+import ProfileMenu from './profile-menu/ProfileMenu';
+import { logoutAction } from '@/service/auth/auth-actions';
+import { useUserEmail } from '@/hooks/useUserEmail';
 
 const NAV_LINKS = [
-  { label: 'Home', href: '/' },
-  { label: 'Destinations', href: '/destinations' },
-  { label: 'Membership', href: '/membership' },
-  { label: 'My Bookings', href: '/bookings' },
+  { key: 'home', href: '/' },
+  { key: 'destinations', href: '/destinations' },
+  { key: 'membership', href: '/membership' },
+  { key: 'myBookings', href: '/bookings' },
 ] as const;
 
 interface NavbarProps {
@@ -32,8 +37,18 @@ interface NavbarProps {
 
 export default function Navbar({ variant = 'dark' }: NavbarProps) {
   const pathname = usePathname();
+  const router = useRouter();
   const isLight = variant === 'light';
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const userEmail = useUserEmail();
+  const { t } = useTranslation('common');
+
+  async function handleDrawerLogout() {
+    setDrawerOpen(false);
+    await logoutAction();
+    router.push('/login');
+    router.refresh();
+  }
 
   return (
     <>
@@ -54,16 +69,16 @@ export default function Navbar({ variant = 'dark' }: NavbarProps) {
             </Typography>
 
             <Box className={styles.navLinks}>
-              {NAV_LINKS.map(({ label, href }) => {
+              {NAV_LINKS.map(({ key, href }) => {
                 const isActive = pathname === href;
                 return (
                   <Button
-                    key={label}
+                    key={key}
                     component={NextLink}
                     href={href}
                     className={`${styles.navBtn}${isActive ? ` ${styles.navBtnActive}` : ''}${isLight ? ` ${styles.navBtnLight}` : ''}`}
                   >
-                    {label}
+                    {t(`nav.${key}`)}
                   </Button>
                 );
               })}
@@ -76,24 +91,28 @@ export default function Navbar({ variant = 'dark' }: NavbarProps) {
                   href="/membership"
                   className={styles.memberPerksBtn}
                 >
-                  Member Perks
+                  {t('navbar.memberPerks')}
                 </Button>
               )}
               <LanguageSwitcher variant={variant} />
-              <Button
-                variant="contained"
-                component={NextLink}
-                href="/login"
-                className={styles.signInBtn}
-              >
-                Sign In
-              </Button>
+              {userEmail ? (
+                <ProfileMenu userEmail={userEmail} avatarSize={36} />
+              ) : (
+                <Button
+                  variant="contained"
+                  component={NextLink}
+                  href="/login"
+                  className={styles.signInBtn}
+                >
+                  {t('navbar.signIn')}
+                </Button>
+              )}
             </Box>
 
             <IconButton
               className={`${styles.menuBtn}${isLight ? ` ${styles.menuBtnLight}` : ''}`}
               onClick={() => setDrawerOpen(true)}
-              aria-label="Open menu"
+              aria-label={t('navbar.openMenu')}
             >
               <MenuIcon />
             </IconButton>
@@ -125,18 +144,18 @@ export default function Navbar({ variant = 'dark' }: NavbarProps) {
         <Divider className={styles.drawerDivider} />
 
         <Box className={styles.drawerLinks}>
-          {NAV_LINKS.map(({ label, href }) => {
+          {NAV_LINKS.map(({ key, href }) => {
             const isActive = pathname === href;
             return (
               <Button
-                key={label}
+                key={key}
                 component={NextLink}
                 href={href}
                 fullWidth
                 className={`${styles.drawerNavBtn}${isActive ? ` ${styles.drawerNavBtnActive}` : ''}`}
                 onClick={() => setDrawerOpen(false)}
               >
-                {label}
+                {t(`nav.${key}`)}
               </Button>
             );
           })}
@@ -146,16 +165,42 @@ export default function Navbar({ variant = 'dark' }: NavbarProps) {
 
         <Box className={styles.drawerFooter}>
           <LanguageSwitcher variant="light" fullWidth />
-          <Button
-            variant="contained"
-            component={NextLink}
-            href="/login"
-            fullWidth
-            className={styles.drawerSignInBtn}
-            onClick={() => setDrawerOpen(false)}
-          >
-            Sign In
-          </Button>
+          {userEmail ? (
+            <>
+              <Button
+                variant="outlined"
+                component={NextLink}
+                href="/bookings"
+                fullWidth
+                startIcon={
+                  <InitialAvatar name={userEmail} color="var(--color-gold)" size={24} />
+                }
+                className={styles.drawerProfileBtn}
+                onClick={() => setDrawerOpen(false)}
+              >
+                {t('navbar.myAccount')}
+              </Button>
+              <Button
+                variant="text"
+                fullWidth
+                className={styles.drawerLogoutBtn}
+                onClick={handleDrawerLogout}
+              >
+                {t('navbar.logOut')}
+              </Button>
+            </>
+          ) : (
+            <Button
+              variant="contained"
+              component={NextLink}
+              href="/login"
+              fullWidth
+              className={styles.drawerSignInBtn}
+              onClick={() => setDrawerOpen(false)}
+            >
+              {t('navbar.signIn')}
+            </Button>
+          )}
         </Box>
       </Drawer>
     </>

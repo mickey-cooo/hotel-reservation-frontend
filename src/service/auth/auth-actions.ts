@@ -10,6 +10,7 @@ import {
 import {
   AUTH_COOKIE_NAME,
   AUTH_COOKIE_MAX_AGE_SECONDS,
+  USER_EMAIL_COOKIE_NAME,
   extractErrorMessage,
 } from '@/service/auth-cookie';
 
@@ -24,6 +25,13 @@ export async function loginAction(body: LoginBodyDto): Promise<AuthActionResult>
     const cookieStore = await cookies();
     cookieStore.set(AUTH_COOKIE_NAME, res.accessToken, {
       httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'lax',
+      path: '/',
+      maxAge: AUTH_COOKIE_MAX_AGE_SECONDS,
+    });
+    cookieStore.set(USER_EMAIL_COOKIE_NAME, body.email, {
+      httpOnly: false,
       secure: process.env.NODE_ENV === 'production',
       sameSite: 'lax',
       path: '/',
@@ -56,5 +64,6 @@ export async function verifyOtpAction(body: VerifyOtpBodyDto): Promise<AuthActio
 export async function logoutAction(): Promise<AuthActionResult> {
   const cookieStore = await cookies();
   cookieStore.delete(AUTH_COOKIE_NAME);
+  cookieStore.delete(USER_EMAIL_COOKIE_NAME);
   return { ok: true };
 }

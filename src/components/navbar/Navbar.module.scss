@@ -19,7 +19,7 @@
   gap: 8px;
   flex-grow: 1;
 
-  @media (max-width: 599px) {
+  @media (max-width: 900px) {
     display: none;
   }
 }
@@ -47,7 +47,7 @@
   gap: 8px;
   flex-shrink: 0;
 
-  @media (max-width: 599px) {
+  @media (max-width: 900px) {
     display: none;
   }
 }
@@ -67,18 +67,40 @@
   }
 }
 
+.drawerProfileBtn {
+  justify-content: flex-start !important;
+  gap: 10px !important;
+  color: var(--color-fg) !important;
+  border-color: var(--color-border) !important;
+  text-transform: none !important;
+  font-size: 0.95rem !important;
+  font-weight: 600 !important;
+  border-radius: 8px !important;
+  padding-block: 12px !important;
+}
+
+.drawerLogoutBtn {
+  justify-content: flex-start !important;
+  color: #DC2626 !important;
+  text-transform: none !important;
+  font-size: 0.95rem !important;
+  font-weight: 600 !important;
+  padding-block: 10px !important;
+  margin-top: 4px !important;
+}
+
 .menuBtn {
   display: none !important;
   margin-left: auto !important;
 
-  @media (max-width: 599px) {
+  @media (max-width: 900px) {
     display: flex !important;
     color: #fff !important;
   }
 }
 
 .menuBtnLight {
-  @media (max-width: 599px) {
+  @media (max-width: 900px) {
     color: var(--color-fg) !important;
   }
 }
